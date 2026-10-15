@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>USD and other non-crypto over Interledger - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/applications/7/index.html">Applications and Use Cases</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">USD and other non-crypto over Interledger</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">USD and other non-crypto over Interledger</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/applications/7" class="category-badge" style="--cat-color: #0E76BD"><span class="category-bullet" aria-hidden="true"></span>Applications and Use Cases</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/plugins" class="tag-badge">plugins</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 10, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/rhuairahrighairidh" class="user-link">rhuairahrighairidh</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 10, 2019 6:33 AM">
+            <time itemprop="datePublished" datetime="2019-03-10 06:33:07 +0200">Mar 10, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thought I’d create a thread to collate ideas around sending assets through interledger that are not cryptocurrencies.<br>
+Comments, thoughts, ideas welcome.</p>
+<h3>Background</h3>
+<p>In theory, ILP allows any asset to be transferred over and interoperate with the rest of the network. The protocol only really requires the underlying ledger to allow transfers.</p>
+<p>You could in theory hook up a Venmo wallet and send some USD, that gets routed through ETH, then across the lightning network, before being paid as Euros into someone’s Steam gaming account, all in a few seconds.</p>
+<p>Unfortunately reality is more complicated. Below is my list of notes on alternative assets/ledgers.</p>
+<p>I’d be really interested to hear if anyone has tried other ledgers.</p>
+<h3>Fiat Money</h3>
+<h4>wallet phone apps (Venmo, WeChat Pay, PayPal, Square Cash, etc)</h4>
+<p>It would be pretty neat to hook up a PayPal account to interledger and interoperate fiat with crypto.<br>
+However these apps do not have APIs. They go out of their way to make it hard to access their services through software via APIs, web scraping,  or running the apps in emulators.<br>
+Without software access, settling packets becomes a manual activity which translates to high trust of your connector.</p>
+<h4>credit/debit cards</h4>
+<p>These work for sending money to a business but receiving money as a person is hard. Also card payments (and any electronic payment) are required by law to be reversible in case of fraudulent authorisation. This opens attacks where people can send themselves say BTC then reverse the original tx. In practise this is dealt with by monitoring and blocking risky cards/people, but the end result is a high fee.</p>
+<h4>bank transfers</h4>
+<p>Bank transfer are hard to access transfer via software and settlement times are so slow it wouldn’t make much sense (at least in the US).</p>
+<p>Overall I think the most reasonable model for fiat over ILP is:</p>
+<ul>
+<li>manually pre-fund your connector (probably with a card payment)</li>
+<li>pay down that balance as you send ilp payments</li>
+<li>likely pay a high fee</li>
+</ul>
+<p>However with this much restriction, just using stablecoin ERC20s become a reasonable alternative. Especially if combined with fiat on-boarding through card payments.</p>
+<h3>Other Ledgers</h3>
+<h4>prepaid phone airtime credits</h4>
+<p>Can’t be transferred between numbers.</p>
+<h4>in-game currencies</h4>
+<p>Many games don’t allow currencies to be transferred between players (eg Fortnite’s V-Bucks).<br>
+But the steam marketplace has an api and has a bunch of game assets. I think someone could probably get an integration working, but many are non divisible so streaming would be hard.</p>
+<h4>AWS / Google Cloud credits</h4>
+<p>Can’t be transferred.</p>
+<h4>gift cards</h4>
+<p>Non divisible and can’t really be transferred since they’re just single use codes.</p>
+<h4>airmiles and rewards points</h4>
+<p>Some companies allow these to be transferred but most do not.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="5 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          5
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/KarmaCoverage" class="user-link">Karma Coverage</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 10, 2019 4:24 PM">
+            <time itemprop="datePublished" datetime="2019-03-10 16:24:45 +0200">Mar 10, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is where I think incumbent banks have a competitive advantage. They, as a function of their business, are already absorbing the costs of supporting the connections into the existing money transfer systems.</p>
+<p>As a result, the marginal cost of integrating ILP is much lower, than a startup or entirely new business model.</p>
+<p>I think it will take a few adventurous incumbent CEOs to start shrinking the spreads on these various services. I’d look more towards Venmo/Square types than traditional banking institutions, but a money center bank making a bold move could really change the environment between fiat and crypto.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Smedily1" class="user-link">David Smith</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 11, 2019 6:19 PM">
+            <time itemprop="datePublished" datetime="2019-03-11 18:19:33 +0200">Mar 11, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Asset Mgmt<br>
+I consult with companies to help them better manager their assets e.g. hardware, software, configurations, data etc.</p>
+<p>It’s very tedious work to track asset and most often they don’t get it right causing risks, vulnerabilities, extra work/cost and poor support services.</p>
+<p>Could ILP be used to have the asset track themselves to make this easier for companies?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/rslater12" class="user-link">Rslater12</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 9, 2019 6:59 PM">
+            <time itemprop="datePublished" datetime="2019-05-09 18:59:44 +0200">May 9, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Could you use Revoults API? They have a create payments section? <a href="https://revolutdev.github.io/business-api/?shell--sandbox#create-payment" rel="nofollow noopener">https://revolutdev.github.io/business-api/?shell–sandbox#create-payment</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

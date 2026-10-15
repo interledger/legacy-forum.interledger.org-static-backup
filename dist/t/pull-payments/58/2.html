@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pull Payments - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Pull Payments</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Pull Payments</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/application-layer" class="tag-badge">application-layer</a>
+          
+            <a href="/tag/pre-rfc" class="tag-badge">pre-rfc</a>
+          
+            <a href="/tag/pull-payments" class="tag-badge">pull-payments</a>
+          
+            <a href="/tag/spsp" class="tag-badge">spsp</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 6, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_21"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_21" title="Feb 9, 2019 8:00 PM">
+            <time itemprop="datePublished" datetime="2019-02-09 20:00:55 +0200">Feb 9, 2019</time>
+          </a>
+          <span class="post-number">#21</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_20">Replying to #20</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="20" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>I would put the duration as an integer denominated in a unit of time. As I said above, I don’t think 1 second will work well with the resetting bucket method so I think I would advocate for the time to be denominated in hours.</p>
+</blockquote>
+</aside>
+<p>You want to introduce an additional <code>duration</code> parameter? Or is <code>interval</code> the duration integer and we always assume that it is denoted in hours?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_22"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_22" title="Feb 9, 2019 8:17 PM">
+            <time itemprop="datePublished" datetime="2019-02-09 20:17:06 +0200">Feb 9, 2019</time>
+          </a>
+          <span class="post-number">#22</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_21">Replying to #21</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="21" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>is <code>interval</code> the duration integer and we always assume that it is denoted in hours?</p>
+</blockquote>
+</aside>
+<p>Yes. Instead of having a text-based field that’s either “hour” or “day”, you would have a duration field that’s denominated in a unit such as hours so an hour would be 1, a day would be 24, and so on.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_23"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_23" title="Feb 11, 2019 6:08 PM">
+            <time itemprop="datePublished" datetime="2019-02-11 18:08:23 +0200">Feb 11, 2019</time>
+          </a>
+          <span class="post-number">#23</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_22">Replying to #22</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="22" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Yes. Instead of having a text-based field that’s either “hour” or “day”, you would have a duration field that’s denominated in a unit such as hours so an hour would be 1, a day would be 24, and so on.</p>
+</blockquote>
+</aside>
+<p>One of the most common intervals for a recurring payment is Month, and there’s no good way to express that in terms of hours. We could do something like a duration object formatted as a datetime so that it has ms, s, m, h, days, months, years (maybe some subset of <a href="https://en.wikipedia.org/wiki/ISO_8601#Time_intervals" class="inline-onebox">ISO 8601 - Wikipedia</a> )</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_24"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_24" title="Feb 11, 2019 7:53 PM">
+            <time itemprop="datePublished" datetime="2019-02-11 19:53:29 +0200">Feb 11, 2019</time>
+          </a>
+          <span class="post-number">#24</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_23">Replying to #23</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="sharafian" data-post="23" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sharafian/48/449_2.png" class="avatar"> sharafian:</div>
+<blockquote>
+<p>We could do something like a duration object formatted as a datetime so that it has ms, s, m, h, days, months, years (maybe some subset of <a href="https://en.wikipedia.org/wiki/ISO_8601#Time_intervals" class="inline-onebox" rel="noopener nofollow ugc">ISO 8601 - Wikipedia</a> )</p>
+</blockquote>
+</aside>
+<p>I like that idea. The smallest entity should be hours given the concerns raised above so the <code>interval</code> parameter would be of the form <code>'P&lt;years&gt;Y&lt;months&gt;M&lt;days&gt;DT&lt;hours&gt;H'</code></p>
+<p>This means we have the following parameters:</p>
+<ul>
+<li>start time (<code>start</code>): ISO string <code>'YYYY-MM-DDThh:mm:ssZ'</code></li>
+<li>amount (<code>amount</code>): Integer</li>
+<li>refill interval (<code>interval</code>): ISO string <code>'P&lt;years&gt;Y&lt;months&gt;M&lt;days&gt;DT&lt;hours&gt;H'</code></li>
+<li>number of repetitions (<code>cycles</code>): Integer</li>
+<li>cap (<code>cap</code>): Boolean, <code>false</code> = no cap (amount keeps accumulating), <code>true</code>= cap (use it our lose it)</li>
+</ul>
+<p>What is missing is something about the asset type and scale if we want to allow the pull payment to be denominated in an asset that is neither the client’s nor the server’s (for stability).</p>
+<p>Also, one could think about some parameter that indicates that even though the bucket fills hourly at the minimum, only the amount accumulated to this second/minute can be pulled.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="3 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          3 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_25"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_25" title="Feb 12, 2019 5:26 PM">
+            <time itemprop="datePublished" datetime="2019-02-12 17:26:07 +0200">Feb 12, 2019</time>
+          </a>
+          <span class="post-number">#25</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_24">Replying to #24</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="24" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>The smallest entity should be hours given the concerns raised above so the <code>interval</code> parameter would be of the form <code>'P&lt;years&gt;Y&lt;months&gt;M&lt;days&gt;DT&lt;hours&gt;H'</code></p>
+</blockquote>
+</aside>
+<p>I’m still interested in sub-hour intervals for the subscription/non-bucket use case.</p>
+<p>I’ve been thinking about the different kinds of recurring payments. Assuming they’re all based on a set rate (price/usage), it seems like they could be categorized as:</p>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">constant/regular usage</th>
+<th style="text-align:center">irregular usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>regular pull frequency</td>
+<td style="text-align:center">Subscription (Netflix, Amazon Prime, Codius)</td>
+<td style="text-align:center">Bucket/Autopay (utility &amp; credit card bills)</td>
+</tr>
+<tr>
+<td>irregular pull frequency</td>
+<td style="text-align:center">prorated subscription?</td>
+<td style="text-align:center">Auto top-up (<a href="https://support.twilio.com/hc/en-us/articles/223135607-How-do-I-set-a-recharge-trigger-" rel="noopener nofollow ugc">Twilio</a> or <a href="https://www.txtag.org/en/about/howto_payments.shtml" rel="noopener nofollow ugc">toll road account</a> for which the account balance is refilled whenever it drops below a certain amount)</td>
+</tr>
+</tbody>
+</table>
+</div><p>I think the two on the right (bucket/autopay and auto top-up) can both be handled with a specified maximum authorized amount over whatever arbitrary time interval (use it or lose it).</p>
+<p>Similarly, the ones on the left can both have a constantly/regularly incrementing authorized amount. It’d be nice if we could treat all four like this for simplicity’s sake. If I say my utility company can pull as much as $200/month, then how much different is them taking $200 in both January and February vs $100 in January in $300 in February. The utility company could be overdrawing (based on my actual usage) in either scenario.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_26"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_26" title="Feb 12, 2019 11:26 PM">
+            <time itemprop="datePublished" datetime="2019-02-12 23:26:35 +0200">Feb 12, 2019</time>
+          </a>
+          <span class="post-number">#26</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_25">Replying to #25</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="wilsonianb" data-post="25" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>I’m still interested in sub-hour intervals for the subscription/non-bucket use case.</p>
+</blockquote>
+</aside>
+<p>Maybe we can introduce some restrictions of what the max amount per interval is to make sure that the payment can be processed. On generation of the payment pointer, we check that these restrictions are met. This way we can go as low as 1 second for an interval.</p>
+<aside class="quote no-group" data-username="wilsonianb" data-post="25" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>The utility company could be overdrawing (based on my actual usage) in either scenario.</p>
+</blockquote>
+</aside>
+<p>Thus they can all be seen as prepaid accounts that allow a certain amount to be pulled per interval. Depending on the nature of the payment, you adjust <code>amount</code>, <code>interval</code>, and <code>cap</code>. In a flat rate subscription scenario, it makes sense to have larger intervals and no no caps whereas in a pay-per-usage scenario, you may want smaller intervals and caps. This, however, still does not prevent the utility company to pull the full amount each interval. For this, we would need varying <code>amount</code>s.</p>
+<p>I would define the most obvious use cases like this</p>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Description</th>
+<th>Technical implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Checkout</td>
+<td>A user buys a product in an (online) shop. The merchant should be able to pull the predefined price (+ any additional fees) within a predefined time period out of the user’s wallet.</td>
+<td><code>amount</code> =  price + fees, <code>interval</code> = predefined period (let’s say 1 week), <code>cap</code> = <code>true</code>, <code>cycles</code> = 1, <code>start</code> = <code>now</code></td>
+</tr>
+<tr>
+<td>Subscription / Recurring Payment / Flatrate</td>
+<td>A user subscribes to a service. The service provider should be able to pull a predefined amount within a predefined time period or on a predefined date, recurring over a predefined time span, as long as the user does not cancel the plan. The user does not have to trust the service because it is a flat rate.</td>
+<td><code>amount</code> =  price, <code>interval</code> = predefined period (let’s say 1 month), <code>cap</code> = <code>false</code>, <code>cycles</code> = n, <code>start</code> = <code>now</code></td>
+</tr>
+<tr>
+<td>Pay per use - Scheduled payment</td>
+<td>A user signs up for a service but only pays the fees she accumulated over a time period. The service provider should be able to pull this amount (+ any additional fees) within a predefined time period or on a predefined date, as long as the user uses the service / does not cancel the agreement. The maximum pullable amount is caped. The user has to trust the service that it does not pull the full amount each interval.</td>
+<td><code>amount</code> =  max price per interval, <code>interval</code> = predefined period (let’s say 1 month), <code>cap</code> = <code>true</code>, <code>cycles</code> = n, <code>start</code> = <code>now</code></td>
+</tr>
+<tr>
+<td>Pay per use - Streaming</td>
+<td>The user signs up for a service and pays as she uses this service. Instead of her streaming the money to the service provider, the service provider pulls it constantly whenever the service is used (Coil inverse). It is implied that the client does not pull when the service is not used. There is no cap to allow for less frequent than constant pulling without the loss of funds. The user has to trust the service that it only pulls whenever she is using it but can cancel the agreement at all times.</td>
+<td><code>amount</code> =  price per interval, <code>interval</code> = 1 second, <code>cap</code> = <code>false</code>, <code>cycles</code> = n, <code>start</code> = <code>now</code></td>
+</tr>
+</tbody>
+</table>
+</div><p>I am probably forgetting some but these are probably the main ones that could all be realized with the parameters we have defined so far. However, there is a trust issue for the last two.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_27"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_27" title="Feb 13, 2019 12:05 AM">
+            <time itemprop="datePublished" datetime="2019-02-13 00:05:52 +0200">Feb 13, 2019</time>
+          </a>
+          <span class="post-number">#27</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_26">Replying to #26</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Tangent: It might be overkill for what we need, but I found this recurrence rules spec while looking at the Google Calendar API:<br>
+<a href="https://tools.ietf.org/html/rfc5545#section-3.8.5" class="onebox" target="_blank" rel="nofollow noopener">https://tools.ietf.org/html/rfc5545#section-3.8.5</a></p>
+<p>There’s also a JavaScript library<br>
+<aside class="onebox whitelistedgeneric">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/jakubroztocil/rrule" target="_blank" rel="nofollow noopener">GitHub</a>
+  </header>
+  <article class="onebox-body">
+    <img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/00cd23aec31f33e9d911230c69e8bc59e4b023fa.jpeg" class="thumbnail onebox-avatar" width="240" height="240">
+
+<h3><a href="https://github.com/jakubroztocil/rrule" target="_blank" rel="nofollow noopener">jakubroztocil/rrule</a></h3>
+
+<p>JavaScript library for working with recurrence rules for calendar dates as defined in the iCalendar RFC and more. - jakubroztocil/rrule</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_28"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_28" title="Feb 13, 2019 12:12 AM">
+            <time itemprop="datePublished" datetime="2019-02-13 00:12:59 +0200">Feb 13, 2019</time>
+          </a>
+          <span class="post-number">#28</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_27">Replying to #27</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/wilsonianb/index.html">@wilsonianb</a> Thanks for sharing that. However, I agree with you assessment.</p>
+<aside class="quote no-group quote-modified" data-username="wilsonianb" data-post="27" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>It might be overkill for what we need.</p>
+</blockquote>
+</aside>
+<p>I found using ISO 8601 durations in combination with cycles to be very slim, understandable, and easy to implement.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_29"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_29" title="Feb 13, 2019 1:50 PM">
+            <time itemprop="datePublished" datetime="2019-02-13 13:50:07 +0200">Feb 13, 2019</time>
+          </a>
+          <span class="post-number">#29</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_28">Replying to #28</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is great! I like the idea of supporting both the “use it or lose it” style and the constantly accumulating one.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="26" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>Maybe we can introduce some restrictions of what the max amount per interval is to make sure that the payment can be processed. On generation of the payment pointer, we check that these restrictions are met.</p>
+</blockquote>
+</aside>
+<p>I don’t think this is necessary. If you set it up with <code>cap = true</code> and an <code>interval</code> of 1 second, you might have some strange behavior but we can just put a recommendation in the spec that you may not want to do this rather than actually restricting it.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="24" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>What is missing is something about the asset type and scale if we want to allow the pull payment to be denominated in an asset that is neither the client’s nor the server’s (for stability).</p>
+</blockquote>
+</aside>
+<p>Originally I didn’t like this idea that much but thinking about it more, it does sound useful and not that difficult to implement. I was thinking we would need this to be calculated through the Interledger network, requiring landmarks and something along the lines of <a href="https://github.com/interledgerjs/ilp-price">ilp-price</a>. However, since this is just guidance for the provider, they can use whatever method they want to get the price (such as a simple external API).</p>
+<p>The one thing to consider is how to handle the exchange rate changing over the interval period. Maybe you would just use the average exchange rate over the period since the last time you updated the pullable amount.</p>
+<hr>
+<p>Overall, nice work <a class="mention" href="/u/sabinebertram/index.html">@sabinebertram</a> and <a class="mention" href="/u/wilsonianb/index.html">@wilsonianb</a>!</p>
+<p><a class="mention" href="/u/sabinebertram/index.html">@sabinebertram</a> are you working on an implementation of this already?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_30"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_30" title="Feb 13, 2019 6:00 PM">
+            <time itemprop="datePublished" datetime="2019-02-13 18:00:16 +0200">Feb 13, 2019</time>
+          </a>
+          <span class="post-number">#30</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_29">Replying to #29</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="29" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>we can just put a recommendation in the spec that you may not want to do this rather than actually restricting it</p>
+</blockquote>
+</aside>
+<p>Fair enough.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="29" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Maybe you would just use the average exchange rate over the period since the last time you updated the pullable amount.</p>
+</blockquote>
+</aside>
+<p>This means that we have to keep track of when the last pull was made as well as exchange rates. It feels like overhead to me. The client can pull whenever she wants within the interval so she can pull when she likes the exchange rate. I would just use the spot rate at the moment of the pull. I guess you can argue that this is a disadvantage for the server but this incentivizes her to make good decisions about her currency as well as the pull agreement currency.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="29" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p><a class="mention" href="/u/sabinebertram/index.html">@sabinebertram</a> are you working on an implementation of this already?</p>
+</blockquote>
+</aside>
+<p>Yes I am. Here is the latest version, already including offline token generation support: <a href="https://github.com/sabinebertram/ilp-spsp-pull-payment-server/" rel="noopener nofollow ugc">ilp-spsp-pull-payment-server</a>. I also updated <a href="https://github.com/sabinebertram/ilp-protocol-spsp/tree/pull-payments" rel="noopener nofollow ugc">ilp-protocol-spsp</a> and <a href="https://github.com/sabinebertram/ilp-spsp/tree/pull-payments" rel="noopener nofollow ugc">ilp-spsp</a> accordingly. I’m working on an implementation that allows the client to pull less than the full amount per interval now and wanted to tackle the exchange rate topic next.<br>
+I have also already worked on an integration of pull payments within codius, however, this is still based on older versions of pull payment parameters.</p>
+<p>One thing that is still not clear to me. What does the query of the token endpoint return? Only <code>destination_account</code> and <code>shared_secret</code> or also some information about the pull agreement that can be used to display it in e.g. the customers wallet? And if so, what do we want to include?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_31"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_31" title="Feb 15, 2019 10:24 PM">
+            <time itemprop="datePublished" datetime="2019-02-15 22:24:19 +0200">Feb 15, 2019</time>
+          </a>
+          <span class="post-number">#31</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_30">Replying to #30</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="30" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>What does the query of the token endpoint return? Only <code>destination_account</code> and <code>shared_secret</code> or also some information about the pull agreement that can be used to display it in e.g. the customers wallet? And if so, what do we want to include?</p>
+</blockquote>
+</aside>
+<p>I’m ambivalent about including pull agreement details. They definitely shouldn’t be required (it should work with just <code>destination_account</code> and <code>shared_secret</code>) but could probably just be optional (like the push payment detail).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_32"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_32" title="Feb 15, 2019 10:34 PM">
+            <time itemprop="datePublished" datetime="2019-02-15 22:34:26 +0200">Feb 15, 2019</time>
+          </a>
+          <span class="post-number">#32</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_31">Replying to #31</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="wilsonianb" data-post="31" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>They definitely shouldn’t be required (it should work with just <code>destination_account</code> and <code>shared_secret</code> ) but could probably just be optional (like the push payment detail).</p>
+</blockquote>
+</aside>
+<p>I agree. I would make them optional but include them to have a description of the parameters we discussed over the course of this forum thread.</p>
+<p>On that point, do we want a different spec for the token negotiation and creation phase that makes the parameters we discussed mandatory? Or is that part of this spec?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_33"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_33" title="Feb 21, 2019 12:38 AM">
+            <time itemprop="datePublished" datetime="2019-02-21 00:38:45 +0200">Feb 21, 2019</time>
+          </a>
+          <span class="post-number">#33</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_24">Replying to #24</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="24" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>This means we have the following parameters:</p>
+<ul>
+<li>start time ( <code>start</code> ): ISO string <code>'YYYY-MM-DDThh:mm:ssZ'</code></li>
+<li>amount ( <code>amount</code> ): Integer</li>
+<li>refill interval ( <code>interval</code> ): ISO string <code>'P&lt;years&gt;Y&lt;months&gt;M&lt;days&gt;DT&lt;hours&gt;H'</code></li>
+<li>number of repetitions ( <code>cycles</code> ): Integer</li>
+<li>cap ( <code>cap</code> ): Boolean, <code>false</code> = no cap (amount keeps accumulating), <code>true</code> = cap (use it our lose it)</li>
+</ul>
+</blockquote>
+</aside>
+<p>A couple variations to consider:</p>
+<ul>
+<li>Replace <code>cycles</code> with an expiration time</li>
+<li>Make <code>start</code>, <code>interval</code>, <code>cycles</code>/<code>expiration</code>, and <code>cap</code> optional</li>
+</ul>
+<p>Together, that would let you provide just an <code>amount</code> (and optionally <code>expiration</code>) for a one-off payment. An <code>expiration</code> (vs <code>cycles</code>) also seems advantageous for shorter (ex. 1 second) intervals.</p>
+<p>edit: actually, <code>cycles</code> and <code>expiration</code> are probably distinct things. <code>cycles</code> could be used to specify when to stop increasing the available balance, whereas <code>expiration</code> would be used to set the available balance to zero / invalidate the endpoint.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_34"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_34" title="Feb 21, 2019 1:14 AM">
+            <time itemprop="datePublished" datetime="2019-02-21 01:14:17 +0200">Feb 21, 2019</time>
+          </a>
+          <span class="post-number">#34</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_33">Replying to #33</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="wilsonianb" data-post="33" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>Replace <code>cycles</code> with an expiration time</p>
+</blockquote>
+</aside>
+<p>I would argue against that. A time makes it way more complicated because what happens when the intervals do not fit exactly in the period between start time and expiration time?</p>
+<p>We can still make <code>start</code>, <code>interval</code>, <code>cycles</code>, and <code>cap</code> optional, i.e. if only the <code>amount</code> is given, set the <code>start</code> to <code>now</code>, the <code>interval</code> to default (let’s say 1 day) and <code>cap</code> to <code>false</code>. This way, the amount is pullable forever.</p>
+<aside class="quote no-group" data-username="wilsonianb" data-post="33" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p><code>cycles</code> could be used to specify when to stop increasing the available balance, whereas <code>expiration</code> would be used to set the available balance to zero / invalidate the endpoint.</p>
+</blockquote>
+</aside>
+<p>This sounds reasonable. It also crossed my mind today that there is no clean-up functionality for payment pointers that are out of money yet.</p>
+<p>edit: However, adding that for out-of-the-money pointer should be easy to get. The question is whether we want an expiry time for payment pointers that are still in the money.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_35"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_35" title="Feb 22, 2019 10:04 PM">
+            <time itemprop="datePublished" datetime="2019-02-22 22:04:55 +0200">Feb 22, 2019</time>
+          </a>
+          <span class="post-number">#35</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_34">Replying to #34</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="34" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>The question is whether we want an expiry time for payment pointers that are still in the money.</p>
+</blockquote>
+</aside>
+<p>I vote yes to that being an option</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_36"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_36" title="Feb 25, 2019 6:13 PM">
+            <time itemprop="datePublished" datetime="2019-02-25 18:13:24 +0200">Feb 25, 2019</time>
+          </a>
+          <span class="post-number">#36</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_35">Replying to #35</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="wilsonianb" data-post="35" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>I vote yes to that being an option</p>
+</blockquote>
+</aside>
+<p>I don’t object. I’m sure that will be useful in some cases. I’ll add it to the spec as an optional field.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_37"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_37" title="Feb 27, 2019 11:41 PM">
+            <time itemprop="datePublished" datetime="2019-02-27 23:41:16 +0200">Feb 27, 2019</time>
+          </a>
+          <span class="post-number">#37</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There is a new PR only containing the new pull payment spec ready for review: <a href="https://github.com/interledger/rfcs/pull/514" rel="nofollow noopener">https://github.com/interledger/rfcs/pull/514</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_38"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/JasonArmbruster" class="user-link">Jason Armbruster</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_38" title="May 16, 2019 11:41 AM">
+            <time itemprop="datePublished" datetime="2019-05-16 11:41:57 +0200">May 16, 2019</time>
+          </a>
+          <span class="post-number">#38</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>… would any of you be interested in helping me put this to a “test case” with a site that is dedicated to xrp, is a membership site and the service can work with 1xrp/day?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_39"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_39" title="May 16, 2019 3:31 PM">
+            <time itemprop="datePublished" datetime="2019-05-16 15:31:52 +0200">May 16, 2019</time>
+          </a>
+          <span class="post-number">#39</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_38">Replying to #38</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Jason, Welcome to the thread!</p>
+<p>I am not sure how practical such an implementation is at the moment because all of the members of your site would have to run their own pull payment SPSP server (plus moneyd). This is a lot of effort.<br>
+I have been talking to some wallet providers who are interested and willing to add the possibility to create pull pointers to their services. This would make pull payments 100 times more feasible. However, there is no provider yet that has that feature, at least not that I know of.<br>
+If you nevertheless want to give it a go, have a look at my <a href="https://github.com/sabinebertram/ilp-spsp-pull-payment-server" rel="nofollow noopener">ILP SPSP Pull Payment Server</a>. This (or something similar) is what each of your members has to have running for you to pull 1xrp/day.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_40"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/JasonArmbruster" class="user-link">Jason Armbruster</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_40" title="May 16, 2019 4:11 PM">
+            <time itemprop="datePublished" datetime="2019-05-16 16:11:34 +0200">May 16, 2019</time>
+          </a>
+          <span class="post-number">#40</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_39">Replying to #39</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ms. Sabine … thnx for getting back to me so quickly. =) … I know all about how difficult it is for ‘recurring payments’ with xrpl and ilp, as I have been chatting with multiple people like Wietse Wind from XRPL Labs about the project for many months now.</p>
+<p>Since there are no wallet providers that are interested, I would think that the next best thing is to create the platform. I can attest to many people out in the cryptosphere (is that a word?) that would love the ability to have ‘recurring payments’ on their membership sites for premium content.</p>
+<p>Is there a place where we can chat about this further without destroying this awesome thread you have put together here?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/pull-payments/58/index.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 2 of 3</span>
+
+    
+    <a href="/t/pull-payments/58/3.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

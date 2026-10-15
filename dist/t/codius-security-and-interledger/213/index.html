@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codius Security and Interledger - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/applications/7/index.html">Applications and Use Cases</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Codius Security and Interledger</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Codius Security and Interledger</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/applications/7" class="category-badge" style="--cat-color: #0E76BD"><span class="category-bullet" aria-hidden="true"></span>Applications and Use Cases</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 14, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 14, 2019 1:18 PM">
+            <time itemprop="datePublished" datetime="2019-02-14 13:18:21 +0200">Feb 14, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So I’ve had some thoughts and prior discussion about how the computational model of Codius is secure, and without any kind of verifiable computation, it’s unclear to me how you can ensure that someone executes your code. It seems like it’s the responsibility of the client to figure out whether or not the Codius endpoint is doing something malicious and then cut-off payments from there.</p>
+<p>But if you don’t leverage a secure enclave, i.e. Keystone for RISC-V or Intel SGX, then why wouldn’t I just run a Codius node and trick people into paying me? Seems trivial given that there’s nothing preventing me from creating multiple identities (sybil resistance), etc.</p>
+<p>Therefore the solutions are to:</p>
+<ul>
+<li>Federate the network somehow (unclear how you can do this without any sybil resistance or universal identity, maybe URLs are enough and if someone gets scammed the damage is limited because the URLs will get a bad reputation?)</li>
+<li>Require secure enclaves to run contracts (actually a good idea, I think it does a better job of leveraging end-to-end arguments than running a full on consensus layer for smart contracts)</li>
+</ul>
+<p>Am I missing something here? I know that you can have secure enclave providers on Codius, but if you don’t require it, it’s pretty easy to fool people into performing real computations. The alternatives are slow Homomorphic encryption which heavily limits what kind of jobs you can do, or if you can divide the computations into some kind of samples, sort of like a map-reduce job, then maybe you can do some kind of tit-for-tat protocol.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 14, 2019 9:48 PM">
+            <time itemprop="datePublished" datetime="2019-02-14 21:48:14 +0200">Feb 14, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="akash" data-post="1" data-topic="213">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/akash/48/22_2.png" class="avatar"> akash:</div>
+<blockquote>
+<p>It seems like it’s the responsibility of the client to figure out whether or not the Codius endpoint is doing something malicious and then cut-off payments from there.</p>
+</blockquote>
+</aside>
+<p>An important thing to note is that the client selects their host deliberately. If you pick some random host by crawling the network, they might not really be running their code. If you pick a Codius host run by a well-respected hosting company, then they’re less likely to be lying to you.</p>
+<p>The network wouldn’t scale, though, if the only viable hosts were ones with brand recognition. I predict that lots of people will create reputation services on top of Codius, wherein the reputation service rates Codius hosts by automatically uploading contracts to the hosts and probing them to make sure that they’re really running the code they say they are. A reputation service could also do some manual steps, like verifying the business running the host. The great thing is that all Codius uploaders have Interledger access, so they can easily make a paid API call to the repuation service.</p>
+<p>The idea of a reputation service isn’t set in stone and isn’t a part of the protocol, it’s just a natural thing that people would build on top of it.</p>
+<p>Even with a host you trust, you might want to further strengthen your security. Maybe you don’t trust Amazon to run your code, but you would trust that Amazon, Google, and Microsoft would not all conspire to run your code falsely. For that kind of problem, you would use a consensus algorithm, multisign scheme, or multi-party computation, whichever is appropriate.</p>
+<p>Codius isn’t like Ethereum, though. It doesn’t run on a blockchain and it doesn’t run your code on multiple machines by default. The Codius way to run your code in multiple places is to upload it in multiple places. You need to write the consensus code yourself, but that’s something that can be solved by friendly libraries rather than making the underlying Codius network expensive and complicated.</p>
+<aside class="quote no-group" data-username="akash" data-post="1" data-topic="213">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/akash/48/22_2.png" class="avatar"> akash:</div>
+<blockquote>
+<p>maybe URLs are enough and if someone gets scammed the damage is limited because the URLs will get a bad reputation?</p>
+</blockquote>
+</aside>
+<p>That’s pretty much what we’re going off of: if you want people to trust you then you should use the some domain and build up trust.</p>
+<aside class="quote no-group" data-username="akash" data-post="1" data-topic="213">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/akash/48/22_2.png" class="avatar"> akash:</div>
+<blockquote>
+<p>Require secure enclaves to run contracts</p>
+</blockquote>
+</aside>
+<p>This isn’t mutually exclusive with the existing way that it works. If you can prove you’re running the code you say you’re running, then a reputation service or an individual user could take that into account when deciding whether to upload to you.</p>
+<p>I don’t think that we should require secure hardware because it creates a single point of failure.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/condaatje" class="user-link">condaatje</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 26, 2019 9:57 PM">
+            <time itemprop="datePublished" datetime="2019-02-26 21:57:23 +0200">Feb 26, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m not convinced of <a href="https://people.cs.uchicago.edu/~teutsch/papers/truebit.pdf" rel="nofollow noopener">Truebit</a>’s real-world practicality specifically, but some form of compute arbitration at the application layer could definitely provide a measure of confidence. If the arbitrator is central/trusted or small-scale multiparty (such as the Google/AWS/Microsoft solution above), you obviously have the same confidence that arbitration is unbiased as the current status quo in cloud computing. And if you need more certainty, using a trustless computer like Ethereum as the arbitrator works well. The annoying part is still efficiency/worst-case runtime for an algorithm has to factor in arbitration, which is network/latency-constrained and extremely slow (in practice if not mathematically) under the Truebit model even with binary execution search. Which is why in practice I think a <em>k</em>-peers model (where <em>k</em> nodes run the same job, with <em>k</em> acting as a paid-for confidence slider) may be more useful despite being more exposed to collusion on unencrypted or Sybil jobs. Would basically allow per-job consensus computers at customized scale.</p>
+<p>My intuition is that this all essentially reduces to the <a href="https://en.wikipedia.org/wiki/Halting_problem" rel="nofollow noopener">Halting Problem</a> which is why I don’t think there will be a “clean” solution barring a major theoretical breakthrough.</p>
+<p>Interestingly though, the quicker/more restrictive forms of homomorphic encryption may be naturally verifiable and I don’t think they should be so readily dismissed - faulty computation simply returns gibberish, no?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

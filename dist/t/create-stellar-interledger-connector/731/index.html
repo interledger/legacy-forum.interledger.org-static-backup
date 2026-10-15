@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create stellar interledger connector - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Create stellar interledger connector</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Create stellar interledger connector</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/plugins" class="tag-badge">plugins</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 24, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/mhd_mlk" class="user-link">mhd mlk</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 24, 2019 9:00 AM">
+            <time itemprop="datePublished" datetime="2019-08-24 09:00:01 +0200">Aug 24, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi there,<br>
+I’d like to know how can I build a connector between ripple and stellar using ilp?<br>
+I was looking in <a href="https://github.com/interledgerjs" rel="nofollow noopener">https://github.com/interledgerjs</a> repositories but It confused me to start from where?</p>
+<p>Thanks</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 24, 2019 9:42 AM">
+            <time itemprop="datePublished" datetime="2019-08-24 09:42:41 +0200">Aug 24, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, as much as I understand the ILP infrastructure currently in production, you don’t need to build a connector (unless you really want to). You can use the reference node js connector. What you need to build indeed, would be a plugin for Stellar. The reference connector can talk to a multitude of ledgers, Stellar included, if we provide it with the right plugin for that ledger. You could start by checking ilp-plugin-xrp and ilp-plugin-eth. There are more of them, the names I put here are generic.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 24, 2019 2:33 PM">
+            <time itemprop="datePublished" datetime="2019-08-24 14:33:47 +0200">Aug 24, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/mhd_mlk/index.html">@mhd_mlk</a>!</p>
+<p><a class="mention" href="/u/lucian_trestioreanu/index.html">@Lucian_Trestioreanu</a> is correct - you don’t need to build a new Connector, and the plugins he cited are a good start if you want to use <a href="https://github.com/interledgerjs/ilp-connector" rel="nofollow noopener">https://github.com/interledgerjs/ilp-connector</a></p>
+<p>Alternatively, the community is moving away from the <a href="https://github.com/interledger/rfcs/blob/master/0024-ledger-plugin-interface-2/0024-ledger-plugin-interface-2.md" rel="nofollow noopener">plugin</a> architecture towards something called Settlement Engines (<a href="https://github.com/interledger/rfcs/pull/536/files?short_path=6a66521#diff-6a66521f4ffb9de726e43fb324cd0690" rel="nofollow noopener">RFC nearly complete</a>, but still WIP). Settlement Engines allow Connectors to settle outstanding/accrued debts between peers, using an underlying layer-1 ledger (e.g., Bitcoin, Fiat, Stellar).</p>
+<p>Unfortunately, Settlement Engines are not by themselves compatible with Plugins, so if you want to move to that architecture, you should consider one of the three new Connector implementations that are currently being worked on in the community. To be clear, these new implementations don’t use plugins, but use SE’s instead.</p>
+<p>For Stellar, you would need to build a Settlement Engine, which shouldn’t be terribly difficult. You could start with the <a href="https://github.com/interledgerjs/settlement-xrp" rel="nofollow noopener">Settlement Engine for XRPL</a> and just adapt it to Stellar, I think.</p>
+<p>Here are three connector options for you (Rust is probably the most mature at this point, and easy to use):</p>
+<ul>
+<li>Rust Connector: <a href="https://github.com/interledger-rs/interledger-rs" rel="nofollow noopener">https://github.com/interledger-rs/interledger-rs</a>
+</li>
+<li>Java Connector: <a href="https://github.com/sappenin/java-ilp-connector" rel="nofollow noopener">https://github.com/sappenin/java-ilp-connector</a>
+</li>
+<li>Rafiki (JS) Connector: <a href="https://github.com/interledgerjs/rafiki" rel="nofollow noopener">https://github.com/interledgerjs/rafiki</a>
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

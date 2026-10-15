@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Questions about &quot;interactions&quot; in ILP Addresses - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Questions about &quot;interactions&quot; in ILP Addresses</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Questions about &quot;interactions&quot; in ILP Addresses</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 15, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 15, 2019 7:15 PM">
+            <time itemprop="datePublished" datetime="2019-08-15 19:15:22 +0200">Aug 15, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In response to a <a href="https://github.com/hyperledger/quilt/pull/217" rel="nofollow noopener">new contribution</a> in the ILP Core Java library, I’m wondering if anyone has an opinion here.</p>
+<p><a href="https://github.com/interledger/rfcs/blob/master/0015-ilp-addresses/0015-ilp-addresses.md#interactions" rel="nofollow noopener">IL-RFC-15</a> includes a section about “interactions” which uses a <code>~</code> character as a separator.</p>
+<p>I’m wondering the following:</p>
+<ol>
+<li>
+<p>Is there anything normative about interactions? Put another way, does <code>~</code> have any special meaning, or is what’s shown in the RFC just an example of how one <em>might</em> implement something like interactions?</p>
+</li>
+<li>
+<p>Put <em>another</em> way: could someone represent interactions using <code>-</code> or even <code>_</code> ?</p>
+</li>
+<li>
+<p>Per the question above, would the following addresses include valid “interactions”?</p>
+<ol>
+<li>
+<code>g.foo.~</code> (ends with a <code>~</code>)</li>
+<li>
+<code>g.foo~foo~bar</code> (more than 1 <code>~</code>)</li>
+<li><code>g.foo.~.foo</code></li>
+</ol>
+</li>
+<li>
+<p>Should this be an invalid ILP valid address: <code>g.~.foo</code></p>
+</li>
+<li>
+<p>The RFC indicates that the interactions of this address (<code>~ipr.cdfa5e16-e759-4ba3-88f6-8b9dc83c1868.2</code>) are <code>~ipr</code>, <code>cdfa5e16-e759-4ba3-88f6-8b9dc83c1868</code> and <code>2</code>. However, if the <code>~</code> is meant to indicate an interaction, then shouldn’t the interactions instead be:  <code>ipr</code>, <code>cdfa5e16-e759-4ba3-88f6-8b9dc83c1868</code> and <code>2</code></p>
+</li>
+<li>
+<p>If the answer directly above is “no”, then I would assume this would be the preferred way to indicate 3 separate interactions: <code>~ipr.~cdfa5e16-e759-4ba3-88f6-8b9dc83c1868.~2</code>?</p>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 15, 2019 8:08 PM">
+            <time itemprop="datePublished" datetime="2019-08-15 20:08:19 +0200">Aug 15, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t see much value in mandating or disallowing any particular use of <code>~</code>, <code>-</code>, or <code>_</code>. The only special character is <code>.</code>, which everyone must have the same understanding of. It’s useful to provide various separators that implementations and higher level protocols can use without lower-level components trying to divine any special meaning from them.</p>
+<aside class="quote no-group" data-username="sappenin" data-post="1" data-topic="717">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>Is there anything normative about interactions?</p>
+</blockquote>
+</aside>
+<p>No</p>
+<aside class="quote no-group" data-username="sappenin" data-post="1" data-topic="717">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>Put <em>another</em> way: could someone represent interactions using <code>-</code> or even <code>_</code> ?</p>
+</blockquote>
+</aside>
+<p>Yes</p>
+<aside class="quote no-group" data-username="sappenin" data-post="1" data-topic="717">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>Per the question above, would the following addresses include valid “interactions”?</p>
+</blockquote>
+</aside>
+<p>Doesn’t really matter</p>
+<aside class="quote no-group" data-username="sappenin" data-post="1" data-topic="717">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>Should this be an invalid ILP valid address: <code>g.~.foo</code></p>
+</blockquote>
+</aside>
+<p>No</p>
+<aside class="quote no-group" data-username="sappenin" data-post="1" data-topic="717">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>However, if the <code>~</code> is meant to indicate an interaction, then shouldn’t the interactions instead be: <code>ipr</code> , <code>cdfa5e16-e759-4ba3-88f6-8b9dc83c1868</code> and <code>2</code></p>
+</blockquote>
+</aside>
+<p>Also don’t think it matters much</p>
+<aside class="quote no-group" data-username="sappenin" data-post="1" data-topic="717">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>If the answer directly above is “no”, then I would assume this would be the preferred way to indicate 3 separate interactions: <code>~ipr.~cdfa5e16-e759-4ba3-88f6-8b9dc83c1868.~2</code> ?</p>
+</blockquote>
+</aside>
+<p>Up to the implementations</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Aug 15, 2019 8:43 PM">
+            <time itemprop="datePublished" datetime="2019-08-15 20:43:33 +0200">Aug 15, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a> that’s very helpful!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

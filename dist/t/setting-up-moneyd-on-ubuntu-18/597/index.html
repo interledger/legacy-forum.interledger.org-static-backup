@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Setting up moneyd on ubuntu 18 - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Setting up moneyd on ubuntu 18</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Setting up moneyd on ubuntu 18</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 17, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/cjimison" class="user-link">Chris Jimison</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 17, 2019 3:28 AM">
+            <time itemprop="datePublished" datetime="2019-05-17 03:28:11 +0200">May 17, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello all,</p>
+<p>Please forgive me if this has come up before, but I am having some issues running moneyd on an ubuntu 18 VM.  I followed the basic steps of:</p>
+<p>npm install -g moneyd moneyd-uplink-xrp<br>
+moneyd xrp:configure --testnet<br>
+moneyd xrp:start --testnet</p>
+<p>but I keep getting the following error when running the last command:</p>
+<pre><code class="lang-auto">2019-05-17T03:16:23.128Z connector:app error Error: {"code":"F00","name":"NotAcceptedError","triggeredAt":"2019-05-17T03:16:23.088Z","data":"sodium.sodium_malloc is not a function","protocolData":[]}
+    at Plugin.callback (/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/src/index.ts:666:20)
+    at Plugin.listener (/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/eventemitter2/lib/eventemitter2.js:290:17)
+    at Plugin.EventEmitter.emit (/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/eventemitter2/lib/eventemitter2.js:357:19)
+    at Plugin._handleIncomingBtpPacket (/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/src/index.ts:711:14)
+    at Plugin._handleIncomingWsMessage (/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/src/index.ts:528:18)
+    at WebSocketReconnector.EventEmitter.emit (/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/eventemitter2/lib/eventemitter2.js:354:19)
+    at WebSocket._instance.on (/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/src/ws-reconnect.ts:133:70)
+    at WebSocket.emit (events.js:189:13)
+    at Receiver.receiverOnMessage (/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/node_modules/ws/lib/websocket.js:789:20)
+    at Receiver.emit (events.js:189:13)
+</code></pre>
+<p>as seen above I am running a NVM installed copy of Node.js on version 10.15.3 but I also tried with 12.2.0 and got the same error.  I have also done the following with no success:</p>
+<ul>
+<li>apt install libsodium21</li>
+<li>npm install -g sodium-native</li>
+<li>npm install -g sodium</li>
+</ul>
+<p>This is on mostly clean version of Ubuntu Server 18 with build-essential, automake, and libtools installed (with the other base packages that comes with the default distro).  Any help would be GREATLY appreciated!</p>
+<p>Thanks,</p>
+<p>-Chris</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 17, 2019 6:39 AM">
+            <time itemprop="datePublished" datetime="2019-05-17 06:39:55 +0200">May 17, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Chris,</p>
+<p>Generally Moneyd-xrp is well maintained and should work. Problems appear when the plugins do not match (the same plugin versions should be installed on Moneyd and the connector you are connecting to, in this case Amundsen), OR because of a configuration error.<br>
+Regarding starting up with Moneyd, you can read this post: <a href="https://medium.com/interledger-blog/using-moneyd-to-join-the-ilp-testnet-ba64bd42bb14" rel="nofollow noopener">https://medium.com/interledger-blog/using-moneyd-to-join-the-ilp-testnet-ba64bd42bb14</a>.<br>
+What settings did you use?  Can you post the config?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/cjimison" class="user-link">Chris Jimison</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 17, 2019 3:40 PM">
+            <time itemprop="datePublished" datetime="2019-05-17 15:40:46 +0200">May 17, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Lucian,</p>
+<p>Thanks for your response and the posted article is where I got the 3 commands to install, configure and run moneyd.  I highly suspect that I am doing something wrong from a setup perspective (missing or incorrect version of a  library, etc).  Below is the .moneyd.test.json that was auto generated via the command <code>moneyd xrp:configure --testnet</code>:</p>
+<p>.moneyd.test.json</p>
+<pre><code class="lang-auto">{
+  "version": 1,
+  "uplinks": {
+    "xrp": {
+      "relation": "parent",
+      "plugin": "/home/cjimison/.nvm/versions/node/v10.15.3/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js",
+      "assetCode": "XRP",
+      "assetScale": 9,
+      "balance": {
+        "minimum": "-Infinity",
+        "maximum": "20000000",
+        "settleThreshold": "5000000",
+        "settleTo": "10000000"
+      },
+      "sendRoutes": false,
+      "receiveRoutes": false,
+      "options": {
+        "currencyScale": 9,
+        "server": "btp+wss://ei_4IigrQ2Lnuufvk-1NvIBcNdBayyTm9MSFHbS8x3M:5e8a0e79b8d664013057eb4d161b64e044b87f303985e7cb7fde41fd9f753897@strata-ilsp.com/testnet/xrp",
+        "secret": "snQ4apuDWBHp72q54R5QR7uo8nHU4",
+        "address": "rpnaLp3ovzcWL8TBw5EtrHqG1vm3t4ZFva",
+        "xrpServer": "wss://s.altnet.rippletest.net:51233"
+      }
+    }
+  }
+}
+</code></pre>
+<p>Thanks again for the help!</p>
+<p>-Chris</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/cjimison" class="user-link">Chris Jimison</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 17, 2019 6:17 PM">
+            <time itemprop="datePublished" datetime="2019-05-17 18:17:24 +0200">May 17, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As a follow-up it seems like others have had this issue and have posted on the Gitter channel here: <a href="https://gitter.im/interledger/Lobby" rel="nofollow noopener">https://gitter.im/interledger/Lobby</a></p>
+<p>No resolution found there as well.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/karzak" class="user-link">Kevin Davis</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 17, 2019 6:37 PM">
+            <time itemprop="datePublished" datetime="2019-05-17 18:37:14 +0200">May 17, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Since it’s in a btp response, this error originates from the Strata connector. Pinging <a class="mention" href="/u/austin_king/index.html">@austin_king</a>, apologies if I’m reading this wrong.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/cjimison" class="user-link">Chris Jimison</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="May 17, 2019 7:53 PM">
+            <time itemprop="datePublished" datetime="2019-05-17 19:53:11 +0200">May 17, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I got a work around.  Someone on Gitter helped me out with this one:</p>
+<ul>
+<li>Delete .moneyd.test.json</li>
+<li>run: moneyd xrp:configure --testnet --advanced</li>
+<li>When asked for the btp host enter: testnet.ilpnetwork.dev</li>
+<li>Press enter for the default options after</li>
+<li>once done run: moneyd xrp:start --testnet</li>
+</ul>
+<p>After that everything worked.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/jbretting" class="user-link">jbretting</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 17, 2019 7:53 PM">
+            <time itemprop="datePublished" datetime="2019-05-17 19:53:29 +0200">May 17, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m having the same problem but on MacOS. I’ve tried using nvm with node versions 8 and 10. I also tried manually installing <code>libsodium</code> using the latest tarball but error persists when trying to start up with <code>moneyd xrp:start --testnet</code>. My config looks identical to the post above except for local file paths. Looking forward to a resolution, thanks!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adornala" class="user-link">Amarnath R Dornala</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="May 21, 2019 3:49 AM">
+            <time itemprop="datePublished" datetime="2019-05-21 03:49:28 +0200">May 21, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This worked. Thank you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

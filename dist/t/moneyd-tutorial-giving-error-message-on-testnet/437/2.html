@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moneyd tutorial giving error message on testnet - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Moneyd tutorial giving error message on testnet</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Moneyd tutorial giving error message on testnet</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 25, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_21"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_21" title="Apr 17, 2019 1:37 AM">
+            <time itemprop="datePublished" datetime="2019-04-17 01:37:48 +0200">Apr 17, 2019</time>
+          </a>
+          <span class="post-number">#21</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/kincaid/index.html">@kincaid</a> thanks for getting that merged in. <a class="mention" href="/u/martinlowinski/index.html">@martinlowinski</a> can you update your ilp-plugin-xrp-asym-server and restart your connector? Let us know if any issues are cropping up after that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_22"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/martinlowinski" class="user-link">Martin Lowinski</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_22" title="Apr 17, 2019 11:47 AM">
+            <time itemprop="datePublished" datetime="2019-04-17 11:47:08 +0200">Apr 17, 2019</time>
+          </a>
+          <span class="post-number">#22</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve updated ilp-plugin-xrp-asym-server to 1.8.1 and the invalid claim error is gone. Thanks <a class="mention" href="/u/kincaid/index.html">@kincaid</a>!</p>
+<p>However, the following two errors persist (maybe correlated). The first one is coming from the moneyd instance on the receiver side:</p>
+<pre><code class="lang-auto">  connector:ilp-prepare:trace sending outbound ilp prepare. destination=test.foobar.ilsp.hNXZeuksRjGgx-K1V7Kd3trB6eJW082ekwxowFPOzz4.local.Ma60BnWNz4oV5FmFTFquNTzHp2CLqVj-STSIffnItXo amount=0 +2ms
+2019-04-17T11:26:51.213Z connector:error-handler-middleware[parent] debug error in data handler, creating rejection. ilpErrorCode=F02 error=Error: failed to send packet: No clients connected for account Ma60BnWNz4oV5FmFTFquNTzHp2CLqVj-STSIffnItXo
+    at Plugin.&lt;anonymous&gt; (/moneyd-xrp-testnet/node_modules/ilp-plugin-mini-accounts/src/index.ts:474:13)
+    at Generator.next (&lt;anonymous&gt;)
+    at /moneyd-xrp-testnet/node_modules/ilp-plugin-mini-accounts/src/index.js:7:71
+    at new Promise (&lt;anonymous&gt;)
+    at __awaiter (/moneyd-xrp-testnet/node_modules/ilp-plugin-mini-accounts/src/index.js:3:12)
+    at Plugin._handleOutgoingBtpPacket (/moneyd-xrp-testnet/node_modules/ilp-plugin-mini-accounts/src/index.js:365:16)
+    at Plugin._call (/moneyd-xrp-testnet/node_modules/ilp-plugin-mini-accounts/node_modules/ilp-plugin-btp/src/index.ts:677:16)
+    at Plugin.&lt;anonymous&gt; (/moneyd-xrp-testnet/node_modules/ilp-plugin-mini-accounts/src/index.ts:368:34)
+    at Generator.next (&lt;anonymous&gt;)
+    at /moneyd-xrp-testnet/node_modules/ilp-plugin-mini-accounts/src/index.js:7:71
+</code></pre>
+<p>The second error occurs after <code>ilp-spsp-server</code> received some money:</p>
+<pre><code class="lang-auto">got packet for 100 units
+  ilp-protocol-stream:Server:Connection telling other side that stream 1 can receive 10000000000000 +0ms
+  ilp-protocol-stream:Server:Connection fulfilling prepare with fulfillment: 9eea658b24a381760ed7822566f438bfc2d90fde551cc50e099ab1c655ad096b and response packet: {"sequence":"6","ilpPacketType":13,"prepareAmount":"100","frames":[{"type":3,"name":"ConnectionMaxData","maxOffset":"65534"},{"type":18,"name":"StreamMaxMoney","streamId":"1","receiveMax":"10000000000000","totalReceived":"100"},{"type":21,"name":"StreamMaxData","streamId":"1","maxOffset":"16384"}]} +1ms
+  ilp-plugin-btp:trace sending btp packet. type=TYPE_RESPONSE requestId=560113694 info=ilp-fulfill +6ms
+  ilp-plugin-btp:trace sending btp packet. type=TYPE_MESSAGE requestId=4171818002 info=ilp-prepare +1ms
+  ilp-plugin-btp:trace received btp packet. type=TYPE_RESPONSE requestId=4171818002 info=ilp-reject +27s
+  ilp-protocol-stream:Server:Connection packet 1 was rejected +27s
+  ilp-protocol-stream:Server:Connection handling reject: {"code":"R00","triggeredBy":"test.foobar.ilsp.hNXZeuksRjGgx-K1V7Kd3trB6eJW082ekwxowFPOzz4","message":"packet expired.","data":{"type":"Buffer","data":[]}} +0ms
+  ilp-protocol-stream:Server:Connection unexpected error. code: R00, message: packet expired., data:  +0ms
+  ilp-protocol-stream:Server:Connection destroying connection with error: Error: Unexpected error while sending packet. Code: R00, message: packet expired.
+    at Connection.&lt;anonymous&gt; (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.ts:1155:13)
+    at Generator.next (&lt;anonymous&gt;)
+    at /usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:7:71
+    at new Promise (&lt;anonymous&gt;)
+    at __awaiter (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:3:12)
+    at Connection.handleConnectorError (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:778:16)
+    at Connection.&lt;anonymous&gt; (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.ts:1059:21)
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:4:58)
+    at process._tickCallback (internal/process/next_tick.js:68:7) +0ms
+  ilp-protocol-stream:Server:Connection error in error handler: Error: Unexpected error while sending packet. Code: R00, message: packet expired.
+    at Connection.&lt;anonymous&gt; (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.ts:1155:13)
+    at Generator.next (&lt;anonymous&gt;)
+    at /usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:7:71
+    at new Promise (&lt;anonymous&gt;)
+    at __awaiter (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:3:12)
+    at Connection.handleConnectorError (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:778:16)
+    at Connection.&lt;anonymous&gt; (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.ts:1059:21)
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:4:58)
+    at process._tickCallback (internal/process/next_tick.js:68:7) +30ms
+  ilp-protocol-stream:Server:Stream:1 destroying stream because of error: null +27s
+</code></pre>
+<p>I’ve tested it with <code>strata-ilsp.com/testnet/xrp</code> and my own connector <code>test.foobar</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_23"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_23" title="Apr 22, 2019 6:43 PM">
+            <time itemprop="datePublished" datetime="2019-04-22 18:43:39 +0200">Apr 22, 2019</time>
+          </a>
+          <span class="post-number">#23</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_22">Replying to #22</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It looks like it is struggling to establish a stream. Are you running a local moneyd and ilp-spsp-server that is reachable through a localtunel domain?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_24"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/martinlowinski" class="user-link">Martin Lowinski</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_24" title="Apr 23, 2019 10:18 AM">
+            <time itemprop="datePublished" datetime="2019-04-23 10:18:42 +0200">Apr 23, 2019</time>
+          </a>
+          <span class="post-number">#24</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, my setup looks like this (all wallets are created using the testnet faucet):</p>
+<ul>
+<li>Sender moneyd runs on my local machine
+<ul>
+<li><code>DEBUG=* bin/moneyd.js xrp:start --testnet</code></li>
+<li>Connected to either <code>strata-ilsp.com/testnet/xrp</code> or my own connector <code>test.foobar</code>
+</li>
+</ul>
+</li>
+<li>Receiver moneyd and ilp-spsp-server runs on a VPS
+<ul>
+<li><code>DEBUG=* bin/moneyd.js xrp:start --testnet</code></li>
+<li>Connected to either <code>strata-ilsp.com/testnet/xrp</code> or my own connector <code>test.foobar</code>
+</li>
+<li>
+<code>DEBUG=ilp* ilp-spsp-server</code> (ilp-spsp-server@1.1.0)</li>
+</ul>
+</li>
+</ul>
+<p>Querying the ilp-spsp-server works (<code>ilp-spsp query -r '$20ff4135dfe944db.localtunnel.me'</code>):</p>
+<pre><code class="lang-auto">  ilp-plugin:debug creating plugin with module ilp-plugin-btp +0ms
+  ilp-plugin:debug creating plugin with credentials { server: 'btp+ws://:0c09d2901ea7520279cf6031696c8b77@localhost:7768' } +1ms
+{
+  "destinationAccount": "test.strata.xrpClients.Akyjp235B7jVWibNDYEsQLLHkQhh3-Fyqtnk8zTOUi8.local.z_avrm1t_R_cQ_JXpe1nwCnHjrBJprLS7iwzsqspJME.Xs62hliILP4dT2iEWSrZlqGp",
+  "sharedSecret": "xnlks6JNv1rUxNhxk6/qK0tegPypI7OC4arngY0LgXI=",
+  "contentType": "application/spsp4+json"
+}
+</code></pre>
+<p>This is the package.json of both moneyd instances:</p>
+<pre><code class="lang-json"> "dependencies": {
+    "chalk": "^2.4.2",
+    "ilp-connector": "^22.4.1",
+    "ilp-plugin-mini-accounts": "^4.0.5",
+    "ilp-store-memory": "^1.0.0",
+    "moment": "^2.24.0",
+    "moneyd-uplink-xrp": "^1.3.5",
+    "node-fetch": "^2.3.0",
+    "yargs": "^12.0.5"
+  },
+</code></pre>
+<p>When using the package.json of moneyd@4.4.0, it always resulted in an <code>Error: Unable to establish connection, no packets meeting the minimum exchange precision of 3 digits made it through the path</code>. After updating the outdated ilp dependencies to latest, the error was gone (should I open a pull request for that?).</p>
+<pre><code class="lang-auto">ilp-connector                    22.1.0  22.4.1  22.4.1  moneyd
+ilp-plugin-mini-accounts          3.5.1   3.6.0   4.0.5  moneyd
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_25"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/martinlowinski" class="user-link">Martin Lowinski</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_25" title="May 22, 2019 3:51 PM">
+            <time itemprop="datePublished" datetime="2019-05-22 15:51:04 +0200">May 22, 2019</time>
+          </a>
+          <span class="post-number">#25</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Quick update: I’ve done some further tests with the connector from strata and also my own connector. This issue persists, I couldn’t find any workarounds:</p>
+<pre><code class="lang-auto">error in data handler, creating rejection. ilpErrorCode=F02
+error=Error: failed to send packet: No clients connected for account x1HCH-cv_o6atDFdVBy0OtF0JamKTaIx9apBaUC5qYc
+</code></pre>
+<p>Any recommendations on how to debug this?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/moneyd-tutorial-giving-error-message-on-testnet/437/index.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 2 of 2</span>
+
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

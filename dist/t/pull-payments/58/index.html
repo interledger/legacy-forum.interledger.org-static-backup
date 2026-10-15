@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pull Payments - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Pull Payments</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Pull Payments</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/application-layer" class="tag-badge">application-layer</a>
+          
+            <a href="/tag/pre-rfc" class="tag-badge">pre-rfc</a>
+          
+            <a href="/tag/pull-payments" class="tag-badge">pull-payments</a>
+          
+            <a href="/tag/spsp" class="tag-badge">spsp</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 6, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 6, 2019 1:43 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 13:43:11 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We want to enable pull payments on top of ILP for subscriptions and (potentially) for our merchant checkout experience on the Web or in person. We need to come to some agreement about the high-level design of this experience and protocol components before debating the details of the exact format.</p>
+<p>This is a continuation of the discussions started in <a href="https://github.com/interledger/rfcs/issues/499" rel="nofollow noopener">interledger/rfcs/issues/499</a> and <a href="https://github.com/interledger/rfcs/pull/501" rel="nofollow noopener">interledger/rfcs/pull/501</a>.</p>
+<p>As I see it, the main parts of the pull payment experience are:</p>
+<ol>
+<li>
+<strong>Merchant requests a token with some parameters</strong><br>
+a. What parameters can they request?<br>
+b. What format is the merchant’s request expressed in (JSON, etc)?<br>
+c. Should there be a defined communication transport for this request (HTTP, part of an OAuth-like flow, etc)?</li>
+<li>
+<strong>User is prompted to approve the request</strong><br>
+a. Where / how are they prompted? Is that dialogue part of the user’s web browser, a separate app, or something else?</li>
+<li>
+<strong>User’s agent returns a token to the merchant</strong><br>
+a. Should the merchant be able to understand the parameters the user agent encoded in the token or should it be opaque to them?</li>
+<li>
+<strong>The merchant uses the token to create a STREAM connection</strong><br>
+a. I was convinced in <a href="https://github.com/interledger/rfcs/issues/499" rel="nofollow noopener">interledger/rfcs/issues/499</a> that the value returned in step 3 should be a <a href="/rfcs/0026-payment-pointers/" rel="nofollow noopener">Payment Pointer</a> with an opaque token included in it (for example in the path: <code>$user.provider.example/secret-token-12345</code>)</li>
+<li>
+<strong>The user’s STREAM server sends money to the merchant</strong><br>
+a. Should the merchant request how much money they want or should the server just push as much money as it can given the limits of the token?<br>
+b. If the merchant will request a specific amount, how do they communicate that to the server?<br>
+c. Does it matter what stream ID in the STREAM protocol the server uses to send the money, or should all of them be treated interchangeably?</li>
+<li>
+<strong>The merchant may want to be able to query details about the token they were given</strong><br>
+a. This is largely what the discussion in <a href="https://github.com/interledger/rfcs/pull/501" rel="nofollow noopener">interledger/rfcs/pull/501</a> is about<br>
+b. Would a merchant care to query the parameters of the token, or would they just try to use it to pull the amount of money they want? Note that the result of the query would not be binding so the only way to know for sure if a token will yield the money you want is to try it</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 6, 2019 2:35 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 14:35:08 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t think we need to standardize steps 1 - 3. Some standard flows exist already but ultimately this is channel specific.</p>
+<h3>Token</h3>
+<p>I agree that the token should be a payment pointer, or more generally I think it should be/or include a URL that is used by the merchant to redeem the token to get paid. So if it’s a JWT or some other thing, one of the properties should be a URL that is used to redeem it.</p>
+<p>The problem with a Payment Pointer as the only option is that you may want a more sophisticated authentication of the merchant than simply a bearer token so some token that is bound somehow to a particular merchant might be useful. I think there ARE ways to do this with Payment Pointers and standard HTTP auth mechanisms but they do assume that the payer is able to go online to generate the token.</p>
+<p>I’d be interested in hearing ideas for ways a token can be generated offline. E.g. Imagine I have a wallet system that I want to be able to serve pull payments for me but I want to be able to generate the token on my phone quickly without needing to request it from the wallet. Definitely possible but needs some work to standardize.</p>
+<h2>Payment</h2>
+<p>I like the idea of a simple protocol over the STREAM data channel to do things like requesting a payment once the connection is established. See my comment on the AnyPay question under <a href="https://forum.interledger.org/t/anypay-protocol/40/2?u=adrianhopebailie">Option 2</a>.</p>
+<p>I think you could use the same mechanism to query the details about the token however this does mean you need to establish a STREAM connection to perform the query.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 6, 2019 8:25 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 20:25:33 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Disclaimer: I’m thinking about this with Codius use case tunnel vision</p>
+<p><strong>STREAM</strong></p>
+<p>Working backwards from the STREAM connection, this is what I have in mind.<br>
+The payer’s STREAM server would use the following stored information to determine its <code>sendMax</code>:</p>
+<ul>
+<li><code>startTime</code></li>
+<li>
+<code>price</code> - an amount per second</li>
+<li>
+<code>assetInfo</code> - code and scale for <code>price</code> which is not necessarily the same asset used by either the payer or payee</li>
+<li>
+<code>totalPaid</code> - total amount pulled to date, denominated in the same <code>assetInfo</code> as <code>price</code>
+</li>
+</ul>
+<p>The payer’s <code>sendMax</code> would be <code>(secondsSinceStartTime * price - totalPaid)</code> converted to the payer’s asset. The payer would update <code>totalPaid</code> (using the same exchange rate used to calculate <code>sendMax</code>) each time <code>totalSent</code> increases in the stream.<br>
+Using a per second price (as opposed to some other specified interval) allows the payee to have the choice of either a “constant” stream or less frequent (ex. monthly) pull payments. You could argue that a constant stream could be accomplished using push payments but that would require the payer to remain online.</p>
+<p>Alternatively, the payer’s STREAM server could be made to determine its <code>sendMax</code> based on:</p>
+<ul>
+<li><code>balance</code></li>
+<li><code>assetInfo</code></li>
+</ul>
+<p>With Codius, this could happen when a user (payer) tells a Codius host (payee) to terminate a running deployment. The payer would store <code>balance</code> as <code>secondsSinceStartTime * price - totalPaid</code>. The payer’s <code>sendMax</code> would then be <code>balance</code> converted to the payer’s asset. This allows the payee to seek (final) payment after the fact.</p>
+<p>In each case, the payee would likely store comparable information. You could expect (at least for Codius) their calculated <code>receiveTotal</code> to cause the payee’s <code>totalSent</code> to approach <code>sendMax</code>.</p>
+<p><strong>SPSP</strong></p>
+<p>Also in favor of the STREAM connection being initiated using the ILP address and shared secret returned from an SPSP endpoint.<br>
+I’m wondering if such a pull payment endpoint still needs a different shared secret in each query response (could it return with <code>Cache-Control: immutable</code>?).</p>
+<p><strong>Token</strong></p>
+<p>An opaque token with the payment pointer is sufficient for Codius. What do you think about moving forward with opaque tokens, and we can eventually extend functionality for offline token generation? (Could it be as simple as the payee submitting the payer-provided authorization to an SPSP server and getting back an opaque token?)</p>
+<p>I’m also thinking we might not need to standardize how the payee requests and gets a token. For Codius, we’re imagining:</p>
+<ol>
+<li>Payer requests to deploy to host</li>
+<li>Host responds with <code>price</code> and <code>assetInfo</code> (<code>startTime</code> can be assumed to be now)</li>
+<li>Payer sends host payment pointer with token</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 6, 2019 10:30 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 22:30:44 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="adrianhopebailie" data-post="2" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>I don’t think we need to standardize steps 1 - 3.</p>
+</blockquote>
+</aside>
+<p>I agree. This will depend on the use case.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="2" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>I agree that the token should be a payment pointer, or more generally I think it should be/or include a URL that is used by the merchant to redeem the token to get paid.</p>
+</blockquote>
+</aside>
+<p>I would like to clarify that because this has confused me in the past. I think we have two possibilities but correct me if there is another possibility:</p>
+<ol>
+<li>A pull agreement is manifested as a payment pointer, let’s say <code>$example.com/123456789</code> where <code>123456789</code> is the token corresponding to that pull agreement. If the client knows the token, it can connect to the endpoint the payment pointer resolves to and pull. The server stores all information about the pull agreement as well as balances.</li>
+<li>A pull agreement is manifested within the token, e.g. a JWT. The client connects to <code>$example.com/</code> and sends a data packet containing this JWT. The server validates this JWT and if it is valid, it starts streaming to the client, i.e. fulfilling the pull payment request. All information needed for the pull payment are encoded in the token. However, the server will need to keep track of balances.</li>
+</ol>
+<p>Especially the latter case should make an offline generation of tokens possible. JWT signatures are usually created by hashing header.payload together with a secret. I wonder if we could hash header.payload.clientIlpAddress together with a secret. That way, one could make sure that only the dedicated client can use this particular token.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="2" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>I like the idea of a simple protocol over the STREAM data channel to do things like requesting a payment once the connection is established.</p>
+</blockquote>
+</aside>
+<p>I do, too. This makes partial payments possible.</p>
+<aside class="quote no-group" data-username="wilsonianb" data-post="3" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>Using a per second price (as opposed to some other specified interval) allows the payee to have the choice of either a “constant” stream or less frequent (ex. monthly) pull payments.</p>
+</blockquote>
+</aside>
+<p>Again, I think we have two possibilities:</p>
+<ol>
+<li>Having refill intervals: This is more traditional and is especially valuable for one time pull payments. It punishes the client for not pulling within an interval.</li>
+<li>Having a bucket: This is more Interledger’y, however, the client would have to wait before it can make a one-time pull payment. This model is more tailored towards <em>pay-as-you-go</em> use cases (like codius).</li>
+</ol>
+<p>I feel like the first option allows for more use cases but I could be wrong.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 6, 2019 11:03 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 23:03:38 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="adrianhopebailie" data-post="2" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>I don’t think we need to standardize steps 1 - 3. Some standard flows exist already but ultimately this is channel specific.</p>
+</blockquote>
+</aside>
+<p>I just want to clarify - I don’t think all of those steps need to be part of a single protocol or the same for all use cases. However, if we want this to be used in <em>any</em> use case, we need to define how the flow works for that use case.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>a. What parameters can they request?</p>
+</blockquote>
+</aside>
+<p>I think is an important question for any use case. Do tokens refill? On an arbitrary schedule or on specific intervals that are easy for humans to understand (like every day or month)? Can a merchant request a specific amount? If so, is that amount denominated in the merchant’s asset or the sender’s? How do we account for exchange rates changing over that time frame?</p>
+<aside class="quote no-group" data-username="wilsonianb" data-post="3" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>Disclaimer: I’m thinking about this with Codius use case tunnel vision</p>
+</blockquote>
+</aside>
+<p>I think that’s totally fine, since we should design protocols like this with specific use cases in mind! (One possible conclusion, though, is that certain use cases should be excluded from a given protocol)</p>
+<aside class="quote no-group" data-username="wilsonianb" data-post="3" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p><code>assetInfo</code> - code and scale for <code>price</code> which is not necessarily the same asset used by either the payer or payee</p>
+</blockquote>
+</aside>
+<p>If the price were denominated in a 3rd asset, wouldn’t that just make both parties unhappy because they’d both have currency risk (rather than just one of them)?</p>
+<aside class="quote no-group" data-username="wilsonianb" data-post="3" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>I’m wondering if such a pull payment endpoint still needs a different shared secret in each query response (could it return with <code>Cache-Control: immutable</code> ?).</p>
+</blockquote>
+</aside>
+<p>If you’re using authentication to ensure that only a specific user gets that shared secret, that <em>might</em> be okay. That said, what would the benefit of that be? (The minor issue I see, aside from giving out the same “shared secret” multiple times just being a bit of a footgun, is that of the <a href="/rfcs/0029-stream/#513-maximum-number-of-packets-per-connection">Maximum Number of Packets per STREAM connection</a>. It may be hard to keep track of this if multiple connections at different times use the same secret)</p>
+<aside class="quote no-group" data-username="wilsonianb" data-post="3" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>opaque tokens, and we can eventually extend functionality for offline token generation</p>
+</blockquote>
+</aside>
+<p>Important clarification: opaque does not mean it must be a simple bearer token, it only means that the <em>receiver</em> cannot assume they will understand the details. JWTs and Macaroons fit in this model as well, and would allow offline generation.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="4" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>The client connects to <code>$example.com/</code> and sends a data packet containing this JWT</p>
+</blockquote>
+</aside>
+<p>The JWT can just be encoded in the Payment Pointer / URL the same way the opaque token would be: <code>$example.com/asldkfjldsgkoidsoasdfljkasjldkfjlsdkjfalskdj...</code>.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="4" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>I wonder if we could hash header.payload.clientIlpAddress together with a secret. That way, one could make sure that only the dedicated client can use this particular token.</p>
+</blockquote>
+</aside>
+<p>I think this is a good idea for certain use cases when having an interactive setup between the sender and receiver isn’t a problem. (This was what I was envisioning with the caveats in the <a href="https://github.com/emschwartz/ilp-spsp-pull-token#caveated-tokens">Macaroon-based format</a>.) It wouldn’t work so well if you exchange the token with something like a QR code.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="4" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>Having a bucket: This is more Interledger’y, however, the client would have to wait before it can make a one-time pull payment. This model is more tailored towards <em>pay-as-you-go</em> use cases (like codius).</p>
+</blockquote>
+</aside>
+<p>If you have a start time, duration, and number of repetitions, it handles both recurring and one-off payments. <em>However</em>, that method shouldn’t be used to express payment bandwidth (for example, using very short “durations”). The congestion control algorithms we want to use for STREAM don’t handle chunky refills with unknown intervals as well as having a total amount you can send that increases at a predictable rate.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 7, 2019 12:37 AM">
+            <time itemprop="datePublished" datetime="2019-02-07 00:37:12 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>If so, is that amount denominated in the merchant’s asset or the sender’s?</p>
+</blockquote>
+</aside>
+<p>I would argue that the amount can even be denominated in a third assets. For example, the sender has XRP, the receiver prefers ETH, but the agreement is in USD.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>If the price were denominated in a 3rd asset, wouldn’t that just make both parties unhappy because they’d both have currency risk (rather than just one of them)?</p>
+</blockquote>
+</aside>
+<p>It does guarantee a stable price of a service. In practice, the merchant would probably want to have a token that corresponds to her asset. However, it should not have to be that way. A merchant could be consumer friendly and offer different rates for different currency agreements.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>How do we account for exchange rates changing over that time frame?</p>
+</blockquote>
+</aside>
+<p>In case of individual streams for each pull, both sender and receiver should check the exchange rate of agreed upon asset to their asset at the time of the establishment of the connection and set their <code>sendMax</code> and <code>receiveMax</code> accordingly. If we allow for constant pull payments, i.e. streaming payments, the exchange should also continuously be adjusted by both parties (maybe every second).</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>The JWT can just be encoded in the Payment Pointer / URL the same way the opaque token would be</p>
+</blockquote>
+</aside>
+<p>That is correct. Thanks for pointing that out. So either way, it could be in the URL or not.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>It wouldn’t work so well if you exchange the token with something like a QR code.</p>
+</blockquote>
+</aside>
+<p>Well, it would mean scanning 2 QR codes, the customer scans the merchant’s QR code to get her ILP address, she generates a token, and the merchant scans that corresponding QR code to receive this token.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>The congestion control algorithms we want to use for STREAM don’t handle chunky refills with unknown intervals as well as having a total amount you can send that increases at a predictable rate.</p>
+</blockquote>
+</aside>
+<p>Can you elaborate on that? I don’t really understand that point. I was thinking along the lines of paying for my book by letting amazon pull from my wallet and how a bucket that fills up every second would not really work here.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 7, 2019 12:59 AM">
+            <time itemprop="datePublished" datetime="2019-02-07 00:59:44 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="6" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>Well, it would mean scanning 2 QR codes, the customer scans the merchant’s QR code to get her ILP address, she generates a token, and the merchant scans that corresponding QR code to receive this token.</p>
+</blockquote>
+</aside>
+<p>One QR code is bad enough. I would argue that scanning two is a deal-breaker. That type of exchange would be more reasonable with a protocol over something like NFC.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="6" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>I was thinking along the lines of paying for my book by letting amazon pull from my wallet and how a bucket that fills up every second would not really work here.</p>
+</blockquote>
+</aside>
+<p>By paying for a book, do you mean renting one or a single one-off payment? The start start time + duration + amount + repetitions method would work for a one-off payment because you would just set repetitions to 1 so the duration would act like an expiry. It would also work for something like a traditional subscription where you would set it for $10 per month. The only thing it wouldn’t work well for is expressing a rate for a very small unit of time like a second.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 7, 2019 5:53 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 17:53:24 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="7" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>By paying for a book, do you mean renting one or a single one-off payment?</p>
+</blockquote>
+</aside>
+<p>I was thinking of a single one-off payment.</p>
+<p>I guess that would mean that in the case of pay-as-you-go you would create a token bucket that fills up every second the service is used. This could be capped or not.<br>
+In the case of one-off payments one could have a bucket that is full in the beginning and never refills.<br>
+Subscriptions just fill up over any interval, also capped or not. Merchants could even come up with different rates for different intervals.</p>
+<p>I think one would need the following parameters specified: start time, amount per interval, refill interval (can be as low as a second), duration or # of repetitions or expiry time (any would work but personally I prefer # of repetitions = cycles), and cap.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Feb 7, 2019 6:08 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 18:08:18 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That <a href="https://github.com/emschwartz/ilp-spsp-pull-token" rel="noopener nofollow ugc">ilp-spsp-pull-token</a> is a helpful reference. Thanks for putting that together.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>The congestion control algorithms we want to use for STREAM don’t handle chunky refills with unknown intervals as well as having a total amount you can send that increases at a predictable rate.</p>
+</blockquote>
+</aside>
+<p>Do these congestion controls already exist? If so, where?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Feb 7, 2019 7:00 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 19:00:19 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="8" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>I think one would need the following parameters specified: start time, amount per interval, refill interval (can be as low as a second), duration or # of repetitions or expiry time (any would work but personally I prefer # of repetitions = cycles), and cap.</p>
+</blockquote>
+</aside>
+<p>Agreed.</p>
+<p>One question I couldn’t decide on while working on the macaroon-based pull token was whether it’s worth supporting “multi-level” tokens.</p>
+<p>The idea of the <a href="https://ai.google/research/pubs/pub41892">Macaroon</a> format is that you can create a token, give it to another party with some “caveats” or restrictions, and they can give it to yet another party with further restrictions added.</p>
+<p>If we allow this for pull tokens, I could have a master macaroon living on my phone that has some limits added. I could use the master token to give, say, $10 per month to a merchant, who could then “pay” a service that underpins their offering by giving a further restricted sub-token from my original one.</p>
+<p>The big complication comes from tracking each level of the token separately to make sure that spending a certain amount doesn’t exceed any of the limits. A small advantage is that the overall amount cap can be expressed as a start time + a very long duration + the total amount + only 1 repetition. Alternatively, we could have a single limit defined, as you said, by the start time, duration, amount, number of repetitions, and total cap.</p>
+<p>(As I’m writing this, I’m thinking that we don’t need the extra complications of multi-level tokens)</p>
+<aside class="quote no-group quote-modified" data-username="sabinebertram" data-post="8" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>in the case of pay-as-you-go you would create a token bucket that fills up every second the service is used…Subscriptions just fill up over any interval, also capped or not.</p>
+</blockquote>
+</aside>
+<p>There are two different ways of implementing the refill strategy, and one is arguably more appropriate for expressing bandwidth and the other is better for subscriptions.</p>
+<p>The key question is: <strong>at the refill time, does the amount reset to the maximum or is the given amount added to the total that can be spent?</strong> For example, if I give you a token for $10 / month and you only spend $5, does that mean next month you can spend $15 or $10? Bandwidth is arguably best expressed as the average amount you send per time, which means if your payment bandwidth is $0.01 / second you shouldn’t lose it if you don’t use it that second. In contrast, a subscription is <em>arguably</em> better modeled with the “use it or lose it” method – if a newspaper doesn’t charge me the $10 this month, should they be able to charge me $20 next month? I think with subscriptions (which have larger durations), you want more predictability about when they are going to come collect.</p>
+<aside class="quote no-group" data-username="wilsonianb" data-post="9" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>Do these congestion controls already exist? If so, where?</p>
+</blockquote>
+</aside>
+<p>Right now, the way the <a href="https://github.com/interledgerjs/ilp-protocol-stream">JS implementation of STREAM</a> determines the packet amount to send is very naive, and it backs off both in amount and in time when a packet is rejected.</p>
+<p>In the <a href="https://github.com/emschwartz/interledger-rs/blob/77b492de96c8567edaa98793d9fa299753c37786/src/stream/congestion.rs#L81-L134">Rust implementation</a> I’ve been working on an implementation that works more similarly to how TCP does congestion control, where it only backs off in amount.</p>
+<p>The reason I brought this up is that if you have the “use it or lose it” refill method and/or the refill is applied at a distinct point in time rather than being applied constantly like the JS implementation does, the congestion controller needs to start guessing when the refill happens rather than estimating the rate it can send at. Does that make sense?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Feb 7, 2019 7:35 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 19:35:29 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="10" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>(As I’m writing this, I’m thinking that we don’t need the extra complications of multi-level tokens)</p>
+</blockquote>
+</aside>
+<p>As I was reading that, I thought the same.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="10" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>at the refill time, does the amount reset to the maximum or is the given amount added to the total that can be spent?</p>
+</blockquote>
+</aside>
+<p>This I what I considered to be specified by the cap. I was <strong>not</strong> thinking of a total cap (which is defined by start time, interval, amount per interval, and # of repetitions) but of a cap per refill interval, i.e. the pullable amount is set to amount per interval (= cap) vs the amount per interval is added to the pullable amount (= no cap).</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="10" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>if you have the “use it or lose it” refill method and/or the refill is applied at a distinct point in time rather than being applied constantly like the JS implementation does, the congestion controller needs to start guessing when the refill happens rather than estimating the rate it can send at. Does that make sense?</p>
+</blockquote>
+</aside>
+<p>Just for clarification: STREAM / the congestion controller wants token buckets that refill every second and are not capped?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Feb 7, 2019 9:42 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 21:42:51 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="11" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>This I what I considered to be specified by the cap. I was <strong>not</strong> thinking of a total cap</p>
+</blockquote>
+</aside>
+<p>Gotcha. I misunderstood but thought that an overall cap might also be useful. It might make more sense under a bandwidth model rather than the subscription bucket model (like you can use $0.01 / sec up to a total amount of $10).</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="11" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>Just for clarification: STREAM / the congestion controller wants token buckets that refill every second and are not capped?</p>
+</blockquote>
+</aside>
+<p>No, sorry for the confusion.</p>
+<p>Both of these would work fine:</p>
+<ul>
+<li>A subscription-oriented model in which there is a cap per time period and the pullable amount resets to the cap at a fixed interval on the order of hours, days, or months. Note this works because the assumption is that the total amount will be pulled in a relatively small amount of time compared with the period duration (it might take seconds or a minute to pull the total amount allowed for the month, and you’d expect it to be taken all at once rather than continuously over the month).</li>
+<li>A bandwidth-oriented model that specifies a rate expressed as amount per small unit of time (like second or minute) where the pro-rated amount is added cumulatively (for example, if it’s been 15 seconds and the rate is $0.10 / second, the pullable amount would be $1.50)</li>
+</ul>
+<p>The only thing that would <strong>not</strong> work well is:</p>
+<ul>
+<li>A cap per time period where the pullable amount resets to the cap at a fixed interval <em>on the order of milliseconds or seconds</em> (the same order of magnitude as the packet Round Trip Time)</li>
+</ul>
+<p>I think that the main use case we are designing for is similar to a traditional subscription (<a class="mention" href="/u/wilsonianb/index.html">@wilsonianb</a> feel free to push back on this) that would be best suited to a resetting cap with durations specified in hours or days.</p>
+<p>Does that make sense? Anyone should feel free to disagree about the design goal, I could be convinced otherwise about this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Feb 7, 2019 10:36 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 22:36:09 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="12" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>an overall cap might also be useful. It might make more sense under a bandwidth model rather than the subscription bucket model</p>
+</blockquote>
+</aside>
+<p>I see what you mean. But the bandwidth case would be very different in anyways because the ‘refill amount’ could vary depending on how much was used, right? We could not capture that scenario using the parameters we defined above, I think.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="12" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>The only thing that would <strong>not</strong> work well is:</p>
+<ul>
+<li>A cap per time period where the pullable amount resets to the cap at a fixed interval <em>on the order of milliseconds or seconds</em> (the same order of magnitude as the packet Round Trip Time)</li>
+</ul>
+</blockquote>
+</aside>
+<p>Thanks for the clarification, makes total sense. This means if we want to have a refill cap, we have to make sure that it is reasonable compared to the refill amount.<br>
+Or there is indeed a total cap and no refill cap where total cap = theoretical refill cap * # of repetitions. However, this means that the pulling entity could pull everything at start time and stop its services even though the customer payed for let’s say a month (thinking about codius).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Feb 8, 2019 12:01 AM">
+            <time itemprop="datePublished" datetime="2019-02-08 00:01:11 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="13" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>the bandwidth case would be very different in anyways because the ‘refill amount’ could vary depending on how much was used, right? We could not capture that scenario using the parameters we defined above, I think.</p>
+</blockquote>
+</aside>
+<p>Agreed. I also don’t think we have a use case for this right now.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="13" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>Or there is indeed a total cap and no refill cap where total cap</p>
+</blockquote>
+</aside>
+<p>I think it’s better to have a cap per interval, because you may expect the service to be ongoing and you’d want to cancel your subscription rather than let them take the money upfront.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Feb 8, 2019 12:39 AM">
+            <time itemprop="datePublished" datetime="2019-02-08 00:39:55 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This allows us to come back to the discussion on what kind of token we want:</p>
+<ol>
+<li>What kind of token do we use? Opaque string, JWT, Macaroon, …?</li>
+<li>What information is stored within the SPSP endpoint or the token.</li>
+<li>Is the token in the URL, the header, or send via STREAM?</li>
+<li>Is there a specific endpoint/payment pointer for pull payments, e.g. <code>$example.com/pull</code>, or in the case of token in URL <code>$example.com/pull/token</code>?</li>
+<li>Should one be able to generate tokens offline?</li>
+<li>Can we make sure that only the intended entity can pull using this token, especially when tokens are created offline?</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Feb 8, 2019 1:36 AM">
+            <time itemprop="datePublished" datetime="2019-02-08 01:36:39 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_15">Replying to #15</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>My take:</p>
+<ol>
+<li>Token is opaque to the merchant. This is an important point to be flexible on. It provides no benefit to the merchant to inspect the details, since they can’t rely on it (the details can be changed on the server). And certain providers may want to use different types of tokens. Making it non-opaque means we need to pick one type of token now and stick with it forever.</li>
+<li>I don’t see much value in querying details about the token you have. Just try it and see if it works. For me this fits into a similar category as looking at the details of the token - it’s more to standardize and you can’t rely on it anyway.</li>
+<li>In the URL, because then we don’t need any special handling of these payment pointers. You just connect and it works</li>
+<li>No specific endpoint for pull payments – this is up to the provider and URL parsing is generally considered an antipattern.</li>
+<li>In some cases yes, but that’s part of a different spec that need not be standardized because it’s between the customer and their provider.</li>
+<li>Technically there’s no way to guarantee the money will be sent to the right party. You could try to restrict the ILP address prefixes it can be sent to but a) you need an ILP address <em>and</em> a shared secret that you got from an authenticated connection in order to be sure the packets will go to the right place and b) if you have a long-lived subscription this could get annoying because a merchant’s ILP address might change. Generally I’m all for making things like this more secure but it doesn’t seem like we can do it without a lot more overhead and it requires the protocol for getting these tokens to be interactive.</li>
+</ol>
+<p>Could we also outline some of the flows we might expect people to go through to get one of these tokens? Even if it’s not part of the same spec, we’re going to need to define those flows and thinking through the use cases we want to support may change our answers to the above questions.</p>
+<p>Some use cases off the top of my head:</p>
+<ul>
+<li>One-off payment via the <a href="https://forum.interledger.org/t/w3c-web-payments-api-integration/101/3">Web Payments API</a> - the merchant requests the payment using that API and the response is a normal payment pointer with a pull token included (this would probably be a good use case for offline generation, even if the browser is technically online, because it would be much faster)</li>
+<li>Recurring payment via the Web Payments API? (<a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> does that API support subscriptions?)</li>
+<li>Codius (<a class="mention" href="/u/wilsonianb/index.html">@wilsonianb</a> how exactly would the setup work? Would the parameters we’re talking about fit your needs?)</li>
+<li>Point of Sale + NFC - Merchant communicates a request for payment (in some to-be-defined format) to the customer’s phone or watch and the device returns a payment pointer with the token included</li>
+<li>Point of Sale + QR code - Merchant tells the user how much, user types the amount into their device, the device generates a QR code from the payment pointer, and the merchant scans the QR code… This doesn’t seem like a great experience.</li>
+<li>Any others?</li>
+</ul>
+<p>One more note: offline merchant payments are <em>much</em> more complicated but we may want to keep them on the back burner in this discussion. Credit cards today handle this by having the terminals trust cards for a certain amount if they’re offline and using (I think) blacklists or bloom filters that are updated when they’re online to make sure that fraudulent cards are rejected. This would be a lot more difficult in an Interledger world because you’d need a federated trust model between the providers of this service and trustworthy devices, but we might need something like that if we wanted to have a solution that’s comparable to credit cards.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Feb 8, 2019 6:04 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 18:04:48 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/emschwartz/index.html">@emschwartz</a> I don’t object to your answers to 1-6.</p>
+<p>Some of my thoughts:<br>
+If it should be possible to create tokens offline, we need some sort of signed token that includes information such that the server knows how to handle it the first time it sees it, probably a JWT because that can be easily decoded.  This token could still be opaque to the merchant. The secret is shared between the server and the offline app. When the merchant presents the token to the server for the first time, the server creates a DB entry for this token to keep track of balances or to change token parameters. This means, the information stored within the token is only valid when the token is first used.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="16" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Could we also outline some of the flows we might expect people to go through to get one of these tokens?</p>
+</blockquote>
+</aside>
+<p>We can. Should that be different specs or more of a recommendation?</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="16" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Any others?</p>
+</blockquote>
+</aside>
+<p>It’s probably a similar scenario as subscriptions/recurring payments but one more thing I thought of was loan repayments. There, it should not be possible to revoke pulling permissions.</p>
+<p>Regarding offline merchant payments: I agree that we should think about and discuss that but that should be the very last step once we have all the other parts spec’d out. I would like to have consensus on the ‘low hanging fruit’ first before starting a discussion on more rare/technically difficult scenarios.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Feb 8, 2019 8:09 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 20:09:39 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_16">Replying to #16</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="16" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Codius (<a class="mention" href="/u/wilsonianb/index.html">@wilsonianb</a> how exactly would the setup work? Would the parameters we’re talking about fit your needs?)</p>
+</blockquote>
+</aside>
+<p>After considering the use cases below, I think we’d be good with:<br>
+-start time<br>
+-amount (per interval, including asset info)<br>
+-refill interval (optional)<br>
+-cap (optional)</p>
+<p>In each case, the amount would immediately be available at start, as opposed to after the first interval</p>
+<p><strong>Bucket</strong><br>
+unknown expected usage, such AWS lambda, price per API call</p>
+<p>Example: $10/month</p>
+<pre><code class="lang-auto">{
+  start: now,
+  amount: 10,
+  interval: month,
+  cap: 10
+}
+</code></pre>
+<p><strong>Subscription</strong><br>
+Agreed upon amount. In my opinion, the payee shouldn’t be expected to use it or lose it if there’s agreed upon price.</p>
+<p>Example: $10/month</p>
+<pre><code class="lang-auto">{
+  start: now,
+  amount: 10,
+  inteval: month
+}
+</code></pre>
+<p><span class="bbcode-s">To limit to 12 months, you would include <code>cap: 120</code></span> Edit: this would require different logic from the bucket cap <img src="https://emoji.discourse-cdn.com/twitter/confused.png?v=12" title=":confused:" class="emoji" alt=":confused:" loading="lazy" width="20" height="20"></p>
+<p><strong>Bandwidth</strong><br>
+Also agreed upon amount. Identical to subscription, just with short interval.</p>
+<p>Example $.01/second</p>
+<pre><code class="lang-auto">{
+  start: now,
+  amount: .01,
+  interval: second
+}
+</code></pre>
+<p>The payer could be able to tell their STREAM server to stop refilling/incrementing (such as when they stop a Codius deployment), causing the server to apply a cap based the amount of time passed since start time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Feb 8, 2019 10:20 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 22:20:27 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_18">Replying to #18</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="wilsonianb" data-post="18" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/wilsonianb/48/547_2.png" class="avatar"> wilsonianb:</div>
+<blockquote>
+<p>After considering the use cases below, I think we’d be good with:<br>
+-start time<br>
+-amount (per interval, including asset info)<br>
+-refill interval (optional)<br>
+-cap (optional)</p>
+</blockquote>
+</aside>
+<p>I think this is missing some termination condition like # of repetitions. Maybe it is not relevant for the codius use case but definitely for other use cases. Therefore, it should be optional.</p>
+<p>Also, what is the default refill interval?</p>
+<p>And another question: How would we do intervals that are not 1 second/minute/hour/…, e.g. bi-weekly refill intervals?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Feb 9, 2019 4:01 AM">
+            <time itemprop="datePublished" datetime="2019-02-09 04:01:46 +0200">Feb 9, 2019</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_19">Replying to #19</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="19" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p># of repetitions. Maybe it is not relevant for the codius use case but definitely for other use cases. Therefore, it should be optional.</p>
+</blockquote>
+</aside>
+<p># of repetitions should be mandatory but 1 (or 0, whatever means there’s only 1 period of time) should be an option.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="19" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>Also, what is the default refill interval?</p>
+</blockquote>
+</aside>
+<p>I don’t think there should be a default. That should be mandatory.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="19" data-topic="58">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>How would we do intervals that are not 1 second/minute/hour/…, e.g. bi-weekly refill intervals?</p>
+</blockquote>
+</aside>
+<p>I would put the duration as an integer denominated in a unit of time. As I said above, I don’t think 1 second will work well with the resetting bucket method so I think I would advocate for the time to be denominated in hours.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 3</span>
+
+    
+    <a href="/t/pull-payments/58/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

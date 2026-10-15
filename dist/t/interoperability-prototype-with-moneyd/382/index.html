@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interoperability prototype with moneyd - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/applications/7/index.html">Applications and Use Cases</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Interoperability prototype with moneyd</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Interoperability prototype with moneyd</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/applications/7" class="category-badge" style="--cat-color: #0E76BD"><span class="category-bullet" aria-hidden="true"></span>Applications and Use Cases</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 13, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/joe_ke" class="user-link">joe_ke</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 13, 2019 1:30 PM">
+            <time itemprop="datePublished" datetime="2019-03-13 13:30:21 +0200">Mar 13, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Dear all,</p>
+<p>Together with my colleagues I’m working on a proof of concept using moneyd uplink. We want to asses how ILP could be used in the future.<br>
+Our use case: Transfer founds between two different ledgers and try to tweak the exchange rate. The send can be only one directional as we want to have only proof of concept. What are we trying to build looks like this:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/e5fbc34a41370bc8c0459b8098312c9c95f40f8d.png" title="image.png" rel="nofollow noopener"><img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/e5fbc34a41370bc8c0459b8098312c9c95f40f8d.png" alt="image" width="690" height="163" data-small-upload="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/e5fbc34a41370bc8c0459b8098312c9c95f40f8d_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">image.png</span><span class="informations">830×197 6.19 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>So far we did PoC with several connectors running moneyd uplink xrp and this worked without any major hiccups and this community was extremely nice answering us the questions we were not sure we understood correctly.</p>
+<p>On the connector I run in the cloud I installed different uplinks http, coil and eth. From my understanding http and coil will be connected to xrp ledger - as http is only connection to ILP Api, Koa-ILP.<br>
+I was wondering is there a solution somehow to use somekind of dummy database (similar to five-bells-demo) that will work similar to the image proposed? And in that case would act as a different ledger.</p>
+<p>Alternatively:<br>
+If the only different ledger that is possible to use is eth, does it work with eth testnets?<br>
+We have to use testnet.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 13, 2019 7:14 PM">
+            <time itemprop="datePublished" datetime="2019-03-13 19:14:04 +0200">Mar 13, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="joe_ke" data-post="1" data-topic="382">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/joe_ke/48/211_2.png" class="avatar"> joe_ke:</div>
+<blockquote>
+<p>From my understanding http and coil will be connected to xrp ledger - as http is only connection to ILP Api, Koa-ILP.</p>
+</blockquote>
+</aside>
+<p>The HTTP uplink has no settlement built in, it’s purely used for development when you have a connector exposing ILP over HTTP. The Coil uplink doens’t do settlement either, but it requires you to have a Coil subscription. The fact that there’s no settlement on the Coil uplink means that you can’t use it to receive money (if you receive packets on it then they won’t be settled). Like HTTP, the Coil uplink is only intended for devleopment (if you have a Coil subscription it’s an easy way to get connected to interledger).</p>
+<p>ILP over HTTP is actually different from the HTTP-ILP used in Koa ILP. In Koa ILP, an http request is made to an API who is the ultimate receiver of a payment (i.e. a codius host). That API is not your peer, though. You negotiate payment details and then send them money over Interledger.</p>
+<p>With ILP over HTTP, the HTTP endpoint is your direct peer. instead of connecting with a websocket, you post ILP packets to them each in their own HTTP request.</p>
+<p>So you could think of ILP over HTTP as an alternative to BTP (bilateral protocol spoken between peers), and HTTP-ILP as more of an alternative to SPSP (end-to-end protocol spoken between sender and receiver).</p>
+<p>The naming for these protocols could definitely use some work to prevent this kind of confusion <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<blockquote>
+<p>I was wondering is there a solution somehow to use somekind of dummy database (similar to five-bells-demo) that will work similar to the image proposed? And in that case would act as a different ledger.</p>
+</blockquote>
+<p>Do you mean like running your own private ledger to settle over? I don’t think there’s anything like that right now, but if you want to connect over Interledger without settling on any underlying ledger you could configure your connectors to talk directly over ILP Plugin BTP (or ILP Plugin HTTP).</p>
+<aside class="quote no-group" data-username="joe_ke" data-post="1" data-topic="382">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/joe_ke/48/211_2.png" class="avatar"> joe_ke:</div>
+<blockquote>
+<p>Alternatively:<br>
+If the only different ledger that is possible to use is eth, does it work with eth testnets?<br>
+We have to use testnet.</p>
+</blockquote>
+</aside>
+<p>Someone from Kava Labs would know more about this than me. If I remember correctly there’s a functioning Lightning plugin, but I don’t know if there’s a useable lightning testnet. There’s definitely an ETH testnet you can use for the ETH plugin, but I don’t know how to configure it. Can anyone from Kava weigh in here?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 14, 2019 4:01 PM">
+            <time itemprop="datePublished" datetime="2019-03-14 16:01:17 +0200">Mar 14, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<blockquote>
+<p>Alternatively:<br>
+If the only different ledger that is possible to use is eth, does it work with eth testnets?<br>
+We have to use testnet.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>Someone from Kava Labs would know more about this than me. If I remember correctly there’s a functioning Lightning plugin, but I don’t know if there’s a useable lightning testnet. There’s definitely an ETH testnet you can use for the ETH plugin, but I don’t know how to configure it. Can anyone from Kava weigh in here?</p>
+</blockquote>
+<p>We’ve been building <a href="https://github.com/kava-labs/switch-api" rel="noopener nofollow ugc">a better version</a> of moneyd that can be used programmatically. We think it enables more powerful uplink management and is much more reliable compared to moneyd, so a lot of our development focus has been on that instead (it’s also necessary for the front-end work we’re doing). You’re welcome to test it out! While it’s currently more designed to trade assets / stream money between uplinks, we plan to add support for running a local mini-accounts server and sending money with SPSP prior to the ILP summit. We have a live testnet connector and <a href="https://github.com/kava-labs/connector-config" rel="noopener nofollow ugc">connector configuration</a> that supports BTC, ETH and XRP that <code>switch-api</code> pairs with.</p>
+<p>Let me if you have any other questions!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="5 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          5
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 1, 2019 10:52 AM">
+            <time itemprop="datePublished" datetime="2019-04-01 10:52:45 +0200">Apr 1, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/kincaid/index.html">@kincaid</a> <a class="mention" href="/u/sharafian/index.html">@sharafian</a>,</p>
+<p>We are deploying from scratch two XRP - ETH networks with money transfer on local LAN network/machines.<br>
+Payment works inside XRP network using ripple api and spsp using IP:port as address; also transfers work inside ETH network using the provided machinomy buy/sell server/client examples.</p>
+<p><strong>Goal (related to question): As I understrood there are some problems with Moneyd for ETH, so I am trying to setup SwitchAPI to transfer money between the ETH and XRP networks.</strong></p>
+<p>While firing up the example .js streaming “payment” from <a class="mention" href="/u/kincaid/index.html">@kincaid</a> post, I am getting an error which seems to be related to some problem with settlerType:“machinomy” credentials.</p>
+<p>The error is this:</p>
+<p>TypeError: Cannot read property ‘settlerType’ of undefined<br>
+at Object.exports.connectBaseUplink (/home/lucian/node_modules/<span class="mention">@kava-labs</span>/switch-api/src/uplink.ts:188:14)<br>
+at /home/lucian/node_modules/<span class="mention">@kava-labs</span>/switch-api/src/uplink.ts:210:22<br>
+at state.uplinks.Promise.all.config.uplinks.map.uplinkConfig (/home/lucian/node_modules/<span class="mention">@kava-labs</span>/switch-api/src/index.ts:114:30)<br>
+at Array.map ()<br>
+at exports.connect (/home/lucian/node_modules/<span class="mention">@kava-labs</span>/switch-api/src/index.ts:101:24)</p>
+<p>It looks like the following is coming empty for “machinomy”.<br>
+{ settlerType: ‘xrp-paychan’,<br>
+secret: ‘shgNtRbUqC45Yybr4eG94PPJSVKVg’,<br>
+address: ‘ra2HjbKP8zpwMU1UshfkFQS4So1W3C9qYN’ }</p>
+<p>I have attached a diagram of the network.</p>
+<p><img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/0fb14852ca2a3cde6134bce8822b548743cc5b6a.jpeg" alt="Network" width="690" height="388"><br>
+Correction: “Ethereum provider” maps to Ganache through ws://“Ganache-IP”:8545</p>
+<p>I am not sure what am I missing - conceptually, or regarding config, etc… ?<br>
+<strong>In "switch-api"s git description I read “uplink type - machinomy”, however I am not quite sure where and how to set this up?</strong><br>
+I have deployed machinomy contract from ganache account 1, the “reference” ILP connector is connected at ganache account 2, and switch api at ganache account 3.</p>
+<p>I have set up in ILP-plugin-ethereum/build/util/contracts the generated machinomy contract for account 1 and the ganache IP:port in ILP-plugin-ethereum/build/index.js as ETH provider. Generally I used ws://“ganache-IP”:8545 as ETH provider.</p>
+<p>Q: Would you please be so kind to offer some feedback, please?<br>
+I can provide more info if needed.</p>
+<p>Below is the config for switch.api:</p>
+<pre><code>{
+   "ledgerEnv":"testnet",
+   "uplinks":[
+      {
+         "settlerType":"machinomy",
+         "credentialId":"0xB8E45cFa1Ea1d35a01702409cb6E7D65c77dA417", //**Ganache account 3 for switch-api**
+         "stream":{
+            "serverSecret":"e0bd11ce107e3cfc949a9205ca1b190780b56c747cb4a0590366f187135ecce0"
+         },
+         "plugin":{
+            "btp":{  /**/connect to reference connector C2**
+               "serverUri":"btp+ws://:cOJ9C5bWvjTY3HRaz6Yg5tyysKoIyHuNvIX_4h68Gaw@192.168.1.131:7442",
+               "authToken":"cOJ9C5bWvjTY3HRaz6Yg5tyysKoIyHuNvIX_4h68Gaw"
+            },
+            "store":{
+               "accounts":"[\"peer\"]",
+               "wrapperpayableBalance":"0",
+               "wrapperreceivableBalance":"0",
+               "peer:account":"{\"accountName\":\"peer\",\"receivableBalance\":\"0\",\"payableBalance\":\"0\",\"payoutAmount\":\"0\"}"
+            }
+         }
+      },
+      {
+         "settlerType":"xrp-paychan", //**connect to reference connector C1**
+         "credentialId":"ra2HjbKP8zpwMU1UshfkFQS4So1W3C9qYN", //ripple net wallet for switch-api
+         "stream":{
+            "serverSecret":"2f1489c5e43e29900dd1e0e902b8cda3d4db0e2b8544f00a1a2dcaaea11b1b81"
+         },
+         "plugin":{
+            "btp":{
+               "serverUri":"btp+ws://:BGgaSrXLIXBzHVG1jqKMtTSMcEZL690A4Qsifyqtkiw@192.168.1.146:7444",
+               "authToken":"BGgaSrXLIXBzHVG1jqKMtTSMcEZL690A4Qsifyqtkiw"
+            },
+            "store":{
+               "accounts":"[\"peer\"]",
+               "wrapperpayableBalance":"0",
+               "wrapperreceivableBalance":"0",
+               "peer:account":"{\"accountName\":\"peer\",\"receivableBalance\":\"0\",\"payableBalance\":\"0\",\"payoutAmount\":\"0\",\"xrpAddress\":\"rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj\"}" - //**rippleNet address for Swith api**
+            }
+         }
+      }
+   ],
+   "credentials":[
+      {
+         "settlerType":"machinomy", /**/wallet key for swich api - Ganache account 3**
+         "privateKey":"0x72f3b5a36a6719492913f6480b8b5036bf5cc5f312152351886c8e216fc63288"
+      },
+      {
+         "settlerType":"xrp-paychan", // **key for XRP wallet of switch-api**
+         "secret":"shgNtRbUqC45Yybr4eG94PPJSVKVg"
+      }
+   ]
+}
+</code></pre>
+<p>The reference connector C2 has the following plugin config for connecting to switch-api:</p>
+<pre><code>const peerETH = {
+      relation: 'child',
+      plugin: 'ilp-plugin-ethereum',
+      assetCode: 'ETH',
+      assetScale: 9,
+      options: {
+              role: 'server',
+              port: 7442,
+              ethereumPrivateKey: '0x43c50a578883922df30a33eb74418fb568c0081c40256e4675df02dcc28b6ef6',     //a doua in ganache GUI
+              ethereumProvider: 'ws://192.168.1.87:8545',
+              getGasPrice: '20000000000',
+              outgoingChannelAmount: '71440000',             //10 usd
+              minIncomingChannelAmount: '3570000',   // 0.5usd
+              // In plugin (and not connector middleware) so F08s occur before T04s
+              maxPacketAmount: '1430000'       // 0.2USD                                                   //OLD - in gwei = 500.000 ETH
+      }
+</code></pre>
+<p>}</p>
+<p><strong>Q:</strong><br>
+I am not sure I understood correctly, is the below <strong>switch-api/build/settlement/machinomy.js</strong> config related to the “reference” connector C2 that we link switch-api to? I don’t understand <strong>why we set it in machinomy.js, once it is set in the switch.api config</strong> above? Is this just a default?<br>
+Or is it for something different which I’m missing?</p>
+<pre><code>   remoteConnectors: {
+                      local: {
+                              'Kava Labs': (token) =&gt; `btp+ws://:${token}@192.168.1.131:7442`     // 'Kava Labs': `btp+ws://cOJ9C5bWvjTY3HRaz6Yg5tyysKoIyHuNvIX_4h68Gaw@192.168.1.131:7442`         // 'Kava Labs': (token) =&gt; `btp+ws://:${token}@localhost:7442`
+                      },
+                      testnet: {
+                              'Kava Labs': (token) =&gt; `btp+ws://:${token}@192.168.1.131:7442` // 'Kava Labs': `btp+ws://cOJ9C5bWvjTY3HRaz6Yg5tyysKoIyHuNvIX_4h68Gaw@192.168.1.131:7442`         //   'Kava Labs': (token: string) =&gt; `btp+wss://:${token}@test.ilp.kava.io/eth`
+                      },
+                      mainnet: {}
+              }[ledgerEnv],  
+</code></pre>
+<p>Should anything in the network connect directly to “machinomy” and not “ganache ETH”? How?</p>
+<p>Thank you very much,<br>
+Lucian</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/rhuairahrighairidh" class="user-link">rhuairahrighairidh</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 1, 2019 7:37 PM">
+            <time itemprop="datePublished" datetime="2019-04-01 19:37:57 +0200">Apr 1, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for trying out switch api, the feedback is helpful.</p>
+<p>I don’t fully understand your setup but I put together some notes in the meantime. If you could describe the high level of what you’re aiming for that would be useful. And maybe provide an example script.</p>
+<ul>
+<li>I tried running your config and the error you’re getting is because the credentialId in the machinomy uplink is a mix of upper and lower case letters. Switch api uses all an all lowercase address for the id. If you lowercase the address it should work.</li>
+<li>ilp-plugin-ethereum only uses the machinomy contracts, not the js machinomy libraries. So it only needs to talk to to the btp peer and an ethereum provider (such as infura).</li>
+<li>There might be bugs in using ganache. We’ve been using Kovan for testing because there were problems in ganache a few months ago. But it would be interesting to know if it works now.</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 1, 2019 8:10 PM">
+            <time itemprop="datePublished" datetime="2019-04-01 20:10:20 +0200">Apr 1, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey Lucian,</p>
+<p>Thanks for testing it out!</p>
+<p>A few other comments:</p>
+<ul>
+<li>
+<code>switch-api</code> creates its own Ethereum provider and passes it to the plugin (which is used for a few things within switch-api, and not just the plugin). Instead of editing the provider in the plugin, you might need to edit the provider in switch-api in src/settlement/machinomy to use it with Ganache.</li>
+<li>I haven’t tested the Eth plugin with Ganache, but you may have to change the network/chainId in Ganache to 42 (for example), the same one as Kovan, in order for the plugin to load the correct ABI for the contract (unless, like Ruari noted, you can use the Kovan testnet instead).</li>
+<li>
+<code>getGasPrice</code> in the config for your Ethereum server plugin takes a function that returns the gas price, rather than a hardcoded number. However, you can probably just remove it, since by default the plugin will just use the Ethereum node it’s connected to (in this case, Ganache) to determine the gas price (it’s more useful if you have your own oracle for determining the gas price, e.g. EthGasStation).</li>
+</ul>
+<p>Aside from the issue(s) Ruari pointed out, the config looks pretty good to me.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 1, 2019 9:50 PM">
+            <time itemprop="datePublished" datetime="2019-04-01 21:50:06 +0200">Apr 1, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/kincaid/index.html">@kincaid</a> <a class="mention" href="/u/rhuairahrighairidh/index.html">@rhuairahrighairidh</a>,</p>
+<p>Thank you very much for your help, for the fast answers.<br>
+I will implement your comments and come back with an update.</p>
+<p>Please find below the script I am using for money transfer.<br>
+Thanks a lot again.</p>
+<p>All the best,<br>
+Lucian</p>
+<pre><code>const { connect } = require('@kava-labs/switch-api')
+const BigNumber = require('bignumber.js')
+
+async function run() {
+  // Connect the API, which uses testnet by default
+  console.log('*** example-js ***: adding API')
+  const api = await connect()
+
+  // Add new uplink with an account on the Kovan Ethereum testnet
+    console.log('**** example-js ****: addING uplink machinomy')
+        const ethUplink = await api.add({
+        settlerType: 'machinomy',
+        privateKey: '6da09c0a78255932210aaf5b9f61046a00e9e3ab389c7357e388c4b35682342e'
+        })
+    console.log('*** example-js ***: addED uplink eth')
+
+  // Add new uplink with an XRP testnet credential
+    console.log('*** example-js ***: addING uplink xrp')
+        const xrpUplink = await api.add({
+        settlerType: 'xrp-paychan',
+        secret: 'sasa3hrRUndoxAMoXEc3MMyZHNL3W'
+        })
+    console.log('*** example-js ***: addED uplink xrp')
+
+  // Display the amount in client custody, in real-time
+  xrpUplink.balance$.subscribe(amount =&gt; {
+  console.log('XRP interledger balance:', amount.toString())
+  })
+  ethUplink.balance$.subscribe(amount =&gt; {
+  console.log('ETH interledger balance:', amount.toString())
+  })
+
+  // Deposit 20 XRP into a payment channel
+  await api.deposit({
+
+  uplink: xrpUplink,
+  amount: new BigNumber(20)
+  })
+
+  // Deposit 0.05 ETH into a payment channel
+  await api.deposit({
+  uplink: ethUplink,
+  amount: new BigNumber(0.05)
+  })
+
+  // Stream 10 XRP to ETH, prefunding only $0.05 at a time
+  // If the connector cheats or the exchange rate is too low, your funds are safe!
+  await api.streamMoney({
+  amount: new BigNumber(10),
+  source: xrpUplink,
+  dest: ethUplink
+  })
+
+  await api.disconnect()
+}
+
+run().catch(err =&gt; console.error(err))</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Apr 3, 2019 8:36 AM">
+            <time itemprop="datePublished" datetime="2019-04-03 08:36:36 +0200">Apr 3, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/kincaid/index.html">@kincaid</a> <a class="mention" href="/u/rhuairahrighairidh/index.html">@rhuairahrighairidh</a>,</p>
+<p>I got past that error using small caps. Thank you so much for the help.</p>
+<p>Unfortunately still not able to transfer money due to the following</p>
+<p>[NotFoundError(ledger_indexandLedgerSequencenotfoundintx)],</p>
+<p>which apparently pops after funding XRP channel message:</p>
+<p>*** example-js ***: addED uplink xrp<br>
+XRP interledger balance: 0<br>
+ETH interledger balance: 0<br>
+LOG CREDENTIAL.js: getCredentialId * { settlerType: ‘xrp-paychan’,<br>
+secret: ‘sasa3hrRUndoxAMoXEc3MMyZHNL3W’,<br>
+address: ‘r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC’ }<br>
+<strong>ilp-plugin-xrp:trace sending btp packet.</strong> type=TYPE_MESSAGE requestId=399672659 info=info={“xrpAddress”:“r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC”} +37ms - <strong>this is the address in the transfer money script</strong> in the post above<br>
+<strong>ilp-plugin-xrp:trace received btp packet.</strong> type=TYPE_RESPONSE requestId=399672659 info=info={“xrpAddress”:“rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj”} +19ms - <strong>this is the connector wallet where switch API connects</strong><br>
+<strong>ilp-plugin-xrp:debug</strong> Successfully linked XRP address rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj to peer +53ms - **<strong>NOT SURE what happens here:</strong> <strong>Q:</strong> In current reference connector setup, this is the account of the XRP reference connector where switch api connects to. Why it “links” this account to “peer”? What is the peer? **<br>
+<strong>ilp-plugin-xrp:debug</strong> Opening channel for 20 xrp and fee of 0.000012 xrp +91ms<br>
+<strong>[NotFoundError(ledger_indexandLedgerSequencenotfoundintx)]</strong><br>
+(node:20248)[DEP0079 DeprecationWarning: Custom inspection function on Objects via .inspect() is deprecated</p>
+<p>I thought it might be related to some missing ledger history; ripple network is composed of 3 validators, and they had some restarts along the way - so they lost some history because there are no trackers in the network yet (although full history is enabled on the validators).<br>
+<strong>Q:</strong> Validators are by design not storing full history, even if specified in config?<br>
+I restarted the ripple network from scratch so ripple accounts creation/funding is now in ledger history, but still get the error…</p>
+<p>Just to confirm:</p>
+<ul>
+<li>yellow is the XRP peer “reference” .js connector’s wallet account</li>
+<li>green is machinomy account credentials for money transfer destination</li>
+<li>blue is the XRP account credentials for money transfer sender?<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/344de8b7a0956bb80d03ee58bf244e91d24f4932.png" title="Screenshot from 2019-04-03 10-52-49 - 2.png" rel="nofollow noopener"><img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/344de8b7a0956bb80d03ee58bf244e91d24f4932_2_690x417.png" alt="Screenshot%20from%202019-04-03%2010-52-49%20-%202" width="690" height="417" srcset="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/344de8b7a0956bb80d03ee58bf244e91d24f4932_2_690x417.png, https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/344de8b7a0956bb80d03ee58bf244e91d24f4932_2_1035x625.png 1.5x, https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/344de8b7a0956bb80d03ee58bf244e91d24f4932_2_1380x834.png 2x" data-small-upload="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/344de8b7a0956bb80d03ee58bf244e91d24f4932_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot from 2019-04-03 10-52-49 - 2.png</span><span class="informations">1406×851 142 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div>
+</li>
+</ul>
+<p>Can it be related to some ammendments not being enabled on rippled?<br>
+Apparently they are not being enabled automatically?<br>
+I added this in rippled config for all known enabled ammendments:</p>
+<p>[features]<br>
+PayChan<br>
+Escrow<br>
+…<br>
+The connectors have been able to open paychans after this.</p>
+<p><strong>Rippled server_state:</strong></p>
+<pre><code>{
+   "result" : {
+  "state" : {
+     "build_version" : "1.2.0+DEBUG",
+     "complete_ledgers" : "68-1943",
+     "io_latency_ms" : 1,
+     "jq_trans_overflow" : "0",
+     "last_close" : {
+        "converge_time" : 2003,
+        "proposers" : 2
+     },
+     "load" : {
+        "job_types" : [
+           {
+              "job_type" : "ledgerData",
+              "peak_time" : 3,
+              "per_second" : 1
+           },
+           {
+              "in_progress" : 1,
+              "job_type" : "clientCommand"
+           },
+           {
+              "avg_time" : 1,
+              "job_type" : "advanceLedger",
+              "peak_time" : 7
+           },
+           {
+              "job_type" : "peerCommand",
+              "per_second" : 5
+           },
+           {
+              "job_type" : "WriteNode",
+              "per_second" : 1
+           }
+        ],
+        "threads" : 6
+     },
+     "load_base" : 256,
+     "load_factor" : 256,
+     "load_factor_fee_escalation" : 256,
+     "load_factor_fee_queue" : 256,
+     "load_factor_fee_reference" : 256,
+     "load_factor_server" : 256,
+     "peer_disconnects" : "2",
+     "peer_disconnects_resources" : "0",
+     "peers" : 2,
+     "pubkey_node" : "n9Jv6qpCswp7qTTBDvWTkWefJv7kmzVb2mJ1uVLm843EigDgNFe5",
+     "pubkey_validator" : "none",
+     "server_state" : "full",
+     "server_state_duration_us" : "5644011182",
+     "state_accounting" : {
+        "connected" : {
+           "duration_us" : "1001187",
+           "transitions" : 1
+        },
+        "disconnected" : {
+           "duration_us" : "1359423",
+           "transitions" : 1
+        },
+        "full" : {
+           "duration_us" : "5644011182",
+           "transitions" : 1
+        },
+        "syncing" : {
+           "duration_us" : "2010877",
+           "transitions" : 1
+        },
+        "tracking" : {
+           "duration_us" : "85",
+           "transitions" : 1
+        }
+     },
+     "time" : "2019-Apr-03 09:35:17.447728",
+     "uptime" : 5648,
+     "validated_ledger" : {
+        "base_fee" : 10,
+        "close_time" : 607599320,
+        "hash" : "7CC177CC438A338DF27D72F897AFBC54009D74D3F81C7D75ECA82203DDCFAC94",
+        "reserve_base" : 20000000,
+        "reserve_inc" : 5000000,
+        "seq" : 1943
+     },
+     "validation_quorum" : 2,
+     "validator_list_expires" : 4294967295
+  },
+  "status" : "success"
+   }
+}
+</code></pre>
+<p><strong>Connector account_info:</strong></p>
+<pre><code>{
+   "result" : {
+      "account_data" : {
+         "Account" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+         "Balance" : "19999998999988",
+         "Flags" : 0,
+         "LedgerEntryType" : "AccountRoot",
+         "OwnerCount" : 1,
+         "PreviousTxnID" : "8B63B3050CC63A04B13B04A6EE63AB89F80240E6E95B4F808B0EFEA15E79258D",
+         "PreviousTxnLgrSeq" : 357,
+         "Sequence" : 2,
+         "index" : "CD09C7894CBF60AF6621F25D0BF859289A4567B55B168C13FBC1E78118369925"
+      },
+      "ledger_current_index" : 1918,
+      "status" : "success",
+      "validated" : false
+   }
+}
+</code></pre>
+<p><strong>Switch-api XRP sender account_info:</strong></p>
+<pre><code>{
+   "result" : {
+      "account_data" : {
+         "Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+         "Balance" : "19999979999988",
+         "Flags" : 0,
+         "LedgerEntryType" : "AccountRoot",
+         "OwnerCount" : 1,
+         "PreviousTxnID" : "8B63B3050CC63A04B13B04A6EE63AB89F80240E6E95B4F808B0EFEA15E79258D",
+         "PreviousTxnLgrSeq" : 357,
+         "Sequence" : 2,
+         "index" : "496AC35510A35CA18ECEE0CE4B63796E6D8A677C2143A43667B0EF17F56636AF"
+      },
+      "ledger_current_index" : 2138,
+      "status" : "success",
+      "validated" : false
+   }
+}
+</code></pre>
+<p>We can see 20XRP are missing here - so something partially worked.<br>
+This account was originally funded with 20 million XRP…</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Apr 3, 2019 9:14 AM">
+            <time itemprop="datePublished" datetime="2019-04-03 09:14:41 +0200">Apr 3, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Adding the rippled server log in case it helps:</p>
+<pre><code>2019-Apr-03 17:08:03.581954442 Ledger:TRC saveValidatedLedger 4779
+2019-Apr-03 17:08:03.583937383 Ledger:TRC ActTx: INSERT INTO AccountTransactions (TransID, Account, LedgerSeq, TxnSeq) VALUES ('648562BF3EE5D4C1CFC48C907285B49C9C2404BEFED0507A7AA8CE42833659EC','rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj',4779,0), ('648562BF3EE5D4C1CFC48C907285B49C9C2404BEFED0507A7AA8CE42833659EC','r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC',4779,0);
+2019-Apr-03 17:08:03.586691882 NetworkOPs:TRC pubAccepted: 
+{
+	"affected" : 
+	[
+		"rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+		"r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC"
+	],
+	"meta" : 
+	{
+		"AffectedNodes" : 
+		[
+			
+			{
+				"ModifiedNode" : 
+				{
+					"FinalFields" : 
+					{
+						"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+						"Balance" : "19999179999508",
+						"Flags" : 0,
+						"OwnerCount" : 41,
+						"Sequence" : 42
+					},
+					"LedgerEntryType" : "AccountRoot",
+					"LedgerIndex" : "496AC35510A35CA18ECEE0CE4B63796E6D8A677C2143A43667B0EF17F56636AF",
+					"PreviousFields" : 
+					{
+						"Balance" : "19999199999520",
+						"OwnerCount" : 40,
+						"Sequence" : 41
+					},
+					"PreviousTxnID" : "C0DD05D8AB11F106AD722F6FCC1C258E2C155436073377FFB34DAF7D5A9D620E",
+					"PreviousTxnLgrSeq" : 4545
+				}
+			},
+			
+			{
+				"CreatedNode" : 
+				{
+					"LedgerEntryType" : "PayChannel",
+					"LedgerIndex" : "C6698EEAB9A7B8F9FDCCF78F23F20C9B1E8F57D6BEA370FBDED0F1D84F166FB5",
+					"NewFields" : 
+					{
+						"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+						"Amount" : "20000000",
+						"Destination" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+						"OwnerNode" : "0000000000000001",
+						"PublicKey" : "EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495",
+						"SettleDelay" : 518400
+					}
+				}
+			},
+			
+			{
+				"ModifiedNode" : 
+				{
+					"FinalFields" : 
+					{
+						"Flags" : 0,
+						"Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+						"RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+					},
+					"LedgerEntryType" : "DirectoryNode",
+					"LedgerIndex" : "CA56B5BDCD4CB1907D40854BE9D3420FA8407B3FCCAFE6490661DA56A9432374"
+				}
+			},
+			
+			{
+				"ModifiedNode" : 
+				{
+					"LedgerEntryType" : "AccountRoot",
+					"LedgerIndex" : "CD09C7894CBF60AF6621F25D0BF859289A4567B55B168C13FBC1E78118369925",
+					"PreviousTxnID" : "C0DD05D8AB11F106AD722F6FCC1C258E2C155436073377FFB34DAF7D5A9D620E",
+					"PreviousTxnLgrSeq" : 4545
+				}
+			}
+		],
+		"TransactionIndex" : 0,
+		"TransactionResult" : "tesSUCCESS"
+	},
+	"raw_meta" : "201C00000000F8E511006125000011C155C0DD05D8AB11F106AD722F6FCC1C258E2C155436073377FFB34DAF7D5A9D620E56496AC35510A35CA18ECEE0CE4B63796E6D8A677C2143A43667B0EF17F56636AFE624000000292D0000002862400012306D363620E1E72200000000240000002A2D0000002962400012306C0509148114EE2719F22B73C62DDBB4C9B11492031C520B982EE1E1E311007856C6698EEAB9A7B8F9FDCCF78F23F20C9B1E8F57D6BEA370FBDED0F1D84F166FB5E820270007E900340000000000000001614000000001312D007121EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C44958114EE2719F22B73C62DDBB4C9B11492031C520B982E8314E4800B9910D393921CA962E4328C015BC7F582BBE1E1E511006456CA56B5BDCD4CB1907D40854BE9D3420FA8407B3FCCAFE6490661DA56A9432374E7220000000058E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD8214EE2719F22B73C62DDBB4C9B11492031C520B982EE1E1E511006125000011C155C0DD05D8AB11F106AD722F6FCC1C258E2C155436073377FFB34DAF7D5A9D620E56CD09C7894CBF60AF6621F25D0BF859289A4567B55B168C13FBC1E78118369925E1F1031000",
+	"result" : "The transaction was applied. Only final in a validated ledger.",
+	"transaction" : 
+	{
+		"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+		"Amount" : "20000000",
+		"Destination" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+		"Fee" : "12",
+		"Flags" : 2147483648,
+		"LastLedgerSequence" : 4780,
+		"PublicKey" : "EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495",
+		"Sequence" : 41,
+		"SettleDelay" : 518400,
+		"SigningPubKey" : "02945580F0BA6866B258BB670395E533527966A25358DDAA12C7A9659CBE5F2A5B",
+		"TransactionType" : "PaymentChannelCreate",
+		"TxnSignature" : "30450221008935DB84A2631A90093455D4A0650785D757C409DB560AEDC4F8EC45E510BC8702207CC672EF64F2E1FFB6875D20220208B7B3C4B113773A7E803059FA84A7B62F95",
+		"hash" : "648562BF3EE5D4C1CFC48C907285B49C9C2404BEFED0507A7AA8CE42833659EC"
+	}
+}
+
+2019-Apr-03 17:08:03.587804405 NetworkOPs:TRC pubAccountTransaction: iProposed=0 iAccepted=2
+</code></pre>
+<p>Validators are set to use NuDB, but have HDDs not SSDs.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Apr 3, 2019 11:08 AM">
+            <time itemprop="datePublished" datetime="2019-04-03 11:08:49 +0200">Apr 3, 2019</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Update:</p>
+<p>Looks like the error is coming from here:<br>
+(node:22867) UnhandledPromiseRejectionWarning: [NotFoundError(ledger_index and LedgerSequence not found in txxx)]<br>
+at Promise (/home/lucian/node_modules/ripple-lib/src/ledger/transaction.ts:40:4)<br>
+at new Promise ()<br>
+at attachTransactionDate (/home/lucian/node_modules/ripple-lib/src/ledger/transaction.ts:39:5)<br>
+at RippleAPI. (/home/lucian/node_modules/ripple-lib/src/ledger/transaction.ts:113:2)<br>
+at Generator.next ()<br>
+at fulfilled (/home/lucian/node_modules/ripple-lib/dist/npm/ledger/transaction.js:4:58)</p>
+<p>tx looks like this:</p>
+<p>RIPPLE-LIB: TRANSACTION.js: tx { Account: ‘r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC’,<br>
+Amount: ‘20000000’,<br>
+Destination: ‘rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj’,<br>
+Fee: ‘12’,<br>
+Flags: 2147483648,<br>
+LastLedgerSequence: 4171,<br>
+PublicKey:<br>
+‘EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495’,<br>
+Sequence: 39,<br>
+SettleDelay: 518400,<br>
+SigningPubKey:<br>
+‘02945580F0BA6866B258BB670395E533527966A25358DDAA12C7A9659CBE5F2A5B’,<br>
+TransactionType: ‘PaymentChannelCreate’,<br>
+TxnSignature:<br>
+‘3044022066936D13BF40853F642E86B4D7A48045F2DE61576FB8478FFAAF0B053549E1B702206DC05B9A23D01781AC36DD41B0EFEEEFE40FF65D26125E4EE73F166C6979F7F6’,<br>
+hash:<br>
+‘E0FB8FD14F67FBDEF8F395C162451760BA2237AAA52F309BD725F6E3EC6CCA2F’ }</p>
+<hr>
+<p>RIPPLE-LIB: TRANSACTION.js: tx.ledger_index undefined<br>
+RIPPLE-LIB: TRANSACTION.js: tx.LedgerSequence undefined<br>
+RIPPLE-LIB: TRANSACTION.js: ledgerVersion undefined<br>
+RIPPLE-LIB: TRANSACTION.js: tx.date undefined</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/rhuairahrighairidh" class="user-link">rhuairahrighairidh</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Apr 3, 2019 9:58 PM">
+            <time itemprop="datePublished" datetime="2019-04-03 21:58:40 +0200">Apr 3, 2019</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Looks like there’s a problem in submitting the second payment channel create tx. I haven’t run into this error before. But I also haven’t tried running switch-api against a private rippled. We normally use the pubic xrp testnet.</p>
+<p>I’d either try the public testnet, or have a look in the xrp plugin when it submits a tx. We’ve had trouble with xrp there before.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Apr 4, 2019 6:52 PM">
+            <time itemprop="datePublished" datetime="2019-04-04 18:52:53 +0200">Apr 4, 2019</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/rhuairahrighairidh/index.html">@rhuairahrighairidh</a>,</p>
+<p>Thanks a lot for the hint.<br>
+Not sure if I understand correctly, there is a high chance I’m wrong, so apologies in advance if it’s so.</p>
+<p>From this page here, I understand that the tx should be submitted after the network performs the validation?<br>
+<a href="https://developers.ripple.com/use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient" class="onebox" target="_blank" rel="nofollow noopener">https://developers.ripple.com/use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient</a></p>
+<p>From the validator log it looks like the tx is sent before validation, and the response received is not complete? Can it be so?</p>
+<p>2019-Apr-04 18:24:11.553845122 Peer:TRC [015] onReadMessage: 190 bytes<br>
+2019-Apr-04 18:24:11.554167211 Protocol:TRC [015] Proposal: duplicate<br>
+2019-Apr-04 18:24:11.554341706 Resource:TRC Charging 192.168.1.132:51235 for trivial peer request ($1)<br>
+2019-Apr-04 18:24:11.684226519 Peer:TRC [015] onReadMessage: 8 bytes<br>
+2019-Apr-04 18:24:11.684554229 Resource:TRC Charging 192.168.1.132:51235 for trivial peer request ($1)<br>
+2019-Apr-04 18:24:11.975086091 Server:TRC Websocket received ’<br>
+{<br>
+“binary” : false,<br>
+“command” : “ledger_entry”,<br>
+“id” : 553,<br>
+“index” : “CDCFA6F8B51ACA23E4336005D07467D9A7C268EDE82FD64E28E0DB172004B367”,<br>
+“ledger_index” : “validated”<br>
+}<br>
+’<br>
+2019-Apr-04 18:24:11.975465569 JobQueue:TRC Doing clientCommand job<br>
+2019-Apr-04 18:24:11.975725778 RPCHandler:TRC COMMAND:ledger_entry<br>
+2019-Apr-04 18:24:11.975822881 RPCHandler:TRC REQUEST:<br>
+{<br>
+“binary” : false,<br>
+“command” : “ledger_entry”,<br>
+“id” : 553,<br>
+“index” : “CDCFA6F8B51ACA23E4336005D07467D9A7C268EDE82FD64E28E0DB172004B367”,<br>
+“ledger_index” : “validated”<br>
+}</p>
+<pre><code>2019-Apr-04 18:24:11.975963929 LedgerMaster:TRC Validated ledger age is 1
+2019-Apr-04 18:24:11.976461050 Resource:TRC Charging 192.168.1.146 for reference RPC ($20)
+2019-Apr-04 18:24:12.149844961 Server:TRC #213 accept:    192.168.1.68
+2019-Apr-04 18:24:12.151930639 Resource:DBG New inbound endpoint 192.168.1.68
+2019-Apr-04 18:24:12.152175192 Server:TRC #213 destroyed: 1 request
+2019-Apr-04 18:24:12.152869435 JobQueue:TRC Doing heartbeat job
+2019-Apr-04 18:24:12.161015556 Server:TRC Websocket received '
+{
+	"command" : "subscribe",
+	"id" : 1,
+	"streams" : [ "ledger" ]
+}
+'
+2019-Apr-04 18:24:12.161345712 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:12.161666720 RPCHandler:TRC COMMAND:subscribe
+2019-Apr-04 18:24:12.161768028 RPCHandler:TRC REQUEST:
+{
+	"command" : "subscribe",
+	"id" : 1,
+	"streams" : [ "ledger" ]
+}
+
+2019-Apr-04 18:24:12.161879503 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:12.323034282 Server:TRC Websocket received '
+{
+	"account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+	"command" : "account_info",
+	"id" : 2,
+	"ledger_index" : "validated"
+}
+'
+2019-Apr-04 18:24:12.323447483 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:12.323744706 RPCHandler:TRC COMMAND:account_info
+2019-Apr-04 18:24:12.323864307 RPCHandler:TRC REQUEST:
+{
+	"account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+	"command" : "account_info",
+	"id" : 2,
+	"ledger_index" : "validated"
+}
+
+2019-Apr-04 18:24:12.324071535 LedgerMaster:TRC Validated ledger age is 2
+2019-Apr-04 18:24:12.325105327 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:12.438483652 PeerFinder:TRC Logic sending     192.168.1.132:51235 with 0 endpoints
+2019-Apr-04 18:24:12.438687047 PeerFinder:TRC Logic sending     192.168.1.97:47444 with 0 endpoints
+2019-Apr-04 18:24:12.439180856 Peer:TRC [015] onWriteMessage: 8 bytes
+2019-Apr-04 18:24:12.439207372 Peer:TRC [003] onWriteMessage: 8 bytes
+2019-Apr-04 18:24:12.477151397 Server:TRC #214 accept:    192.168.1.68
+2019-Apr-04 18:24:12.478915055 Resource:DBG New inbound endpoint 192.168.1.68
+2019-Apr-04 18:24:12.479122057 Server:TRC #214 destroyed: 1 request
+2019-Apr-04 18:24:12.487236065 Server:TRC Websocket received '
+{
+	"command" : "subscribe",
+	"id" : 1,
+	"streams" : [ "ledger" ]
+}
+'
+2019-Apr-04 18:24:12.487390828 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:12.487503792 RPCHandler:TRC COMMAND:subscribe
+2019-Apr-04 18:24:12.487551187 RPCHandler:TRC REQUEST:
+{
+	"command" : "subscribe",
+	"id" : 1,
+	"streams" : [ "ledger" ]
+}
+
+2019-Apr-04 18:24:12.487681233 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:12.836579140 Server:TRC Websocket received '
+{
+	"command" : "server_info",
+	"id" : 2
+}
+'
+2019-Apr-04 18:24:12.836956141 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:12.837252877 RPCHandler:TRC COMMAND:server_info
+2019-Apr-04 18:24:12.837421934 RPCHandler:TRC REQUEST:
+{
+	"command" : "server_info",
+	"id" : 2
+}
+
+2019-Apr-04 18:24:12.838358956 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:12.839867563 Server:TRC Websocket received '
+{
+	"account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+	"command" : "account_info",
+	"id" : 3
+}
+'
+2019-Apr-04 18:24:12.840096702 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:12.840336684 RPCHandler:TRC COMMAND:account_info
+2019-Apr-04 18:24:12.840487742 RPCHandler:TRC REQUEST:
+{
+	"account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+	"command" : "account_info",
+	"id" : 3
+}
+
+2019-Apr-04 18:24:12.840741754 LedgerMaster:TRC Validated ledger age is 2
+2019-Apr-04 18:24:12.842221924 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:12.868028537 Server:TRC Websocket received '
+{
+	"account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+	"command" : "account_info",
+	"id" : 3,
+	"ledger_index" : "validated"
+}
+'
+2019-Apr-04 18:24:12.868384820 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:12.868669800 RPCHandler:TRC COMMAND:account_info
+2019-Apr-04 18:24:12.868770635 RPCHandler:TRC REQUEST:
+{
+	"account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+	"command" : "account_info",
+	"id" : 3,
+	"ledger_index" : "validated"
+}
+
+2019-Apr-04 18:24:12.869066475 LedgerMaster:TRC Validated ledger age is 2
+2019-Apr-04 18:24:12.870197674 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:12.888532308 Server:TRC Websocket received '
+{
+	"command" : "server_info",
+	"id" : 4
+}
+'
+2019-Apr-04 18:24:12.888767101 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:12.888979574 RPCHandler:TRC COMMAND:server_info
+2019-Apr-04 18:24:12.889056987 RPCHandler:TRC REQUEST:
+{
+	"command" : "server_info",
+	"id" : 4
+}
+
+2019-Apr-04 18:24:12.889479256 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:12.894963296 Server:TRC Websocket received '
+{
+	"account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+	"command" : "account_info",
+	"id" : 5,
+	"ledger_index" : "validated"
+}
+'
+2019-Apr-04 18:24:12.895220068 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:12.895464311 RPCHandler:TRC COMMAND:account_info
+2019-Apr-04 18:24:12.895617500 RPCHandler:TRC REQUEST:
+{
+	"account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+	"command" : "account_info",
+	"id" : 5,
+	"ledger_index" : "validated"
+}
+
+2019-Apr-04 18:24:12.895825294 LedgerMaster:TRC Validated ledger age is 2
+2019-Apr-04 18:24:12.896841203 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:13.153961650 JobQueue:TRC Doing heartbeat job
+2019-Apr-04 18:24:13.154455166 LedgerConsensus:NFO Proposers:2 nw:50 thrV:1 thrC:1
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+2019-Apr-04 18:24:13.158877300 LedgerConsensus:NFO Consensus mode change before=observing, after=observing
+2019-Apr-04 18:24:13.158922783 NetworkOPs:DBG Initiating consensus engine
+2019-Apr-04 18:24:13.218880494 Server:TRC Websocket received '
+{
+	"command" : "submit",
+	"id" : 4,
+	"tx_blob" : "12000D22800000002400000041201B000088C820270007E900614000000001312D0068400000000000000C7121EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495732102945580F0BA6866B258BB670395E533527966A25358DDAA12C7A9659CBE5F2A5B74463044022023A5198CBB92AC2A650BD5E62CA7BE278B4A94049A009C3EC9DF62C9C81842E2022001CA244494948AA2D0A3035B133FE84E22EF95935C8F3F4BA5ECE7806AC286FE8114EE2719F22B73C62DDBB4C9B11492031C520B982E8314E4800B9910D393921CA962E4328C015BC7F582BB"
+}
+'
+2019-Apr-04 18:24:13.219006921 Server:TRC Websocket received '
+{
+	"command" : "server_info",
+	"id" : 6
+}
+'
+2019-Apr-04 18:24:13.219052661 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:13.219123401 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:13.219191208 RPCHandler:TRC COMMAND:submit
+2019-Apr-04 18:24:13.219194845 RPCHandler:TRC COMMAND:server_info
+2019-Apr-04 18:24:13.219240004 RPCHandler:TRC REQUEST:
+{
+	"command" : "submit",
+	"id" : 4,
+	"tx_blob" : "12000D22800000002400000041201B000088C820270007E900614000000001312D0068400000000000000C7121EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495732102945580F0BA6866B258BB670395E533527966A25358DDAA12C7A9659CBE5F2A5B74463044022023A5198CBB92AC2A650BD5E62CA7BE278B4A94049A009C3EC9DF62C9C81842E2022001CA244494948AA2D0A3035B133FE84E22EF95935C8F3F4BA5ECE7806AC286FE8114EE2719F22B73C62DDBB4C9B11492031C520B982E8314E4800B9910D393921CA962E4328C015BC7F582BB"
+}
+
+2019-Apr-04 18:24:13.219249809 RPCHandler:TRC REQUEST:
+{
+	"command" : "server_info",
+	"id" : 6
+}
+
+2019-Apr-04 18:24:13.219291460 LedgerMaster:TRC Validated ledger age is 3
+2019-Apr-04 18:24:13.219570915 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:13.221337619 TxQ:TRC Transaction 195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724 from account r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC has fee level of 307 needs at least 256 to get in the open ledger, which has 0 entries.
+2019-Apr-04 18:24:13.221399019 TxQ:TRC Applying transaction 195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724 to open ledger.
+2019-Apr-04 18:24:13.221422158 OpenLedger:TRC apply: 195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724
+2019-Apr-04 18:24:13.221898532 OpenLedger:TRC preclaim result: tesSUCCESS
+2019-Apr-04 18:24:13.222010547 OpenLedger:TRC appliedtesSUCCESS
+2019-Apr-04 18:24:13.222045321 TxQ:TRC New transaction 195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724 applied successfully with tesSUCCESS
+2019-Apr-04 18:24:13.222144380 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:13.222368518 NetworkOPs:TRC pubProposed: 
+{
+	"affected" : 
+	[
+		"rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+		"r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC"
+	],
+	"result" : "The transaction was applied. Only final in a validated ledger.",
+	"transaction" : 
+	{
+		"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+		"Amount" : "20000000",
+		"Destination" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+		"Fee" : "12",
+		"Flags" : 2147483648,
+		"LastLedgerSequence" : 35016,
+		"PublicKey" : "EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495",
+		"Sequence" : 65,
+		"SettleDelay" : 518400,
+		"SigningPubKey" : "02945580F0BA6866B258BB670395E533527966A25358DDAA12C7A9659CBE5F2A5B",
+		"TransactionType" : "PaymentChannelCreate",
+		"TxnSignature" : "3044022023A5198CBB92AC2A650BD5E62CA7BE278B4A94049A009C3EC9DF62C9C81842E2022001CA244494948AA2D0A3035B133FE84E22EF95935C8F3F4BA5ECE7806AC286FE",
+		"hash" : "195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724"
+	}
+}
+
+2019-Apr-04 18:24:13.222448398 NetworkOPs:DBG Transaction is now included in open ledger
+2019-Apr-04 18:24:13.222694393 Peer:TRC [015] onWriteMessage: 248 bytes
+2019-Apr-04 18:24:13.222732217 Resource:TRC Charging 192.168.1.68 for medium RPC ($400)
+2019-Apr-04 18:24:13.222700841 Peer:TRC [003] onWriteMessage: 248 bytes
+2019-Apr-04 18:24:13.243314849 Peer:TRC [015] onReadMessage: 62 bytes
+2019-Apr-04 18:24:13.243343648 Server:TRC Websocket received '
+{
+	"binary" : false,
+	"command" : "tx",
+	"id" : 5,
+	"transaction" : "195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724"
+}
+'
+2019-Apr-04 18:24:13.243444981 Peer:TRC [015] onReadMessage: 32 bytes
+2019-Apr-04 18:24:13.243564983 Protocol:TRC [015] Status: Change
+2019-Apr-04 18:24:13.243565000 JobQueue:TRC Doing clientCommand job
+2019-Apr-04 18:24:13.243631913 Protocol:DBG [015] LCL is 8A8E8A0D1F9996B495347B634C88B5413DE04AC63F806AC73D3F7AD5233308B7
+2019-Apr-04 18:24:13.243702813 LedgerMaster:TRC Validated ledger age is 3
+2019-Apr-04 18:24:13.243706989 RPCHandler:TRC COMMAND:tx
+2019-Apr-04 18:24:13.243774728 Resource:TRC Charging 192.168.1.132:51235 for trivial peer request ($1)
+2019-Apr-04 18:24:13.243779783 RPCHandler:TRC REQUEST:
+{
+	"binary" : false,
+	"command" : "tx",
+	"id" : 5,
+	"transaction" : "195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724"
+}
+
+2019-Apr-04 18:24:13.243854454 LedgerMaster:TRC Validated ledger age is 3
+2019-Apr-04 18:24:13.244126302 Resource:TRC Charging 192.168.1.68 for reference RPC ($20)
+2019-Apr-04 18:24:13.249312731 Peer:TRC [015] onReadMessage: 198 bytes
+2019-Apr-04 18:24:13.250073409 JobQueue:TRC Doing trustedValidation job
+2019-Apr-04 18:24:13.250083002 Resource:TRC Charging 192.168.1.132:51235 for trivial peer request ($1)
+</code></pre>
+<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<pre><code>2019-Apr-04 18:24:16.162860043 LedgerConsensus:DBG Building canonical tx set: AF970A4358B3F50636FFACB429A0D047D05F42B66470004DF3A265F11439FF12
+2019-Apr-04 18:24:16.163348402 LedgerConsensus:DBG     Tx: 195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724
+2019-Apr-04 18:24:16.163464094 LedgerConsensus:DBG Report: Transaction Set = AF970A4358B3F50636FFACB429A0D047D05F42B66470004DF3A265F11439FF12, close 607717460
+2019-Apr-04 18:24:16.163688952 LedgerConsensus:DBG Attempting to apply 1 transactions
+2019-Apr-04 18:24:16.163804588 LedgerConsensus:DBG Pass: 0 begins (1 transactions)
+2019-Apr-04 18:24:16.163910497 LedgerConsensus:DBG TXN 195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724/retry
+2019-Apr-04 18:24:16.164855279 LedgerConsensus:TRC apply: 195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724
+2019-Apr-04 18:24:16.165894182 LedgerConsensus:TRC preclaim result: tesSUCCESS
+2019-Apr-04 18:24:16.166929145 NodeObject:TRC HOS: 65E4F57F51C2D6CA3054ED22211041DEC04CC46A45CCECFA6E8CF58FC135D0AF fetch: in db
+2019-Apr-04 18:24:16.167640893 LedgerConsensus:TRC metadata 
+{
+	"AffectedNodes" : 
+	[
+		
+		{
+			"ModifiedNode" : 
+			{
+				"FinalFields" : 
+				{
+					"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+					"Balance" : "19998699999220",
+					"Flags" : 0,
+					"OwnerCount" : 65,
+					"Sequence" : 66
+				},
+				"LedgerEntryType" : "AccountRoot",
+				"LedgerIndex" : "496AC35510A35CA18ECEE0CE4B63796E6D8A677C2143A43667B0EF17F56636AF",
+				"PreviousFields" : 
+				{
+					"Balance" : "19998719999232",
+					"OwnerCount" : 64,
+					"Sequence" : 65
+				},
+				"PreviousTxnID" : "73C8FBB3A49328C930AD9BC6DBFDA4548AB4BFE69DABF172BB9D5FEC06933438",
+				"PreviousTxnLgrSeq" : 34908
+			}
+		},
+		
+		{
+			"CreatedNode" : 
+			{
+				"LedgerEntryType" : "PayChannel",
+				"LedgerIndex" : "85829C89890CA72C17D977E6F2E6671B6DA46B6C45BF6FD9B8638FC84554F9C0",
+				"NewFields" : 
+				{
+					"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+					"Amount" : "20000000",
+					"Destination" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+					"OwnerNode" : "0000000000000002",
+					"PublicKey" : "EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495",
+					"SettleDelay" : 518400
+				}
+			}
+		},
+		
+		{
+			"ModifiedNode" : 
+			{
+				"FinalFields" : 
+				{
+					"Flags" : 0,
+					"IndexNext" : "0000000000000002",
+					"Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+					"RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+				},
+				"LedgerEntryType" : "DirectoryNode",
+				"LedgerIndex" : "CA56B5BDCD4CB1907D40854BE9D3420FA8407B3FCCAFE6490661DA56A9432374",
+				"PreviousFields" : {}
+			}
+		},
+		
+		{
+			"ModifiedNode" : 
+			{
+				"LedgerEntryType" : "AccountRoot",
+				"LedgerIndex" : "CD09C7894CBF60AF6621F25D0BF859289A4567B55B168C13FBC1E78118369925",
+				"PreviousTxnID" : "73C8FBB3A49328C930AD9BC6DBFDA4548AB4BFE69DABF172BB9D5FEC06933438",
+				"PreviousTxnLgrSeq" : 34908
+			}
+		},
+		
+		{
+			"ModifiedNode" : 
+			{
+				"FinalFields" : 
+				{
+					"Flags" : 0,
+					"IndexNext" : "0000000000000001",
+					"IndexPrevious" : "0000000000000002",
+					"Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+					"RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+				},
+				"LedgerEntryType" : "DirectoryNode",
+				"LedgerIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD",
+				"PreviousFields" : 
+				{
+					"IndexPrevious" : "0000000000000001"
+				}
+			}
+		},
+		
+		{
+			"CreatedNode" : 
+			{
+				"LedgerEntryType" : "DirectoryNode",
+				"LedgerIndex" : "E91DB07AAB5C959A5F75E702A9A9C244607244CCEE50B650566B92DA24C23CA6",
+				"NewFields" : 
+				{
+					"IndexPrevious" : "0000000000000001",
+					"Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+					"RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+				}
+			}
+		}
+	],
+	"TransactionIndex" : 0,
+	"TransactionResult" : "tesSUCCESS"
+}
+
+2019-Apr-04 18:24:16.167929056 LedgerConsensus:TRC appliedtesSUCCESS
+2019-Apr-04 18:24:16.167960038 LedgerConsensus:DBG Transaction applied: The transaction was applied. Only final in a validated ledger.
+2019-Apr-04 18:24:16.167990352 LedgerConsensus:DBG Pass: 0 completed (1 changes)
+2019-Apr-04 18:24:16.168019690 LedgerConsensus:DBG Pass: 1 begins (0 transactions)
+2019-Apr-04 18:24:16.168038139 LedgerConsensus:DBG Pass: 1 completed (0 changes)
+</code></pre>
+<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>(‘195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724’,‘r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC’,35015,0);<br>
+2019-Apr-04 18:24:16.969663511 NetworkOPs:TRC pubAccepted:<br>
+{<br>
+“affected” :<br>
+[<br>
+“rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj”,<br>
+“r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC”<br>
+],<br>
+“meta” :<br>
+{<br>
+“AffectedNodes” :<br>
+[</p>
+<pre><code>			{
+				"ModifiedNode" : 
+				{
+					"FinalFields" : 
+					{
+						"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+						"Balance" : "19998699999220",
+						"Flags" : 0,
+						"OwnerCount" : 65,
+						"Sequence" : 66
+					},
+					"LedgerEntryType" : "AccountRoot",
+					"LedgerIndex" : "496AC35510A35CA18ECEE0CE4B63796E6D8A677C2143A43667B0EF17F56636AF",
+					"PreviousFields" : 
+					{
+						"Balance" : "19998719999232",
+						"OwnerCount" : 64,
+						"Sequence" : 65
+					},
+					"PreviousTxnID" : "73C8FBB3A49328C930AD9BC6DBFDA4548AB4BFE69DABF172BB9D5FEC06933438",
+					"PreviousTxnLgrSeq" : 34908
+				}
+			},
+			
+			{
+				"CreatedNode" : 
+				{
+					"LedgerEntryType" : "PayChannel",
+					"LedgerIndex" : "85829C89890CA72C17D977E6F2E6671B6DA46B6C45BF6FD9B8638FC84554F9C0",
+					"NewFields" : 
+					{
+						"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+						"Amount" : "20000000",
+						"Destination" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+						"OwnerNode" : "0000000000000002",
+						"PublicKey" : "EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495",
+						"SettleDelay" : 518400
+					}
+				}
+			},
+			
+			{
+				"ModifiedNode" : 
+				{
+					"FinalFields" : 
+					{
+						"Flags" : 0,
+						"IndexNext" : "0000000000000002",
+						"Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+						"RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+					},
+					"LedgerEntryType" : "DirectoryNode",
+					"LedgerIndex" : "CA56B5BDCD4CB1907D40854BE9D3420FA8407B3FCCAFE6490661DA56A9432374",
+					"PreviousFields" : {}
+				}
+			},
+			
+			{
+				"ModifiedNode" : 
+				{
+					"LedgerEntryType" : "AccountRoot",
+					"LedgerIndex" : "CD09C7894CBF60AF6621F25D0BF859289A4567B55B168C13FBC1E78118369925",
+					"PreviousTxnID" : "73C8FBB3A49328C930AD9BC6DBFDA4548AB4BFE69DABF172BB9D5FEC06933438",
+					"PreviousTxnLgrSeq" : 34908
+				}
+			},
+			
+			{
+				"ModifiedNode" : 
+				{
+					"FinalFields" : 
+					{
+						"Flags" : 0,
+						"IndexNext" : "0000000000000001",
+						"IndexPrevious" : "0000000000000002",
+						"Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+						"RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+					},
+					"LedgerEntryType" : "DirectoryNode",
+					"LedgerIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD",
+					"PreviousFields" : 
+					{
+						"IndexPrevious" : "0000000000000001"
+					}
+				}
+			},
+			
+			{
+				"CreatedNode" : 
+				{
+					"LedgerEntryType" : "DirectoryNode",
+					"LedgerIndex" : "E91DB07AAB5C959A5F75E702A9A9C244607244CCEE50B650566B92DA24C23CA6",
+					"NewFields" : 
+					{
+						"IndexPrevious" : "0000000000000001",
+						"Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+						"RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+					}
+				}
+			}
+		],
+		"TransactionIndex" : 0,
+		"TransactionResult" : "tesSUCCESS"
+	},
+	"raw_meta" : "201C00000000F8E5110061250000885C5573C8FBB3A49328C930AD9BC6DBFDA4548AB4BFE69DABF172BB9D5FEC0693343856496AC35510A35CA18ECEE0CE4B63796E6D8A677C2143A43667B0EF17F56636AFE624000000412D0000004062400012305099FD00E1E7220000000024000000422D0000004162400012304F68CFF48114EE2719F22B73C62DDBB4C9B11492031C520B982EE1E1E31100785685829C89890CA72C17D977E6F2E6671B6DA46B6C45BF6FD9B8638FC84554F9C0E820270007E900340000000000000002614000000001312D007121EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C44958114EE2719F22B73C62DDBB4C9B11492031C520B982E8314E4800B9910D393921CA962E4328C015BC7F582BBE1E1E511006456CA56B5BDCD4CB1907D40854BE9D3420FA8407B3FCCAFE6490661DA56A9432374E6E1E7220000000031000000000000000258E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD8214EE2719F22B73C62DDBB4C9B11492031C520B982EE1E1E5110061250000885C5573C8FBB3A49328C930AD9BC6DBFDA4548AB4BFE69DABF172BB9D5FEC0693343856CD09C7894CBF60AF6621F25D0BF859289A4567B55B168C13FBC1E78118369925E1E511006456E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFDE6320000000000000001E1E7220000000031000000000000000132000000000000000258E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD8214EE2719F22B73C62DDBB4C9B11492031C520B982EE1E1E311006456E91DB07AAB5C959A5F75E702A9A9C244607244CCEE50B650566B92DA24C23CA6E832000000000000000158E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD8214EE2719F22B73C62DDBB4C9B11492031C520B982EE1E1F1031000",
+	"result" : "The transaction was applied. Only final in a validated ledger.",
+	"transaction" : 
+	{
+		"Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+		"Amount" : "20000000",
+		"Destination" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+		"Fee" : "12",
+		"Flags" : 2147483648,
+		"LastLedgerSequence" : 35016,
+		"PublicKey" : "EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495",
+		"Sequence" : 65,
+		"SettleDelay" : 518400,
+		"SigningPubKey" : "02945580F0BA6866B258BB670395E533527966A25358DDAA12C7A9659CBE5F2A5B",
+		"TransactionType" : "PaymentChannelCreate",
+		"TxnSignature" : "3044022023A5198CBB92AC2A650BD5E62CA7BE278B4A94049A009C3EC9DF62C9C81842E2022001CA244494948AA2D0A3035B133FE84E22EF95935C8F3F4BA5ECE7806AC286FE",
+		"hash" : "195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724"
+	}
+}
+
+2019-Apr-04 18:24:16.970588499 NetworkOPs:TRC pubAccountTransaction: iProposed=0 iAccepted=2
+2019-Apr-04 18:24:16.973039485 LedgerMaster:TRC findNewLedgersToPublish&lt;
+2019-Apr-04 18:24:16.973088553 JobQueue:TRC Doing updatePaths job</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Apr 4, 2019 6:55 PM">
+            <time itemprop="datePublished" datetime="2019-04-04 18:55:03 +0200">Apr 4, 2019</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If I submit the tx manually I get a larger response:</p>
+<pre><code>{
+   "result" : {
+  "Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+  "Amount" : "20000000",
+  "Destination" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+  "Fee" : "12",
+  "Flags" : 2147483648,
+  "LastLedgerSequence" : 35016,
+  "PublicKey" : "EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495",
+  "Sequence" : 65,
+  "SettleDelay" : 518400,
+  "SigningPubKey" : "02945580F0BA6866B258BB670395E533527966A25358DDAA12C7A9659CBE5F2A5B",
+  "TransactionType" : "PaymentChannelCreate",
+  "TxnSignature" : "3044022023A5198CBB92AC2A650BD5E62CA7BE278B4A94049A009C3EC9DF62C9C81842E2022001CA244494948AA2D0A3035B133FE84E22EF95935C8F3F4BA5ECE7806AC286FE",
+  "date" : 607717460,
+  "hash" : "195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724",
+  "inLedger" : 35015,
+  "ledger_index" : 35015,
+  "meta" : {
+     "AffectedNodes" : [
+        {
+           "ModifiedNode" : {
+              "FinalFields" : {
+                 "Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+                 "Balance" : "19998699999220",
+                 "Flags" : 0,
+                 "OwnerCount" : 65,
+                 "Sequence" : 66
+              },
+              "LedgerEntryType" : "AccountRoot",
+              "LedgerIndex" : "496AC35510A35CA18ECEE0CE4B63796E6D8A677C2143A43667B0EF17F56636AF",
+              "PreviousFields" : {
+                 "Balance" : "19998719999232",
+                 "OwnerCount" : 64,
+                 "Sequence" : 65
+              },
+              "PreviousTxnID" : "73C8FBB3A49328C930AD9BC6DBFDA4548AB4BFE69DABF172BB9D5FEC06933438",
+              "PreviousTxnLgrSeq" : 34908
+           }
+        },
+        {
+           "CreatedNode" : {
+              "LedgerEntryType" : "PayChannel",
+              "LedgerIndex" : "85829C89890CA72C17D977E6F2E6671B6DA46B6C45BF6FD9B8638FC84554F9C0",
+              "NewFields" : {
+                 "Account" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+                 "Amount" : "20000000",
+                 "Destination" : "rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj",
+                 "OwnerNode" : "0000000000000002",
+                 "PublicKey" : "EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495",
+                 "SettleDelay" : 518400
+              }
+           }
+        },
+        {
+           "ModifiedNode" : {
+              "FinalFields" : {
+                 "Flags" : 0,
+                 "IndexNext" : "0000000000000002",
+                 "Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+                 "RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+              },
+              "LedgerEntryType" : "DirectoryNode",
+              "LedgerIndex" : "CA56B5BDCD4CB1907D40854BE9D3420FA8407B3FCCAFE6490661DA56A9432374",
+              "PreviousFields" : {}
+           }
+        },
+        {
+           "ModifiedNode" : {
+              "LedgerEntryType" : "AccountRoot",
+              "LedgerIndex" : "CD09C7894CBF60AF6621F25D0BF859289A4567B55B168C13FBC1E78118369925",
+              "PreviousTxnID" : "73C8FBB3A49328C930AD9BC6DBFDA4548AB4BFE69DABF172BB9D5FEC06933438",
+              "PreviousTxnLgrSeq" : 34908
+           }
+        },
+        {
+           "ModifiedNode" : {
+              "FinalFields" : {
+                 "Flags" : 0,
+                 "IndexNext" : "0000000000000001",
+                 "IndexPrevious" : "0000000000000002",
+                 "Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+                 "RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+              },
+              "LedgerEntryType" : "DirectoryNode",
+              "LedgerIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD",
+              "PreviousFields" : {
+                 "IndexPrevious" : "0000000000000001"
+              }
+           }
+        },
+        {
+           "CreatedNode" : {
+              "LedgerEntryType" : "DirectoryNode",
+              "LedgerIndex" : "E91DB07AAB5C959A5F75E702A9A9C244607244CCEE50B650566B92DA24C23CA6",
+              "NewFields" : {
+                 "IndexPrevious" : "0000000000000001",
+                 "Owner" : "r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC",
+                 "RootIndex" : "E710B0CC612679BB91961415D4BDF72BA97AF6785903FE6D31BEA6C70D704EFD"
+              }
+           }
+        }
+     ],
+     "TransactionIndex" : 0,
+     "TransactionResult" : "tesSUCCESS"
+  },
+  "status" : "success",
+  "validated" : true
+   }
+}</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Apr 4, 2019 6:57 PM">
+            <time itemprop="datePublished" datetime="2019-04-04 18:57:59 +0200">Apr 4, 2019</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In ripple-lib transaction.js  function attachTransactionDate(connection, tx),<br>
+when running the script for money transfer, the tx looks smaller:</p>
+<pre><code>  RIPPLE-LIB: TRANSACTION.js: tx { Account: 'r45NCTyFzLE72qSayEdFoU9PoZX4P71mMC',
+  Amount: '20000000',
+  Destination: 'rMqUT7uGs6Sz1m9vFr7o85XJ3WDAvgzWmj',
+  Fee: '12',
+  Flags: 2147483648,
+  LastLedgerSequence: 35016,
+  PublicKey:
+    'EDAC010B717FC260EB5C8D3B6FC331AD935643D14F573F64301F97C9CD7B4C4495',
+  Sequence: 65,
+  SettleDelay: 518400,
+  SigningPubKey:
+    '02945580F0BA6866B258BB670395E533527966A25358DDAA12C7A9659CBE5F2A5B',
+  TransactionType: 'PaymentChannelCreate',
+  TxnSignature:
+    '3044022023A5198CBB92AC2A650BD5E62CA7BE278B4A94049A009C3EC9DF62C9C81842E2022001CA244494948AA2D0A3035B133FE84E22EF95935C8F3F4BA5ECE7806AC286FE',
+  hash:
+    '195BAAA6416BCE2886C8DE730F4BB1B22EA86A6F9DF4FB65C9C245F09FCBF724' }
+ ndError(ledger_indexandLedgerSequencenotfoundintxxx)]
+(node:5106)[DEP0079 DeprecationWarning: Custom inspection function on Objects via .inspect() is deprecated
+</code></pre>
+<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+<p>UPDATE:</p>
+<p>Hi <a class="mention" href="/u/kincaid/index.html">@kincaid</a> <a class="mention" href="/u/rhuairahrighairidh/index.html">@rhuairahrighairidh</a>,</p>
+<p>The problem comes indeed from ilp-plugin-xrp-paychan/build/utils/channel.js: it submits and immediately checks.</p>
+<p>I added a delay to let the validators do their job.<br>
+It’s probably not an elegant solution but it made it work for now.</p>
+<p>Thanks again for the hint.</p>
+<pre><code>function msleep(n) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n);
+}
+exports.sendTransaction = async (txJSON, api, xrpSecret) =&gt; {
+      const { id, signedTransaction } = api.sign(txJSON, xrpSecret);
+      console.log('ILP_PLUGIN_XRP_PAYCHAN: send transaction: { id, signedTransaction }', { id, signedTransaction });
+      await api.submit(signedTransaction);
+      console.log('ILP_PLUGIN_XRP_PAYCHAN: CHANNEL.js: send transaction: CHECKING TX...');
+      msleep(10000);
+      const checkForTx = (attempts = 0) =&gt; api
+              .getTransaction(id) //ripple lib ledger transaction.js get transaction
+              .then(({ outcome }) =&gt; {
+              if (outcome.result !== 'tesSUCCESS') {
+                      throw new Error(`Error verifying tx: ${outcome.result}`);
+              }
+              log.debug(`Transaction ${id} was included in a validated ledger`);
+              return outcome;
+      })
+              .catch(async (err) =&gt; {
+              if (attempts &gt; 20) {
+                      log.debug(`Failed to verify transaction, despite several attempts: ${err.message}`);
+                      throw err;
+              }
+              else if (err.name === 'MissingLedgerHistoryError') {
+                      await account_1.delay(200);
+                      return checkForTx(attempts + 1);
+              }
+              else {
+                      throw err;
+              }
+      });
+      return checkForTx();
+};</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

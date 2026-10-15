@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interledger Rust Alpha Release + Xpring Testnet Nodes - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Interledger Rust Alpha Release + Xpring Testnet Nodes</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Interledger Rust Alpha Release + Xpring Testnet Nodes</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/rust" class="tag-badge">rust</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 2, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 2, 2019 9:26 PM">
+            <time itemprop="datePublished" datetime="2019-10-02 21:26:18 +0200">Oct 2, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Today we announced the alpha release of the Interledger.rs node and testnet nodes hosted by Xpring: <a href="https://coil.com/p/xpring/Interledger-Rust-Alpha-Release/kqcXwUOHs" rel="nofollow noopener">https://coil.com/p/xpring/Interledger-Rust-Alpha-Release/kqcXwUOHs</a></p>
+<p>If you’re interested in trying it out, you can find the instructions for running a node and connecting to the testnet <a href="https://github.com/interledger-rs/interledger-rs/blob/master/docs/testnet.md" rel="nofollow noopener">here</a>.</p>
+<p>You can download a docker image that contains the:</p>
+<ul>
+<li><code>ilp-node</code></li>
+<li>
+<code>ilp-cli</code> (for interacting with the node’s HTTP API)</li>
+<li>XRP and ETH settlement engines</li>
+<li>redis</li>
+<li>localtunnel</li>
+</ul>
+<p>And you can connect to the testnet with a single command.</p>
+<p>Feedback is very welcome!</p>
+<p>Also, get in touch if you’re interested in getting involved with the Interledger.rs project. We are happy to mentor new contributors through making their first submission – even if you haven’t worked in Rust before.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/ibanfi" class="user-link">Istvan Banfi</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 22, 2019 2:25 PM">
+            <time itemprop="datePublished" datetime="2019-10-22 14:25:49 +0200">Oct 22, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I start the bundle like:</p>
+<pre><code class="lang-auto">docker run -itd --name ibanfi01 -e NAME=ibanfi01 -e CURRENCY=XRP -e ADMIN_AUTH_TOKEN=admin interledgerrs/testnet-bundle
+</code></pre>
+<p>The environment is a Linux VM (CentOS 7, vagrant). The container started successfully but the sync between the local and the testnet account has failed. The correponding log entries:</p>
+<pre><code class="lang-auto">Configuring node to connect to testnet using XRP...
+Creating account: ibanfi01
+[DEBUG interledger_store_redis::store] Generated account id for ibanfi01: 108c150b-b730-449c-8082-54254cc453b8
+[DEBUG interledger_store_redis::store] Inserted account 108c150b-b730-449c-8082-54254cc453b8 (ILP address: local.host.ibanfi01)
+[INFO  warp::filters::log] 127.0.0.1:37994 "POST /accounts/ HTTP/1.1" 200 "-" "reqwest/0.9.22" 2.131432ms
+[DEBUG interledger_store_redis::store] Setting settlement engines to [("ETH", "http://localhost:3002/"), ("XRP", "http://localhost:3001/")]
+your url is: https://ibanfi01.localtunnel.me
+[2019-10-22T13:23:05Z DEBUG interledger_settlement_engines::engines::ethereum_ledger::eth_engine] [Addresses { own_address: 0x3cdb3d9e1b74692bb1e3bb5fc81938151ca64b02, token_address: None }] settlement engine service for listening to incoming settlements. Interval: 15s
+[2019-10-22T13:23:05Z INFO  interledger_settlement_engines::engines::ethereum_ledger::eth_engine] Ethereum Settlement Engine listening on: 127.0.0.1:3002
+[DEBUG interledger_service_util::exchange_rates_service] Updated 266 exchange rates from CoinCap
+  settlement-xrp Generated new XRP testnet account: address=rsjRe1HPNWB49eD3khBS7ECTvxnQ8C2rZQ secret=sh5kXw9mmkAuCzvTNtmyVHcdGSNtN +0ms
+  settlement-core Started settlement engine server +0ms
+[INFO  warp::filters::log] 127.0.0.1:37996 "PUT /settlement/engines HTTP/1.1" 200 "-" "reqwest/0.9.22" 9.062459799s
+Connecting to the Xpring Testnet node...
+[DEBUG interledger_store_redis::store] Generated account id for xpring_xrp: f44d1715-ef7e-444b-b029-3b6e525e0e37
+[DEBUG interledger_store_redis::store] Inserted account f44d1715-ef7e-444b-b029-3b6e525e0e37 (ILP address: local.host.xpring_xrp)
+[DEBUG interledger_btp::client] Connecting to wss://rs3.xpring.dev/ilp/btp
+[DEBUG interledger_btp::client] Connected to account f44d1715-ef7e-444b-b029-3b6e525e0e37's server
+[DEBUG interledger_api::routes::accounts] Getting ILP address from parent account: xpring_xrp (id: f44d1715-ef7e-444b-b029-3b6e525e0e37)
+[DEBUG interledger_btp::service] Unable to parse ILP packet from BTP packet (if this is the first time this appears, the packet was probably the auth response)
+[DEBUG interledger_api::routes::accounts] Got ILDCP response from parent: Ok(IldcpResponse { ilp_address: "Address("test.xpring-dev.rs3.user_aluuuhdl")", asset_code: "XRP", asset_scale: 9 })
+[DEBUG interledger_api::routes::accounts] ILP address is now: test.xpring-dev.rs3.user_aluuuhdl
+[DEBUG interledger_api::routes::accounts] Asking for routes from Account { id: AccountId(f44d1715-ef7e-444b-b029-3b6e525e0e37), username: Username("xpring_xrp"), ilp_address: Address("local.host.xpring_xrp"), asset_code: "XRP", asset_scale: 9, max_packet_amount: 18446744073709551615, min_balance: None, ilp_over_http_url: Some("https://rs3.xpring.dev/ilp"), ilp_over_http_incoming_token: None, ilp_over_http_outgoing_token: Some(SecretBytes(...)), ilp_over_btp_url: Some("btp+wss://rs3.xpring.dev/ilp/btp"), ilp_over_btp_incoming_token: None, ilp_over_btp_outgoing_token: Some(SecretBytes(...)), settle_threshold: Some(1000), settle_to: Some(0), routing_relation: Parent, round_trip_time: 500, packets_per_minute_limit: None, amount_per_minute_limit: None, settlement_engine_url: None }
+[DEBUG interledger_store_redis::store] Setting ILP address to: test.xpring-dev.rs3.user_aluuuhdl
+[DEBUG interledger_store_redis::store] Set default route to account id: f44d1715-ef7e-444b-b029-3b6e525e0e37
+[DEBUG interledger_ccp::server] Got route update request from account f44d1715-ef7e-444b-b029-3b6e525e0e37: RouteUpdateRequest { routing_table_id: "7280c86eee6dd0e8b03fa6f60dc39aa7", current_epoch_index: 547, from_epoch_index: 0, to_epoch_index: 547, hold_down_time: 30000, speaker: Address("test.xpring-dev.rs3"), new_routes: [Route { prefix: "test.xpring-dev.rs3", path: [], auth: "0000000000000000000000000000000000000000000000000000000000000000", props: [] }], withdrawn_routes: [] }
+[WARN  interledger_ccp::server] Got route for a different global prefix: Route { prefix: "test.xpring-dev.rs3", path: [], auth: "0000000000000000000000000000000000000000000000000000000000000000", props: [] }
+[INFO  warp::filters::log] 127.0.0.1:38108 "POST /accounts/ HTTP/1.1" 200 "-" "reqwest/0.9.22" 2.458040922s
+Setting up the nodes to use HTTP for bilateral communication...
+[INFO  warp::filters::log] 127.0.0.1:38118 "PUT /accounts/xpring_xrp/settings HTTP/1.1" 200 "-" "reqwest/0.9.22" 779.548µs
+ILP CLI error: Unexpected response from server: 401 Unauthorized:
+Error: Command failed: ilp-cli --node=https://rs3.xpring.dev accounts update-settings user_aluuuhdl             --auth=user_aluuuhdl:2v2q6lpcgunu2             --ilp-over-http-incoming-token=750d48ed62db62f3732d0df37be8350ad85e78c9             --ilp-over-http-outgoing-token=xpring_xrp:750d48ed62db62f3732d0df37be8350ad85e78c9             --ilp-over-http-url=https://ibanfi01.localtunnel.me/ilp             --settle-threshold=1000             --settle-to=0
+ILP CLI error: Unexpected response from server: 401 Unauthorized:
+
+    at checkExecSyncError (child_process.js:621:11)
+    at execSync (child_process.js:657:15)
+    at run (/opt/app/run-testnet-bundle.js:64:9) {
+  status: 1,
+  signal: null,
+</code></pre>
+<p>I tried to run these calls in Postman. I used the same user parameters as bearer token (<code>user_aluuuhdl:2v2q6lpcgunu2</code>) on the <a href="https://rs3.xpring.dev" rel="nofollow noopener">https://rs3.xpring.dev</a> node. Both the GET and the PUT were success, I got back the entire account record.</p>
+<p>The calls are:<br>
+GET rs3.xpring.dev/accounts/user_aluuuhdl<br>
+PUT rs3.xpring.dev/accounts/user_aluuuhdl/settings</p>
+<p>(With https:// of course, but I’m a new user, I cannot put more than 2 links into the post :-/ )</p>
+<pre><code class="lang-auto">{
+	"ilp-overhttp_incoming_token":"750d48ed62db62f3732d0df37be8350ad85e78c9",
+	"ilp_over_http_outgoing_token":"xpring_xrp:750d48ed62db62f3732d0df37be8350ad85e78c9",
+	"ilp_over_http_url":"https://ibanfi01.localtunnel.me/ilp",
+	"settle_threshold":1000,
+	"settle_to": 0	
+}
+</code></pre>
+<p><strong>Crosscheck</strong></p>
+<p>I went inside the container (<code>docker exec -it ibanfi01 /bin/sh</code>) and ran these commands:</p>
+<pre><code class="lang-auto">ilp-cli --node=https://rs3.xpring.dev accounts update-settings user_aluuuhdl --auth=user_aluuuhdl:2v2q6lpcgunu2
+// it is OK, I got back the entire record
+ilp-cli --node=https://rs3.xpring.dev accounts update-settings user_aluuuhdl --auth=user_aluuuhdl:2v2q6lpcgunu2 --settle-to=0
+// ILP CLI error: Unexpected response from server: 401 Unauthorized:
+</code></pre>
+<p><strong>Additional info</strong></p>
+<p>I don’t know whether or not it is interesting, but when I’ve screwed the Postman PUT JSON (it becames invalid), I got exactly the same error msg (401 Unauthorized) from the remote server.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/ibanfi" class="user-link">Istvan Banfi</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 22, 2019 3:45 PM">
+            <time itemprop="datePublished" datetime="2019-10-22 15:45:13 +0200">Oct 22, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, I’ve localised the problem: The ilp-cli converts the integer parameter to string. I put the ```I wrote the exact JSON string here.</p>
+<p>The first call is <code>--settle-to=0</code>, it must be integer (Failed):</p>
+<pre><code class="lang-auto">Running `/opt/projects/target/debug/ilp-cli '--node=https://rs3.xpring.dev' accounts update-settings user_aluuuhdl '--auth=user_aluuuhdl:2v2q6lpcgunu2' --settle-to=0`
+Request: {"settle_to": "0"}
+ILP CLI error: Unexpected response from server: 401 Unauthorized: 
+</code></pre>
+<p>The second call is <code>--ilp-over-http-incoming-token=750d48ed62db62f3732d0df37be8350ad85e78c9</code>, it must be string (success):</p>
+<pre><code class="lang-auto">Running `/opt/projects/target/debug/ilp-cli '--node=https://rs3.xpring.dev' accounts update-settings user_aluuuhdl '--auth=user_aluuuhdl:2v2q6lpcgunu2' --ilp-over-http-incoming-token=750d48ed62db62f3732d0df37be8350ad85e78c9`
+Request:  {"ilp_over_http_incoming_token": "750d48ed62db62f3732d0df37be8350ad85e78c9"}
+{"id":"5483e945-4a4d-4152-8ea6-587e1f2ea28b","username":"user_aluuuhdl","ilp_address":"test.xpring-dev.rs3.user_aluuuhdl","asset_code":"XRP","asset_scale":9,"max_packet_amount":1000,"min_balance":null,"ilp_over_http_url":"https://ibanfi01.localtunnel.me/ilp","ilp_over_http_incoming_token":"SECRET","ilp_over_http_outgoing_token":"SECRET","ilp_over_btp_url":null,"ilp_over_btp_incoming_token":"SECRET","ilp_over_btp_outgoing_token":"SECRET","settle_threshold":1000,"settle_to":0,"routing_relation":"Child","round_trip_time":500,"packets_per_minute_limit":null,"amount_per_minute_limit":null,"settlement_engine_url":"http://settlement-xrp1-internal.xpring.dev:3000/"}
+</code></pre>
+<p>(Sorry, I’m a beginner in Rust, I don’t know how to fix it yet)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/bstrie" class="user-link">bstrie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 22, 2019 5:42 PM">
+            <time itemprop="datePublished" datetime="2019-10-22 17:42:31 +0200">Oct 22, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/ibanfi/index.html">@ibanfi</a>, thanks for reporting this! Don’t worry about needing to fix it yourself, we’ve determined that the fix needs to take place on our end. Specifically, you’re using a recent version of <code>ilp-cli</code> whereas our testnet is using a slightly older version of <code>ilp-node</code>. Whereas recent versions of <code>ilp-node</code> can receive either string or integer parameters for <code>settle_to</code>, old versions could only handle integer parameters. When <code>ilp-node</code> was update to also accept string parameters, support for sending integer parameters was removed from <code>ilp-cli</code>, without realizing that the testnet was still on the old version. In the future we’ll anticipate needing to support older versions of <code>ilp-node</code> in the wild and will handle changes like this more gracefully (for example, we could have added string support to <code>ilp-node</code> without removing integer support from <code>ilp-cli</code>, which would have prevented this issue).</p>
+<p>In the meantime we’ll work on getting the testnet updated to a recent version that doesn’t exhibit this behavior. I don’t have an ETA at the moment for when this will be done, but if the infrastructure team gives me an estimate I’ll try to pass it on to you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/bstrie" class="user-link">bstrie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Oct 24, 2019 4:40 PM">
+            <time itemprop="datePublished" datetime="2019-10-24 16:40:41 +0200">Oct 24, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Update: I hear tell that we’re preparing for a testnet update next week to coincide with a major hackathon we’re holding, so this should be fixed within a week.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/bariabbassi" class="user-link">Bari Abbassi</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jan 17, 2020 12:31 PM">
+            <time itemprop="datePublished" datetime="2020-01-17 12:31:02 +0200">Jan 17, 2020</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/bstrie/index.html">@bstrie</a>, Is the testnet still running?</p>
+<p>I’m trying to run this command on Ubuntu.</p>
+<p><code>docker run -it -e NAME=bari -e CURRENCY=XRP interledgerrs/testnet-bundle</code></p>
+<p>I’m getting this error message.</p>
+<pre><code>Connecting to the Xpring Testnet node...
+ilp-cli error: Error receving HTTP response from testnet: expected value at line 1 column 1
+Error: Command failed: ilp-cli testnet setup XRP             --auth=admin-token-a3c2e1f9b84d9bc6d553c543d9548a2d29867383             --return-testnet-credential
+ilp-cli error: Error receving HTTP response from testnet: expected value at line 1 column 1
+
+    at checkExecSyncError (child_process.js:621:11)
+    at execSync (child_process.js:657:15)
+    at run (/opt/app/run-testnet-bundle.js:46:29) {
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'ilp-cli error: Error receving HTTP response from testnet: expected value at line 1 column 1\n'
+  ],
+  pid: 98,
+  stdout: '',
+  stderr: 'ilp-cli error: Error receving HTTP response from testnet: expected value at line 1 column 1\n'
+}
+2020-01-17T12:26:13.077580198+00:00 DEBUG interledger_ccp::server: Setting new route for prefix: local.host.bari -&gt; Account: bari (id: 5df764c4-c752-42b3-b274-75339e416cbd)</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

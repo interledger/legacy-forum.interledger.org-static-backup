@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>High amount of timeouts when forwarding payments - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">High amount of timeouts when forwarding payments</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">High amount of timeouts when forwarding payments</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 3, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/romcok" class="user-link">Roman Novák</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 3, 2020 8:33 PM">
+            <time itemprop="datePublished" datetime="2020-02-03 20:33:20 +0200">Feb 3, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi,<br>
+I would like to ask for advice. We have a connector connected to an ILP network that forwards packets of money from one payment pointer to another. For this, we use <a href="https://github.com/sharafian/web-monetization-access/" rel="nofollow noopener">web-monetization-access</a> library from Github. We have encountered a problem wherein many cases said packets are not forwarded. It seems that the incoming packets are fine. When we get them, we’ll forward them to the appropriate payment pointer.<br>
+The connection stream is expected to emit an outgoing money event after the packets are sent. Everything works fine when the connector starts, but after a while, payments will stop being sent and outgoing money is no longer emitted.<br>
+Subsequently, one of these two cases occur:</p>
+<ol>
+<li>
+<p>The first, less common, case is that the event is recalled after a few minutes with an accumulated amount. It appears to occur during initial outages.</p>
+</li>
+<li>
+<p>The second, the more common, case is that we get a timeout error:<br>
+<code>Remote connection error. Code: InternalError, message: 4231604317 timed out</code></p>
+</li>
+</ol>
+<p>This problem arises on a particular connection, and if the payment is sent to another payment pointer, the dispatch works, at least until the same thing happens. Sometimes it recovers after a while, but rarely. I also have debug logs from ILP, but I’m not very familiar with these.</p>
+<p>We use version 22.5.0 and our connector config is:</p>
+<pre><code>'use strict'
+
+const path = require('path')
+
+const parentConnectors =
+{
+  "ilsp": {
+    "relation": "parent",
+    "plugin": "ilp-plugin-http",
+    "sendRoutes": false,
+    "receiveRoutes": false,
+    "assetCode": "XRP",
+    "assetScale": 9,
+    "maxPacketAmount": "1000000000",
+    "rateLimit": {
+      "refillCount": 1000000000
+    },
+    "options": {
+      "incoming": {
+        "port": &lt;port&gt;,
+        "secretToken": "&lt;secretToken&gt;"
+      },
+      "outgoing": {
+        "url": "&lt;outgoingUrl&gt;",
+        "secretToken": "&lt;secretToken&gt;",
+        "http2": true,
+        "http2MaxRequestsPerSession": 900,
+        "name": "&lt;name&gt;"
+      }
+    }
+  },
+  "child": {
+    "relation": "child",
+    "plugin": "ilp-plugin-mini-accounts",
+    "assetCode": "XRP",
+    "assetScale": 9,
+    "rateLimit": {
+      "refillCount": 1000000000
+    },
+    "options": {
+      "port": &lt;port&gt;
+    }
+  }
+}
+
+const connectorApp = {
+  name: 'connector',
+  env: {
+    CONNECTOR_ENV: "production",
+    CONNECTOR_BACKEND: "ecb-plus-xrp",
+    CONNECTOR_SPREAD: "0",
+    CONNECTOR_STORE_PATH: "&lt;storePath&gt;",
+    CONNECTOR_ADMIN_API: "true",
+    CONNECTOR_ADMIN_API_PORT: "&lt;port&gt;",
+    DEBUG: "ilp*",
+    CONNECTOR_ACCOUNTS: JSON.stringify(parentConnectors)
+  },
+  interpreter: '/usr/local/n/versions/node/10.16.2/bin/node',
+  script: path.resolve(process.execPath, '../../lib/node_modules/ilp-connector/src/index.js')
+}
+
+module.exports = { apps: [ connectorApp ] }
+</code></pre>
+<p>Is there any way I can find out why payments aren’t sent?<br>
+Or can we somehow find out if this is happening on our side and we have to fix something?</p>
+<p>I would really appreciate your help, thank you.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 8, 2020 6:59 PM">
+            <time itemprop="datePublished" datetime="2020-02-08 18:59:29 +0200">Feb 8, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/romcok/index.html">@romcok</a> - sorry to hear you’re having problems here. I’m not familiar enough with the inner workings of the Javascript connector to give you any immediately useful here (I would be more useful with <a href="https://connector.interledger4j.dev/" rel="nofollow noopener">Java Connector</a> questions though since I help maintain that implementation), but if this is still a problem, you might find more response on the <a href="https://communityinviter.com/apps/interledger/interledger-working-groups-slack" rel="nofollow noopener">ILP slack</a>, or even consider filing an issue in the <a href="https://github.com/interledgerjs/ilp-connector" rel="nofollow noopener">JS Connector Github project</a>.</p>
+<p>If I’m reading your report correctly, it looks like you have only a single outgoing connection (id=<code>ilsp</code>). If true, sending to a different payment pointer will still send traffic out through your Connector’s <code>ilsp</code> link, which is why you might see the same problem across two different payment pointer destinations – the actual HTTP path is probably the same, and I suspect this is where problems are occuring.</p>
+<p>Without knowing who your upstream ILSP is, I would look there first – for example, if you have access to that system’s logs, you might be able to see if that HTTP server is having trouble servicing all the traffic you’re sending it (?)</p>
+<p>Let me know what you find out there, or if you have more info – I can try my best to help figure out what’s going wrong.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Privacy - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Payment Privacy</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Payment Privacy</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 27, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 27, 2019 4:32 PM">
+            <time itemprop="datePublished" datetime="2019-02-27 16:32:19 +0200">Feb 27, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The core ILP was designed primarily for efficiency and applicability across different use cases. Features focused on privacy were intentionally left for the layers above and below ILP. This post outlines what is and isn’t visible from ILP packets today and three options for hiding more of the details of a transaction using higher- and lower-level technologies.</p>
+<h2>What doesn’t an ILP packet show?</h2>
+<ul>
+<li>Interledger is not a blockchain, so transactions are not globally visible. ILP packets are only visible to the participants in the specific path the packet takes.</li>
+<li>Source address (ILP address of the sender). Unlike internet routers, ILP connectors remember which peer each packet came from so they can send it back along the same path without knowing the address of the sender</li>
+<li>Connectors do not know the full path a payment will take or has taken</li>
+<li>End-to-end data is encrypted by most, if not all, transport protocols</li>
+<li>If many applications use the same transport protocol, it would not be obvious which higher-level application packets correspond to</li>
+<li>Identity information such as names</li>
+</ul>
+<h2>What is visible from ILP packets?</h2>
+<ul>
+<li>Each connector knows the party that directly sent it the packet and the destination ILP address. This means that the first connector knows the sender and receiver, but other connectors do not know who the original sender is</li>
+<li>Destination ILP address, which may reveal information about the receiver including what transport protocol or implementation is being used depending on what they put in the address (ILP addresses can contain arbitrary strings of characters)</li>
+<li>Packet amount, which <em>could</em> reveal some information about the hops a packet has gone through if sender implementations send predictable amounts (like starting with 100 units) and exchange rates between different assets are known</li>
+<li>Expiry, which reveals the number of hops the packet has traversed so far if senders always use a 30 second timeout and each connector reduces it by a predictable amount like 1 second</li>
+<li>Size of data being sent, which may be reveal some of what the packet is for even if the data is encrypted by the transport protocol</li>
+<li>Frequency of packets sent to the same ILP address, which may reveal which software implementation is sending the packets</li>
+<li>Error messages the receiver responds with when pinged</li>
+<li>Timing information of traffic sent over the Internet could enable an entity with network-level observation capabilities (e.g. NSA) to see who is paying who, even without viewing any of the ILP-specific data (which is sent in encrypted internet packets)</li>
+</ul>
+<h2>Privacy-Enhancing Technologies</h2>
+<h3>Onion routing</h3>
+<p>While this was intentionally not built into the core protocol, it would be possible to build a TOR-like system on top of ILP. Onion routing protocols obscure details such as the end recipient’s address by bouncing traffic around among circuits of participating nodes.</p>
+<h3>VPN</h3>
+<p>Arguably, an Interledger “VPN” (virtual private network) would provide significantly more privacy than a traditional internet one.</p>
+<p>On the internet, VPNs are single hops that a user will send all of their traffic to in order to secure or hide the traffic from untrusted intermediaries like wifi hotspots or snooping Internet Service Providers (ISPs). However, traditional VPNs can correlate all incoming traffic with the specific user that sent it, both because IP packets contain the source address and because traffic must be linked to the user’s payment information.</p>
+<p>An Interledger VPN <em>might</em> provide a comparable level of privacy as a multi-hop onion routed network on the internet. First, ILP packets do not contain the source address, so the ILP VPN provider would know which <em>connector</em> they got the packet from but not the address of the actual sender. Second, ILP packets contain value, so there is no need for the VPN provider to link all traffic to a subscription account. Arguably, multi-hop onion routing networks are mainly needed to break the link between the source and destination addresses, but a single hop may provide as good privacy if there is already no link between the source and destination address. (I would love for someone to dig into this hypothesis and see if there’s anything to it)</p>
+<h3>Private Layer 2</h3>
+<p>A private layer 2 payment protocol coupled with a private communications layer like TOR might also provide sufficient privacy for ILP payments. The private layer 2 protocol could be a multi-hop network like Bitcoin’s Lightning Network or it might be even simpler with a single-hop solution like what <a href="https://github.com/boltlabs-inc" rel="nofollow noopener">BoltLabs</a> is developing for Zcash.</p>
+<p>This approach should allow the sender to send ILP packets and settle balances with the first connector, without that connector knowing who the packets are from. I think it would also be possible to receive ILP packets and settlements through such an arrangement as well.</p>
+<h2>Getting Involved</h2>
+<p>It would be great to have researchers look into some of these topics to figure out benefits and trade-offs of each approach. If you’re interested, feel free to post ideas here or message me directly.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="6 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          6
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/eric" class="user-link">Eric Hou</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 1, 2019 12:34 AM">
+            <time itemprop="datePublished" datetime="2019-03-01 00:34:36 +0200">Mar 1, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Interesting and comprehensive overview!</p>
+<p>Re: the VPN idea, I could see a dual-hop VPN implemented on layer 4 providing sufficient levels of security. The actual protocol could simply be implemented in a similar way to onion routing technology. The sender [S] chooses a first-hop connector [C1] and an intermediate receiver that is also acting as a connector [C2]. [S] can include a piece of data in their packet, encrypted [C2]'s public key, that specifies the final receiver [R], which C2 will then forward funds to.</p>
+<p>This is what important information each intermediate party sees (not comprehensive):</p>
+<p><strong>C1</strong></p>
+<ul>
+<li>Sender address [S]</li>
+<li>Second-hop connector address [C2]</li>
+<li>Amount</li>
+<li>Encrypted data meant for [C2] (this is not known)</li>
+</ul>
+<p><strong>C2</strong></p>
+<ul>
+<li>First-hop connector address [C1]</li>
+<li>Receiver [R]</li>
+<li>Amount</li>
+</ul>
+<p>I believe that a single-hop is not quite good enough, but a dual-hop onion routing structure can be good enough, <em>especially</em> if [C1] and [C2] in the above example are known as major VPN routers. This brings up an interesting idea – using a VPN structure in conjunction with a reputation system would allow for “payment highways” to organically form between parties by having high-reputation and high-throughput connectors being the de-facto parties to go to when transactions are desired.</p>
+<p>Additionally, the above high-level VPN construction allow [S] to cryptographically prove a failed transaction to the reputation system by revealing unencrypted pieces of the original message sent to [C1]. There are some more complex cryptoeconomic details to look into with respect to the VPN, but this would definitely be interesting to look into.</p>
+<p>Let me know if there’s anything I’m overlooking or if I have any misconceptions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 1, 2019 4:21 AM">
+            <time itemprop="datePublished" datetime="2019-03-01 04:21:17 +0200">Mar 1, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="eric" data-post="2" data-topic="271">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/e/898d66/48.png" class="avatar"> eric:</div>
+<blockquote>
+<p>a single-hop is not quite good enough</p>
+</blockquote>
+</aside>
+<p>Sorry, by single hop I actually meant a single hop that’s participating as a VPN node. You’re right that you would need that node not to be the same as the connector you’re using directly.</p>
+<aside class="quote no-group" data-username="eric" data-post="2" data-topic="271">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/e/898d66/48.png" class="avatar"> eric:</div>
+<blockquote>
+<p>The actual protocol could simply be implemented in a similar way to onion routing technology</p>
+</blockquote>
+</aside>
+<p>Agreed! I think if we defined a VPN/minimal onion protocol that just describes how to unwrap an encrypted payload and forward it on, nodes that support it could be used in either way (and wouldn’t even know the difference).</p>
+<p>I’m imagining the VPN protocol would be something like you send ILP packets addressed to the destination [R] as the data sent over a STREAM connection to the VPN node [C2]. One thing that would be very cool about using STREAM for this is the symmetry between the underlying ILP link and the STREAM connection. Both allow two things to be transferred: money and data. The VPN or tunneling protocol would basically be a STREAM connection in another STREAM connection. ILP packets addressed to R are sent as encrypted data over STREAM and you would “settle” with the VPN node [C2] by sending them money over that STREAM connection (via C1). Does that make sense?</p>
+<p>To make a full onion routing network you would need to add a peer discovery protocol and a way to go from the node’s public key to a shared secret for STREAM (because you wouldn’t want to use SPSP with them, as it would communicate your IP address to them).</p>
+<aside class="quote no-group" data-username="eric" data-post="2" data-topic="271">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/e/898d66/48.png" class="avatar"> eric:</div>
+<blockquote>
+<p>using a VPN structure in conjunction with a reputation system would allow for “payment highways” to organically form between parties by having high-reputation and high-throughput connectors being the de-facto parties to go to when transactions are desired.</p>
+</blockquote>
+</aside>
+<p>I’m not sure I understand what you mean by this</p>
+<aside class="quote no-group" data-username="eric" data-post="2" data-topic="271">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/e/898d66/48.png" class="avatar"> eric:</div>
+<blockquote>
+<p>the above high-level VPN construction allow [S] to cryptographically prove a failed transaction to the reputation system by revealing unencrypted pieces of the original message sent to [C1]</p>
+</blockquote>
+</aside>
+<p>Possibly. My instinct would be to use the interledger-y packetization method of reducing trust or dealing with failures, rather than relying on publishing proofs of bad behavior. But it could be worth exploring further.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

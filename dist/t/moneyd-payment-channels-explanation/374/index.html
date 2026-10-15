@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moneyd - payment channels explanation - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Moneyd - payment channels explanation</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Moneyd - payment channels explanation</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/payment-channels" class="tag-badge">payment-channels</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 12, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/joe_ke" class="user-link">joe_ke</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 12, 2019 2:21 PM">
+            <time itemprop="datePublished" datetime="2019-03-12 14:21:50 +0200">Mar 12, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Dear all,</p>
+<p>I’m researching ILP together with my colleagues and we are trying to do some tests to better understand ILP. We setup several ILP connectors using Moneyd, locally and in the cloud - for our experimentation needs. There are several things that are unclear to us and we would like to clarify them to continue our work:</p>
+<ol>
+<li>
+<p>When we run our moneyd instance two payment channels are created. One payment channel talking from our test account, parent, to BTP layer (in DEBUG called channel) and second channel between parent and local on ILP layer (in DEBUG called clientChannel). Is this correct?</p>
+</li>
+<li>
+<p>When running info command we can only see the channel initiate between BTP and our test account. Is this correct? Why after stopping the channel I have to configure new configuration file and my account gets blocked? Is there a way to see the clientChannel or this will be one of the future features?</p>
+</li>
+<li>
+<p>When running info command could you explain what following fields mean: destination, amount (drops) and balance (drops)?</p>
+</li>
+<li>
+<p>When we run the moneyd with a new account for the very first time our payment channel looks something like:<br>
+index  channel id   destination                                                amount (drops)   balance (drops)  expiry<br>
+0      CE3963C6…  rfES1negveYfX9TpV8tapBvye8a52pXBHG  10,000,000     0</p>
+</li>
+</ol>
+<p>After some time the balance (drops) will become 10,000.<br>
+Where does this come from (is this a claim)? I understand when we start moneyd the outgoing channel is created with an amount of 10. Does this 10 somehow translate to 10,000 and if that is the case - what’s the logic behind? And after some more time balance (drops) will jump to 20,000.</p>
+<ol start="5">
+<li>When transferring between two connectors using SPSP server the following happens - we don’t quite understand. Running moneyd-gui.<br>
+a) before sending the payment<br>
+Connector1 has balance parent 10000000; local 0<br>
+Connector2 has balance parent 10000000; local 0<br>
+b) I start SPSP server Connector1 and I acquire payment pointer<br>
+c) Initiate payment from Connector 2 to my payment pointer of the amount 1000000<br>
+d) Connector1 has balance parent 10000000 (slightly lower as I assume somekind of fee is applied?); local -1000000<br>
+Connector2 has balance parent 9000000; local 1000000</li>
+</ol>
+<p>Why does one connector go to minus? And is there somekind of fee? Also running info or topup changes balance (drops) in the manner we don’t understand? Could someone clarify?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 12, 2019 6:47 PM">
+            <time itemprop="datePublished" datetime="2019-03-12 18:47:41 +0200">Mar 12, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <ol>
+<li>
+<p>Yeah, the <code>channel</code> is from you to the parent connector. The <code>clientChannel</code> is created by the parent connector so they can send money to you.</p>
+</li>
+<li>
+<p>Rippled lets you query for channels an account has opened (<code>account_channels</code>), but doesn’t have a simple command to query for channels that are opened <em>to</em> an account. After you’ve stopped your channel the parent connector can no longer receive settlements from you, so they will no longer forward packets for you. In the future it’d be nice to be able to delete and then recreate a channel without reconfiguring, but it makes the number of possible states much harder to manage.</p>
+</li>
+<li>
+<p><code>destination</code> is the account that the payment channel is opened to. When you sign a claim, that’s who the money is for. <code>amount (drops)</code> is the size of the channel. This is the largest claim you can sign before you need to add more funds. <code>(drops)</code> means it’s denominated in XRP drops (1 drop is 1 millionth of an XRP). <code>balance (drops)</code> is the value of the last claim that was submitted to the ledger. You can claim from a payment channel many times without closing, so this lets you track what was submitted last. If the balance is 1,000,000 drops and you sign a claim for 1,200,000 drops, then when it gets submitted 200,000 drops will be paid to <code>destination</code>. This article (<a href="https://developers.ripple.com/payment-channels.html" rel="nofollow noopener">https://developers.ripple.com/payment-channels.html</a>) has more details on how Payment Channels work.</p>
+</li>
+<li>
+<p>Moneyd uses 10,000 drops ~0.3 cents) to initially fund a small amount of bandwidth against its parent. So you’ll see that amount sent before you send any traffic. If you use the 10,000 drops or restart Moneyd it will fund 10,000 more, and so on. This amount is not correlated to the 10 XRP you put in your Payment Channel.</p>
+</li>
+<li>
+<p>Depending on the parent connector you’re peered with, there may be a fee (likely &lt;1%). When a connector sends packets to one of its peers, its balance to that peer goes down because it owes that peer money. When the balance to <code>local</code> goes negative, it basically means it sent money to something running on your machine (connected to that moneyd). On the sending connector it looks like your balance to the parent went down (because you sent money through the parent). On the connector that received the money the balance with the parent appears not to have changed, but that’s just because the parent sent a packet (raising your balance with the parent) but then immediately settled it by giving you a payment channel claim (bringing the balance back down to 10000000). The packet was forwarded by the receiving connector to an application connected to moneyd, bringing the <code>local</code> balance down to <code>-1000000</code>. Moneyd never settles the <code>local</code> peer because it’s just going to applications on your own machine.</p>
+</li>
+</ol>
+<p>I hope this makes things clearer, let me know if there’s any part I should elaborate on</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/joe_ke" class="user-link">joe_ke</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 13, 2019 5:10 PM">
+            <time itemprop="datePublished" datetime="2019-03-13 17:10:01 +0200">Mar 13, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you very much for the answers. They were very helpful. May we ask a few more questions?</p>
+<ol>
+<li>
+<p>Why are claims being submitted to the ledger while the payment channel is still open? We noticed them in the logs. On the side of the receiver the on-ledger balance goes up, but no changes on the receiver channel. And who submits the claims (ultimate receiver of funds or connector)?</p>
+</li>
+<li>
+<p>Can we set a different number of XRP for channel capacity or at the moment is only 10? It would be useful for our tests.</p>
+</li>
+<li>
+<p>How do we initiate the trustline instead of a payment channel? Is it possible? We see great merit for our work in testing this.</p>
+</li>
+</ol>
+<p>And off the topic, when we run our SPSP servers to create payment pointers they crash almost instantly. When we started the experimentation this was not the case is something going on with SPSP service?</p>
+<p>Thank you again. You are really helpful.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 13, 2019 5:33 PM">
+            <time itemprop="datePublished" datetime="2019-03-13 17:33:54 +0200">Mar 13, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <ol>
+<li>
+<p>The claims are submitted so that you have access to funds as soon as possible. XRP ledger lets you claim out of a channel as many times as you want so it’s very cheap, even if you’re doing it every 10 seconds. The connector (i.e. your peer) is always the one who gets the claims. This is an important point: all settlement is always to your direct peer. settlement <em>never</em> occurs to a party who isn’t your direct peer. The Interledger layer just makes sure if I (the sender) get a fulfill and owe my peer more money, the receiver’s peer owes them more money too. The way that the receiver’s peer settles them that money isn’t ever my concern.</p>
+</li>
+<li>
+<p>With Moneyd, your channel will automatically expand as you send more outgoing money, so there’s no need to have a larger channel. A smaller channel than 10 is not allowed to prevent a DoS attack (if your parent locks up more money than you, you could lock up all their liquidity easily).</p>
+</li>
+<li>
+<p>If you’re talking about using a trustline on the XRP ledger to settle, then that currently hasn’t been implemented (of course if you wanted to implement it I would be happy to help; it would also be a great project for the upcoming ILP Summit if you can attend that). If you’re talking about a trustline in a more abstract sense,  where two peers just trust each other, you could peer your connectors over <code>ilp-plugin-btp</code>. (this README <a href="https://github.com/interledgerjs/ilp-plugin-btp#use-as-a-data-channel-for-ilp" rel="nofollow noopener">https://github.com/interledgerjs/ilp-plugin-btp#use-as-a-data-channel-for-ilp</a> describes the <code>options</code> to pass in to connect a btp client to a btp server).</p>
+</li>
+</ol>
+<p>Are your SPSP servers using localtunnel? Localtunnel is very spotty at times but it can be useful. If you run with <code>--localtunnel false</code> it should turn off localtunnel and then you can refer to your SPSP servers via their <code>http://localhost:port</code> urls.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

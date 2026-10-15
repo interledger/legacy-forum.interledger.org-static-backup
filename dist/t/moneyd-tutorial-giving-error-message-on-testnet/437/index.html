@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moneyd tutorial giving error message on testnet - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Moneyd tutorial giving error message on testnet</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Moneyd tutorial giving error message on testnet</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 25, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/christophersanborn" class="user-link">Christopher Sanborn</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 25, 2019 11:11 PM">
+            <time itemprop="datePublished" datetime="2019-03-25 23:11:11 +0200">Mar 25, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi — I’m following the Getting Started tutorial “<a href="https://medium.com/interledger-blog/using-moneyd-to-join-the-ilp-testnet-ba64bd42bb14" rel="noopener nofollow ugc">Using Moneyd to Join the ILP Testnet</a>” but I am getting the following error:</p>
+<pre><code> connector:app error Error: {"code":"F00","name":"NotAcceptedError","triggeredAt":"2019-03-25T16:37:40.875Z","data":"Cannot read property 'Account' of undefined","protocolData":[]}
+</code></pre>
+<p>In browsing forum posts, I find the following comment <a href="https://forum.interledger.org/t/improving-the-experience-for-new-developers/60">here</a>:</p>
+<blockquote>
+<p>“One reason that the current Medium tutorials aren’t working is that the testnet connector amundsen isn’t being maintained.”</p>
+</blockquote>
+<p>But it is not clear to me what the solution to this is.  Is it currently possible to connect to the testnet?  What steps do I need to follow to do so?</p>
+<p>Thanks!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 25, 2019 11:33 PM">
+            <time itemprop="datePublished" datetime="2019-03-25 23:33:54 +0200">Mar 25, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Christopher,</p>
+<p>Can you open your ~/.moneyd.test.json file and let me know what host it says you’re connected to on line 22 for the key “server”?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/christophersanborn" class="user-link">Christopher Sanborn</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 26, 2019 12:28 AM">
+            <time itemprop="datePublished" datetime="2019-03-26 00:28:24 +0200">Mar 26, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve got the following in my .moneyd.test.json file:</p>
+<pre><code class="lang-auto">{
+  "version": 1,
+  "uplinks": {
+    "xrp": {
+      "relation": "parent",
+      "plugin": "/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js",
+      "assetCode": "XRP",
+      "assetScale": 9,
+      "balance": {
+        "minimum": "-Infinity",
+        "maximum": "20000000",
+        "settleThreshold": "5000000",
+        "settleTo": "10000000"
+      },
+      "sendRoutes": false,
+      "receiveRoutes": false,
+      "options": {
+        "currencyScale": 9,
+        "server": "btp+wss://ETP4vvLENdNNKdaSJyu6haIc6ziiPMtX3IVFUW3Jjc4:2eb7b97cc8f52148aedcfbe0c21e9d816caead905c9ef9c56e4ac865bc576f43@strata-ilsp.com/testnet/xrp",
+        "secret": "redacted",
+        "address": "rMNCEssSjFZkgaAp95AfKnXgMiVpncZLfA",
+        "xrpServer": "wss://s.altnet.rippletest.net:51233"
+      }
+    }
+  }
+}
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/christophersanborn" class="user-link">Christopher Sanborn</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 26, 2019 2:33 PM">
+            <time itemprop="datePublished" datetime="2019-03-26 14:33:10 +0200">Mar 26, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is there a better server to connect to?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/KevinKing64" class="user-link">KevinKing64</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 26, 2019 2:53 PM">
+            <time itemprop="datePublished" datetime="2019-03-26 14:53:50 +0200">Mar 26, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As far as I am aware that is the only listed testnet connector on the list. Sorry I can’t copy and paste the full link, I’m out mobile currently.</p>
+<p>Got it.  <a href="https://github.com/interledgerjs/moneyd-uplink-xrp/blob/master/connector_list.json" rel="nofollow noopener">https://github.com/interledgerjs/moneyd-uplink-xrp/blob/master/connector_list.json</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/christophersanborn" class="user-link">Christopher Sanborn</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 26, 2019 4:50 PM">
+            <time itemprop="datePublished" datetime="2019-03-26 16:50:22 +0200">Mar 26, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hmm.  Yes from that it does appear that I’m connecting to an up to date server.</p>
+<p>What about the xrpServer?  Could that be the source of the problem?</p>
+<p>From the console output, it’s not clear to me which connection is generating the exception:</p>
+<pre><code class="lang-auto">starting moneyd
+2019-03-25T16:37:23.937Z connector:route-broadcaster info generated random routing secret.
+2019-03-25T16:37:23.944Z connector:accounts info add account. accountId=parent
+2019-03-25T16:37:23.947Z connector:accounts info add account. accountId=local
+2019-03-25T16:37:23.995Z connector:admin-api info listen called
+2019-03-25T16:37:23.998Z connector:balance-middleware info initializing balance for account. accountId=parent minimumBalance=-Infinity maximumBalance=20000000
+2019-03-25T16:37:23.999Z connector:balance-middleware info initializing balance for account. accountId=local minimumBalance=-Infinity maximumBalance=Infinity
+2019-03-25T16:37:26.718Z connector:/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent] info creating outgoing channel. from=rMNCEssSjFZkgaAp95AfKnXgMiVpncZLfA to=rJEi339p24K7SozLDyfsvrn14J1qLg4Z6A amount=10
+2019-03-25T16:37:31.635Z connector:/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent] info transaction complete
+2019-03-25T16:37:40.605Z connector:app error Error: {"code":"F00","name":"NotAcceptedError","triggeredAt":"2019-03-25T16:37:40.875Z","data":"Cannot read property 'Account' of undefined","protocolData":[]}
+    at Plugin.callback (/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/src/index.ts:666:20)
+    at Plugin.listener (/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/eventemitter2/lib/eventemitter2.js:290:17)
+    at Plugin.EventEmitter.emit (/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/eventemitter2/lib/eventemitter2.js:357:19)
+    at Plugin._handleIncomingBtpPacket (/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/src/index.ts:711:14)
+    at Plugin._handleIncomingWsMessage (/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/src/index.ts:528:18)
+    at WebSocketReconnector.EventEmitter.emit (/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/eventemitter2/lib/eventemitter2.js:354:19)
+    at WebSocket._instance.on (/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/src/ws-reconnect.ts:120:70)
+    at emitOne (events.js:116:13)
+    at WebSocket.emit (events.js:211:7)
+    at Receiver.receiverOnMessage (/home/vagrant/.nvm/versions/node/v8.15.1/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-btp/node_modules/ws/lib/websocket.js:792:20)
+</code></pre>
+<p>Is that coming from the ILSP server or the XRP server?</p>
+<p>~Chris</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 26, 2019 10:59 PM">
+            <time itemprop="datePublished" datetime="2019-03-26 22:59:07 +0200">Mar 26, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Chris, yes it appears that there is an open bug with the implementation of the XRP paychan plugin. We’re looking into what may be causing this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/joe_ke" class="user-link">joe_ke</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 28, 2019 8:19 AM">
+            <time itemprop="datePublished" datetime="2019-03-28 08:19:59 +0200">Mar 28, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I got this error sometime in February. It got resolved after 2 weeks - I didn’t do anything. However the old connectors were running like a charm (and they run now, as well) I’m just not able to create new instances on new machines. I would suggest work on your running configurations (if you have any) and wait for this to be resolved.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">D</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/DanCarroll" class="user-link">Daniel Carroll</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 28, 2019 4:52 PM">
+            <time itemprop="datePublished" datetime="2019-03-28 16:52:16 +0200">Mar 28, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m getting stuck with the same error. My config files look identical to the one shown by OP. (Aside from Keys and Specific Directory)</p>
+<p>Is there something we need to do that is different from the Medium article?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Kate_Sills" class="user-link">Kate Sills</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Apr 2, 2019 6:10 PM">
+            <time itemprop="datePublished" datetime="2019-04-02 18:10:27 +0200">Apr 2, 2019</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m also getting the same issue.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/christophersanborn" class="user-link">Christopher Sanborn</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Apr 2, 2019 6:29 PM">
+            <time itemprop="datePublished" datetime="2019-04-02 18:29:36 +0200">Apr 2, 2019</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/dancarroll/index.html">@DanCarroll</a> and <a class="mention" href="/u/kate_sills/index.html">@Kate_Sills</a> — Yesterday I was able to get past the error by changing the <code>server</code> key in .moneyd.test.json from <code>strata-ilsp.com</code>  to  <code>testnet.ilpnetwork.dev</code>.</p>
+<p>I still have not been able to send funds to anyone other than myself, however.  So there is another piece I’m still missing somewhere.</p>
+<p>We’ve got a semi-active conversation going on about it in the Gitter chat right now: <a href="https://gitter.im/interledger/Lobby" rel="nofollow noopener">https://gitter.im/interledger/Lobby</a></p>
+<p>Hope this helps!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/martinlowinski" class="user-link">Martin Lowinski</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Apr 9, 2019 4:48 PM">
+            <time itemprop="datePublished" datetime="2019-04-09 16:48:24 +0200">Apr 9, 2019</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Looks like the issue has been fixed for <code>strata-ilsp.com/testnet/xrp</code>.</p>
+<p>I have the same moneyd configuration as <a class="mention" href="/u/christophersanborn/index.html">@christophersanborn</a> and tried to get around the  <code>F00 NotAcceptedError</code> in the last weeks. Today, I tried it again and the error was gone <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>However, while the sender (ilp-spsp) and receiver (ilp-spsp-server) report a successful transaction, the debug logs show some errors:</p>
+<pre><code class="lang-auto">ilp-protocol-stream:Server:Connection handling reject: {"code":"F02","triggeredBy":"test.strata.xrpClients.MhH3tPqeEU962O4E6N8yp61ePgxVGtV3rtIhOYGmlY0","message":"failed to send packet: No clients connected for account 1Wn29sRYAy4WQMDWdKxl-83FzdbZEvJ95CPPUTsuSD4","data":{"type":"Buffer","data":[]}} +0ms
+ilp-protocol-stream:Server:Connection unexpected error. code: F02, message: failed to send packet: No clients connected for account 1Wn29sRYAy4WQMDWdKxl-83FzdbZEvJ95CPPUTsuSD4, data:  +0ms
+ilp-protocol-stream:Server:Connection destroying connection with error: Error: Unexpected error while sending packet. Code: F02, message: failed to send packet: No clients connected for account 1Wn29sRYAy4WQMDWdKxl-83FzdbZEvJ95CPPUTsuSD4
+    at Connection.&lt;anonymous&gt; (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.ts:1155:13)
+    at Generator.next (&lt;anonymous&gt;)
+    at /usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:7:71
+    at new Promise (&lt;anonymous&gt;)
+    at __awaiter (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:3:12)
+    at Connection.handleConnectorError (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:778:16)
+    at Connection.&lt;anonymous&gt; (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.ts:1059:21)
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:4:58)
+    at process._tickCallback (internal/process/next_tick.js:68:7) +0ms
+ilp-protocol-stream:Server:Connection error in error handler: Error: Unexpected error while sending packet. Code: F02, message: failed to send packet: No clients connected for account 1Wn29sRYAy4WQMDWdKxl-83FzdbZEvJ95CPPUTsuSD4
+    at Connection.&lt;anonymous&gt; (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.ts:1155:13)
+    at Generator.next (&lt;anonymous&gt;)
+    at /usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:7:71
+    at new Promise (&lt;anonymous&gt;)
+    at __awaiter (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:3:12)
+    at Connection.handleConnectorError (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:778:16)
+    at Connection.&lt;anonymous&gt; (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.ts:1059:21)
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (/usr/lib/node_modules/ilp-spsp-server/node_modules/ilp-protocol-stream/src/connection.js:4:58)
+    at process._tickCallback (internal/process/next_tick.js:68:7) +2ms
+ilp-protocol-stream:Server:Stream:1 destroying stream because of error: null +561ms
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/bioround" class="user-link">Nikhil Suri</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Apr 11, 2019 4:40 PM">
+            <time itemprop="datePublished" datetime="2019-04-11 16:40:55 +0200">Apr 11, 2019</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Not sure if there has been any progress on this - I am also getting errors when attempting to connect to the testnet as a client. Below is what my moneyd log looks like. Testing spsp and ilp-curl hang up and do not finish executing.</p>
+<pre><code>starting moneyd
+2019-04-11T16:16:36.912Z connector:route-broadcaster info generated random routing secret.
+2019-04-11T16:16:36.995Z connector:accounts info add account. accountId=parent
+2019-04-11T16:16:37.685Z connector:accounts info add account. accountId=local
+2019-04-11T16:16:38.160Z connector:admin-api info listen called
+2019-04-11T16:16:38.170Z connector:balance-middleware info initializing balance for account. accountId=parent minimumBalance=-Infinity maximumBalance=20000000
+2019-04-11T16:16:38.172Z connector:balance-middleware info initializing balance for account. accountId=local minimumBalance=-Infinity maximumBalance=Infinity
+2019-04-11T16:16:39.493Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent] info creating outgoing channel. from=rMBR8W3Lgh2DuwLV1X1L92b3e8SEsZmNbT to=rJEi339p24K7SozLDyfsvrn14J1qLg4Z6A amount=10
+2019-04-11T16:16:39.695Z connector:app error [RippledError(actNotFound)]</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/martinlowinski" class="user-link">Martin Lowinski</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Apr 11, 2019 5:35 PM">
+            <time itemprop="datePublished" datetime="2019-04-11 17:35:43 +0200">Apr 11, 2019</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/bioround/index.html">@bioround</a> I’ve made some progress and got past the <code>F02 - No clients connected for account</code> error. I had to upgrade ilp-plugin-mini-accounts from 3.5.1 (specified in the package.json of moneyd) to the latest version 4.0.5. However, I am still not able to do complete transactions due to invalid claim signatures (<a href="https://github.com/interledgerjs/ilp-plugin-xrp-asym-client/issues/39" rel="nofollow noopener">ilp-plugin-xrp-asym-client#39</a>). Could you run your moneyd/ilp-spsp/ilp-curl with <code>DEBUG=*</code> to get more verbose logging output?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/bioround" class="user-link">Nikhil Suri</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Apr 11, 2019 9:10 PM">
+            <time itemprop="datePublished" datetime="2019-04-11 21:10:03 +0200">Apr 11, 2019</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_14">Replying to #14</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>My connector:app error is a bit different. Here are the logs from running <code>DEBUG=* moneyd xrp:start --testnet</code>:</p>
+<pre><code>starting moneyd
+2019-04-11T20:59:14.805Z connector:route-broadcaster info generated random routing secret.
+2019-04-11T20:59:14.865Z connector:accounts info add account. accountId=parent
+2019-04-11T20:59:14.875Z connector:accounts info add account. accountId=local
+2019-04-11T20:59:15.258Z connector:admin-api info listen called
+2019-04-11T20:59:15.273Z connector:rate-limit-middleware:trace debug created token bucket for account. accountId=parent refillPeriod=60000 refillCount=10000 capacity=10000
+2019-04-11T20:59:15.275Z connector:balance-middleware info initializing balance for account. accountId=parent minimumBalance=-Infinity maximumBalance=20000000
+2019-04-11T20:59:15.277Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug registering data handler
+2019-04-11T20:59:15.278Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug registering money handler
+2019-04-11T20:59:15.278Z connector:rate-limit-middleware:trace debug created token bucket for account. accountId=local refillPeriod=60000 refillCount=10000 capacity=10000
+2019-04-11T20:59:15.279Z connector:balance-middleware info initializing balance for account. accountId=local minimumBalance=-Infinity maximumBalance=Infinity
+2019-04-11T20:59:15.280Z connector:ilp-plugin-mini-accounts[local]:trace debug registering data handler
+2019-04-11T20:59:15.280Z connector:ilp-plugin-mini-accounts[local]:trace debug registering money handler
+2019-04-11T20:59:15.281Z connector:accounts:trace debug connecting to parent. accountId=parent
+2019-04-11T20:59:15.497Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug connected to server
+2019-04-11T20:59:15.501Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug sending btp packet. type=TYPE_MESSAGE requestId=2049637705 info=auth=;auth_username=6U1raAGZp76OO2Ko4YrCtmg32Nr5PaV06bBX_McIQxM;auth_token=3933e8402919cd94f844c06de583ff5f9253a89c474717ab01c3dc0b741537bd
+2019-04-11T20:59:15.587Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug received btp packet. type=TYPE_RESPONSE requestId=2049637705 info=
+2019-04-11T20:59:15.590Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug sending btp packet. type=TYPE_MESSAGE requestId=3412501670 info=info=Ag==
+2019-04-11T20:59:15.635Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug received btp packet. type=TYPE_RESPONSE requestId=3412501670 info=info={"address":"rJEi339p24K7SozLDyfsvrn14J1qLg4Z6A","account":"test.strata.xrpClients.6U1raAGZp76OO2Ko4YrCtmg32Nr5PaV06bBX_McIQxM","currencyScale":9}
+2019-04-11T20:59:15.635Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug got info: { address: 'rJEi339p24K7SozLDyfsvrn14J1qLg4Z6A',
+  account: 'test.strata.xrpClients.6U1raAGZp76OO2Ko4YrCtmg32Nr5PaV06bBX_McIQxM',
+  currencyScale: 9 }
+2019-04-11T20:59:16.480Z connector:/Users/Nikhil/.nvm/versions/node/v9.3.0/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent] info creating outgoing channel. from=rMBR8W3Lgh2DuwLV1X1L92b3e8SEsZmNbT to=rJEi339p24K7SozLDyfsvrn14J1qLg4Z6A amount=10
+2019-04-11T20:59:16.677Z connector:app error [RippledError(actNotFound)]
+</code></pre>
+<p>And here are the logs from running <code>DEBUG=* ilp-spsp send --receiver '$spsp.strata-ilsp-3.com:8084' --amount 100</code> (after moneyd is already running):</p>
+<pre><code>  ilp-plugin:debug creating plugin with module ilp-plugin-btp +0ms
+  ilp-plugin:debug creating plugin with credentials { server: 'btp+ws://:81ebc085a81990091ebae4a3cc5fe2db@localhost:7768' } +2ms
+paying 100 to "$spsp.strata-ilsp-3.com:8084"...
+  ilp-spsp connecting plugin +0ms
+  ilp-ws-reconnect:debug websocket disconnected with Error: connect ECONNREFUSED 127.0.0.1:7768; reconnect in 0} +0ms
+  ilp-ws-reconnect:debug websocket disconnected with Error: connect ECONNREFUSED 127.0.0.1:7768; reconnect in 100} +5ms
+  ilp-ws-reconnect:debug websocket disconnected with Error: connect ECONNREFUSED 127.0.0.1:7768; reconnect in 500} +108ms
+  ilp-ws-reconnect:debug websocket disconnected with Error: connect ECONNREFUSED 127.0.0.1:7768; reconnect in 1000} +504ms
+  ilp-ws-reconnect:debug websocket disconnected with Error: connect ECONNREFUSED 127.0.0.1:7768; reconnect in 2000} +1s
+  ilp-ws-reconnect:debug websocket disconnected with Error: connect ECONNREFUSED 127.0.0.1:7768; reconnect in 5000} +2s</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/martinlowinski" class="user-link">Martin Lowinski</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Apr 12, 2019 4:46 PM">
+            <time itemprop="datePublished" datetime="2019-04-12 16:46:18 +0200">Apr 12, 2019</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/bioround/index.html">@bioround</a> I am not sure but it looks like the moneyd-uplink-xrp cannot <a href="https://github.com/interledgerjs/moneyd-uplink-xrp/blob/8b45a480e760a1ce45ccf101a4bf51b5e9789b6e/index.js#L262-L282" rel="nofollow noopener">validate your account</a>. How did you create your wallet and how’s your <code>.moneyd.test.json</code> configured?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/bioround" class="user-link">Nikhil Suri</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Apr 12, 2019 5:42 PM">
+            <time itemprop="datePublished" datetime="2019-04-12 17:42:19 +0200">Apr 12, 2019</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_16">Replying to #16</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for your help. I think there must have been an issue with how moneyd configured my testnet address. I just went to the <a href="https://developers.ripple.com/xrp-test-net-faucet.html" rel="nofollow noopener">ripple testnet faucet</a> and created a new testnet account for myself, so now it’s working.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Apr 15, 2019 5:23 PM">
+            <time itemprop="datePublished" datetime="2019-04-15 17:23:39 +0200">Apr 15, 2019</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Also wanted to note that our testnet is now located at <a href="http://strata-ilsp.com/testnet/xrp" rel="nofollow noopener">strata-ilsp.com/testnet/xrp</a> and no longer <a href="http://strata-ilsp-3.com" rel="nofollow noopener">strata-ilsp-3.com</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/martinlowinski" class="user-link">Martin Lowinski</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Apr 16, 2019 10:05 AM">
+            <time itemprop="datePublished" datetime="2019-04-16 10:05:06 +0200">Apr 16, 2019</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am using <a href="http://strata-ilsp.com/testnet/xrp" rel="nofollow noopener">strata-ilsp.com/testnet/xrp</a> but am still struggling to send money from one moneyd to another. It is hard to reproduce the errors, but these are the ones that appear the most:</p>
+<ul>
+<li>
+<code>Error processing BTP packet of type 7: Error: Invalid claim signature for: 1</code> (<a href="https://github.com/interledgerjs/ilp-plugin-xrp-asym-client/issues/39" rel="nofollow noopener">ilp-plugin-xrp-asym-client#39 </a>) — after this, both sides get out of sync and all subsequent transfers fail.</li>
+<li>
+<code>F02 - failed to send packet: No clients connected for account</code> — on both sides, sender and receiver.</li>
+<li>
+<code>Error: Unable to establish connection, no packets meeting the minimum exchange precision of 3 digits made it through the path.</code> — this happens occasionally on the sender’s side.</li>
+</ul>
+<p>Today, I want to setup my own testnet connector and do some debugging there. Any ideas on how to get around these issues are very welcome <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Apr 16, 2019 2:22 PM">
+            <time itemprop="datePublished" datetime="2019-04-16 14:22:51 +0200">Apr 16, 2019</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_19">Replying to #19</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/martinlowinski/index.html">@martinlowinski</a> <a class="mention" href="/u/austin_king/index.html">@austin_king</a> I believe that invalid claim error (and possibly the stream error) are due to <a href="https://github.com/interledgerjs/ilp-plugin-xrp-asym-server/pull/70" rel="nofollow noopener">this issue</a> in ilp-plugin-xrp-asym-server. Merging that PR and updating the plugin should resolve the issue.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 2</span>
+
+    
+    <a href="/t/moneyd-tutorial-giving-error-message-on-testnet/437/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

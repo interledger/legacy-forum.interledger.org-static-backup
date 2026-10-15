@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formalize the use of the `peer.` address space (define some addressing best practice) - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Formalize the use of the `peer.` address space (define some addressing best practice)</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Formalize the use of the `peer.` address space (define some addressing best practice)</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/github-import" class="tag-badge">github-import</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 28, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:07 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Fri Nov 16 2018 13:16:27 GMT+0000 (UTC)</i><br><br>We have started to use <code>peer.</code> addresses for various peer protocols.</p>
+<p>Let’s use this thread to capture some ideas on formalizing this and then we can update the address spec if necessary. IL-RFC 15 currently defines this address space as:</p>
+<blockquote>
+<p>“Addresses for exchange of packets only with a direct peer. Connectors MUST NOT forward packets with peer. addresses. Packets exchanged between peers to pass routing and config information will use peer. addresses.”</p>
+</blockquote>
+<p>One of the great features of the ILP address space is the extensible nature and (almost) infinite sub-addressing that is possible. This means we can do convenient things like add a sub-address space per application or protocol and then still further divide the space up for per session or per transaction addresses.</p>
+<p>So, one could take the <code>peer.config</code> address space and say that packets addressed to that address are directed at the ‘config’ module/application on the peer.</p>
+<p>We could (should?) go further and be more specific. E.g. to describe the logical service that a message is addressed to, like: <code>peer.router.config</code></p>
+<p>Or describe the sub-protocol being exchanged via ILP: <code>peer.ccp.config</code></p>
+<p>We could also add some specific suffixes to allow more efficient filtering, like: <code>peer.router.config~20c6e98c-b5ff-4bdc-aca2-85541c694907</code></p>
+<p>Another thought is to define a standard for using the condition and fulfill fields to provide some message validation between peers rather than simply using hard-coded values. Given that <code>peer.</code> packets never traverse the network this should have no impact.</p>
+<p>As <a class="mention" href="/u/sappenin/index.html">@sappenin</a> has pointed out in the past, it’s not clear why we do some direct peer messaging at the “ledger” layer (i.e. via BTP) and some at the ILP layer (i.e. using <code>peer.</code> addressed ILP packets.</p>
+<p>Should we encourage both? Are the use cases different enough?</p>
+<p>One advantage to doing everything in ILP packets is that we dramatically simplify the bi-lateral transport layer requirements.</p>
+<p>We still have a single reference connector implementation (that is used widely) so changes are possible now without much ecosystem impact but that window will soon pass. I feel like we’ve done enough experimenting to look at the various use cases and start extracting abstractions that can be re-used (enforced) going forward.</p>
+<p>Please provide your thoughts here!<br>
+<br><br><i>Copied from original issue: <a href="https://github.com/interledger/rfcs/issues/496" class="inline-onebox">Formalize the use of the `peer.` address space (define some addressing best practice) · Issue #496 · interledger/rfcs · GitHub</a></i></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:09 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Mon Dec 03 2018 02:42:47 GMT+0000 (UTC)</i><br><br>Related to <span class="hashtag">#484</span> I suggest we can do away with the special <code>Transfer</code> message type and simply use an ILP prepare packet addressed to <code>peer.settlement</code>.</p>
+<p>As previously suggested by <a class="mention" href="/u/sappenin/index.html">@sappenin</a> we have a mix of peer-to-peer messages using <code>peer.*</code> addressed ILP packets and transport layer sub-protocols.</p>
+<p>In looking at designs for a new, faster simpler alternative to BTP it seems simplifying the transport to ONLY send ILP packets is a significant improvement.</p>
+<ol>
+<li>The request-response semantic is built into ILP so there is no need to define message types at the ledger layer</li>
+<li>ILP packets already have an expiry so there is no need to deal with this separately in the ledger layer either.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:09 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Mon Dec 03 2018 02:44:59 GMT+0000 (UTC)</i><br><br>Building on this, it would be trivial to switch BTP implementations to do an auth handshake using ILP packets addressed to <code>peer.auth</code>.</p>
+<p>This should only be needed if the underlying transport is no already considered authenticated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:09 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <span class="mention">@kincaidoneil</span> on Mon Dec 03 2018 12:58:21 GMT+0000 (UTC)</i><br><br>Would this do away with the BTP packet format entirely and just use HTTP for request-response correlation, per <a href="https://github.com/emschwartz/ilp-rs/issues/26" rel="nofollow noopener">https://github.com/emschwartz/ilp-rs/issues/26</a>? (at least between connectors)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:09 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Mon Dec 03 2018 13:48:45 GMT+0000 (UTC)</i><br><br>&gt; Would this do away with the BTP packet format entirely and just use HTTP for request-response correlation, per emschwartz/ilp-rs#26? (at least between connectors)</p>
+<p>It would mean you COULD do that. Whatever protocol you use to exchange ILP packets could assume that it ONLY exchanges ILP packets which significantly simplifies the protocol.</p>
+<p>I think HTTP may still be too much overhead for some use cases but it would mean you could use a simpler TCP/UDP/WebSockets based protocol too</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:10 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a> on Mon Dec 03 2018 16:42:52 GMT+0000 (UTC)</i><br><br>I’m not a fan of the idea of using ILP packets to send settlement-related messages like payment channel claims. ILP is built on your ability to settle, rather than settlements being built on ILP.</p>
+<p>I think the idea behind using ILP packets for ILDCP and route broadcasts is that you might want those to be paid for using ILP. With settlements, you’re doing the opposite of paying for those messages (but we also wouldn’t have a good way to express that in an ILP packet because they can’t carry negative amounts).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:10 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Mon Dec 03 2018 19:15:42 GMT+0000 (UTC)</i><br><br>&gt; I’m not a fan of the idea of using ILP packets to send settlement-related messages like payment channel claims.</p>
+<p>The purpose of the messages isn’t really relevant. What is relevant is which subsystems are producing and handling them.</p>
+<p>It makes as much sense to have a settlement subsystem as it does to have an ILDCP subsystem.</p>
+<blockquote>
+<p>ILP is built on your ability to settle, rather than settlements being built on ILP.</p>
+</blockquote>
+<p>ILP makes no assumptions about you ability to settle. Settlements are a bilateral concern.</p>
+<p>Anything sent in <code>peer.*</code> addressed packets is, by definition, not built on ILP because those packets are always bilateral. i.e. Sending messages between peers is exactly what that address-space is for.</p>
+<p>I was also uncertain about it initially, but if you look at how clean it makes the ledger layer protocol it makes sense.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:10 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <span class="mention">@kincaidoneil</span> on Mon Dec 03 2018 21:19:29 GMT+0000 (UTC)</i><br><br>What are the opinions on using protobufs for settlement-related messages? How does the performance of protobufs compare to ILP packet or BTP + ILP packet serialization? (e.g. if plugins defined their own ledger-specific gRPC services. I’m thinking along the lines of <a href="https://github.com/interledgerjs/ilp-transport-grpc" class="inline-onebox">GitHub - interledgerjs/ilp-transport-grpc: gRPC-based protocol for exchanging ILP packets</a>, but without any standardized framing)</p>
+<blockquote>
+<p>I think HTTP may still be too much overhead for some use cases but it would mean you could use a simpler TCP/UDP/WebSockets based protocol too</p>
+</blockquote>
+<p>How does the overhead of HTTP/2 streaming compare to websocket messages?</p>
+<p>I ask about HTTP because on clients that are stuck using websockets, the performance of serializing ILP packets inside of BTP packets (for settlement messages) might actually be worse than straight BTP packets (though I haven’t done any benchmarking).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:10 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/sappenin/index.html">@sappenin</a> on Tue Dec 04 2018 18:31:48 GMT+0000 (UTC)</i><br><br>&gt; How does the performance of protobufs compare to ILP packet or BTP + ILP packet serialization?</p>
+<p>This doesn’t specifically address HTTP/2 vs Websockets messages, but I’ve noticed a lot of redundant encoding/decoding while using ILP+BTP+GRPC.</p>
+<p>I think if gRPC is going to be employed at the bilateral layer, we’ll want to explore representing ILP packet data natively in protobuf as opposed to trying to encode an ILP packet inside of a BTP packet inside of a <a href="https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/ByteString" rel="nofollow noopener">ByteString</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:10 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Tue Dec 04 2018 18:41:55 GMT+0000 (UTC)</i><br><br>&gt; What are the opinions on using protobufs for settlement-related messages?</p>
+<p>I think that is something that is outside the scope of what we need to standardize. Part of the motivation for this change is that the standard is simpler. i.e. Just exchange ILP packets.</p>
+<p>If you want to exchange bilateral messages in a different way for other functions (e.g. settlement) you can but that would mean you need to get others to implement that too to be interoperable.</p>
+<p>E.g. You could decide that there is NO bilateral settlement message. The plugin/middleware could simply trigger settlements as required and the other side simply monitors the settlement system to know when these occur.</p>
+<p>Or you could do settlement entirely outside the flow of the transactions where the balance middleware simply enforces balance checking but updates are pushed into it from an external system that settles as required. (Technically possible today by setting very high settlement threshholds and doing balance updates via the Admin API).</p>
+<blockquote>
+<p>I think if gRPC is going to be employed at the bilateral layer, we’ll want to explore representing ILP packet data natively in protobuf as opposed to trying to encode an ILP packet inside of a BTP packet inside of a ByteString.</p>
+</blockquote>
+<p>Agreed. I think if you want to optimize and are exploring other ways of doing bilateral communication there is a gain to be achieved by eliminating layers. Flattening everything out into a single message will be more efficient.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:11 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/sharafian/index.html">@sharafian</a> on Thu Dec 06 2018 21:58:03 GMT+0000 (UTC)</i><br><br>&gt; &gt; I think if gRPC is going to be employed at the bilateral layer, we’ll want to explore representing ILP packet data natively in protobuf as opposed to trying to encode an ILP packet inside of a BTP packet inside of a ByteString.</p>
+<blockquote>
+<p>Agreed. I think if you want to optimize and are exploring other ways of doing bilateral communication there is a gain to be achieved by eliminating layers. Flattening everything out into a single message will be more efficient.</p>
+</blockquote>
+<p>I don’t see why gRPC deserialization would be faster than deserializing an ILP packet. They’ve probably spent more time fine-tuning their code but protobufs are almost certainly a more complicated format than our OER packets.</p>
+<p>Switching websockets to something faster, though, sounds totally reasonable.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:11 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Fri Dec 07 2018 21:28:16 GMT+0000 (UTC)</i><br><br>&gt; I don’t see why gRPC deserialization would be faster than deserializing an ILP packet.</p>
+<p>That’s not what I was suggesting. Sorry for not being clear. My point is that the layering we use is probably unnecessary to a large extent.</p>
+<p>If you reduced bi-lateral messages to simply an ILP packet plus correlation id then I think you save a lot of serialization effort. I’m working on a PoC of something like this.</p>
+<p>I actually think Websockets are pretty fast. They’re a simple framing protocol on top of sockets so they don’t add much overhead. The weird part for a host-to-host connection when using Websockets is the HTTP server you have to host to accept incoming connections.</p>
+<p>Technically this could be trimmed down to a very minimal Websocket-handshake-only capable server but it’s still more than you need, especially if you do all the auth after the handshake.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:11 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/sappenin/index.html">@sappenin</a> on Thu Feb 28 2019 04:40:29 GMT+0000 (UTC)</i><br><br>I don’t think the discussion ever came to a conclusion here - specifically, is there anything we need to standardize here? For example, my Connector implementation currently supports ‘peer.config’, ‘peer.route’ (and eventually ‘peer.settle’) but it seems like IL-RFC-15 already specifies the purpose of the ‘peer.’ allocation scheme - so, is it fair to say that each of the specific usages can be specified in their respective RFCs? (For example, the CCP spec can standardize ‘peer.route’.)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:11 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Thu Feb 28 2019 06:53:13 GMT+0000 (UTC)</i><br><br>&gt; each of the specific usages can be specified in their respective RFCs?</p>
+<p>I agree. We should probably do the following before we close this:</p>
+<ul>
+<li>[ ] Ensure <code>peer.route</code> is defined in the PR that is documenting the routing protocol</li>
+<li>[ ] Ensure <code>peer.config</code> is properly specified in the ILDCP spec</li>
+<li>[ ] Document <code>peer.settle</code> (in progress as part of new connector implementation work)</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Feb 28, 2019 7:55 AM">
+            <time itemprop="datePublished" datetime="2019-02-28 07:55:11 +0200">Feb 28, 2019</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><i>From <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> on Thu Feb 28 2019 06:54:24 GMT+0000 (UTC)</i><br><br>Also, it is common for a registry to exist that keeps track of these somewhere. should that be IL-RFC 15?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What&#39;s the difference between Cosmos and Interledger? IBC (inter blockchain communication) vs ILP? - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">What&#39;s the difference between Cosmos and Interledger? IBC (inter blockchain communication) vs ILP?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">What&#39;s the difference between Cosmos and Interledger? IBC (inter blockchain communication) vs ILP?</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 9, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Suneet" class="user-link">Suneet</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 9, 2019 9:54 PM">
+            <time itemprop="datePublished" datetime="2019-03-09 21:54:39 +0200">Mar 9, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What is the difference between IBC and ILP?<br>
+<a href="https://cosmos.network/docs/spec/ibc/" class="onebox" target="_blank" rel="nofollow noopener">https://cosmos.network/docs/spec/ibc/</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 9, 2019 11:08 PM">
+            <time itemprop="datePublished" datetime="2019-03-09 23:08:00 +0200">Mar 9, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>At a high level, Interblockchain Communication (IBC) is a protocol that locks up state on one chain and spawns it on another. You can watch proofs of this lock up (the lock up is really just holding it in a “smart contract” designed to coordinate IBC) through light clients, so you could have the target chain act as a light client of the original chain (the one we lock up on).</p>
+<p>This is a good protocol if you want to leverage NFTs and do cross chain contract calls but it’s quite resource heavy for value transfers. Hence, the alternative is to do atomic ledger swaps through a 2 phase commit through various payment channels that intersect with another user, except in Interledger we argue that true atomicity isn’t required (and has multiple benefits). See <a href="https://forum.interledger.org/t/whats-the-difference-between-interledger-and-lightning/133">Lightning vs. Interledger</a>.</p>
+<p><a href="https://drive.google.com/a/berkeley.edu/file/d/1_L2jeghS4H33nXxaWyFbz4drpaCFxbxS/view?usp=drivesdk" rel="nofollow noopener">Helpful slideshow for IBC here, by myself and Sunny Aggarwal of Cosmos!</a></p>
+<p><a href="http://juliankohtx.com/a-deep-look-into-cosmos-the-internet-of-blockchains/" rel="nofollow noopener">In depth blog post on Cosmos.</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 10, 2019 1:48 PM">
+            <time itemprop="datePublished" datetime="2019-03-10 13:48:43 +0200">Mar 10, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Great question <a class="mention" href="/u/suneet/index.html">@Suneet</a>, this one gets asked a lot.</p>
+<p>The main similarity between Interledger and Cosmos is the branding (“Internet of Value” vs “Internet of Blockchains”). The intended use case and range of ledgers the two can support is very different.</p>
+<p>The two technologies are complementary and so Kava has been working with the Tendermint team on <a href="https://medium.com/tendermint/kava-partners-with-tendermint-to-bring-interledger-to-cosmos-d9e098c82b8a" rel="nofollow noopener">integrating Cosmos with Interledger</a>.</p>
+<h2>Use Case</h2>
+<p>As <a class="mention" href="/u/akash/index.html">@akash</a> mentions, the main purpose of IBC is to allow you to <em>move</em> an asset or token from one ledger (Cosmos “zone”) to another. For example, if there is a Crypto Kittie issued on one zone, this would allow me to move my kittie to another zone to play some other blockchain-based game, and then to move it back (all the while I have ownership over it).</p>
+<p>ILP is designed to enable you to <em>pay</em> or <em>exchange</em> assets across different ledgers. When I send some currency or token through ILP, it will be exchanged in real-time for assets on other ledgers, and the equivalent value will show up in your account as some other asset (whatever you want to hold). When using ILP, you are intentionally giving up ownership of your original asset to exchange it and ultimately deliver something different to the recipient.</p>
+<p>As mentioned above, these two functions are completely separate and complementary. For example, you could use ILP to do exchanges or payments between two Cosmos zones, or between a Cosmos zone and another ledger (this is what Kava is working to enable).</p>
+<h2>Supported Ledgers</h2>
+<p>The other major difference is the type of ledgers that the two protocols can support. ILP requires only that the ledger supports sending a simple payment, and thus can integrate a very wide variety of ledgers, even if they were not designed to work with Interledger. In contrast, IBC is a deeper level of integration and requires blockchains to understand one another’s internal state, so it will mostly be used for connecting new blockchains designed specifically to work with it.</p>
+<p>I would argue that Cosmos (and <a href="https://polkadot.network/" rel="nofollow noopener">Polkadot</a> as well) is more a framework or toolkit for building blockchains that understand one another, rather than a general interoperability protocol for linking all ledgers together. You could also say that ILP isn’t a “general interoperability protocol”, in that it only focused on value transfer, rather than other types of interoperability. I think the parallel between the internet and the Interledger idea of the “Internet of Value” is stronger, because the design of ILP has direct technical parallels with TCP/IP (intentionally) and the Internet was more about bridging networks that weren’t designed to work together. But this isn’t the most useful debate.</p>
+<p><a class="mention" href="/u/tarcieri/index.html">@tarcieri</a>, <a class="mention" href="/u/scott/index.html">@scott</a>, or <a class="mention" href="/u/rhuairahrighairidh/index.html">@rhuairahrighairidh</a> might want to weigh in on this because they work more directly with Cosmos.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

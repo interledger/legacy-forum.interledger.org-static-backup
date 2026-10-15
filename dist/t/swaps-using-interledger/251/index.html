@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swaps using Interledger - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Swaps using Interledger</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Swaps using Interledger</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 22, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Rawad_Rifai" class="user-link">Rawad Rifai</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 22, 2019 5:26 AM">
+            <time itemprop="datePublished" datetime="2019-02-22 05:26:20 +0200">Feb 22, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We have a cross-chain swaps product built to support OTC desks from end to end (<a href="http://hedgebase.io" rel="nofollow noopener">hedgebase.io</a>).<br>
+Today, we do swaps using a combination of the cloud + the blockchains we support. We escrow signed transactions on the cloud and release them simultaneously or based on certain rules.</p>
+<p>We are thinking of migrating to Interledger and wondering there are built in mechanism for atomic swaps while applying a configurable exchange rate between the participants of the swap. Technically it’s just 2 transfers that need to be atomic.</p>
+<p>Apologies if the question is a bit primitive - we are still learning Interledger.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/karzak" class="user-link">Kevin Davis</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 22, 2019 5:11 PM">
+            <time itemprop="datePublished" datetime="2019-02-22 17:11:36 +0200">Feb 22, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Today, we do swaps using a combination of the cloud + the blockchains we support. We escrow signed transactions on the cloud and release them simultaneously or based on certain rules.</p>
+</blockquote>
+<p>Not sure what that means, so I can only speak to the technology, and not if it fits your use case. I’ll give a very detailed answer, because this is probably the most common question I get regarding ILP, and hopefully others can expand on it or reference it when useful.</p>
+<h1><a name="p-542-the-one-sentance-answer-1" class="anchor" href="#p-542-the-one-sentance-answer-1" aria-label="Heading link"></a>The one sentance answer</h1>
+<p>ILP doesn’t do atomic swaps, instead opting for streaming cross chain payments.</p>
+<h2><a name="p-542-whats-the-difference-2" class="anchor" href="#p-542-whats-the-difference-2" aria-label="Heading link"></a>What’s the difference?</h2>
+<h4><a name="p-542-cross-chain-atomic-swaps-3" class="anchor" href="#p-542-cross-chain-atomic-swaps-3" aria-label="Heading link"></a>Cross-chain atomic swaps</h4>
+<ol>
+<li>Alice and Bob agree to an amount, exchange rate, and expiry (timeout) for a BTC/ETH swap.</li>
+<li>Alice signs a message to bob transferring BTC to Bob, conditional on some secret only known to Alice. The transaction is automatically canceled after some period T.</li>
+<li>Bob signs a message transferring ETH to Alice, conditional on the same secret. The transaction is automatically cancelled after period T-1.</li>
+<li>In the happy case, Alice reveals the secret to Bob, which gives her the right to Bob’s ETH, and gives Bob the right to Alice’s BTC.</li>
+<li>In the unhappy case, Alice claims the ETH funds but doesn’t tell Bob. Bob can watch the blockchain, learn the secret at T-1, and claim the BTC before the expiry at T.</li>
+</ol>
+<p>In this simple scenario, Alice has what is known as an ‘American call option’. Because she is in control of when the secret is revealed, she can strategically choose to reveal it when the exchange rate goes in her favor, and chose not to reveal it when it does, which costs her nothing.</p>
+<h4><a name="p-542-cross-chain-streaming-4" class="anchor" href="#p-542-cross-chain-streaming-4" aria-label="Heading link"></a>Cross-chain streaming:</h4>
+<ol>
+<li>Alice and Bob agree to an amount (X), exchange rate, and slippage for a BTC/ETH transaction.</li>
+<li>Alice starts streaming packets (say each packet is worth X/100 for simplicity) to herself through Bob, who credits Alices account (Alice owes Bob money denominated in BTC), and Alice on the receiving side credits Bobs account (Bob owes Alice money denominated in ETH). Each packet has a short timeout window (say 5 seconds for simplicity).</li>
+<li>When Alice’s credit limit is reached (again say X/100 for simplicity), she send’s Bob a payment channel claim transferring that amount of BTC to Bob.</li>
+<li>When Bob’s credit limit is reached, he sends Alice (on the receiver side) a payment channel claim transferring that amount of ETH to Alice.</li>
+<li>When the correct amount has been sent, or the exchange rate slippage is greater than the agreed amount, the stream stops.</li>
+</ol>
+<p>If at any time settlements stop occurring, the stream will pause at the credit limit until settlements resume or the stream is cancelled. Thus, in the example given, Alice could lose up to X/100 (1%) of the total amount she was swapping.</p>
+<h2><a name="p-542-when-is-this-useful-5" class="anchor" href="#p-542-when-is-this-useful-5" aria-label="Heading link"></a>When is this useful</h2>
+<p>Note that all of these constructions are only useful for cases where counterparties have limited trust in each other. If you can trust your counterparty, you should most definitely just send them BTC and trust that they will send you ETH. If they don’t, you should rant about it on Twitter, ruin their reputation, or sue them.</p>
+<p>In cases where participants are pseudonymous, or there is no legal or social recourse for dishonesty, atomic swaps and streaming cross chain payments offer the potential for economic activity between actors who otherwise would refuse to transact.</p>
+<h3><a name="p-542-why-does-ilp-have-counterparty-risk-you-bankster-shill-6" class="anchor" href="#p-542-why-does-ilp-have-counterparty-risk-you-bankster-shill-6" aria-label="Heading link"></a>WHY DOES ILP HAVE COUNTERPARTY RISK YOU BANKSTER SHILL!?!?!?</h3>
+<p>The exclusion of cross-chain atomic swaps in favor of streaming payments was a conscious choice by the designers of ILP to alleviate problems with cross-chain atomic swaps that are outlined <a href="http://diyhpl.us/wiki/transcripts/stanford-blockchain-conference/2019/htlcs-considered-harmful/" rel="noopener nofollow ugc">here</a> and <a href="https://lists.linuxfoundation.org/pipermail/lightning-dev/2018-December/001752.html" rel="noopener nofollow ugc">here</a>.<br>
+In economic terms, you can think of atomic swaps and streaming payments as two ways of reaching an equilibrium for exchange. In cross chain swaps, American call options performed by bad actors increase liquidity needed to perform swaps, and thus will raise the equilibrium price of transacting. In streaming payments, users will set a maximum loss equal to the amount of time and fees they are willing to pay. This is because sending smaller packets decreases the amount of potential loss, but increases the time to transact.</p>
+<p>What each equilibrium looks like, how effective mitigations for each scenario are, and what use cases each system addresses are entirely speculative at this point. There’s tons of nuance, variations in system design and assumptions, and strongly held opinions beyond this basic outline, but this is hopefully a good overview on the topic.</p>
+<h3><a name="p-542-other-companies-and-products-that-are-in-this-design-space-7" class="anchor" href="#p-542-other-companies-and-products-that-are-in-this-design-space-7" aria-label="Heading link"></a>Other companies and products that are in this design space</h3>
+<p><a href="https://medium.com/arwensecure/launching-arwen-a10b17fcc012" rel="noopener nofollow ugc">Arwen</a><br>
+<a href="https://sparkswap.com/" rel="noopener nofollow ugc">Sparkswap</a><br>
+<a href="https://summa.one/" rel="noopener nofollow ugc">Summa</a><br>
+<a href="https://github.com/Kava-Labs/switch-api" rel="noopener nofollow ugc">Kava</a> (disclosure: that’s me <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=15" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"> )</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Rawad_Rifai" class="user-link">Rawad Rifai</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 26, 2019 7:46 AM">
+            <time itemprop="datePublished" datetime="2019-02-26 07:46:11 +0200">Feb 26, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the answers <a class="mention" href="/u/karzak/index.html">@karzak</a> . I’m sure this gets asked a lot so apologies if the question was redundant.</p>
+<aside class="quote no-group" data-username="karzak" data-post="2" data-topic="251">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/karzak/48/159_2.png" class="avatar"> karzak:</div>
+<blockquote>
+<h4>Cross-chain atomic swaps</h4>
+</blockquote>
+</aside>
+<p>There are several limitations for this approach and we’ve decided to stay away. The hashing algorithm needs to match on all blockchains involved. But mainly because it’s expensive as of now.</p>
+<aside class="quote no-group" data-username="karzak" data-post="2" data-topic="251">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/karzak/48/159_2.png" class="avatar"> karzak:</div>
+<blockquote>
+<h4>Cross-chain streaming:</h4>
+</blockquote>
+</aside>
+<p>We like this because it’s a pragmatic and real-life solution to a stubborn problem.<br>
+I am not sure I followed though.</p>
+<aside class="quote no-group" data-username="karzak" data-post="2" data-topic="251">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/karzak/48/159_2.png" class="avatar"> karzak:</div>
+<blockquote>
+<p>Alice starts streaming packets (say each packet is worth X/100 for simplicity) to herself through Bob, who credits Alices account (Alice owes Bob money denominated in BTC)</p>
+</blockquote>
+</aside>
+<p>So Alice sends “BTC” packets to herself through Bob? Does this make Bob a connector? If so, Bob would need to support sending BTC no?</p>
+<aside class="quote no-group" data-username="karzak" data-post="2" data-topic="251">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/karzak/48/159_2.png" class="avatar"> karzak:</div>
+<blockquote>
+<p>and Alice on the receiving side credits Bobs account (Bob owes Alice money denominated in ETH)</p>
+</blockquote>
+</aside>
+<p>Can you elaborate on “credits Bobs account”? on-ledger transaction?<br>
+Why credit Bob in ETH when that’s what he wants to trade out?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

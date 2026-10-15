@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What are best practices for setting up a Revshare Pointer? - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">What are best practices for setting up a Revshare Pointer?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">What are best practices for setting up a Revshare Pointer?</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 12, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 12, 2019 2:34 AM">
+            <time itemprop="datePublished" datetime="2019-02-12 02:34:10 +0200">Feb 12, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a href="https://github.com/sharafian/revshare-pointer" rel="nofollow noopener">https://github.com/sharafian/revshare-pointer</a></p>
+<p>I set up a Revshare Pointer for a mobile web app that I am developing. I will be posting details of my set up, but the jist of it is as follows:</p>
+<ul>
+<li>One AWS CentOS instance for the Revshare Pointer + moneyd (the “App Server”)</li>
+<li>One AWS CentOS instance the Nginx reverse proxy server (the “Web Server”)</li>
+</ul>
+<p>It would be great to kick start a discussion on best practices for a Revshare Pointer, especially as it relates to:</p>
+<ul>
+<li>Revshare Pointer configuration</li>
+<li>Ngnix configuration</li>
+<li>security</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 13, 2019 1:03 PM">
+            <time itemprop="datePublished" datetime="2019-02-13 13:03:37 +0200">Feb 13, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Please see below for the details of my set up as well as some questions.</p>
+<p><strong>Set up</strong></p>
+<ul>
+<li>two Amazon Machine Image’s CentOS 7 (x86_64) - with Updates HVM.</li>
+<li>one instance for the koa app + moneyd (the “App Server”) and one for the Nginx reverse proxy (the “Web Server”)</li>
+</ul>
+<p><strong>App Server</strong></p>
+<ul>
+<li>cloned Revshare Pointer from <code>https://github.com/sharafian/revshare-pointer.git</code>
+</li>
+<li>configured <code>index.js</code> for private networking (i.e., added private IP address to <code>app.listen()</code>)</li>
+<li>installed Moneyd</li>
+<li>installed PM2 to run the revshare pointer in the background and to launch it on system startup</li>
+</ul>
+<p><em>Questions</em></p>
+<ul>
+<li>I installed moneyd with the command <code>yum install -y https://codius.s3.amazonaws.com/moneyd-xrp-4.0.0-1.x86_64.rpm</code> taken from the Codius tutorial but this time around I also needed to separately install <code>moneyd-xrp-uplink</code> in order for Moneyd to work. What is the latest way to install Moneyd?</li>
+<li>I noticed that the SPSP query of revshare pointer uses <code>generateAddressAndSecret()</code> that returns a Buffer for <code>sharedSecret</code>. Does this need to be converted to a string? When I curl my revshare pointer it returns a shared_secret that is a JSON coverted from a Buffer, {“type”:“Buffer”,“data”:[84,104,105,115,32,105,115,32,97,32,98,117,102,102,101,114,32,101,120,97,109,112,108,101,46]} but when I curl a payment pointer, e.g., $https://twitter.xrptipbot.com/sharafian it returns a <code>shared_secret</code> that is a string. The reason I ask is because the Coil Chrome Extension states that “Coil is donating” but the counter remains at 0, so I am trying to figure out the cause.</li>
+</ul>
+<p><strong>Web Server</strong></p>
+<ul>
+<li>installed Nginx</li>
+<li>installed and ran <code>certbot-nginx</code> to obtain certificate</li>
+<li>added directives for reverse proxy and enhanced security (I referenced the Codius nginx config file)</li>
+</ul>
+<pre><code class="lang-auto">user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+  worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        server_name  example.com www.example.com;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+	        proxy_pass http://PRIVATE_IP_ADDRESS:8080;
+        	proxy_http_version 1.1;
+        	proxy_set_header Upgrade $http_upgrade;
+        	proxy_set_header Connection "upgrade";
+        	proxy_set_header Host $host;
+        	proxy_cache_bypass $http_upgrade
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+  
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+    ssl_ecdh_curve secp384r1;
+    ssl_session_timeout 10m;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    
+    resolver 1.1.1.1 1.0.0.1 valid=300s;
+    resolver_timeout 5s;
+  
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+
+    }
+
+    server {
+    if ($host = www.example.com) {
+        return 301 https://$host$request_uri;
+    } # managey Certbot
+
+    if ($host = example.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+        listen       80 default_server;
+        listen       [::]:80 defau
+`lt_server;
+        server_name  example.com www.example.com;
+    return 404; # managed by Certbot
+
+}}
+</code></pre>
+<p><em>Questions</em></p>
+<ul>
+<li>This config gives a Qualys A rating, but should anything be added/modified generally? Also, to potentially fix the issue that I am experiencing with the Coil Chrome Extension?</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 13, 2019 6:48 PM">
+            <time itemprop="datePublished" datetime="2019-02-13 18:48:07 +0200">Feb 13, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It’s awesome that you’re experimenting with this project! I unfortunately haven’t been able to devote too much time but if you documented how to run it then I hope it could be really useful to a lot of people.</p>
+<blockquote>
+<p>I installed moneyd with the command yum install -y <a href="https://codius.s3.amazonaws.com/moneyd-xrp-4.0.0-1.x86_64.rpm">https://codius.s3.amazonaws.com/moneyd-xrp-4.0.0-1.x86_64.rpm</a> taken from the Codius tutorial but this time around I also needed to separately install moneyd-xrp-uplink in order for Moneyd to work. What is the latest way to install Moneyd?</p>
+</blockquote>
+<p><a class="mention" href="/u/wilsonianb/index.html">@wilsonianb</a> has been working on an updated Moneyd RPM that he might be able to share some information about. Otherwise, if you have NPM on your system (with NVM so that you can install global modules) you can install <a href="https://medium.com/interledger-blog/joining-the-live-ilp-network-eab123a73665">moneyd as per the tutorial</a>.</p>
+<blockquote>
+<p>I noticed that the SPSP query of revshare pointer uses generateAddressAndSecret() that returns a Buffer for sharedSecret. Does this need to be converted to a string?</p>
+</blockquote>
+<p>You’re right; pushing a fix for this right now.</p>
+<blockquote>
+<p>This config gives a Qualys A rating, but should anything be added/modified generally? Also, to potentially fix the issue that I am experiencing with the Coil Chrome Extension?</p>
+</blockquote>
+<p>Regarding your nginx config, it’s dangerous to expose your revshare pointer service like that. It’s meant to be run in the backend, where some kind of API is making calls to the add/remove pointer endpoints and essentially proxying the actual SPSP endpoint.</p>
+<p>That’s how I initially thought of it, but given your use case I think it makes a lot of sense to allow it to be run standalone. Based on that, I think I’ll add authentication (if you or anyone else in the community wanted to take a stab at that it would be awesome, otherwise I’ll try to get to it sometime soon).</p>
+<p>With auth configured and enabled for the add/remove pointer endpoints, it should be safe to expose it to the internet in the way you laid out. When you want to edit things, you could make curl commands locally with the auth token you configured, or I might also make a simple GUI that makes it easy to add/remove payment pointers.</p>
+<p>Hope this helps!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 14, 2019 12:33 AM">
+            <time itemprop="datePublished" datetime="2019-02-14 00:33:29 +0200">Feb 14, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the feedback!</p>
+<aside class="quote no-group">
+<blockquote>
+<p>if you documented how to run it then I hope it could be really useful to a lot of people.</p>
+</blockquote>
+</aside>
+<p>I can document how to run one and share it as soon as it is ready later this week.</p>
+<aside class="quote no-group">
+<blockquote>
+<p>That’s how I initially thought of it, but given your use case I think it makes a lot of sense to allow it to be run standalone. Based on that, I think I’ll add authentication (if you or anyone else in the community wanted to take a stab at that it would be awesome, otherwise I’ll try to get to it sometime soon).</p>
+</blockquote>
+</aside>
+<p>I can take a stab at it. I hope that I can write some usable code. If there is anyone else in the community that wants to contribute, please let me know.</p>
+<p>Thanks again! I’m glad this project exists in the first place.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 15, 2019 12:57 AM">
+            <time itemprop="datePublished" datetime="2019-02-15 00:57:25 +0200">Feb 15, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here are barebone instructions to set up a Revshare Pointer. I can write up a comprehensive one (with explanations) at a later date as soon as the authentication is added. If anyone has any suggestions to improve the set up, please let me know.</p>
+<p><strong>Prerequisites</strong></p>
+<ul>
+<li>Two AWS CentOS 7 (x86_64): one for your revshare pointer Koa app + Moneyd (App Server) and one for your Nginx reverse proxy server (Web Server)</li>
+<li>Nodejs</li>
+<li>An XRP Wallet</li>
+<li>A domain</li>
+</ul>
+<p><strong>Set up App Server</strong></p>
+<ol>
+<li>
+<p>Ensure ports are open for 8080 (only traffic from Web Server’s private IP address), 22 in AWS</p>
+</li>
+<li>
+<p>ssh into your App Server and switch to the root user. Be sure to replace /path/my-key-pair with your own. Also, <a href="mailto:centos@ec2-198-51-100-1.compute-1.amazonaws.com">centos@ec2-198-51-100-1.compute-1.amazonaws.com</a> with your own.</p>
+</li>
+</ol>
+<blockquote>
+<p>ssh -i<br>
+/path/my-key-pair <a href="mailto:centos@ec2-198-51-100-1.compute-1.amazonaws.com">centos@ec2-198-51-100-1.compute-1.amazonaws.com</a><br>
+sudo su</p>
+</blockquote>
+<ol start="3">
+<li>Install Nodejs</li>
+</ol>
+<blockquote>
+<p>curl -sL <a href="https://rpm.nodesource.com/setup_10.x" rel="noopener nofollow ugc">https://rpm.nodesource.com/setup_10.x</a> | sudo bash -<br>
+yum install nodejs</p>
+</blockquote>
+<ol start="4">
+<li>Install Moneyd</li>
+</ol>
+<blockquote>
+<p>yum install -y <a href="https://codius.s3.amazonaws.com/moneyd-xrp-4.0.0-1.x86_64.rpm" rel="noopener nofollow ugc">https://codius.s3.amazonaws.com/moneyd-xrp-4.0.0-1.x86_64.rpm</a><br>
+npm install -g moneyd-uplink-xrp</p>
+</blockquote>
+<ol start="5">
+<li>Configure and run Moneyd. You will be prompted to enter your secret so have your XRP wallet credentials ready.</li>
+</ol>
+<blockquote>
+<p>moneyd xrp:configure<br>
+systemctl start moneyd-xrp<br>
+systemctl status moneyd-xrp</p>
+</blockquote>
+<ol start="6">
+<li>Install git and clone revshare-pointer-server from github into folder /var/www/revshare</li>
+</ol>
+<blockquote>
+<p>yum install -y git<br>
+git clone <a href="https://github.com/sharafian/revshare-pointer.git" class="inline-onebox" rel="noopener nofollow ugc">GitHub - sharafian/revshare-pointer: Create ILP payment pointers that split payments to multiple destinations</a> /var/www/revshare</p>
+</blockquote>
+<ol start="7">
+<li>Configure the Koa app for private networking. Replace <em>paste here</em> with the App Server’s private IP address.</li>
+</ol>
+<blockquote>
+<p>cd /var/www/revshare<br>
+vi index.js</p>
+</blockquote>
+<pre><code class="lang-auto"># /var/www/revshare/index.js
+app
+  .use(parser)
+  .use(router.routes())
+  .use(router.allowedMethods())
+  .listen(process.env.PORT || 8080, ‘paste here’)
+</code></pre>
+<ol start="8">
+<li>Install dependencies and test it</li>
+</ol>
+<blockquote>
+<p>sudo npm install<br>
+sudo npm install<br>
+node index<br>
+CTRL+C</p>
+</blockquote>
+<ol start="9">
+<li>Install PM2</li>
+</ol>
+<blockquote>
+<p>npm install -g pm2@latest</p>
+</blockquote>
+<ol start="10">
+<li>Set up PM2 to run the revshare pointer in the background and to launch on system startup</li>
+</ol>
+<blockquote>
+<p>pm2 start index.js<br>
+pm2 startup systemd</p>
+</blockquote>
+<p><strong>Set up Web Server</strong></p>
+<ol>
+<li>
+<p>Ensure ports are open for 80, 8080, 22, 443 in AWS</p>
+</li>
+<li>
+<p>ssh into your Web Server and switch to the root user</p>
+</li>
+</ol>
+<blockquote>
+<p>ssh -i /path/my-key-pair centos@ec2-198-51-100-1.compute-<br>
+<a href="http://1.amazonaws.com" rel="noopener nofollow ugc">1.amazonaws.com</a><br>
+sudo su</p>
+</blockquote>
+<ol start="3">
+<li>Install and start Nginx</li>
+</ol>
+<blockquote>
+<p>yum install epel-release<br>
+yum install nginx<br>
+systemctl start nginx<br>
+systemctl enable nginx</p>
+</blockquote>
+<ol start="4">
+<li>Install Certbot for Nginx</li>
+</ol>
+<blockquote>
+<p>yum install certbot-nginx</p>
+</blockquote>
+<ol start="5">
+<li>Update and reload default config file. Find the server_name line to replace _ with your domain name so that it looks like this: <code>server_name example.com www.example.com;</code></li>
+</ol>
+<blockquote>
+<p>vi /etc/nginx/nginx.conf<br>
+nginx -t<br>
+systemctl reload nginx</p>
+</blockquote>
+<ol start="6">
+<li>Create two A records for your domain wherever you do your DNS management</li>
+</ol>
+<blockquote>
+<p><a href="http://example.com" rel="noopener nofollow ugc">example.com</a>. 300	IN	A	Your Web Server’s public IP address<br>
+*.example.com. 300	IN	A	Your Web Server’s public IP address</p>
+</blockquote>
+<ol start="7">
+<li>Obtain certificate. Be sure to replace <a href="http://example.com" rel="noopener nofollow ugc">example.com</a> and <a href="http://www.example.com" rel="noopener nofollow ugc">www.example.com</a> with your domain name. Also, you will be asked a series of questions including one to choose whether HTTPS access is required or optional: choose 2, Secure – Make all requests redirect to secure HTTPS access</li>
+</ol>
+<blockquote>
+<p>certbot –nginx -d <a href="http://example.com" rel="noopener nofollow ugc">example.com</a> -d <a href="http://www.example.com" rel="noopener nofollow ugc">www.example.com</a></p>
+</blockquote>
+<ol start="8">
+<li>Setup reverse proxy server. Find the line where location / is defined in the server block and insert the below code in between the brackets. Substitute ‘paste here’ with your App Server’s private IP address.</li>
+</ol>
+<blockquote>
+<p>vi /etc/nginx/nginx.conf</p>
+</blockquote>
+<pre><code class="lang-auto"># /etc/nginx/nginx.conf
+location / {
+  proxy_pass http://’paste here’:8080;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection 'upgrade';
+  proxy_set_header Host $host;
+  proxy_cache_bypass $http_upgrade;
+}
+</code></pre>
+<ol start="9">
+<li>Check updates and reload Nginx</li>
+</ol>
+<blockquote>
+<p>nginx -t<br>
+systemctl reload nginx</p>
+</blockquote>
+<ol start="10">
+<li>Make sure that SElinux is set to allow Nginx to act as a proxy</li>
+</ol>
+<blockquote>
+<p>setsebool -P httpd_can_network_connect 1</p>
+</blockquote>
+<ol start="11">
+<li>Test it out! Replace <a href="https://twitter.xrptipbot.com/sharafian" rel="noopener nofollow ugc">https://twitter.xrptipbot.com/sharafian</a> with your own Payment Pointer</li>
+</ol>
+<blockquote>
+<p>curl -i -H “Accept: application/spsp4+json” -H “Content-Type: application/spsp4+json” -X GET <a href="https://twitter.xrptipbot.com/sharafian" rel="noopener nofollow ugc">https://twitter.xrptipbot.com/sharafian</a></p>
+</blockquote>
+<pre><code class="lang-auto"></code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 21, 2019 2:57 AM">
+            <time itemprop="datePublished" datetime="2019-02-21 02:57:09 +0200">Feb 21, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I intend to use auth0’s JWT implementation for node.js for the authentication. Users will be able to login with a private key (stored in a .env file) and obtain a JWT access token. I’ll stick to the standard and define an exp claim for expiration. Users would include the access token in a request to the add/remove endpoints to make any modifications to the payout details. Thoughts, anyone?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 24, 2019 7:29 PM">
+            <time itemprop="datePublished" datetime="2019-02-24 19:29:44 +0200">Feb 24, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve written a HS256 based authentication for the Revshare Pointer. I referenced <a class="mention" href="/u/sabinebertram/index.html">@sabinebertram</a> repository for <code>ilp-spsp-pull-payment-pointer</code> as well as articles from auth0 and IETF. I’m still pretty new to koajs as well as authentication so feedback from the community would be appreciated!</p>
+<p>You can try it out by following the instructions below (assumes you already have <code>moneyd</code> installed and running).</p>
+<p>Install and run:</p>
+<blockquote>
+<p>git clone --single-branch --branch feat/auth <a href="https://github.com/surferwat/revshare-pointer.git" rel="noopener nofollow ugc">https://github.com/surferwat/revshare-pointer.git</a><br>
+cd revshare-pointer<br>
+npm install<br>
+DEBUG=revshare-pointer* node index</p>
+</blockquote>
+<p>Login:</p>
+<blockquote>
+<p>curl -i -H “Accept: application/json” -H “Authorization: Bearer test” -X POST <a href="http://localhost:8080/login" rel="noopener nofollow ugc">http://localhost:8080/login</a></p>
+</blockquote>
+<p>Create a revshare payment pointer (replace the word, token, with the access token that you received in the response when logging in)</p>
+<blockquote>
+<p>curl -i -d ‘{“payout”: [{“percent”:90,“pointer”:“$<a href="http://twitter.xrptipbot.com/sharafian_%22%7D,%7B%22percent%22:10,%22pointer%22:%22$twitter.xrptipbot.com/Coil" rel="noopener nofollow ugc">twitter.xrptipbot.com/sharafian_“},{“percent”:10,“pointer”:”$twitter.xrptipbot.com/Coil</a>”}]}’ -H “Content-Type: application/json” -H “Accept: application/json” -H “Authorization: Bearer token” -X POST <a href="http://localhost:8080/pointers/koa1" rel="noopener nofollow ugc">http://localhost:8080/pointers/koa1</a></p>
+</blockquote>
+<p>You can see the Revshare Pointer in action here: <a href="https://www.gorillarecipe.com" rel="noopener nofollow ugc">https://www.gorillarecipe.com</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 25, 2019 5:07 PM">
+            <time itemprop="datePublished" datetime="2019-02-25 17:07:55 +0200">Feb 25, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I added modify and delete endpoints. To install:</p>
+<blockquote>
+<p>git clone --single-branch --branch feat/endpoints <a href="https://github.com/surferwat/revshare-pointer.git" rel="noopener nofollow ugc">https://github.com/surferwat/revshare-pointer.git</a></p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/KevinKing64" class="user-link">KevinKing64</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Mar 1, 2019 10:14 PM">
+            <time itemprop="datePublished" datetime="2019-03-01 22:14:53 +0200">Mar 1, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/surferwat/index.html">@surferwat</a> that’s an awesome effort <img src="https://emoji.discourse-cdn.com/twitter/+1.png?v=6" title=":+1:" class="emoji" alt=":+1:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Mar 2, 2019 4:13 AM">
+            <time itemprop="datePublished" datetime="2019-03-02 04:13:43 +0200">Mar 2, 2019</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks!</p>
+<p>The <code>authorize function</code> in <code>auth.js</code> needs to be fixed. The <code>next()</code> needs to be preplaced with <code>return next()</code> otherwise the function suspends and passes control downstream before unwinding the stack to resume the upstream behavior which in this case results in a 404 even when the authorization is successful.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Mar 3, 2019 11:59 PM">
+            <time itemprop="datePublished" datetime="2019-03-03 23:59:56 +0200">Mar 3, 2019</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/surferwat/index.html">@surferwat</a> Thanks for contributing to this project, those are great features! If you make a PR to my revshare-pointer repo then I’d like to review your changes so that we can merge these features in. It would also be great to merge your instructions into the README for this project</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Mar 4, 2019 4:57 AM">
+            <time itemprop="datePublished" datetime="2019-03-04 04:57:27 +0200">Mar 4, 2019</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Sounds good. I will make a PR as soon as it’s ready. Thank you!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/surferwat" class="user-link">surferwat</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Mar 8, 2019 3:51 AM">
+            <time itemprop="datePublished" datetime="2019-03-08 03:51:25 +0200">Mar 8, 2019</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I made a PR to your revshare-pointer repo for the authentication (<a href="https://github.com/sharafian/revshare-pointer/pull/2" rel="nofollow noopener">#2</a>), endpoints (<a href="https://github.com/sharafian/revshare-pointer/pull/2" rel="nofollow noopener">#3</a>), and README (<a href="https://github.com/sharafian/revshare-pointer/pull/4" rel="nofollow noopener">#4</a>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Mar 11, 2019 9:48 PM">
+            <time itemprop="datePublished" datetime="2019-03-11 21:48:21 +0200">Mar 11, 2019</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Responded to your PRs; Had a few comments but overall looks good!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

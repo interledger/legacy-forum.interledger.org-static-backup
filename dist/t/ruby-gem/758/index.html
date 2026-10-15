@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ruby Gem - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Ruby Gem</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Ruby Gem</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 6, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/captproton" class="user-link">Carl Tanner</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 6, 2019 3:17 AM">
+            <time itemprop="datePublished" datetime="2019-09-06 03:17:17 +0200">Sep 6, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>How difficult would it be to create a Ruby Gem to interact with Interledger?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/AJ58O" class="user-link">Just a Guy</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 6, 2019 8:22 PM">
+            <time itemprop="datePublished" datetime="2019-09-06 20:22:25 +0200">Sep 6, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In what capacity do you want to interact with interledger, and how much of what you’re doing needs to be in Ruby?</p>
+<p>If you can run <em>some</em> javascript but want to be able to send payments using Ruby, then you’d need to run moneyd as a JS shell and translate ilp-spsp to ruby.</p>
+<p>If you can’t run any javascript, you’ll need to translate both moneyd and ilp-spsp to ruby.</p>
+<p>Another alternative to explore is to use someting like <a href="https://github.com/rails/execjs" rel="nofollow noopener">execjs</a> which lets you execute JavaScript from Ruby (though at that point, why not just use JavaScript?).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">C</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/captproton" class="user-link">Carl Tanner</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 6, 2019 9:33 PM">
+            <time itemprop="datePublished" datetime="2019-09-06 21:33:51 +0200">Sep 6, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>All good points. In the end, we want to create a method to pay for an order like in the summit video. <a href="https://youtu.be/WsMmoD_1hrU" rel="nofollow noopener">https://youtu.be/WsMmoD_1hrU</a></p>
+<p>Excelsior</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/AJ58O" class="user-link">Just a Guy</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 6, 2019 9:57 PM">
+            <time itemprop="datePublished" datetime="2019-09-06 21:57:16 +0200">Sep 6, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Got it. In this case, you’d need at least SPSP implemented in Ruby. You’d need to be connected to moneyd, but hopefully you can use one of the existing moneyd implementations. If you need to implement moneyd in ruby also, this likely increases the difficulty and complexity significantly. I’m not sure how to advise on your first step, maybe <a class="mention" href="/u/sharafian/index.html">@sharafian</a> or <a class="mention" href="/u/sabinebertram/index.html">@sabinebertram</a> can weigh in.</p>
+<p>Relevant reading:</p>
+<ol>
+<li><a href="https://github.com/interledgerjs/ilp-spsp" rel="nofollow noopener">SPSP repo</a></li>
+<li><a href="/rfcs/0009-simple-payment-setup-protocol/" rel="nofollow noopener">SPSP specs</a></li>
+<li><a href="/rfcs/0036-spsp-pull-payments/" rel="nofollow noopener">SPSP pull payment specs</a></li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 14, 2019 11:04 PM">
+            <time itemprop="datePublished" datetime="2019-09-14 23:04:45 +0200">Sep 14, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/captproton/index.html">@captproton</a> ,</p>
+<p>I briefly looked into this and it is like going down a rabbit hole.  Like <a class="mention" href="/u/aj58o/index.html">@AJ58O</a> said, I think you need to at least implement <a href="https://github.com/interledgerjs/ilp-protocol-spsp" rel="nofollow noopener">ilp-protocol-spsp</a>, however, this depends on <a href="https://github.com/interledgerjs/ilp-protocol-stream" rel="nofollow noopener">ilp-protocol-stream</a> and some functions require an instance of <a href="https://github.com/interledgerjs/ilp-plugin" rel="nofollow noopener">ilp-plugin</a> as input. <a href="https://github.com/interledgerjs/ilp-protocol-stream" rel="nofollow noopener">ilp-protocol-stream</a> itself has ilp-specific dependencies as well and so the spiral unfolds. Good news, I don’t think you have to re-implement moneyd.</p>
+<p><a class="mention" href="/u/aj58o/index.html">@AJ58O</a> has already pointed you towards some specs, here are the others:</p>
+<ul>
+<li>
+<a href="https://github.com/interledger/rfcs/blob/master/0009-simple-payment-setup-protocol/0009-simple-payment-setup-protocol.md" rel="nofollow noopener">SPSP</a> (for completeness) including <a href="https://github.com/interledger/rfcs/blob/master/0037-spsp-invoices/0037-spsp-invoices.md" rel="nofollow noopener">push payments</a> and <a href="https://github.com/interledger/rfcs/blob/master/0036-spsp-pull-payments/0036-spsp-pull-payments.md" rel="nofollow noopener">pull payments</a>
+</li>
+<li><a href="https://github.com/interledger/rfcs/blob/master/0029-stream/0029-stream.md" rel="nofollow noopener">STREAM</a></li>
+<li><a href="https://github.com/interledger/rfcs/blob/master/0024-ledger-plugin-interface-2/0024-ledger-plugin-interface-2.md" rel="nofollow noopener">ILP Plugin</a></li>
+</ul>
+<p>I’m not the expert here so <a class="mention" href="/u/sharafian/index.html">@sharafian</a>, correct me if I’m wrong.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Oct 1, 2019 10:21 PM">
+            <time itemprop="datePublished" datetime="2019-10-01 22:21:33 +0200">Oct 1, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yeah you could implement a full ILP stack in Ruby if you want. What I would do is just break the application into two services though, one of which is in JS and uses all the Interledger.js libraries (you could alternatively use rust or any other language with an ILP library). The other service is your Ruby app. Then the two of them can communicate to each other using your RPC of choice (REST, GRPC, etc.).</p>
+<p>I know it’s not exactly what you’re asking for but it’s probably the most reasonable way to do this without requiring someone to do a lot of ruby work. If you’re interested in implementing the Interledger stack in ruby then more power to you!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 2, 2019 9:44 PM">
+            <time itemprop="datePublished" datetime="2019-10-02 21:44:24 +0200">Oct 2, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I would strongly advise against trying to re-implement the whole Interledger stack in another language (it took me ~9 months to implement most of the protocols in Rust and I was already very familiar with their inner-workings).</p>
+<p>As part of the Interledger Rust project, we’re including an <a href="https://github.com/interledger-rs/interledger-rs/blob/master/docs/api.md" rel="nofollow noopener">HTTP API</a> that lets you interact with Interledger, without having to write in a specific language. The API is still fairly basic but we’ll be adding more functionality to it over time and would love feedback on it.</p>
+<p>Overall, I think it’s better if we have a few full implementations of Interledger that expose HTTP, gRPC, or C APIs/ABIs for applications in other languages to call, rather than requiring a full implementation in every language.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/AJ58O" class="user-link">Just a Guy</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Oct 5, 2019 7:10 PM">
+            <time itemprop="datePublished" datetime="2019-10-05 19:10:22 +0200">Oct 5, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Really exciting! From my perspective, HTTP API is a huge step towards easing the onboarding process. Another step that would help is to have moneyd/interledger dockerized. Then anybody who wants to use interledger can just pull a docker image, run it on their box of choice and start using ILP via the HTTP API with very little setup. I started trying to standardize the InterledgerJS configuration and start steps, but got distracted. I might pick that project back up</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 5, 2019 7:38 PM">
+            <time itemprop="datePublished" datetime="2019-10-05 19:38:27 +0200">Oct 5, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This page has instructions for downloading a docker image that contains the Interledger.rs node and settlement engines and automatically connecting it to the testnet: <a href="https://github.com/interledger-rs/interledger-rs/blob/master/docs/testnet.md" rel="nofollow noopener">https://github.com/interledger-rs/interledger-rs/blob/master/docs/testnet.md</a> <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

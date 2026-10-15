@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connector Auth Model - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Connector Auth Model</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Connector Auth Model</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 17, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 17, 2019 3:16 AM">
+            <time itemprop="datePublished" datetime="2019-04-17 03:16:41 +0200">Apr 17, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There has been some discussion in Interledger Slack about how Ilp-over-Http nodes should authenticate to each other, and how we should think about the identity relationship between two parties in ILP.</p>
+<p>I wrote a brief article to summarize my thoughts on the topic here: <a href="https://slack-files.com/T0KKJC1N1-FHRM166KS-d9d4605358" rel="nofollow noopener">Connector Auth Security</a></p>
+<p>Essentially, I see two auth models that we could leverage between ILP nodes, and my article describes a way we could start with the simpler version (account-based auth) and later, potentially, upgrade to a peer-based (multiple-account-per-credential) model in the future. In other words, two different models that can co-exist with each other depending on what an implementation chooses to support.</p>
+<p>I’m curious what people think about these two models, and am curious to hear opinions around how people conceive of the identity relationship between two Connectors.</p>
+<p>Last but not least, this topic directly relates to <a href="https://github.com/interledger/rfcs/pull/525" rel="nofollow noopener">this PR</a> in the ILP-over-http spec.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 24, 2019 12:38 PM">
+            <time itemprop="datePublished" datetime="2019-04-24 12:38:11 +0200">Apr 24, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the write up <a class="mention" href="/u/sappenin/index.html">@sappenin</a></p>
+<p>I disagree with a few of the assertions you’ve made.</p>
+<p>In particular you say that one of the purposes of an <code>account</code> is to:</p>
+<blockquote>
+<p>provide a conduit for exchanging ILP packets in order to facilitate a variety of messaging, financial, and other (potentially multi-hop) operations related to Interledger</p>
+</blockquote>
+<p>This suggests to me that we have different ideas of what an account is. In the context of ILP I consider an account to be simply a record of the financial position of a peer with another peer. i.e. It’s a financial concept like a bank account, or account in a chart of accounts for a business.</p>
+<p>I believe that what you are describing is more like a user account/login like you would have with an email provider or an online service.</p>
+<p>I prefer the former interpretation because unlike many services that track “user accounts” an ILP connector DOES track a financial account for its users/peers. If we use the term “account” to define the whole relationship between the two peers then how do we differentiate that from the financial account specifically?</p>
+<p>Let’s agree on the domain model (I think we do but let’s be clear):</p>
+<ol>
+<li>the two entities that are establishing a relationship are “peers”</li>
+<li>a peer will maintain an accounting system (a set of “accounts”) and one or more of these “accounts” will relate to the financial relationship with the peer</li>
+<li>these accounts may differ by currency or function. E.g. A peer may track a liability account which tracks the amount owed to the other peer and a separate asset account which tracks the amount owed to it by the other peer. Or the peer may just maintain a single consolidated account which is a net of both owed and owing but track multiple of these because it settles with the peer in multiple currencies.</li>
+</ol>
+<p>On the basis of that model I think it’s entirely inappropriate to perform authentication between peers using an account identifier as the subject of the authentication.</p>
+<p>The entity being authenticated is the peer so the subject should be the peer identifier.</p>
+<p>It’s possible that a connector may offer an alternative authentication scheme where the subject is an account. This would likely be a claims-based authentication scheme (i.e. the subject is the account and the token is a signed claim that proves the holder can transact against the account) but I would recommend against that being an interoperability requirement, it’s a complex authentication scheme that requires the auth layer to access the accounting/business layer to perform the authentication.</p>
+<p>With regards to <a href="https://github.com/interledger/rfcs/pull/525">https://github.com/interledger/rfcs/pull/525</a></p>
+<p>My recommendation is that we stick with <code>ilp-peer-id</code> as the header we expect for disambiguating packets from different peers at the same endpoint.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 25, 2019 3:03 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 15:03:50 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> Thanks for your post - very helpful.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="3" data-topic="517">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>This suggests to me that we have different ideas of what an account is.</p>
+</blockquote>
+</aside>
+<p>I think you’re right - maybe for clarity let’s qualify our usages (at least for this dialog, anyway) and say that a peer maintains “<strong>financial accounts</strong>”, each of which tracks some sort of financial position with a peer (e.g., a single net-balance, or <a href="https://forum.interledger.org/t/what-should-positive-negative-balances-represent/501/11">some other balance-tracking mechanism</a>).</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="3" data-topic="517">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>what you are describing is more like a user account/login</p>
+</blockquote>
+</aside>
+<p>Yes, this is correct, although I think our two definitions can co-exist.</p>
+<p>I say this because overall I’m trying to arrive at is <em>just</em> an authentication mechanism (i.e., an identity and a credential to prove that identity) and my overall point (read below) is that there are many valid possibilities for a Connector to uniquely identify (i.e., authenticate) incoming connections.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="3" data-topic="517">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>The entity being authenticated is the peer so the subject should be the peer identifier.</p>
+</blockquote>
+</aside>
+<p>This is not always true, and needn’t be always true.</p>
+<p>For example, let’s imagine there are two companies, BigCo and SmallCo, and they want to “peer” with each other using <a href="https://github.com/interledger/rfcs/blob/master/0035-ilp-over-http/0035-ilp-over-http.md" rel="noopener nofollow ugc">ILP-over-HTTP</a>.</p>
+<p>For example’s sake, let’s say that BigCo has a database that stores a <code>peerId</code> for each of its peers, and so it has an entry in a database for SmallCo that is “<strong>sco</strong>”. Likewise, SmallCo has a database that stores <code>peerId</code> and SmallCo’s database has an entry for BigCo that is “<strong>bco</strong>”.</p>
+<p>Now, let’s also imagine that BigCo is a sophisticated Connector operator, so they issue credentials that allow peers to operate across multiple financial accounts (for the sake of argument, we could imagine a token-authorization scheme that peers can utilize to get limited-access tokens to operate on one more more financial-accounts, depending on authorities granted in the token). We can also imagine that, in addition to offering complex permissions per-credential, BigCo <em>also</em> allows its peers to <em>each</em> hold multiple credentials so that some of its peer’s employees can use the BigCo connector with limited access, whereas other credentials might provide broader access (e.g., an “admin” account and a “payor” account).</p>
+<p>Now, let’s also imagine that SmallCo is not quite so sophisticated, and when SmallCo issues a credential to BigCo, the credential is just a very simple shared-secret that only works with a single financial account at SmallCo.</p>
+<p>While I agree that your domain-model accurately describes BigCo and SmallCo as “peers”, <strong>the auth-credentials they utilize are orthogonal to this concept</strong>. BigCo is providing one or more identities to SmallCo that transcend the concept of a financial account or a peer. Conversely, SmallCo is providing an identity that is strongly tied to one, and only one, financial account (ignoring the peer identifier entirely).</p>
+<p>In this example, saying that the “subject” of the authentication credential is “the peer id” is just incorrect. In neither example at BigCo nor SmallCo are credentials identified with “<strong>sco</strong>” or “<strong>bco</strong>”. Instead, the “subject” of the authentication credential is something else, and it’s not always the same even between two peers due to the nature of ILP-over-HTTP.</p>
+<p>All that so say: I’m not saying you’re peerId-as-Auth-Identifier is “wrong” in and of itself (quite the opposite, it could be a valid auth-scheme if two peers desired it). Instead, I’m saying that it would be a mistake to mandate this auth scheme on every bilateral peer relationship. It doesn’t need to be normalized.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="3" data-topic="517">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>My recommendation is that we stick with <code>ilp-peer-id</code> as the header we expect for disambiguating packets from different peers at the same endpoint.</p>
+</blockquote>
+</aside>
+<p>I think as a non-normative suggestion, this is fine if it fits the auth-model between two peers.</p>
+<p>However, as a <a href="https://github.com/interledger/rfcs/pull/525/files#diff-ccfda9b7df50a9cfd8618bb9c08e360aR35" rel="noopener nofollow ugc">normative part of the spec</a>, this breaks down if the two peers don’t identify themselves using their peer identifiers (assuming these identifiers even exist between two peers).</p>
+<p>All that to say, I think we should either close <a href="https://github.com/interledger/rfcs/pull/525" rel="noopener nofollow ugc">https://github.com/interledger/rfcs/pull/525</a> or else introduce a new section that details (non-normatively) how peers might use extra headers to help with authentication.</p>
+<p>As one final example, the Java ILP-over-HTTP implementation supports a JWT authentication mode where the entire token can trivially be used in a performant manner without <em>any</em> additional headers. This is proof enough that this header is only sometimes required.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 25, 2019 3:55 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 15:55:37 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Okay, I think we’re on the same page! When I said:</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="3" data-topic="517">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>It’s possible that a connector may offer an alternative authentication scheme where the subject is an account.</p>
+</blockquote>
+</aside>
+<p>I was thinking exactly along the lines you are. Auth is orthogonal to the domain specifics (peers, accounts etc).</p>
+<p>My concern was that if we were going to make normative changes to the spec that require support for a header carrying the subject of an auth then we should keep that list of possible headers (credential labels) as small as possible and the only one that makes sense as a normative requirement is <code>peer</code>.</p>
+<p>I’m very happy to not make this normative with the caveat that I think we SHOULD define at least one auth mechanism that is a minimum requirement for all connectors. (I think these can even be defined in the Open API spec).</p>
+<p>My goal is a mechanism for auto-mated peering between connectors without a need for manual intervention (e.g. to configure credential)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

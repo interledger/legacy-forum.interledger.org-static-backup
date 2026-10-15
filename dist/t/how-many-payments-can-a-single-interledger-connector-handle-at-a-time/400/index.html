@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How many payments can a single Interledger connector handle at a time? - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">How many payments can a single Interledger connector handle at a time?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">How many payments can a single Interledger connector handle at a time?</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 16, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 16, 2019 12:41 AM">
+            <time itemprop="datePublished" datetime="2019-03-16 00:41:44 +0200">Mar 16, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Has anyone done load testing to find out how many payments a single connector can handle at once?<br>
+What are the bottlenecks performance-wise on Interledger, if any?</p>
+<p>Would be open to gathering such data if anyone had suggestions for how to do it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/ekrenzke" class="user-link">Eli Krenzke</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 17, 2019 12:31 AM">
+            <time itemprop="datePublished" datetime="2019-03-17 00:31:20 +0200">Mar 17, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Some community members made a <a href="https://github.com/interledger/jmeter-samplers" rel="nofollow noopener">Jmeter add-on</a> for load testing, but I cannot remember the results that were reported on the community call. I am sure it has come a long way since its initial testing.</p>
+<p>Perhaps this is a question better answered by <a class="mention" href="/u/d1no007/index.html">@d1no007</a> and <a class="mention" href="/u/austin_king/index.html">@austin_king</a>, but I think your results will vary greatly in the wild. Something as simple as encoding and decoding times could vary between different implementations that utilize different threading models, but that’s kind of boring, so let’s look at other potential factors.</p>
+<p>The ledger (and associated payment channel implementation) mostly dictate settlement times, but can be made more flexible by using credit to speed up fulfillment. However, you might run into liquidity exhaustion and re-balancing issues, throttling connector efficiency. I think <a class="mention" href="/u/kincaid/index.html">@kincaid</a> (or perhaps somebody else from Kava) might have some more information on how long the round-trip time is for a ledger plug-in like the <a href="https://github.com/interledgerjs/ilp-plugin-lightning" rel="nofollow noopener">Lightning Plug-in</a>.</p>
+<p>Under the assumption of unlimited liquidity when going from asset A to asset B, this is a non-issue, but practically speaking, it is important for connectors to choose reliable routing methods and prioritize fulfillment over preparing new packets.</p>
+<p>At the link layer, you can see how Interledger might scale by using <a href="https://github.com/interledger/rfcs/blob/master/0035-ilp-over-http/0035-ilp-over-http.md" rel="nofollow noopener">ILP over HTTP</a>, instead of using BTP over WS. If you are running a connector using BTP, you need to configure different WebSocket URLs and ILP addresses for each instance.</p>
+<p>For more information on why using BTP over web-sockets could lead to scaling issues, read Evan’s post: <a href="https://medium.com/interledger-blog/thoughts-on-scaling-interledger-connectors-7e3cad0dab7f" rel="nofollow noopener">Thoughts on Scaling Interledger Connectors</a>. There is some amount of overhead associated with persistent HTTP connections, but it seems like a viable solution for the reasons <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a> detailed in the article.</p>
+<p>Fortunately, I think most scaling problems could be solved naively by creating more instances laterally. I think liquidity exhaustion will be the biggest scaling issue that smaller connectors run into, but as <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a> could probably tell you, it’s just kind of foreign to think in terms of <em>money</em>-width right now, instead of band-width.</p>
+<p>I am excited to hear other people’s thoughts on the topic.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/karzak" class="user-link">Kevin Davis</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 17, 2019 1:44 AM">
+            <time itemprop="datePublished" datetime="2019-03-17 01:44:58 +0200">Mar 17, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Great breakdown <a class="mention" href="/u/ekrenzke/index.html">@ekrenzke</a> of the various factors in play. For raw ILP packets and no settlement, I feel like you can get to thousands of packets/sec just by tuning the existing implementation. The Jmeter numbers from <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> backed that up if I recall.</p>
+<p>For the latest settlement related numbers, checkout the readme for <a href="http://www.github.com/kava-labs/switch-api" rel="nofollow noopener">switch-api</a>.  The current ETH and XRP paychan implementations can settle roughly 200x the credit limit per second. Lightning is about an order of magnitude slower.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/spearl" class="user-link">Landon Spear</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 18, 2019 11:02 PM">
+            <time itemprop="datePublished" datetime="2019-03-18 23:02:41 +0200">Mar 18, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We’ve found the scaling limits on the existing JS connector to always be CPU bound. Since node is single threaded it’s very effective to simply scale horizontally.</p>
+<p>We’ve achieved ~2k packets per second using 6 connectors each with ~80% CPU. That would come out to roughly 400 pps per connector given a full CPU.</p>
+<p>Seeing as this connector is not optimized for performance and we have more systems level language implementations in the works I think the performance roof is much, much higher than this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="6 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          6
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Fy45" class="user-link">Yuan Fan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 8, 2019 8:02 AM">
+            <time itemprop="datePublished" datetime="2019-07-08 08:02:53 +0200">Jul 8, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/spearl/index.html">@spearl</a> Hi, so sorry to bother you. I am a master student who is focusing on the interoperability of blockchains and now investigating the Interledger. We are so interested in the performance bottleneck of interledger and noticed your reply. Is it possible for you to share the benchmark tools/codes of how you conduct the experiment test to get the result? Or could you point out how we users could test the performance bottleneck?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 8, 2019 5:38 PM">
+            <time itemprop="datePublished" datetime="2019-07-08 17:38:56 +0200">Jul 8, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>HI <a class="mention" href="/u/fy45/index.html">@Fy45</a>, there are ways to scale Interldeger connectors horizontally. We are doing this right now on the network and have seen days where we are handling 3,000 TPS. I don’t have any tools to share with you at the moment, but hopefully this provides some context for the state of the network today.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/spearl" class="user-link">Landon Spear</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jul 9, 2019 12:15 AM">
+            <time itemprop="datePublished" datetime="2019-07-09 00:15:30 +0200">Jul 9, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/fy45/index.html">@Fy45</a>,</p>
+<p>There was no benchmarking involved in the numbers I quoted above. Those were numbers we were consistently seeing in our production infrastructure metrics.</p>
+<p>If you’d like to performance test the JS connector I would advise you to simply run a connector yourself with the inspector enabled and connected to an instance of Chrome Dev Tools. Then run a few processes sending packets through the connector and examine the flame graphs.</p>
+<p>Like I mentioned above, the JS connector was not created for performance and there are probably many trivial bottlenecks that could easily be optimized. However, javascript is a terrible language to use if you’re aiming for pure performance which is why there hasn’t really been any concerted effort to fix bottlenecks. Most of the community is working on the several connector implementations that are focusing on robustness and performance as primary features. Obviously any work on improving the current connector is greatly appreciated and will be used widely but the future lies in other implementations.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

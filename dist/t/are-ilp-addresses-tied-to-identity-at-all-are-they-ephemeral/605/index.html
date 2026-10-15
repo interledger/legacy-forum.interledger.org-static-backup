@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Are ILP Addresses tied to identity at all? Are they Ephemeral? - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/uncategorized/1/index.html">Uncategorized</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Are ILP Addresses tied to identity at all? Are they Ephemeral?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Are ILP Addresses tied to identity at all? Are they Ephemeral?</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/uncategorized/1" class="category-badge" style="--cat-color: #B3B5B4"><span class="category-bullet" aria-hidden="true"></span>Uncategorized</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 21, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 21, 2019 10:56 PM">
+            <time itemprop="datePublished" datetime="2019-05-21 22:56:59 +0200">May 21, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For the longest time I’ve had this rule in my head that ILP addresses only exist to aid in routing decisions, and should never be user-facing and should never be tied to identity in the Interledger.</p>
+<p>I recall <a class="mention" href="/u/justmoon/index.html">@justmoon</a> or somebody also once saying that ILP addresses should be considered ephemeral, and that they might change at any time (after all, ILP addresses are fundamentally used for making routing decisions).</p>
+<p>Did this get negated in our Secure Routing session at the ILP summit? I’m trying to form an opinion around whether or not an ILP address should be tied to peer-wise identity at all…or for that matter Interledger-wide identity.</p>
+<p>For example, does it makes sense to make an ILP address the <code>subject</code> of an x.509 certificate, and authenticate a connection between two peers where each peer sees the other as being identified by an ILP address?</p>
+<p>Or more broadly, should there be an ILP-wide CA that vouches for identity on the Interledger?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Mortadelo-y-Filemon" class="user-link">Marcelo Ribeiro</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jun 28, 2019 6:20 PM">
+            <time itemprop="datePublished" datetime="2019-06-28 18:20:56 +0200">Jun 28, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, All!<br>
+I’ve just arrived, I hope I will not be driving anyone to an wrong direction.<br>
+The issue is very important since there is that GDPR legislation that states that the subject identity shouldn’t be tracked, but in the other hands, the expected effects from a transaction would make necessary to record some identities from the parties for some period. There comes the dilema.<br>
+But, what if we consider that, in real life, we do similar money transactions in a bank, in more than one manner, and after all we don’t keep those proofs of transaction in paper forever. We do keep them for a while, but as soon as one do his cleanup at home, he garbage those papers holding identities.<br>
+Now, back to the original matter, we should probably think on the same way: We are humans, we may make mistakes, but we don’t want to deal with money from people and make them lose money due to our mistakes. Then there is this tendence to keep some records for a certain while.<br>
+I hope I am not giving another way to the discussion, guys. The subject interests me a lot.</p>
+<p>Oh, finally, I would like to present this answer to the last question of <a class="mention" href="/u/sappenin/index.html">@sappenin</a> : Yes, buddy, I would strongly recommend the employ of a CA issuing certificates to both parties.<br>
+But I am kind of sure, by faith (since I’ve just step in), that Interledger already has such thing.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

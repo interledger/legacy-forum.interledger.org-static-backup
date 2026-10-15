@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>React Web Monetization - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">React Web Monetization</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">React Web Monetization</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 11, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 11, 2019 6:32 PM">
+            <time itemprop="datePublished" datetime="2019-02-11 18:32:28 +0200">Feb 11, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="onebox whitelistedgeneric">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/sharafian/react-web-monetization" target="_blank">GitHub</a>
+  </header>
+  <article class="onebox-body">
+    <img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/0848d1151e73d1112bad8b39beb0839649c3176c.jpeg" class="thumbnail onebox-avatar" width="400" height="400">
+
+<h3><a href="https://github.com/sharafian/react-web-monetization" target="_blank">sharafian/react-web-monetization</a></h3>
+
+<p>React component that lets you access the state of Web Monetization - sharafian/react-web-monetization</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+<p>I’ve been playing around with a <a href="https://reactjs.org/">React</a> library for Web Monetization, using <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a></p>
+<p>The goal is to enable React developers to:</p>
+<ul>
+<li>Hide ads for users that have Web Monetization enabled</li>
+<li>Show a thank-you message to users who have Web Monetization enabled</li>
+<li>Display counters to show Web Monetized users how much the site has received</li>
+</ul>
+<p>Things that it cannot do:</p>
+<ul>
+<li>Securely show premium content (this library can help but it requires server-side code too)</li>
+<li>Add the Web Monetization meta tag to your site (the meta tag must be there at page load before any JS runs, as per <a href="https://github.com/interledger/rfcs/blob/master/0028-web-monetization/0028-web-monetization.md">the RFC</a>)</li>
+</ul>
+<p>I’d love to get some feedback on the API, especially from anyone who wants to try it out on their own site! It’s available on NPM as <code>react-web-monetization</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="8 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          8
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Solstice" class="user-link">Jonathan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 11, 2019 1:53 PM">
+            <time itemprop="datePublished" datetime="2019-07-11 13:53:57 +0200">Jul 11, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’ve been using Vue.js for our development and have utilized the “vue-meta” package to accomplish the task of placing the web-monetization script into into the head of our app’s pages/components.</p>
+<p>For our apps that are meant to be web-monetized entirely (all pages/components) it is easiest to simply load the vue-meta plugin within the main.js of your Vue app and then indicate the meta information within the component/page.</p>
+<p>For apps that require selective use of the web-monetization script - you can simply load vue-meta as needed per page/component and then specify it within the export section of the page/component.</p>
+<p>This is obviously a very simple implementation - but it seems to be working as intended.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/GoodFaithParadigm8" class="user-link">Jason Sprouse</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Sep 22, 2019 12:44 AM">
+            <time itemprop="datePublished" datetime="2019-09-22 00:44:44 +0200">Sep 22, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I haven’t combed through the test code or specification to see what is required to get the payment pointer to <s>point at the tip bot.</s> update the paymentPointer variables.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/ec3f38de0c644ff2399480aa90608d6c959c8305.png" data-download-href="/uploads/short-url/xHW8q8Eoe7tVrY2ixLuedr765jT.png?dl=1" title="Screenshot from 2019-09-21 19-35-57.png" rel="nofollow noopener"><img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/ec3f38de0c644ff2399480aa90608d6c959c8305_2_690x401.png" alt="Screenshot%20from%202019-09-21%2019-35-57" data-base62-sha1="xHW8q8Eoe7tVrY2ixLuedr765jT" width="690" height="401" srcset="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/ec3f38de0c644ff2399480aa90608d6c959c8305_2_690x401.png, https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/ec3f38de0c644ff2399480aa90608d6c959c8305.png 1.5x, https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/ec3f38de0c644ff2399480aa90608d6c959c8305.png 2x" data-small-upload="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/ec3f38de0c644ff2399480aa90608d6c959c8305_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screenshot from 2019-09-21 19-35-57.png</span><span class="informations">1000×582 38.7 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>Got a few things on my plate before I get there, but any pointers or suggestions until then are welcomed.</p>
+<p>Great work on the react-web-monetization package. I didn’t modify what you did in any way other than changing the meta tag on the index page. It built and published correctly. Not sure if the funds I have are from Coil or this <a href="https://reactwebmonitization.z21.web.core.windows.net" rel="nofollow noopener">site</a>, but I just signed up for the tip bot and Coil. Love ILP. Had a Codius app hosted with limited functionality, it only displays a static page, but the value is understandable.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/GoodFaithParadigm8" class="user-link">Jason Sprouse</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Sep 22, 2019 1:50 AM">
+            <time itemprop="datePublished" datetime="2019-09-22 01:50:32 +0200">Sep 22, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Peek definition works fine.</p>
+<p>It must be populating from the variable  <code>monitizationDetails</code> which is part of the object returned from the <code>getGlobalWebMonitizationState()</code> function. Not clear to me how the GlobalWedMonitizationState is set and if it initializes with the meta tag  pointer in the header.</p>
+<pre><code class="lang-javascript">function useMonetizationCounter() {
+  // get the singleton WM state
+  var webMonetizationState = getGlobalWebMonetizationState();
+  webMonetizationState.init();
+
+  var _useState = React.useState(webMonetizationState.getState()),
+      _useState2 = _slicedToArray(_useState, 2),
+      monetizationDetails = _useState2[0],
+      setMonetizationDetails = _useState2[1]; // create something we can mutate
+
+
+  var monetizationDetailsCopy = Object.assign({}, monetizationDetails);
+  React.useEffect(function () {
+    var onMonetizationStart = function onMonetizationStart() {
+      // this is purposely mutating because sometimes we get multiple state
+      // updates before reload
+      setMonetizationDetails(Object.assign(monetizationDetailsCopy, webMonetizationState.getState()));
+    };
+
+    var onMonetizationProgress = function onMonetizationProgress() {
+      // this is purposely mutating because sometimes we get multiple state
+      // updates before reload
+      setMonetizationDetails(Object.assign(monetizationDetailsCopy, webMonetizationState.getState()));
+    };
+
+    webMonetizationState.on('monetizationstart', onMonetizationStart);
+    webMonetizationState.on('monetizationprogress', onMonetizationProgress);
+    return function () {
+      webMonetizationState.removeListener('monetizationstart', onMonetizationStart);
+      webMonetizationState.removeListener('monetizationprogress', onMonetizationProgress);
+    };
+  });
+  return monetizationDetails;
+}
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/GoodFaithParadigm8" class="user-link">Jason Sprouse</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Sep 22, 2019 2:02 AM">
+            <time itemprop="datePublished" datetime="2019-09-22 02:02:15 +0200">Sep 22, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Both invoke the <code>getGlobalWebMonitizationState()</code> function so it’s not an order of operations issue. How do we set those variables?</p>
+<pre><code class="lang-javascript">function useMonetizationState() {
+  // get the singleton WM state
+  var webMonetizationState = getGlobalWebMonetizationState();
+  webMonetizationState.init();
+
+  var _webMonetizationState = webMonetizationState.getState(),
+      state = _webMonetizationState.state,
+      requestId = _webMonetizationState.requestId,
+      paymentPointer = _webMonetizationState.paymentPointer;
+
+  var _useState = React.useState({
+    state: state,
+    requestId: requestId,
+    paymentPointer: paymentPointer
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      monetizationState = _useState2[0],
+      setMonetizationState = _useState2[1];
+
+  React.useEffect(function () {
+    if (!document.monetization) return;
+
+    var onStart = function onStart() {
+      var _webMonetizationState2 = webMonetizationState.getState(),
+          state = _webMonetizationState2.state,
+          requestId = _webMonetizationState2.requestId,
+          paymentPointer = _webMonetizationState2.paymentPointer;
+
+      setMonetizationState({
+        state: state,
+        requestId: requestId,
+        paymentPointer: paymentPointer
+      });
+    };
+
+    webMonetizationState.on('monetizationstart', onStart);
+    return function () {
+      webMonetizationState.removeListener('monetizationstart', onStart);
+    };
+  });
+  return monetizationState;
+}
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Oct 1, 2019 10:16 PM">
+            <time itemprop="datePublished" datetime="2019-10-01 22:16:42 +0200">Oct 1, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The payment pointer comes from the events which comes from the meta tag in the page. Beyond that I’m not quite sure what you’re asking, can you clarify?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">G</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/GoodFaithParadigm8" class="user-link">Jason Sprouse</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Oct 2, 2019 1:39 AM">
+            <time itemprop="datePublished" datetime="2019-10-02 01:39:34 +0200">Oct 2, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The event or likely listener to the event doesn’t seem to parse the response to that event because my payment pointer doesn’t get updated. Is the event the initialization of the webMonitizationState and then the function that calls the webMonitizationState.getState()?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Oct 9, 2019 6:22 PM">
+            <time itemprop="datePublished" datetime="2019-10-09 18:22:23 +0200">Oct 9, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hmm, so is the issue that when you update the meta tag on the page the payment pointer in react-web-monetization’s global state is not updated?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Robert_Elite" class="user-link">Robert Elite</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Dec 16, 2021 3:33 PM">
+            <time itemprop="datePublished" datetime="2021-12-16 15:33:25 +0200">Dec 16, 2021</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Because React is one of the most popular web frameworks, I began looking into existing React Libraries to see if there were any Web Monetization libraries. I found a few, but they were overly aggressive. As a newcomer to web monetization, I wanted something as simple as adding a few lines of code to my <a href="https://designprosusa.com/react-app-development" rel="noopener nofollow ugc">React Development.</a> That’s what I set out to create: a super simple library for enabling web monetization in a React project.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

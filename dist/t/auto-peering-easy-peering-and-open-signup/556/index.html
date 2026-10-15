@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto-Peering, Easy Peering, and Open Signup - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Auto-Peering, Easy Peering, and Open Signup</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Auto-Peering, Easy Peering, and Open Signup</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/peering" class="tag-badge">peering</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 30, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 30, 2019 4:12 PM">
+            <time itemprop="datePublished" datetime="2019-04-30 16:12:32 +0200">Apr 30, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The <a href="https://forum.interledger.org/t/auto-peering/548">Auto-Peering</a> discussion is getting a bit into the weeds and <a class="mention" href="/u/sappenin/index.html">@sappenin</a> made me realize that we haven’t been clear enough with the use case for that feature. I’m going to take a stab at articulating some high level goals and disaggregating terminology like <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> did in the <a href="https://forum.interledger.org/t/settlement-architecture/545">Settlement Architecture</a> thread.</p>
+<h2>Goals</h2>
+<ol>
+<li>Make the Interledger network easy for new users to use by providing tools that find and connects to providers on the network with minimal configuration</li>
+<li>Help expand the Interledger network by simplifying the peering process for ILSPs/providers/connector operators</li>
+</ol>
+<h2>Use Cases</h2>
+<p>I’d suggest that we differentiate between three types of flows / use cases (I’m not wedded to the specific terms so feel free to suggest a rename if you feel more strongly about it):</p>
+<ul>
+<li>
+<strong>Auto-Peering</strong> - You run a node and it automatically connects to other nodes <em>as a peer</em>. You send route updates to one another and treat one another as equals.</li>
+<li>
+<strong>Easy Peering</strong> - You run a node and want to connect to a specific other node. You interact with your node to indicate you want to peer with them, maybe get a specific string to give to the other operator (your domain name or that plus a one-time-use code), they put that string into their node, and <img src="https://emoji.discourse-cdn.com/twitter/tada.png?v=9" title=":tada:" class="emoji" alt=":tada:"> you’re peered.</li>
+<li>
+<strong>Open Signup</strong> - You run a local/personal node like a <code>moneyd</code> and want to connect to the Interledger network. It automatically discovers (using a to-be-defined discovery mechanism) nodes to connect to and registers / signs up with them <em>as a child</em>. They <em>might</em> send you route updates, but they do not accept route updates from you.</li>
+</ul>
+<p><strong>Open questions:</strong></p>
+<ul>
+<li>Is “auto-peering” possible with our current routing protocol?</li>
+<li>Is “easy peering” a goal or is it okay for peers to manually configure their systems with all of the relevant options?</li>
+<li>Would a “local/personal node” have a publicly accessible URL? Should we use a protocol like BTP (which uses WebSockets) to avoid this requirement, or should every node be run on a server with a public URL?</li>
+<li>Can more than one of these flows be handled by a single API or does each require a separate API? If there are multiple, which one(s) do we need to work out now?</li>
+</ul>
+<p>I think coming to some agreement on the goals and use case(s) first would help us determine details like authentication mechanisms.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+        <span class="post-replies" title="3 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          3 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 30, 2019 5:11 PM">
+            <time itemprop="datePublished" datetime="2019-04-30 17:11:10 +0200">Apr 30, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="556">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<ul>
+<li>Would a “local/personal node” have a publicly accessible URL? Should we use a protocol like BTP (which uses WebSockets) to avoid this requirement, or should every node be run on a server with a public URL?</li>
+</ul>
+</blockquote>
+</aside>
+<p>I think we must support nodes without publicly accessible URLs.</p>
+<p>While it’s not a problem for end users/clients using hosted accounts, it presents a major problem for self-hosted clients, and makes connecting to ILP much more burdensome. Client software would either require a public port, likely requiring it to be hosted on a remote machine that the client controls (which is not easy/accessible to setup, and probably isn’t free), or requires a more trusted forwarding service like LocalTunnel, which seem to be either (a) unreliable, or (b) cost money. Neither is great.</p>
+<p>While hosted accounts may be necessary for any significant end user adoption of ILP, the network is simply not there. In the short term, growth of the network will likely require buy-in from the crypto community, since ILP presents a compelling value proposition for exchanging and moving value in crypto with limited trust. And to get buy-in from the crypto community, self-hosted solutions must be supported.</p>
+<p>I’d also add, many current clients on the network are self hosted, and I don’t see a compelling argument for why that should be broken/deprecated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/seanrowan" class="user-link">seanrowan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 30, 2019 5:36 PM">
+            <time itemprop="datePublished" datetime="2019-04-30 17:36:12 +0200">Apr 30, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="556" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>It automatically discovers (using a to-be-defined discovery mechanism) nodes to connect to and registers / signs up with them <em>as a child</em>. They <em>might</em> send you route updates, but they do not accept route updates from you.</p>
+</blockquote>
+</aside>
+<p>Perhaps ILP connectors could voluntarily list their discovery details in a neutral distributed network that sits adjacent to the ILP network. One possibility would be to use a smart contract as a type of certificate authority on a Federated Byzantine Agreement network for this. The ILP connectors would then just have to read this Federated Byzantine Agreement network to learn about new peers, changed/expired credentials, supported currencies, etc.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/ekrenzke" class="user-link">Eli Krenzke</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 30, 2019 7:14 PM">
+            <time itemprop="datePublished" datetime="2019-04-30 19:14:04 +0200">Apr 30, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Great talking points, Evan! <img src="https://emoji.discourse-cdn.com/twitter/+1.png?v=12" title=":+1:" class="emoji" alt=":+1:" loading="lazy" width="20" height="20"></p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="556">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p><strong>Auto-Peering</strong> - You run a node and it automatically connects to other nodes <em>as a peer</em> . You send route updates to one another and treat one another as equals.</p>
+</blockquote>
+</aside>
+<p>Personally, I am opposed to auto-peering in most situations because Interledger is effectively a credit network that relies on maintaing relationships. Auto-peering <em>could</em> be supported by ledger, wallet, and local services, but should be disabled by default. Disabling <em>automatic</em>-peering by default might seem counterintuitive, but would otherwise broaden the denial-of-service attack surface.</p>
+<p>Attackers could potentially create a number bogus connections that lead to payment failure which in turn damages the reputation of honest connections. The prolonged exposure to a denial-of-service attack encourages a sender to find more reputable connections and conceivably terminating unreliable connections altogether. Under these assumptions, I believe automatic-peering is infeasible at scale; however, it could prove to be useful within certain sub-network applications.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="556">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p><strong>Easy Peering</strong> - You run a node and want to connect to a specific other node. You interact with your node to indicate you want to peer with them, maybe get a specific string to give to the other operator (your domain name or that plus a one-time-use code), they put that string into their node, and <img src="https://emoji.discourse-cdn.com/twitter/tada.png?v=12" title=":tada:" class="emoji" alt=":tada:" loading="lazy" width="20" height="20"> you’re peered.</p>
+</blockquote>
+</aside>
+<p>I think “easy peering” makes a lot more sense within the context of Interledger, since it is just a simplification of the current method of peering, whereby users seek and maintain reputable connections. It is <em>very</em> important that these connections are created with reasonable ledger-specific default settings, but still seems feasible within the exhaustive configuration options provided by <code>moneyd</code>. The acquiescent nature of “easy-peering” could pose limited security risk, but this could be minimized by an alert system set up by the passive peer, signaling new connections.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="556">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Is “easy peering” a goal or is it okay for peers to manually configure their systems with all of the relevant options?</p>
+</blockquote>
+</aside>
+<p>Interledger is currently burdened by mental costs associated with peer configuration, so I believe this should be a goal. Manual configuration should still be recommended, but the current method of peering is a significant psychological hurdle. Currently, we are advertising “simple” as if it is as simple as <em>using</em> TCP/IP, not <em>understanding</em> the low-level details during setup. The stakes are arguably higher on ILP, but can you imagine manually setting up connections to access Twitter? <img src="https://emoji.discourse-cdn.com/twitter/exploding_head.png?v=12" title=":exploding_head:" class="emoji" alt=":exploding_head:" loading="lazy" width="20" height="20"></p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="556">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p><strong>Open Signup</strong> - You run a local/personal node like a <code>moneyd</code> and want to connect to the Interledger network. It automatically discovers (using a to-be-defined discovery mechanism) nodes to connect to and registers / signs up with them <em>as a child</em> . They <em>might</em> send you route updates, but they do not accept route updates from you.</p>
+</blockquote>
+</aside>
+<p>I am not sure what open signup accomplishes – could you elaborate more on this?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 30, 2019 10:14 PM">
+            <time itemprop="datePublished" datetime="2019-04-30 22:14:23 +0200">Apr 30, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Excellent points! Based on this thread, I’m leaning towards:</p>
+<ul>
+<li>Auto-Peering -&gt; non-goal, based on the reasoning <a class="mention" href="/u/ekrenzke/index.html">@ekrenzke</a> outlined</li>
+<li>Easy-Peering -&gt; nice to have, but maybe not super high priority until we have a manual flow we’ve tried out and are trying to automate</li>
+<li>Open Signup -&gt; keep using BTP for this, in order to support non-server clients as <a class="mention" href="/u/kincaid/index.html">@kincaid</a> mentioned</li>
+</ul>
+<p>Unless others vehemently disagree with these conclusions, this suggests that we don’t have any more to do on this right now and should instead focus on finalizing <a href="https://forum.interledger.org/t/settlement-architecture/545">settlement</a> and the <a href="https://forum.interledger.org/t/ledger-adapter-api/553">ledger / settlement system abstraction</a>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/seanrowan" class="user-link">seanrowan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 30, 2019 11:06 PM">
+            <time itemprop="datePublished" datetime="2019-04-30 23:06:12 +0200">Apr 30, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I agree with the above arguments - except, regarding the open sign-up idea, do connectors get auto-discovery from the BTP? I read in the documentation that " A well-defined standard for automatic discovery of peers has not been taken up in the network. As such this spec has been deprecated to avoid confusion." Or is the auto-discovery a separate and long-term goal apart from BTP? Having some certificate authority style system should provide a way to achieve auto-discovery while also allowing non-server clients.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 1, 2019 2:14 PM">
+            <time itemprop="datePublished" datetime="2019-05-01 14:14:58 +0200">May 1, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Good question / point. BTP has been used for “open signup” but does not provide the discovery function.</p>
+<p>For node discovery, we could use:</p>
+<ol>
+<li>A hard-coded list in the implementations</li>
+<li>A list hosted on Github or <a href="http://interledger.org" rel="nofollow noopener">interledger.org</a> that connector operators could submit a PR to to add their nodes</li>
+<li>A centralized API that would return a list of nodes with some uptime or other quality requirements</li>
+<li>A gossip protocol in which nodes broadcast their presence to one another and some hardcoded bootstrap nodes that clients would connect to to get the full list</li>
+<li>A blockchain or consensus system that nodes can insert themselves into</li>
+</ol>
+<p>The question about how centralized or decentralized this discovery process should be hinges a bit on a) whether the list of nodes should be raw and uncensorable or curated b) what type of external dependencies we will accept c) how large we expect the list to be.</p>
+<p>My hunch is that the logic for how a new node will select which other nodes to connect to will be slightly harder to “get right” than how the new node gets the full list in the first place (because that logic dictates who will get the new node’s business).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/seanrowan" class="user-link">seanrowan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="May 1, 2019 3:37 PM">
+            <time itemprop="datePublished" datetime="2019-05-01 15:37:10 +0200">May 1, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I completely agree with your points - the crucial part will be a node operator determining how to select which nodes they connect to.</p>
+<p>Depending on how private the information is, an ILP node operator could leverage the certificate authority system to publicly express what nodes it has chosen to connect to / accepted connections from. This would give newcomers to the network a direct map of the trustlines that propagate through the network, and also a global history of how these trustlines have changed over time. This would also be useful for aiding data collection on the network, in particular for analysing disjoint sections of the ILP network.</p>
+<p>The certificate authority could also be used as the first point of entry that new nodes use to issue a signal to express their intent to peer with a particular node. This would allow ILP connectors to lock down their infrastructure to only peers they already are connected with. Then, periodically, the ILP connectors can read the certificate authority and optionally decide to open up new connections to new nodes.</p>
+<p>ILP connectors could also leverage the certificate authority to express a global signal about changes in their live public keys or wider infrastructure configuration.</p>
+<p>I believe such a certificate authority system should be designed completely independently of any particular centralised/decentralised consensus system underpinning it. Also, having this certificate authority system as a modular element away from the ILP node would make it easier to add/change functionality such as authentication strategies or information about supported assets to it overtime without largely effecting the core ILP implementation.</p>
+<p>I’m going to write up a fuller analysis that goes into much more detail, including an analysis of the tradeoffs of the underlying centralised/decentralised consensus system.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

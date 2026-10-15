@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting an timeout when trying to send amount more than setReceiveMax - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Getting an timeout when trying to send amount more than setReceiveMax</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Getting an timeout when trying to send amount more than setReceiveMax</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 29, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adornala" class="user-link">Amarnath R Dornala</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 29, 2019 5:35 PM">
+            <time itemprop="datePublished" datetime="2019-04-29 17:35:49 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hello <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a>, I did a quick run on <a href="https://github.com/interledgerjs/ilp-protocol-stream/blob/master/example.js" rel="noopener nofollow ugc">this</a> example.js provided in GitHub. I am getting a timeout error</p>
+<blockquote>
+<pre><code>Error: Timed out before the desired amount was sent (target: 10001, totalSent: 10000)
+at Timeout.setTimeout (/Users/dornala/IdeaProjects/ilp-angular/node_modules/ilp-protocol-stream/src/stream.ts:283:16)
+at ontimeout (timers.js:436:11)
+at tryOnTimeout (timers.js:300:5)
+at listOnTimeout (timers.js:263:5)
+at Timer.processTimers (timers.js:223:10)
+</code></pre>
+</blockquote>
+<p>when trying to send amount higher than setReceiveMax and also client isn’t closing the connection.</p>
+<p>Should we handle this manually?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 29, 2019 5:57 PM">
+            <time itemprop="datePublished" datetime="2019-04-29 17:57:25 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/adornala/index.html">@adornala</a>, good find. That case isn’t handled well now, although it’s unfortunately a bit tricky to determine what the best behavior to implement is.</p>
+<p>Since the sender’s <code>sendMax</code> and receiver’s <code>receiveMax</code> are denoted in different currencies, they cannot be compared directly.</p>
+<p>If the sender determines the exchange rate, they could use that to try to figure out if their <code>sendMax</code> falls within the receiver’s limits and possibly fail faster knowing that it is impossible to send the full amount. However, both the exchange rate and the receiver’s <code>receiveMax</code> can change while the sender is sending and could make possible to send the full amount.</p>
+<p>Alternatively, the sender could notice the specific case where they can’t send any more because they have already hit (or come very close to) the <code>receiveMax</code> and throw a specific error so you don’t need to wait for the timeout. However, this doesn’t help the main issue that you still haven’t been able to deliver the full amount that you wanted to send. Also, there are cases where you may want the <code>sendMax</code> to be higher than the <code>receiveMax</code> so that the receiver can <a href="https://forum.interledger.org/t/pull-payments/58">pull money</a> as needed, potentially as a streaming service is being rendered, so it’s a bit unclear whether not being able to send the full <code>sendMax</code> is an error in all cases.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adornala" class="user-link">Amarnath R Dornala</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 29, 2019 6:13 PM">
+            <time itemprop="datePublished" datetime="2019-04-29 18:13:55 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a>. Ya it makes sense.</p>
+<p>Is it possible to transfer money bi-directionally? I tried sending money from server to client but I can’t make it to work, maybe I am doing something wrong. Let’s say If money can travel bidirectional (server &lt;=&gt; client), why can’t server take complete amount, pick max they allow and send remaining back to user(I expect money exchange multiple times)? A settlement should be done at some point anyways right!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 29, 2019 6:23 PM">
+            <time itemprop="datePublished" datetime="2019-04-29 18:23:49 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Have you set the <code>receiveMax</code> on the client? It is set to 0 <a href="https://github.com/interledgerjs/ilp-protocol-stream/blob/master/src/stream.ts#L78" rel="nofollow noopener">by default</a> so it doesn’t accept incoming money (even returned funds) unless the user has explicitly allowed that.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 29, 2019 6:26 PM">
+            <time itemprop="datePublished" datetime="2019-04-29 18:26:22 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>(Assuming receiveMax is set high enough or that isn’t the issue) Is it possible that it sends the first 10000 units, then the last packet is sent for source amount 1, which the connector is rounding down to 0?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adornala" class="user-link">Amarnath R Dornala</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 29, 2019 7:22 PM">
+            <time itemprop="datePublished" datetime="2019-04-29 19:22:29 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Getting timeout.</p>
+<pre><code>  // Handle incoming money
+  stream.on('money', (amount: number) =&gt; {
+    console.log(`Incoming payment: ${stream.id} , ${amount}`);
+    if ( amount &gt; 9900) {
+      stream.sendTotal(100).then(() =&gt; {
+        console.log(`Outgoing payment: ${stream.id} , 100`);
+      }).catch((err) =&gt; console.log(err));
+    }
+  });
+</code></pre>
+<p>I couldn’t remove receiveMax, getting timeout if removed, so I added condition as above on server.</p>
+<p>On Client, I did following:</p>
+<pre><code>const stream = clientConn.createStream();
+stream.setReceiveMax(100);
+</code></pre>
+<p>I am getting following error at end:</p>
+<pre><code>Error: Stream was closed before the desired amount was sent (target: 100, totalSent: 0)
+    at DataAndMoneyStream.endHandler (/Users/dornala/IdeaProjects/ilp-angular/node_modules/ilp-protocol-stream/src/stream.ts:273:18)
+    at DataAndMoneyStream.emit (events.js:194:15)
+    at endReadableNT (_stream_readable.js:1103:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+</code></pre>
+<p>I also added wait on client side to receive credit sent by server(stream.receiveTotal(100)) sadly, It time’s out.</p>
+<p>I will look into code and understand in deep <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a>. Thanks for help.<img src="https://emoji.discourse-cdn.com/twitter/crossed_fingers.png?v=9" title=":crossed_fingers:" class="emoji" alt=":crossed_fingers:"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

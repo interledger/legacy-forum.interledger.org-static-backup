@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What is the flow for price quotes/exchange rates when making payments over Interledger? - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">What is the flow for price quotes/exchange rates when making payments over Interledger?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">What is the flow for price quotes/exchange rates when making payments over Interledger?</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/quoting" class="tag-badge">quoting</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 6, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 6, 2019 5:01 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 17:01:31 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If I’m a sender, and my receiver has a different currency, once I know how much I want to send, how do I as the sender know what the exchange rates are and how do connectors decide to facilitate payments? Who sets the exchange rate, and is there back and forth until agreement is reach or something? Seems like <a href="/rfcs/0008-interledger-quoting-protocol/" rel="nofollow noopener">ILQP</a> was deprecated and there are no pricing curves anymore.</p>
+<p>From what I gathered from another reading (can’t remember which one), the sender will indicate how much they will send, and all connectors will basically respond with the exchange rate with their counterparty? Is there some kind of algorithm in the reference implementation?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 6, 2019 7:20 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 19:20:41 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Great question!</p>
+<p>ILQP was deprecated in favor of using test ILP packets / probing to discover the exchange rate. If you want to figure out the current exchange rate for a path, you can send a Prepare packet with an unfulfillable (random) condition to the receiver for a certain source amount. The receiver will reject the packet (because it’s impossible to produce the fulfillment for it) and can include how much arrived in the Reject packet.</p>
+<p>The <a href="/rfcs/0029-stream/">STREAM</a> protocol includes the amount received in every Fulfill and Reject packet and encrypts that so it cannot be tampered with.</p>
+<p><strong>Limitations of this approach:</strong></p>
+<ul>
+<li><strong>No guarantees</strong> - the exchange rate on the real (fulfillable) Prepare packet you send may be different than the rate on the test packet. However, even ILQP didn’t provide guarantees. If you want to ensure that you don’t get a worse exchange rate than you expected, you can tell the receiver not to fulfill an incoming packet with less than a certain amount (STREAM also includes this behavior)</li>
+<li><strong>Exchange rates changing over time</strong> - similar to the point above, the exchange rate may change while you’re sending a bigger chunked payment. You can set the minimum amount the receiver should receive on every packet, but this doesn’t necessarily help if the exchange rate moves permanently. We took a page out of the Internet Protocol’s book on this one and opted for fewer guarantees, which makes the protocol significantly faster and easier to implement for connectors.</li>
+<li><strong>No support for rates that vary by payment size</strong> - this was one of the big changes when we removed liquidity curves and switched to packetized payments. The assumption now is that all packets should be within a range where the rate should not vary by amount (for example a packets with amounts between $0.01-$0.10 or even $1 can all have the same rate).</li>
+</ul>
+<aside class="quote no-group" data-username="akash" data-post="1" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/akash/48/22_2.png" class="avatar"> akash:</div>
+<blockquote>
+<p>how do connectors decide to facilitate payments? Who sets the exchange rate, and is there back and forth until agreement is reach or something?</p>
+</blockquote>
+</aside>
+<p>Each connector can set their exchange rate however they like. When a packet comes in, they apply their current exchange rate to the incoming amount and send it on. If the sender wants to determine the rate before sending for real, they can use the method described above. (This is an end-to-end concern for the sender and receiver to decide between themselves, connectors just give whatever rate they give and you take it or leave it.)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 7, 2019 3:01 AM">
+            <time itemprop="datePublished" datetime="2019-02-07 03:01:29 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>If you want to figure out the current exchange rate for a path, you can send a Prepare packet with an unfulfillable (random) condition to the receiver for a certain source amount.</p>
+</blockquote>
+</aside>
+<p>Where it gets a bit confusing is how a connector does an optimal pricing strategy. These are going to be autonomous systems similar to that of the internet, so if we were to deploy production grade connectors, what would be a recommended strategy? Polling from an API isn’t ideal if you wanted to make ILP support high frequency exchanges and the markets would be at the mercy of external data providers. If ever manipulated, these autonomous systems can be drained if they don’t take the right precautions and at the very least, they can be influenced. To add onto that efficient markets are important for connectors who are putting up with the risk - if this was a casino, connectors would not take on counterparty risk.</p>
+<p>Perhaps this isn’t a bad thing. But if we theoretically had a Venmo to BTC swap support, then where would you get the pricing from? If you just picked a random connector, they could charge you far above market rate because there’s no clarity in what the market rate is. You could poll every connector, for the price, but here’s a simple manipulation attack if we do things that way → spin up a bunch of connectors, pump the exchange rate higher than it really is by responding with exchange rates in favor your connectors, and then capitalize on this eclipse-like attack. Now, maybe as long as there are other exchanges like Coinbase providing pricing on exchange assets, you could leverage that data source. But in a unique scenario of Venmo/BTC or something that doesn’t exist on other exchanges, it could be flawed.</p>
+<p>One argument I can come up with to counteract this is that if there are multiple ways to get that asset (including outside of the Interledger protocol), and a connector is incentivized through supply and demand to offer competitive pricing based on that, then this all works out. And maybe executing the attack above requires a monopolistic scenario, where the connector is the only possible supplier. But also this could be considered acceptable because we can argue competition could work it all out.</p>
+<p>Outside of the scope of the protocol itself, but very relevant ideas to deployed connectors.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 7, 2019 3:13 AM">
+            <time itemprop="datePublished" datetime="2019-02-07 03:13:47 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="akash" data-post="3" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/akash/48/22_2.png" class="avatar"> akash:</div>
+<blockquote>
+<p>how a connector does an optimal pricing strategy</p>
+</blockquote>
+</aside>
+<p>Some of the aspects to factor in are:</p>
+<ul>
+<li>the connector’s cost of liquidity (for example, the interest rate they get if they’re borrowing money)</li>
+<li>the rate the connector can get on an exchange for trading the assets back</li>
+<li>a buffer based on the volatility of the assets and the speed of the exchanges they use</li>
+<li>some prediction of how the asset rates are likely to move</li>
+<li>a discount if a particular packet helps the connector rebalance its accounts</li>
+</ul>
+<aside class="quote no-group" data-username="akash" data-post="3" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/akash/48/22_2.png" class="avatar"> akash:</div>
+<blockquote>
+<p>if we theoretically had a Venmo to BTC swap support, then where would you get the pricing from? If you just picked a random connector, they could charge you far above market rate because there’s no clarity in what the market rate is.</p>
+</blockquote>
+</aside>
+<p>Is the “you” in this example an end user / sender or a connector? Our assumption has most often been that relationships with connectors are longer-lived, rather than being picked on a per-payment basis.</p>
+<p>You pick a connector because you think that it generally provides a good balance of cost, latency, throughput, liquidity, and reliability – and because you think it has peered with other connectors of similarly high quality. If it’s bad or seems to have consistently high prices (which could be judged by 3rd party rating services), you’ll switch.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 7, 2019 3:28 AM">
+            <time itemprop="datePublished" datetime="2019-02-07 03:28:22 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="4" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Is the “you” in this example an end user / sender or a connector? Our assumption has most often been that relationships with connectors are longer-lived, rather than being picked on a per-payment basis.</p>
+</blockquote>
+</aside>
+<p>In the example, “you” is the sender. But it seems like there’s a problem here for both senders and receivers, and as a result, connectors in general. Market makers will need bots it looks like, and when a connector also acts as a taker, they will probably want a bot that acts on all information available. After all, these other exchanges Coinbase, Stellar, etc. don’t necessarily poll from other places and make a decision. That doesn’t really bode well for staying efficient. You need the full list of fulfilled orders and unfulfilled to make some kind of inferences for the bot. Seems like it would be a useful project to write an application to aggregate things into a single order book, so that users have an idea of what the ILP exchange rates are.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 11, 2019 3:50 PM">
+            <time itemprop="datePublished" datetime="2019-02-11 15:50:57 +0200">Feb 11, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group quote-modified" data-username="emschwartz" data-post="4" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>If you want to figure out the current exchange rate for a path, you can send a Prepare packet with an unfulfillable (random) condition to the receiver for a certain source amount. The receiver will reject the packet (because it’s impossible to produce the fulfillment for it) and <strong>can include how much arrived in the Reject packet</strong>.</p>
+</blockquote>
+</aside>
+<p><a class="mention" href="/u/emschwartz/index.html">@emschwartz</a> There’s no RFC nor standard behavior for this type of pricing-information exchange, correct? I don’t think Connector’s will natively do this today, so do you think this deserves its own protocol? Perhaps a new <em>ILPv4 Quoting Protocol</em>, or perhaps something that happens in “<a href="https://forum.interledger.org/t/ping-protocol-discussion-necessity-and-design/134">health check</a>” messages in the echo/ping protocol?</p>
+<p>(See my other post, but I’m thinking that echo/ping should be limited “healthchecking”, and maybe some other protocol should cover metrics, like cost).</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="4" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>You pick a connector because you think that it generally provides a good balance of cost, latency, throughput, liquidity, and reliability – and because you think it has peered with other connectors of similarly high quality. If it’s bad or seems to have consistently high prices (which could be judged by 3rd party rating services), you’ll switch.</p>
+</blockquote>
+</aside>
+<p>I agree with this statement in the general sense (especially for non-Connectors), but Connector’s themselves will likely have more than one “reliable and well-priced” partner Connector, just as a good business practice.</p>
+<p>So, any thoughts around what should be the primary mechanism a Connector should utilize when it has multiple equivalent paths to a particular destination?</p>
+<p>For example, consider this topology of Tier-1 Connectors where <code>A</code> wants to send <code>XRP</code> to <code>D</code>, and has two different choices where all of A’s considerations (i.e., <code>latency</code>, <code>throughput</code>, <code>reliability</code>,<code>liquidity</code>) with its two peers are equal, but the price between <code>B/D</code> and <code>C/D</code> is different:</p>
+<pre><code class="lang-auto">  ┌───BTC┐           ┌─XRP──┐  
+  │      │   ┌───┐   │      │  
+  │      └──▷│ B │───┘      ▽  
+┌───┐        └───┘        ┌───┐
+│ A │                     │ D │
+└───┘        ┌───┐        └───┘
+  │      ┌──▷│ C │───┐      △  
+  │      │   └───┘   │      │  
+  └────ETH           └─XRP──┘  
+</code></pre>
+<p>Were I running Connector <code>A</code>, I would of course want to this payment to take the lowest-cost path (i.e., "get the most <code>XRP</code> to <code>D</code>).</p>
+<p>Aside from simple, “keep testing the paths to check the price”, are there any algorithmic mechanisms that might help here?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 11, 2019 4:17 PM">
+            <time itemprop="datePublished" datetime="2019-02-11 16:17:12 +0200">Feb 11, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sappenin" data-post="6" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>There’s no RFC nor standard behavior for this type of pricing-information exchange, correct? I don’t think Connector’s will natively do this today, so do you think this deserves its own protocol?</p>
+</blockquote>
+</aside>
+<p>STREAM does include this. See the description <a href="/rfcs/0029-stream/#34-exchange-rates">here</a> and the <code>prepare amount</code> field <a href="/rfcs/0029-stream/#52-stream-packet">here</a>.</p>
+<p>I’m not sure that checking prices necessarily needs to be a function that connectors provide if it can be easily implemented by senders and receivers as an end-to-end function.</p>
+<aside class="quote no-group" data-username="sappenin" data-post="6" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>Aside from simple, “keep testing the paths to check the price”, are there any algorithmic mechanisms that might help here?</p>
+</blockquote>
+</aside>
+<p>Not that I know of. Regularly sending packets to test paths and/or having dedicated services that do this for you seems like a decent way to determine the rates to me.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 11, 2019 5:32 PM">
+            <time itemprop="datePublished" datetime="2019-02-11 17:32:06 +0200">Feb 11, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="7" data-topic="78">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>STREAM does include this. See the description <a href="/rfcs/0029-stream/#34-exchange-rates" rel="noopener nofollow ugc">here</a> and the <code>prepare amount</code> field <a href="/rfcs/0029-stream/#52-stream-packet" rel="noopener nofollow ugc">here</a>.</p>
+</blockquote>
+</aside>
+<p>Yep, agree - where I was going with that question is that it feels weird for protocols to exist at the Interledger/Link layer (e.g., the current Echo protocol) that attempt to find path pricing.</p>
+<p>Is it unreasonable to say: “All nodes that want to discover path pricing should just use STREAM”…or are there cases where STREAM is insufficient? I suppose this implies that a Connector would be able to initiate a STREAM payment and then peg it to a particular Link-layer account.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

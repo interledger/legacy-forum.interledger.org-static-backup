@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Auto-Peering - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Auto-Peering</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Auto-Peering</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/peering" class="tag-badge">peering</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 26, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 26, 2019 3:37 PM">
+            <time itemprop="datePublished" datetime="2019-04-26 15:37:38 +0200">Apr 26, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Based on some discussion with <a class="mention" href="/u/sappenin/index.html">@sappenin</a> on ILP over HTTP and <a href="https://forum.interledger.org/t/connector-auth-model/517">auth between peers</a> and some related discussions on “auto-discovery” here’s a high level proposal for an auto-peering protocol.</p>
+<h2>Assumptions</h2>
+<ul>
+<li>Two peers that support ILP over HTTP</li>
+<li>Both peers are running HTTP servers on the public internet for this purpose and the path (relative to their connector’s base URL) for sending ILP packets is standardised to <code>/ilp</code>.</li>
+</ul>
+<h2>Goal</h2>
+<p>Alice wishes to peer with Bob who accepts unsolicited connections (an ILSP). Bob advertises his connector’s address as <code>https://bob.example</code>.</p>
+<h2>Flow</h2>
+<p>Alice sets up her connector at <code>https://alice.example</code> and configures it to peer with Bob at <code>https://bob.example</code>.</p>
+<ol>
+<li>Alice’s connector makes a POST request to <code>https://bob.example/register</code> with the payload:</li>
+</ol>
+<pre><code class="lang-json">{
+  "name": "alice",
+  "relation": "child",
+  "assetScale": 2,
+  "assetCode": "USD",
+  "url": "https://alice.example",
+  "auth": ["jwt-hmac256"]
+}
+</code></pre>
+<ul>
+<li>
+<code>name</code> is optional and is just a friendly name alice wishes to use (she is identified by her URL). The connector might use it as an address suffix.</li>
+<li>
+<code>relation</code> is optional and defaults to <code>child</code>
+</li>
+</ul>
+<ol start="2">
+<li>Bob sets Alice up as a peer on his system and responds with:</li>
+</ol>
+<pre><code class="lang-auto">{
+  "jwt-hmac256": "uywdf66rFGFd8u==" //Secret to use to sign JWT
+}
+</code></pre>
+<ol start="3">
+<li>
+<p>Alice sends her first packet to <code>https://bob.example/ilp</code><br>
+The request contains an <code>Authorization: Bearer XXXX</code> header where <code>XXXX</code> is a JWT created by Alice.<br>
+The JWT uses the HMAC256 signing algorithm and has at least one claim, the subject (<code>sub</code>) which is equal to her connector’s base URL (<code>https://alice.example</code>).<br>
+The first packet will likely be an IL-DCP request to get her address.</p>
+</li>
+<li>
+<p>Alice sends a subsequent packet to <code>peer.settlement.config</code> to setup settlement for her account (details still being figured out but discussion started <a href="https://forum.interledger.org/t/what-should-positive-negative-balances-represent/501/18">here</a>)</p>
+</li>
+<li>
+<p>Alice receives payments from Bob when Bob sends packets to Alice. These are sent by Bob to <code>https://alice.example/ilp</code> also using JWT bearer tokens. In this case the subject of the token is <code>https://bob.example</code>.</p>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 26, 2019 4:24 PM">
+            <time itemprop="datePublished" datetime="2019-04-26 16:24:29 +0200">Apr 26, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I really like this proposal, <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> – nice work!</p>
+<p>Three comments/suggestions:</p>
+<p>First, I suggest we align more overtly support the <a href="https://tools.ietf.org/html/rfc7519#section-4.1.1" rel="nofollow noopener">iss</a>, <a href="https://tools.ietf.org/html/rfc7519#section-4.1.2" rel="nofollow noopener">sub</a>, and <a href="https://tools.ietf.org/html/rfc7519#section-4.1.3" rel="nofollow noopener">aud</a> claims defined in RFC-7519.</p>
+<ul>
+<li>
+<strong>iss:</strong> <em>(issuer) claim identifies the principal that issued the JWT.</em> ==&gt; Alice or Bob’s server, or some 3rd-party that both trust</li>
+<li>
+<strong>aud:</strong> <em>(audience) claim identifies the recipient that the JWT is intended for.</em> ==&gt; Bob’s server if Alice is generating the token. Allows Alice to generate a more narrowly-scoped token, which improves security.</li>
+<li>
+<strong>sub:</strong> <em>(subject) claim identifies the principal that is the subject of the JWT.</em>
+</li>
+</ul>
+<p>Second, I suggest we allow the Connector processing the registration (<code>https://bob.example</code> in your example) to respond with its decision for what Alice should use as the <code>sub</code> claim when making requests to Bob. The primary rationale is that Bob is the one tracking this registration, and if he decides to identify alice by some other identifier that’s not her URL, then we should easily allow for that.</p>
+<p>Third, we <em>should</em> encourage token creators to limit the expiry of any created tokens using the <code>exp</code> claim.</p>
+<p>So, to those ends, your example response from Bob would instead look like this:</p>
+<pre><code class="lang-auto">{
+  "subject": "https://alice.example",
+  "jwt-hmac256": "somesecret"
+}
+</code></pre>
+<p>but it might, at Bob’s discretion, look like this:</p>
+<pre><code class="lang-auto">{
+  "subject": "alice-e7e640f6-0675-43bb-b02a-bced1f1a816b",
+  "jwt-hmac256": "somesecret"
+}
+</code></pre>
+<p>Finally, when Alice constructs a token to present to <code>https://bob.example</code>, it would look like this:</p>
+<pre><code class="lang-auto">{
+  "iss": "https://alice.example",
+  "aud": "https://bob.example",
+  "sub": "alice-e7e640f6-0675-43bb-b02a-bced1f1a816b",
+  "iat": 1516239022,
+  "exp": 1516239322
+}
+</code></pre>
+<p>You can paste this token into <a href="http://jwt.io" rel="nofollow noopener">jwt.io</a> to see more details:</p>
+<pre><code class="lang-auto">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FsaWNlLmV4YW1wbGUiLCJhdWQiOiJodHRwczovL2JvYi5leGFtcGxlIiwic3ViIjoiYWxpY2UtZTdlNjQwZjYtMDY3NS00M2JiLWIwMmEtYmNlZDFmMWE4MTZiIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE1MTYyMzkzMjJ9.z72acKvdHfcyRKcseTXsBU9fdZ9UF2aCRxUoed5CAD0
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 26, 2019 4:39 PM">
+            <time itemprop="datePublished" datetime="2019-04-26 16:39:37 +0200">Apr 26, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Agree that we should be more explicit about the claims to use. I want to refine the response format a bit too.</p>
+<p>What I like about using the URL is we don’t need another round trip for Bob to get a ‘sub’ value back from Alice for him to use in his token</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 26, 2019 4:58 PM">
+            <time itemprop="datePublished" datetime="2019-04-26 16:58:56 +0200">Apr 26, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yeah, good points. For clarity, I’m suggesting we keep the <code>url</code> property in the request to Bob’s <code>.../register</code> endpoint (like you have it), but we would add one more field so that Alice can identify which <code>sub</code> Bob should use.</p>
+<p>It would loosely be something like this, but the payload-naming is confusing.</p>
+<pre><code class="lang-auto">{
+  "name": "alice",
+  "relation": "child",
+  "assetScale": 2,
+  "assetCode": "USD",
+  "????": "https://bob.example",
+  "url": "https://alice.example",
+  "auth": ["jwt-hmac256"]
+}
+</code></pre>
+<p>When Alice makes a registration request to Bob, what do we call the “details Bob will make calls to Alice with”? This doesn’t have an expressly defined name in the ILP-over-HTTP spec.</p>
+<p>Perhaps we should give a name to each side of an ILP-over-HTTP connection, like “Incoming Link” and “Outgoing Link”, where in this case we’re using those terms <em>from Alice’s</em> perspective.</p>
+<p>The registration payload would conceptually look like this:</p>
+<pre><code class="lang-auto">{
+  "name": "alice",
+  "relation": "child",
+  "assetScale": 2,
+  "assetCode": "USD",
+  "incomingIssuer": "https://bob.example", // Bob issues tokens for his own use.
+  "incomingSubject": "bob-usd-account", // Bob's identify at Alice
+  "incomingAudience": "https://alice.example", // Token is limited to usage at Alice
+  "incomingAuth": ["jwt-hmac256"] // Alice will use this auth method to verify Bob's tokens
+  "outgoingIssuer": "https://alice.example", // Alice's issues tokens for her own use.
+  "outgoingSubject": "alice-usd-account", // Alice's identity at Bob
+  "outgoingAudience": "https://bob.example", // Token is limited to usage at Bob
+  "outgoingAuth": ["jwt-hmac256"] // Bob will use this auth method to verify Alice's tokens
+}
+</code></pre>
+<p>Not really happy with any of these payloads, but want to be sure we don’t artificially limit the API endpoint. Ideally, we allow for all the incoming/outgoing variations, but maybe have some sensible defaults if a caller doesn’t want to specify everything.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 26, 2019 8:16 PM">
+            <time itemprop="datePublished" datetime="2019-04-26 20:16:26 +0200">Apr 26, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="adrianhopebailie" data-post="1" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>Two peers that support ILP over HTTP</p>
+</blockquote>
+</aside>
+<p>I don’t think the registration API should be specific to ILP over HTTP. Why not make it so we can use this for BTP as well or other bilateral protocols we might want to add in the future?</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="1" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>Both peers are running HTTP servers on the public internet for this purpose and the path (relative to their connector’s base URL) for sending ILP packets is standardised to <code>/ilp</code> .</p>
+</blockquote>
+</aside>
+<p>Isn’t it considered bad practice to make assumptions about the locations of specific resources? I think we should say that you get some registration URL (that may or may not be the base URL + <code>/register</code>), POST/PUT a specific request to it, and then the response would include the details you should use for ILP over HTTP and other communication methods. Then we don’t need to be prescriptive about the node’s API layout (for example, what if we end up with multiple versions of the API and I want to put the first version at base URL + <code>/v1/...</code>?).</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="1" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p><code>name</code> is optional and is just a friendly name alice wishes to use (she is identified by her URL). The connector might use it as an address suffix.</p>
+</blockquote>
+</aside>
+<p>Is this assumed to be unique for that node? What should happen if there’s already another account with that name?</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="1" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>Alice receives payments from Bob when Bob sends packets to Alice. These are sent by Bob to <code>https://alice.example/ilp</code> also using JWT bearer tokens. In this case the subject of the token is <code>https://bob.example</code> .</p>
+</blockquote>
+</aside>
+<p>The party sending the request should send the specific details of how this node should communicate with them, rather than making the assumption about the path they should talk to.</p>
+<aside class="quote no-group quote-modified" data-username="adrianhopebailie" data-post="1" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>“auth”: [“jwt-hmac256”]</p>
+</blockquote>
+</aside>
+<p>What’s the rationale for forcing everyone to use JWTs? This use of them seems quite a bit more complicated than having each party generate a token for the other one to use to authenticate with them and I’m not sure it really provides much better security (unless we’re also going to design things like a key rotation method, etc).</p>
+<p>If peers want more secure / complex authentication methods, it seems like we can just say those are manually configured. For the open signup, the relationships may not be that long-lived and I think we could have a simpler auth mechanism.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 27, 2019 1:31 AM">
+            <time itemprop="datePublished" datetime="2019-04-27 01:31:51 +0200">Apr 27, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>What’s the rationale for forcing everyone to use JWTs?</p>
+</blockquote>
+</aside>
+<p>I don’t think the intention is to force everyone to use JWTs (though there are plenty of security reasons to use them instead if passing a simple shared secret in each request). The auth-type array above could easily support other types, like a simple shared secret. Java and JS implementations of ILP-over-HTTP currently support both simple shared secret and JWT already, so this protocol leaves room for that.</p>
+<p>If we’re saying open-reg is for shorter- lived relationships then shared secret should be fine. But that’s not sufficient for any long-term peering auth (IMHO).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 29, 2019 10:25 AM">
+            <time itemprop="datePublished" datetime="2019-04-29 10:25:27 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>I don’t think the registration API should be specific to ILP over HTTP</p>
+</blockquote>
+</aside>
+<p>That’s not my intention, but I wanted to have some “sane defaults” that allows us to spec something simple but extensible.</p>
+<p>A future update might allow the requestor so specify alternative bilateral protocols but for now this “none specified” = “ILP over HTTP”.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Isn’t it considered bad practice to make assumptions about the locations of specific resources?</p>
+</blockquote>
+</aside>
+<p>I don’t think so. If we define an API (using Swagger or Open API or similar) then it is a set of resource paths relative to some base.</p>
+<p>An alternative could be to define a standard response to a GET at the base that provides those details? See revised proposal below.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="548">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>For the open signup, the relationships may not be that long-lived and I think we could have a simpler auth mechanism</p>
+</blockquote>
+</aside>
+<p>I don’t think JWT Bearer is hard. It’s already implemented in the JS and Java ILP over HTTP implementations, and it’s solving a lot of other issues with auth (like identifying the subject) as <a class="mention" href="/u/sappenin/index.html">@sappenin</a> points out.</p>
+<p>Simple shared secret is a bad auth protocol IMO because it makes assumptions about the competency of the participants to manage lifecycle etc.</p>
+<p>I’d prefer to say JWT’s are the default standard but leave it open for people to specify others (ideally from the list of widely used schemes in the <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md#securitySchemeObject">Open API 3.0 spec</a> not "roll-your-own"s.</p>
+<h2><a name="p-1432-assets-1" class="anchor" href="#p-1432-assets-1" aria-label="Heading link"></a>Assets</h2>
+<p>Based on discussion so far I’d also propose we drop any data exchange around assets and assume that if you are auto-peering you are going to be the child and the server will be the parent.</p>
+<p>Let’s keep this focused on:</p>
+<ul>
+<li>discovering the bilateral protocols the server supports</li>
+<li>requesting to peer with the server</li>
+<li>getting authentication credentials to use with one of the available bilateral protocols</li>
+<li>creating the bilateral connection</li>
+</ul>
+<p>Once this is complete the peers can exchange ILP packets to setup settlement (and by implication determine the underlying asset).</p>
+<p>This does raise some questions:</p>
+<ul>
+<li>What if you peer with someone, only to discover they don’t offer settlement in the asset or using the settlement protocol you want?</li>
+<li>Is there a benefit to the server, when it issues you credentials, in knowing what asset you plan to transact in?</li>
+</ul>
+<h2><a name="p-1432-proposal-2-2" class="anchor" href="#p-1432-proposal-2-2" aria-label="Heading link"></a>Proposal 2</h2>
+<p>Alice sets up her connector at  <code>https://alice.example</code>  and configures it to peer with Bob at  <code>https://bob.example</code> .</p>
+<ol>
+<li>Alice’s connector makes a GET request to  <code>https://bob.example</code> and get’s back an Open API 3 specification in JSON format, something like:</li>
+</ol>
+<pre data-code-wrap="json"><code class="lang-json">{
+    "openapi": "3.0.2",
+    "info": {
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/register": {
+            "post": {
+                "operationId": "registerPeer",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Peer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ilp": {
+            "post": {
+                "operationId": "receiveIlpPrepare",
+                "security": [
+                    {
+                        "jwt-bearer-token": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "jwt-bearer-token": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "jwt"
+            },
+           "api-key": {
+               "type": "apiKey",
+               "in": "header",
+               "name": "X-API-KEY" 
+           }
+        }
+    }
+}
+</code></pre>
+<p>This is a standard Open API v3 schema, trimmed down to only provide the paths and security schemes. If we standardise on the <code>operationId</code> then you can map it to whatever path you want.</p>
+<p><strong>Pros:</strong> This is a well-supported standard for defining APIs and provides a lot of flexibility.<br>
+<strong>Cons:</strong> Seems way over complicated for our needs. (We could define this API using Open API v3 once and just get all servers to implement it at using a standard base.) It also provides no info on settlement options.</p>
+<p>Let’s imagine a simpler return value from the <code>GET</code> request to the base URL:</p>
+<pre><code class="lang-auto">{ 
+  "ilp": {
+    "http": {
+      "version": "1.0",
+      "url": "https://bob.example/ilp-service", // Default to /ilp but allow for custom
+      "security": [ "jwt-bearer-token" ]
+    },
+   "btp": {
+      "version": "1.0",
+      "url": "wss://bob.example/btp",
+      "security": [ "jwt-bearer-token" ]
+   }
+  },
+  "settlement": {
+    "XRP": [ "xrp-paychan", "xrp-ledger"],
+    "BTC": ["lightning"]
+  }
+}
+</code></pre>
+<ol start="2">
+<li>Alice’s connector makes a POST request to  <code>https://bob.example/register</code>  with the payload:</li>
+</ol>
+<pre><code class="lang-auto">{
+  "ilp": {
+    "http": {
+      "version": "1.0",
+      "url": "https://alice.example/ilp",
+      "security": {
+        "jwt-bearer-token": {
+          "iss": ["*"], //List of issuers Alice will allow. "*" for any
+          "sub": "bob" //Subject Bob must use
+          "aud": "https://alice.example"
+        }
+      }
+    },   
+  },
+  "settlement": {
+    "XRP": ["xrp-paychan"] // Alice will settle using XRP Paychan
+  }
+}
+</code></pre>
+<ol start="3">
+<li>Bob sets Alice up as a child peer on his system and responds with:</li>
+</ol>
+<pre><code class="lang-auto">{
+  "ilp": {
+    "http": {
+      "version": "1.0",
+      "url": "https://alice.example/ilp",
+      "security": {
+        "jwt-bearer-token": {
+          "secret": "uywdf66rFGFd8u==" //Secret to use to sign JWT
+          "iss": ["https:/alice.example"], //List of issuers Bob will allow.
+          "sub": "alice-xrp" //Subject Alice must use
+          "aud": "https://bob.example"
+        }
+      }
+    },   
+  }
+</code></pre>
+<ol start="4">
+<li>Alice sends her first packet to  <code>https://bob.example/ilp</code><br>
+The request contains an  <code>Authorization: Bearer XXXX</code>  header where  <code>XXXX</code>  is a JWT created by Alice.<br>
+The JWT uses the HMAC256 signing algorithm and has at least the following claims:</li>
+</ol>
+<ul>
+<li>the subject ( <code>sub</code> ): <code>alice-xrp</code></li>
+<li>the issuer (<code>iss</code>): <code>https://alice.example</code></li>
+<li>the audience (<code>aud</code>): <code>https://bob.example</code></li>
+</ul>
+<p>The first packet will likely be a <code>peer.settle.config</code> request to get her settlement arrangement setup (details still being figured out but discussion started <a href="https://forum.interledger.org/t/what-should-positive-negative-balances-represent/501/18">here </a>)</p>
+<ol start="5">
+<li>
+<p>After getting a settlement configured Alice sends an IL-DCP request to get her address and find out what scale she must use in ILP packets.</p>
+</li>
+<li>
+<p>Alice receives payments from Bob when Bob sends packets to Alice. These are sent by Bob to  <code>https://alice.example/ilp</code>  also using JWT bearer tokens. In this case the claims in the the token are:</p>
+</li>
+</ol>
+<ul>
+<li>the subject ( <code>sub</code> ): <code>bob</code></li>
+<li>the issuer (<code>iss</code>): <code>https://bob.example</code></li>
+<li>the audience (<code>aud</code>): <code>https://alice.example</code></li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

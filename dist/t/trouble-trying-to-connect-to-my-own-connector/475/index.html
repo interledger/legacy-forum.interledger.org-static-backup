@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trouble trying to connect to my own connector - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Trouble trying to connect to my own connector</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Trouble trying to connect to my own connector</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 5, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/italo.nascimento" class="user-link">ítalo Nascimento</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 5, 2019 3:41 PM">
+            <time itemprop="datePublished" datetime="2019-04-05 15:41:53 +0200">Apr 5, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone.</p>
+<p>I’ve just started to study about Interledger and am still struggling with some basics. Hope someone here can help!</p>
+<p>I’ve managed to get a connector up and running by following Adrian’s tutorial <a href="https://medium.com/interledger-blog/running-your-own-ilp-connector-c296a6dcf39a" rel="nofollow noopener">Running your own ILP connector</a>, but I’m facing issues when I try to connect with it from a moneyd instance running on my machine.</p>
+<p>The local moneyd instance gets to comunicate with the remote connector, but is not abble to create a channel due to an <code>undefined</code> destination:</p>
+<pre><code class="lang-auto">info creating outgoing channel. from=r3EhvL6a9ADrtrwd5XMQZnnDmroR9urvw5 to=undefined amount=10
+app error [ValidationError(instance.paymentChannelCreate requires property "destination")]
+</code></pre>
+<p>Appearently there’s something wrong in the connector configs, as I was abble to connect to a different connector (<code>testnet.ilpnetwork.dev</code>) using similar moneyd config.</p>
+<p>What am I missing?</p>
+<p>Here is my current config:</p>
+<pre><code class="lang-auto">DEBUG: 'ilp*,connector*',
+CONNECTOR_ENV: 'production',
+CONNECTOR_ADMIN_API: true,
+CONNECTOR_ADMIN_API_PORT: 7700,
+CONNECTOR_ILP_ADDRESS: 'g.swipetech',
+CONNECTOR_BACKEND: 'one-to-one',
+CONNECTOR_SPREAD: '0',
+CONNECTOR_STORE: 'ilp-store-redis',
+CONNECTOR_STORE_CONFIG: '{
+  "prefix": "connector",
+  "port": 6379
+}',
+ CONNECTOR_ACCOUNTS: '{
+  "peer1": {
+    "relation": "peer",
+    "plugin": "ilp-plugin-xrp-paychan",
+    "assetCode": "XRP",
+    "assetScale": 9,
+    "balance": {
+      "maximum": "1000000000",
+      "settleThreshold": "-5000000000",
+      "settleTo": "0"
+    },
+    "options": {
+      "listener": {
+        "port": 7444,
+        "secret": "&lt;RANDOM SECRET&gt;"
+      },
+      "rippledServer": "wss://s.altnet.rippletest.net:51233",
+      "address": "r99HvXMMCYf8KApw14a71zJLMHkKZhfD5V",
+      "secret": "&lt;MY XRP SECRET&gt;"
+    }
+  },
+  "ilsp": {
+    "relation": "child",
+    "plugin": "ilp-plugin-xrp-asym-server",
+    "assetCode": "XRP",
+    "assetScale": 6,
+    "options": {
+      "port": 7443,
+      "xrpServer": "wss://s.altnet.rippletest.net:51233",
+      "address": "r99HvXMMCYf8KApw14a71zJLMHkKZhfD5V",
+      "secret": "snxeX5985xvuuK28nGBFGReeuHa8c"
+    }
+  }
+}'
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wek120" class="user-link">Whitman E Knapp</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 5, 2019 11:39 PM">
+            <time itemprop="datePublished" datetime="2019-04-05 23:39:50 +0200">Apr 5, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_1">Replying to #1</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>John,</p>
+<p>Just a bit more context to my earlier message.</p>
+<p>Can you believe this stuff???</p>
+<p>-Whit</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 6, 2019 6:18 PM">
+            <time itemprop="datePublished" datetime="2019-04-06 18:18:39 +0200">Apr 6, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Italo,</p>
+<p>Glad to hear that you’re playing around with deploying a connector. How are you running moneyd to connect? It looks like the last time that the moneyd connector_list was updated was 18 days ago so I think that by default moneyd is trying to connect to another connector in the network and not your own. Are you editing the ~/.moneyd.test.json to connect to your host?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/italo.nascimento" class="user-link">ítalo Nascimento</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 8, 2019 1:23 PM">
+            <time itemprop="datePublished" datetime="2019-04-08 13:23:17 +0200">Apr 8, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Austin!</p>
+<p>Yeah, I have edited my moneyd.test.json, and I’m successfully comunicating with the connector. I can verify that in it’s logs.</p>
+<p>I’m guessing there’s something wrong in the connector’s side, as I was able to connect to the testnet with a similar moneyd config. I’ve just changed the server’s btp address.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 9, 2019 8:16 PM">
+            <time itemprop="datePublished" datetime="2019-04-09 20:16:52 +0200">Apr 9, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Italo, if you are able to establish communication with your connector but are failing to send payments then I would check the plugin config on your connector. It looks like you might be missing a few fields within options of your “ilsp” account. Specifically, try adding assetScale within options as well. Also, you should be using an assetScale of 9 instead of 6.</p>
+<p>If that doesn’t change anything I would also make sure that moneyd is running on the testnet because it looks like your connector plugin XRP address is a testnet address. Let me know if you’re still having issues after this.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/italo.nascimento" class="user-link">ítalo Nascimento</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 10, 2019 8:52 PM">
+            <time itemprop="datePublished" datetime="2019-04-10 20:52:54 +0200">Apr 10, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey Austin,</p>
+<p>My options looks like this right now:</p>
+<pre><code class="lang-auto">options: {
+    listener: {
+      port: 8000,
+      secret: "&lt;RANDOM SECRET&gt;"
+    },
+    assetScale: 9,
+    rippledServer: "wss://s.altnet.rippletest.net:51233",
+    address: "&lt;XRP ADDRESS&gt;",
+    secret: "&lt;XRP SECRET&gt;",
+    peerAddress: "&lt;PEER  XRP ADDRESS&gt;",
+  }
+</code></pre>
+<p>Though I’m still getting the same error. The <code>ilp-plugin-xrp-asym-client</code> is unable to open a payment channel because it’s getting an undefined <code>peerAddress</code>:</p>
+<pre><code class="lang-auto">error [ValidationError(instance.paymentChannelCreate requires property "destination")]
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 10, 2019 10:01 PM">
+            <time itemprop="datePublished" datetime="2019-04-10 22:01:34 +0200">Apr 10, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi Italo, peerAddress is not a valid option for ilp-plugin-xrp-asym-server. The asym-server allows many clients to connect, so there is no need to specify a single peer address.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">I</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/italo.nascimento" class="user-link">ítalo Nascimento</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Apr 11, 2019 2:55 PM">
+            <time itemprop="datePublished" datetime="2019-04-11 14:55:10 +0200">Apr 11, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok, that makes sense! But why would moneyd try to open a payment channel with <code>undefined</code> destination? Is it getting a malformed response from the connector?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/austin_king" class="user-link">Austin King</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Apr 15, 2019 5:20 PM">
+            <time itemprop="datePublished" datetime="2019-04-15 17:20:58 +0200">Apr 15, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That is likely an indication that one of the XRP addresses is misconfigured, either on the connector end or the moneyd end.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

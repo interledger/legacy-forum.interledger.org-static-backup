@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Solved] Moneyd Testnet - No command prompt postlaunch - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">[Solved] Moneyd Testnet - No command prompt postlaunch</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">[Solved] Moneyd Testnet - No command prompt postlaunch</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Sep 10, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/snub-fighter" class="user-link">Nathan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Sep 10, 2019 9:42 PM">
+            <time itemprop="datePublished" datetime="2019-09-10 21:42:35 +0200">Sep 10, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Honestly though Im trying to familiarize myself with moneyd alone.<br>
+Im not sure if when running it I should not receive a prompt after starting it which means I just push it to a service or if its not initiating properly.</p>
+<p>When running the following I get no prompt afterwards<br>
+<code>DEBUG=* moneyd xrp:start --testnet</code></p>
+<pre><code>starting moneyd
+2019-09-10T21:33:02.127Z connector:route-broadcaster info generated random routing secret.
+2019-09-10T21:33:02.137Z connector:accounts info add account. accountId=parent
+2019-09-10T21:33:02.141Z connector:accounts info add account. accountId=local
+2019-09-10T21:33:02.215Z connector:admin-api info listen called
+2019-09-10T21:33:02.218Z connector:rate-limit-middleware:trace debug created token bucket for account. accountId=parent refillPeriod=60000 refillCount=10000 capacity=10000
+2019-09-10T21:33:02.220Z connector:balance-middleware info initializing balance for account. accountId=parent minimumBalance=-Infinity maximumBalance=20000000
+2019-09-10T21:33:02.221Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug registering data handler
+2019-09-10T21:33:02.221Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug registering money handler
+2019-09-10T21:33:02.222Z connector:rate-limit-middleware:trace debug created token bucket for account. accountId=local refillPeriod=60000 refillCount=10000 capacity=10000
+2019-09-10T21:33:02.222Z connector:balance-middleware info initializing balance for account. accountId=local minimumBalance=-Infinity maximumBalance=Infinity
+2019-09-10T21:33:02.223Z connector:ilp-plugin-mini-accounts[local]:trace debug registering data handler
+2019-09-10T21:33:02.223Z connector:ilp-plugin-mini-accounts[local]:trace debug registering money handler
+2019-09-10T21:33:02.223Z connector:accounts:trace debug connecting to parent. accountId=parent
+2019-09-10T21:33:02.645Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug connected to server
+2019-09-10T21:33:02.649Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug sending btp packet. type=TYPE_MESSAGE requestId=2286953857 info=auth=;auth_username=HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8;auth_token=7c1065f97acc41b623470194f887db9197cad23179979fa8ffc03dda7bcff3cd
+2019-09-10T21:33:02.751Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug received btp packet. type=TYPE_RESPONSE requestId=2286953857 info=
+2019-09-10T21:33:02.753Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug sending btp packet. type=TYPE_MESSAGE requestId=90147358 info=info=Ag==
+2019-09-10T21:33:02.854Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug received btp packet. type=TYPE_RESPONSE requestId=90147358 info=info={"address":"rw9w2wRKjTnfUQdUqMLUe4SUVWPKEtHWP2","account":"test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8","currencyScale":9,"channel":"E56410D0EAF6B02A6330C74D8FDE6581C325B10738C9C2FF8B105BD3FA7DB7A4","clientChannel":"A46993F78253451A410B99EF5FD2682086734DA2F463C4A0C270182EF2820E8A"}
+2019-09-10T21:33:02.854Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug got info: { address: 'rw9w2wRKjTnfUQdUqMLUe4SUVWPKEtHWP2',
+  account: 'test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8',
+  currencyScale: 9,
+  channel: 'E56410D0EAF6B02A6330C74D8FDE6581C325B10738C9C2FF8B105BD3FA7DB7A4',
+  clientChannel: 'A46993F78253451A410B99EF5FD2682086734DA2F463C4A0C270182EF2820E8A' }
+2019-09-10T21:33:04.370Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug setting claim interval on channel.
+2019-09-10T21:33:04.370Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug loaded best claim (on clientChannel) of { amount: '0' }
+2019-09-10T21:33:04.371Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent] info connected asym client plugin
+2019-09-10T21:33:04.374Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug sending btp packet. type=TYPE_MESSAGE requestId=1427141552 info=ilp-prepare
+2019-09-10T21:33:04.475Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug received btp packet. type=TYPE_RESPONSE requestId=1427141552 info=ilp-fulfill
+2019-09-10T21:33:04.477Z ilp-protocol-ildcp debug received client info. clientAddress=test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8 assetScale=9 assetCode=XRP
+2019-09-10T21:33:04.477Z connector:accounts:trace debug setting ilp address. oldAddress=unknown newAddress=test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8
+2019-09-10T21:33:04.478Z connector:route-broadcaster:trace debug reload local and configured routes.
+2019-09-10T21:33:04.479Z connector:route-broadcaster:trace debug new best route for prefix. prefix=test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8 oldBest=undefined newBest=
+2019-09-10T21:33:04.480Z connector:route-broadcaster:trace debug logging route update. update={"prefix":"test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8","route":{"nextHop":"","path":["test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8"],"auth":{"type":"Buffer","data":[125,60,169,130,85,27,197,171,224,113,222,49,79,153,145,108,99,25,141,189,151,18,155,97,165,117,35,65,237,55,48,219]}},"epoch":0}
+2019-09-10T21:33:04.481Z connector:route-broadcaster:trace debug new best route for prefix. prefix=test oldBest=undefined newBest=parent
+2019-09-10T21:33:04.481Z connector:route-broadcaster:trace debug new best route for prefix. prefix=test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8.local oldBest=undefined newBest=local
+2019-09-10T21:33:04.482Z connector:route-broadcaster warn not sending/receiving routes for peer, set sendRoutes/receiveRoutes to override. accountId=parent
+2019-09-10T21:33:04.482Z connector:route-broadcaster warn not sending/receiving routes for peer, set sendRoutes/receiveRoutes to override. accountId=local
+2019-09-10T21:33:04.487Z connector:ilp-prepare:trace debug handling ilp prepare. sourceAccount=local destination=peer.config amount=0 condition=Zmh6rfhivXdsj8GLjp+OIAiXFIVu4jOzkCpZHQ1fKSU= expiry=2019-09-10T21:34:04.484Z packet=DEYAAAAAAAAAADIwMTkwOTEwMjEzNDA0NDg0Zmh6rfhivXdsj8GLjp+OIAiXFIVu4jOzkCpZHQ1fKSULcGVlci5jb25maWcA
+2019-09-10T21:33:04.488Z connector:ildcp-host:trace debug responding to ILDCP config request. clientAddress=test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8.local
+2019-09-10T21:33:04.491Z ilp-protocol-ildcp debug received client info. clientAddress=test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8.local assetScale=9 assetCode=XRP
+2019-09-10T21:33:04.491Z connector:ilp-plugin-mini-accounts[local] info listening on port 7768
+2019-09-10T21:33:04.493Z connector:balance-middleware debug settlement triggered. accountId=parent balance=0 settleAmount=10000000
+2019-09-10T21:33:04.494Z connector:balance-middleware:trace debug balance increased due to outgoing settlement. accountId=parent amount=10000000 newBalance=10000000
+2019-09-10T21:33:04.496Z connector:app info connector ready (republic attitude). address=test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8 version=22.5.0
+2019-09-10T21:33:04.497Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug sending btp packet. type=TYPE_MESSAGE requestId=1079229046 info=last_claim=
+2019-09-10T21:33:04.597Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug received btp packet. type=TYPE_RESPONSE requestId=1079229046 info=last_claim={"amount":"40000000","signature":"10BAF09E8C5F20992E7217C284AE3CDEE33900D2C8F5B93E28C6377DAFBAC0D6C042FD955A41C33C0F30AF429FF948E0B88513A87559A09A725815816A4A550F"}
+2019-09-10T21:33:04.597Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug given last claim (on channel to connector) of { amount: '40000000',
+  signature: '10BAF09E8C5F20992E7217C284AE3CDEE33900D2C8F5B93E28C6377DAFBAC0D6C042FD955A41C33C0F30AF429FF948E0B88513A87559A09A725815816A4A550F' }
+2019-09-10T21:33:04.599Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug signing claim based on channel balance.
+2019-09-10T21:33:04.603Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug setting new claim. amount=50000000
+2019-09-10T21:33:04.604Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug sending btp packet. type=TYPE_TRANSFER requestId=3207035502 info=claim={"amount":"50000000","signature":"8129BC73F8E67A904599CE6128659387721682D65A7A481252721859B516A11611F886A6310A95914F33CCD85C39AF11414BC42B8FC8BC999669F205E9F74603"}
+  ilp-xrp-channel-watcher watching paychan A46993F78253451A410B99EF5FD2682086734DA2F463C4A0C270182EF2820E8A +0ms
+2019-09-10T21:33:04.706Z connector:/usr/local/lib/node_modules/moneyd-uplink-xrp/node_modules/ilp-plugin-xrp-asym-client/index.js[parent]:trace debug received btp packet. type=TYPE_RESPONSE requestId=3207035502 info=
+  ilp-xrp-channel-watcher checking 1 channels for expiry +59s
+  ilp-xrp-channel-watcher checking 1 channels for expiry +1m
+  ilp-xrp-channel-watcher checking 1 channels for expiry +1m
+  ilp-xrp-channel-watcher checking 1 channels for expiry +1m
+  ilp-xrp-channel-watcher checking 1 channels for expiry +1m
+  ilp-xrp-channel-watcher checking 1 channels for expiry +1m
+  ilp-xrp-channel-watcher checking 1 channels for expiry +1m
+</code></pre>
+<p>Nothing shows up after the last line however running another session to box I can check a balance which I believe is mine</p>
+<pre><code>moneyd xrp:info --testnet 
+fetching channels...
+connecting to xrp ledger...
+account: r4EXKKTLudkVRRub3XLTfhDUF1QukcX1oB
+balance: 989.999988 XRP
+  reserved: 25 XRP
+  available: 964.999988 XRP
+
+index  channel id   destination                         amount (drops)  balance (drops)  expiry
+0      E56410D0...  rw9w2wRKjTnfUQdUqMLUe4SUVWPKEtHWP2  10,000,000      40,000</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #ED6498; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/AJ58O" class="user-link">Just a Guy</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Sep 10, 2019 9:49 PM">
+            <time itemprop="datePublished" datetime="2019-09-10 21:49:32 +0200">Sep 10, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Moneyd runs in its own session-- it will never “finish” or prompt you to do anything after it’s started. To check if you’re connected, look for this line:</p>
+<p><code>2019-09-10T21:33:04.496Z connector:app info connector ready (republic attitude). address=test.styra-1b.xrpClients.HIoL0eJ6G7qwFLisOTCizvL02_mcQNxoPcUKGdv-Rl8 version=22.5.0</code></p>
+<p>Generally in your debug stack you should see that you send a BTP message, then receive one, then the connector is ready. Once you see that, you should be good to go. From there, just leave moneyd running and use ilp-spsp in a new shell.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/snub-fighter" class="user-link">Nathan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Sep 10, 2019 9:52 PM">
+            <time itemprop="datePublished" datetime="2019-09-10 21:52:49 +0200">Sep 10, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Alright.  For clarity there only needs to be one BTP exchange and then its just channel watching after that.</p>
+<p><code>ilp-xrp-channel-watcher checking 1 channels for expiry +59s</code></p>
+<p>I think the best option since its going to be a permanent structure (on livenet) is to set it up as a service so it doesnt require a shell and starts up automatically.</p>
+<p>Thanks a bunch!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Switch API - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/applications/7/index.html">Applications and Use Cases</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Switch API</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Switch API</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/applications/7" class="category-badge" style="--cat-color: #0E76BD"><span class="category-bullet" aria-hidden="true"></span>Applications and Use Cases</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 5, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 5, 2019 4:51 PM">
+            <time itemprop="datePublished" datetime="2019-04-05 16:51:19 +0200">Apr 5, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This was originally a question regarding Switch API setup, but because in the mean time I solved it, I thought I would turn this post into something useful for the community. - a few tips:</p>
+<ul>
+<li>
+<p>credentials in small caps - at least ETH</p>
+</li>
+<li>
+<p>when it runs it creates a config file in home/user/.switch. If run multiple times with same credentials (tests), this file has to be deleted first</p>
+</li>
+<li>
+<p>in some cases, the response from the network regarding the validated ledger might take a little bit to arrive. In this case, a tx request would not receive the correct answer; work around is to introduce a delay for the tx request, as in <a href="https://forum.interledger.org/t/interoperability-prototype-with-moneyd/382/14">here</a>.<br>
+This has to be done also on the reference connector side, in the <span class="mention">@kava</span> xrp-plugin.</p>
+</li>
+<li>
+<p>below is the config of the reference ilp connector to connect to Switch Api, in case <a href="https://github.com/kava-labs/connector-config" rel="nofollow noopener">@kava connector-config</a> is not used. While for the given use case it wasn’t needed, in a real scenario, for “outgoingChannelAmount”, “minIncomingChannelAmount”, “maxPacketAmount”, you may still want to use a conversion as in <span class="mention">@kava</span>’s original connector-config.</p>
+<pre><code>  const { convert, usd, gwei } = require('@kava-labs/crypto-rate-utils')
+  const axios = require('axios')
+  //to get gas price
+  const getGasPrice = async () =&gt; {
+    const { data } = await axios.get(
+      'https://ethgasstation.info/json/ethgasAPI.json'
+    )
+
+    return convert(gwei(data.fast / 10), wei())
+  } 
+
+  const peerETH = {
+        relation: 'child',
+        plugin: 'ilp-plugin-ethereum',
+        assetCode: 'ETH',
+        assetScale: 9,
+        options: {
+            role: 'server',
+            port: 7442, 
+            ethereumPrivateKey: '0x43c50a578883922df30a33eb74418fb568c0081c40256e4675df02dcc28b6ef6', 
+            ethereumProvider: 'http://192.168.1.87:8545', //using Ganache
+            getGasPrice: getGasPrice, 
+            outgoingChannelAmount: '71440000',       //10 usd
+            minIncomingChannelAmount: '3570000',  // 0.5usd
+            // In plugin (and not connector middleware) so F08s occur before T04s
+            maxPacketAmount: '1430000'    // 0.2USD 
+        }
+  }</code></pre>
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 16, 2019 11:26 PM">
+            <time itemprop="datePublished" datetime="2019-04-16 23:26:29 +0200">Apr 16, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey <a class="mention" href="/u/lucian_trestioreanu/index.html">@Lucian_Trestioreanu</a>!</p>
+<p>Thanks again for test driving it!</p>
+<p>Some updates based on your feedback:</p>
+<ul>
+<li>Fingers crossed, we fixed the issue you experienced with the XRP NotFoundError in v0.4.3+ of <span class="mention">@kava-labs</span>/ilp-plugin-xrp-paychan and v0.4.7+ of <span class="mention">@kava-labs</span>/switch-api</li>
+<li>Added a note to the README in ilp-sdk (renamed switch-api) explaining the config file and where it’s located <img src="https://emoji.discourse-cdn.com/twitter/+1.png?v=9" title=":+1:" class="emoji" alt=":+1:">
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 17, 2019 8:42 AM">
+            <time itemprop="datePublished" datetime="2019-04-17 08:42:53 +0200">Apr 17, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, <a class="mention" href="/u/kincaid/index.html">@Kincaid</a>! <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"> Thank you very much for your hints towards unblocking the issue, and for this quick update! Congrats Kava for Switch API!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 8, 2019 11:05 AM">
+            <time itemprop="datePublished" datetime="2019-05-08 11:05:09 +0200">May 8, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, <a class="mention" href="/u/kincaid/index.html">@Kincaid</a>!</p>
+<p>ILP-SDK can at this point swap currencies for same user, is this correct?<br>
+How about using it to send ETH from user A towards user B XRP wallet?</p>
+<p>i.e., instead entering user A private key ETH (sending wallet) + user A private key XRP (receiving wallet),<br>
+to fill in: user A private key ETH (sending wallet) + user B XRP address (receiving wallet)?</p>
+<p>Generally, does anybody know if there is any working app (way) able to send XRP from User A’s XRP wallet towards User B’s ETH wallet right now?</p>
+<p>Thank you very much</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

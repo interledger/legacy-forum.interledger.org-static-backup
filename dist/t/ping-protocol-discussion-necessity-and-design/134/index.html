@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ping Protocol: Discussion, Necessity, and Design - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Ping Protocol: Discussion, Necessity, and Design</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Ping Protocol: Discussion, Necessity, and Design</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/pre-rfc" class="tag-badge">pre-rfc</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 9, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 9, 2019 9:14 PM">
+            <time itemprop="datePublished" datetime="2019-02-09 21:14:28 +0200">Feb 9, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>There have been various discussions around, and attempts at standardizing, a “ping” or “echo” protocol in Interleder, whereby a given node can monitor the health (<code>uptime</code>, <code>latency</code>, <code>cost</code>, etc) of its existing connections and payment paths.</p>
+<p>In the Internet system, ICMP <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)#Echo_request" rel="nofollow noopener">echo</a> <code>request</code> and <code>response</code> packets are used together to verify connectivity (colloquially known as a “pinging” a host). In Interledger, we perhaps need a similar system, but there are a number of questions that still deserve further discussion, including whether or not such functionality even needs specifying.</p>
+<p><strong>Prior Discussion</strong></p>
+<ol>
+<li>RFC Issue <span class="hashtag">#443:</span> <a href="https://github.com/interledger/rfcs/issues/433" rel="nofollow noopener">Document the Ping Protocol</a> (<em>open issue</em>)</li>
+<li>PR <span class="hashtag">#232:</span> <a href="https://github.com/interledger/rfcs/pull/232" rel="nofollow noopener">An RFC for a Ping/Echo Mechanism</a> (<em>Closed PR</em>)</li>
+</ol>
+<p><strong>Loose Definitions</strong></p>
+<ul>
+<li>
+<strong>Path Connectivity</strong>: Can I send a prepare packet from myself to ILP address X?</li>
+<li>
+<strong>Path Latency</strong>: How long does it take for my prepare packet to reach ILP address X?</li>
+<li>
+<strong>Path Response Time</strong>: How long does it take for the response to make it back to me?</li>
+<li>
+<strong>Path Cost</strong>: If I send 10 units to ILP Address X, how much makes it there?</li>
+<li>
+<strong>Uni-directional</strong>: I send a Prepare packet, and expect a Fulfill/Reject.</li>
+<li>
+<strong>Bi-directional</strong>: I send a Prepare packet. In response, the receiver does the same. We each send a corresponding Fulfill/Reject response, perhaps in an ordered fashion.</li>
+<li>
+<strong>Heartbeat/Ping</strong>: Uni-directional only (see definition above).</li>
+<li>
+<strong>Echo</strong>: Bi-directional (see definition above).</li>
+</ul>
+<p><strong>Outstanding General Questions</strong></p>
+<ol>
+<li>What should the <em>goals</em> and <em>non-goals</em> be here?</li>
+<li>Should the protocol be uni-directional (i.e., “heartbeat”/“ping”) or bi-directional(i.e., “echo”)? In other words, should the protocol involve a mirror payment that allows a sender to glean data about both directions of a payment-path?</li>
+<li>If we decide there should be two protocols, should there be one RFC that defines both, or should there be two RFCs?</li>
+</ol>
+<p><strong>Heartbeat/Ping/ Protocol Questions</strong></p>
+<ol>
+<li>What should the <em>goals</em> and <em>non-goals</em> be here?</li>
+<li>Is such a protocol even necessary, or do the existing prepare+fulfill/reject system suffice?</li>
+<li>Should the response-data to a unidirectional ping request contain anything more than what was in the request-data? For example, ICMP mandates that an ICMP echo response “…must include the exact payload received in the request.”</li>
+<li>Should the protocol rely upon a known condition/fulfillment pair, or an unfulfillable condition?</li>
+<li>Should the protocol measure just <code>connectivity</code>, <code>response-time</code>, or should it measure <code>connectivity</code>, <code>response-time</code> and <code>latency</code>?</li>
+<li>Should the protocol measure path <code>cost</code>?</li>
+<li>For collecting <code>cost</code> information, should this be an application concern that is performed using STREAM so that the Interledger layer doesn’t have to embed path-fx-pricing information into an ILP packet (Ping protocol), or else glean this information by inference (Echo Protocol)?</li>
+<li>Should a node be able to PING any address on the Interledger, or should this protocol be limited to Interledger hosts/node addresses? For example, the <a href="https://github.com/interledgerjs/ilp-connector/blob/master/src/controllers/ilp-prepare.ts#L41" rel="nofollow noopener">current implementation in the Javascript Connector</a> only allows for ping requests at a HOST level.</li>
+<li>Do we need a simpler “heartbeat” protocol that is just between peers to allow the ILP module on each peer to ensure that packets are routable. I.e. Not only is there an available data transport but the connectors are in a state to be able to route packets. If so, what should the address and packets contain?</li>
+</ol>
+<p><strong>Echo Protocol Questions</strong></p>
+<ol>
+<li>What should the <em>goals</em> and <em>non-goals</em> be here?</li>
+<li>Are there security and/or information-leakage concerns if a Connector want to support echo, but is compelled to make a “mirror payment” back to the sender?</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 12, 2019 3:25 PM">
+            <time itemprop="datePublished" datetime="2019-02-12 15:25:30 +0200">Feb 12, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>The following is a straw man proposal to separate these concepts into three (four?) protocols with the following properties:</p>
+<ol>
+<li>
+<strong>HealthCheck</strong>: Send ILP Prepare packets on Link X addressed to <code>peer.health</code>. This should be informatively standardized <a href="https://github.com/interledger/rfcs/issues/496" rel="nofollow noopener">here</a>.</li>
+<li>
+<strong>Ping</strong>: Link-level protocol that uses a known Condition/Fulfillment pair and a special ILP address to identify itself. When responding with a Fulfill, targets <em>always</em> include any <code>data</code> that was in the original Prepare request (not the case on a Reject).</li>
+<li>
+<strong>Quoting</strong>: Use STREAM with very small payments.</li>
+<li>
+<strong>Bidirectional Connectivity</strong>: Use <a href="https://github.com/interledgerjs/ilp-connector/blob/master/src/controllers/echo.ts" rel="nofollow noopener">Echo Protocol</a>[1].</li>
+</ol>
+<p>To this end, a Connector can accomplish the following using any of the above protocols:</p>
+<ol>
+<li>
+<strong>Link Uptime</strong> (Continuously measure uptime on a specific Link/Plugin): Use <strong>HealthCheck</strong> or <strong>Ping</strong>.</li>
+<li>
+<strong>Link Response Time</strong> (Continuously measure response-time on a specific Link/Plugin): Use <strong>Ping</strong> to <code>peer.ping</code>.</li>
+<li>
+<strong>Routability</strong> (Determine routability to <code>g.xyz</code> on a particular Link): Use the routing table + <a href="https://github.com/interledgerjs/ilp-connector/blob/master/src/controllers/ccp.ts" rel="nofollow noopener">CCP</a>.</li>
+<li>
+<strong>Debug CCP</strong>(Debug CCP routability to <code>g.xyz</code> on a particular Link): Use <strong>Ping</strong> to <code>g.xyz</code>
+</li>
+<li>
+<strong>Costing</strong>(Check path-pricing[1] to <code>g.xyz</code> on a Link X): Use STREAM, send all packets on Link X.</li>
+</ol>
+<p><strong>APPENDIX [1]: Echo Protocol: Necessary? Problematic?</strong><br>
+In general, I like the intent of the <strong>Echo Protocol</strong> (<a href="https://github.com/interledger/rfcs/pull/232" rel="nofollow noopener">PR</a> and <a href="https://github.com/interledger/rfcs/issues/433#issuecomment-439373183" rel="nofollow noopener">outline</a>) because it allows a Connector to establish bidirectional connectivity to a remote ILP address.</p>
+<p><em>However, it’s unclear whether this kind of functionality is actually something a Connector would utilize outside of debugging CCP (it seems like all other goals could be accomplished using other mechanisms in this post).</em></p>
+<p>Additionally, in its current form, the Echo protocol has a few attributes that make me question it:</p>
+<ol>
+<li>
+<p><strong>Mixed Concerns</strong>: The ECHO protocol mixes “connectivity/health-checking” with “route costing”, which are potentially related, but ultimately orthogonal, concerns. They should be separated if possible.</p>
+</li>
+<li>
+<p><strong>Special Packet Treatment</strong>: The protocol requires a Connector to <a href="https://github.com/interledgerjs/ilp-connector/blob/master/src/controllers/ilp-prepare.ts#L41" rel="nofollow noopener">apply special treatment</a> to certain Prepare packets, complicating Connector implementations.</p>
+</li>
+<li>
+<p><strong>Special Response Flow</strong>: Due to the flow of the protocol, the Connector needs to hold an otherwise fulfillable packet until it detects a corresponding incoming packet from the target node. Aside from complicating the request/response matching, it also introduces potentially odd delay periods, which likely interferes with a source Connector’s ability to perform response-time tracking.</p>
+</li>
+<li>
+<p><strong>Potential FX Info Leakage</strong>: The protocol exposes bi-directional FX rates that a particular target node may not want to expose to <em>every</em> other network participant. For example, imagine two payment paths <code>A</code>-&gt;<code>B</code>-&gt;<code>C</code> and <code>C</code>-&gt;<code>B</code>-&gt;<code>A</code>. If <code>A</code> send an echo request to <code>C</code>, <code>A</code> will be able to discover the FX pricing that <code>C</code> has with <code>B</code>, and potentially use that against <code>B</code> when negotiating its own rates. It should be possible for <code>C</code> to participate in any sort of <code>connectivity-checking</code> protocol without exposing it’s own costs.</p>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

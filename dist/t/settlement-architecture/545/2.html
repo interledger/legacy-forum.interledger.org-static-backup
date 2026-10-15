@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settlement Architecture - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Settlement Architecture</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Settlement Architecture</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/settlement" class="tag-badge">settlement</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 26, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_21"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_21" title="May 14, 2019 3:02 PM">
+            <time itemprop="datePublished" datetime="2019-05-14 15:02:16 +0200">May 14, 2019</time>
+          </a>
+          <span class="post-number">#21</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_20">Replying to #20</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you have it close enough for us to just get on and build it!</p>
+<p>Where I think we are not entirely in agreement (but this is immaterial if we put the SE in the connector) is on where the liquidity management logic should sit.</p>
+<p><a class="mention" href="/u/kincaid/index.html">@kincaid</a> suggests that it is too hard to abstract this so it should live in the Settlement Adaptor.</p>
+<p>I don’t agree that it’s impossible and think it should be in the SE but agree that abstracting it now may be adding unnecessary complexity to the SA interface.</p>
+<p>My main concern is that we are splitting two pieces of business logic that I think belong together, the settlement logic (when should I settle) and the liquidity management (how much liquidity have I got available for settlements) should both sit in the SE.</p>
+<p>The current proposal puts the settlement logic in the connector and liquidity management in the SA.</p>
+<aside class="quote no-group" data-username="sappenin" data-post="20" data-topic="545">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>Are the above API endpoints correct?</p>
+</blockquote>
+</aside>
+<p>Correct enough to start with in my opinion.</p>
+<aside class="quote no-group" data-username="sappenin" data-post="20" data-topic="545">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sappenin/48/41_2.png" class="avatar"> sappenin:</div>
+<blockquote>
+<p>If you get into a taxi cab, and ask the driver to drive backwards to your destination, will the cab driver owe you money?</p>
+</blockquote>
+</aside>
+<p>So, let’s just be clear on the assumptions at play here… <img src="https://emoji.discourse-cdn.com/twitter/smile.png?v=12" title=":smile:" class="emoji" alt=":smile:" loading="lazy" width="20" height="20"></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_22"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_22" title="May 17, 2019 2:03 PM">
+            <time itemprop="datePublished" datetime="2019-05-17 14:03:10 +0200">May 17, 2019</time>
+          </a>
+          <span class="post-number">#22</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_21">Replying to #21</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <h1>Conclusion</h1>
+<p>Thanks to all who contributed to this and joined the Community Call on 15 May to discuss. Here is my summary of the outcome (thanks <a class="mention" href="/u/sappenin/index.html">@sappenin</a> for your notes in Slack, they helped jog my memory):</p>
+<h2>Components</h2>
+<ul>
+<li>
+<p><strong>Connector Balance Logic:</strong><br>
+Logic in the connector that decides whether or not to forward packets based on the Interledger balance of a peer.<br>
+Adjusts Interledger balance based on exchange of packets with peer.</p>
+</li>
+<li>
+<p><strong>Accounting System:</strong><br>
+Tracks the Interledger balance and determines when to make a settlement.<br>
+Communicates with the settlement engine and adjusts the Interledger balance based on settlement events.</p>
+</li>
+<li>
+<p><strong>Settlement Engine:</strong><br>
+Performs settlements on a settlement system.<br>
+Manages liquidity in the settlement system.<br>
+Communicates with the settlement engines at peers using a transport provided by the connector</p>
+</li>
+</ul>
+<h2>Design Decisions</h2>
+<h3>What is the Settlement Engine?</h3>
+<p>The terminology we came to consensus on is not exactly what was described earlier in this thread so take not of the differences. The reasons are less important than the results, it’s just terminology after all.</p>
+<p>Notably we have agreed that the system that runs outside the connector and interfaces with the settlement system is called the Settlement Engine and this DOES NOT contain the logic for deciding WHEN to settle (which is in the accounting system).</p>
+<p>In effect this consists of two components, a settlement system liquidity manager (manages the available liquidity for settlement) and a settlement system adaptor (interfaces with the settlement system to, primarily, perform settlements).</p>
+<h3>Liquidity management of Settlement System is handled in the Settlement Engine</h3>
+<p>We have settled (pun intended) on a design that does not attempt to abstract the liquidity management functions of the Settlement Engine out of that component as the majority view was that this is quite specific to the underlying settlement system and difficult to abstract.</p>
+<p>As such, the Accounting System has no view of the connector’s liquidity in the settlement system. Instead the AS simply requests a settlement and assumes this will be done eventually if the request is acknowledged by the SE.</p>
+<p>The AS adjusts its own records to this effect and, in the case that the SE is unable to complete the settlement, the connector may find that packets forwarded to the peer start to be rejected due to a lack of liquidity.</p>
+<p>This was accepted as the lowest risk compromise for the sake of keeping the design simple and reducing the API surface between the AS and the SE.</p>
+<p>Management of this scenario is then left to operators to ensure they can respond to this eventuality. In reality, this will manifest as failed settlements which should be handled with high priority by an operator anyway.</p>
+<p>The alternative to this proposal was to include the liquidity management logic in the accounting system which has the benefit of allowing the accounting system to develop more sophisticated logic around management of liquidity in the settlement system and in the Interledger accounts however this comes at the cost of needing to abstract liquidity management functions.</p>
+<p>In time, data from the settlement process (the time taken and rate of success performing settlements) may be useful to the AS in planning future settlements and we may extend the API to enable this.</p>
+<h3>REST</h3>
+<p>For simplicity we have agreed to use a REST and JSON based API</p>
+<h2>Architecture</h2>
+<p>We have agreed that the standard API we want to define is between the Accounting System (which will likely run inside most connectors for now) and the Settlement Engine.</p>
+<p>Both sides must run an HTTP server to accept requests as the interface is bilateral.</p>
+<p>All interactions follow a request/reply pattern however some replies will be responses and others will simply be ACKs.</p>
+<p>Settlement Engines have an implicit asset code and scale (i.e. a different SE is required for different assets) so the AS must apply any scale conversions before calling the SE API or when receiving API calls from the SE.</p>
+<p>The Accounting System (Connector) must host the following interface:</p>
+<ul>
+<li>
+<p><strong>ReceiveSettlement(accountId, amount)</strong><br>
+Notification from the settlement system that an incoming settlement has been received.<br>
+The response to this is an ACK.<br>
+The AS will ACK the request and adjust the Interledger balance of the peer accordingly.<br>
+The SE should retry until this is ACK’d so it needs to be idempotent.</p>
+</li>
+<li>
+<p><strong>SendRequest(accountId, message)</strong><br>
+Deliver a message to the peer’s settlement system and return the response.<br>
+The response is the response from the peer’s settlement system.<br>
+If this is used for some form of RPC between settlement systems then they should define that protocol separately (i.e. how to handle failures and errors).<br>
+An error response from the other SE should not be carried in an error at the API level.<br>
+(i.e. The response is always a 2XX)<br>
+The SE should retry until it gets a response so this needs to be idempotent.</p>
+</li>
+</ul>
+<p>Both calls can return an “Unknown Account Id” response (Maybe a 404?)</p>
+<p>The Settlement Engine must host the following interface:</p>
+<ul>
+<li>
+<p><strong>CreateAccount(accountId)</strong><br>
+Be prepared to send and receive settlements for this account.<br>
+Connector provides the accountId and SE .</p>
+</li>
+<li>
+<p><strong>SendSettlement(accountId, amount)</strong><br>
+Perform an outgoing settlement on the underlying settlement system.<br>
+The response to this is an ACK.<br>
+The SE will ACK the request and then attempt to perform the settlement. It will continue attempting the settlement until it succeeds (i.e. There is no mechanism to notify the AS to reverse the balance change)<br>
+The AS should retry until it gets a response so this needs to be idempotent.</p>
+</li>
+<li>
+<p><strong>ReceiveRequest(accountId, message)</strong><br>
+Accept a message from the peer’s settlement system and return a response.<br>
+The SE should never return an error response unless the accountId is unknown.<br>
+(i.e. The response is always a 2XX even if the response is carrying an error message back to the peer’s SE)<br>
+The AS should retry until it gets a response so this needs to be idempotent.</p>
+</li>
+</ul>
+<p>Discussion on how to spec this out is being done in the <code>#settlement</code> channel on Slack</p>
+<p>Kava have an implementation that is already pretty close to this: <a href="https://github.com/Kava-Labs/ilp-plugin-xrp-paychan" rel="nofollow noopener">https://github.com/Kava-Labs/ilp-plugin-xrp-paychan</a></p>
+<p>UPDATE: Added <code>amount</code> as a param to ReceiveSettlement. This was a mistake in the original post.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_23"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_23" title="Oct 29, 2019 6:26 PM">
+            <time itemprop="datePublished" datetime="2019-10-29 18:26:28 +0200">Oct 29, 2019</time>
+          </a>
+          <span class="post-number">#23</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think there might be a small flaw in the JS XRP settlement engine <a href="https://github.com/interledgerjs/settlement-xrp" rel="nofollow noopener">https://github.com/interledgerjs/settlement-xrp</a>.</p>
+<p>In file: .nvm/versions/node/v10.16.3/lib/node_modules/<strong>ilp-settlement-xrp/dist/index.js</strong></p>
+<p>The SE of the receiving party checks the tx result immediately after the transaction is submitted.</p>
+<pre><code>handleTransaction(tx) {
+            log(`MY_TRACE: Went through handleTransaction(tx)`);
+            log(`MY_TRACE: tx`, tx);
+            if (!tx.validated ||
+                tx.meta.TransactionResult !== 'tesSUCCESS' ||
+                tx.transaction.TransactionType !== 'Payment' ||
+                tx.transaction.Destination !== xrpAddress) {
+                log(`MY_TRACE: Returning: !tx.validated, !==tesSUCCESS`);
+                return;
+            }
+            log(`tx amount`, tx.transaction.Amount);
+            //const amount = new bignumber_js_1.default(tx.meta.delivered_amount).shiftedBy(-6);
+            const amount = new bignumber_js_1.default(tx.transaction.Amount).shiftedBy(-6); 
+</code></pre>
+<p>In case the validation will be slow, the tx result will be the intermediary one - non-validated.<br>
+As such, the field <strong>tx.meta.delivered_amount</strong> is not found, and although the money are already on the ledger, the ILP balance between the parties will de-sync, because the receiver still believes the balance is not settled yet.</p>
+<p>I tried a quick fix by using the field <strong>tx.transaction.Amount</strong>, as shown on the last line of code above, and like this, it works.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_24"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_24" title="Oct 30, 2019 4:46 PM">
+            <time itemprop="datePublished" datetime="2019-10-30 16:46:20 +0200">Oct 30, 2019</time>
+          </a>
+          <span class="post-number">#24</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_23">Replying to #23</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi <a class="mention" href="/u/lucian_trestioreanu/index.html">@Lucian_Trestioreanu</a> thanks for pointing that out. Can you make an issue in the Github project?</p>
+<aside class="onebox whitelistedgeneric">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+      <a href="https://github.com/interledgerjs/settlement-xrp/issues" target="_blank" rel="nofollow noopener">GitHub</a>
+  </header>
+  <article class="onebox-body">
+    <img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/0d3a2894ca264d48724bbbbd5b485cd86e2773ac.png" class="thumbnail onebox-avatar" width="400" height="400">
+
+<h3><a href="https://github.com/interledgerjs/settlement-xrp/issues" target="_blank" rel="nofollow noopener">interledgerjs/settlement-xrp</a></h3>
+
+<p>Settle Interledger payments using on-ledger XRP transfers - interledgerjs/settlement-xrp</p>
+
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_25"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_25" title="Oct 30, 2019 11:58 PM">
+            <time itemprop="datePublished" datetime="2019-10-30 23:58:25 +0200">Oct 30, 2019</time>
+          </a>
+          <span class="post-number">#25</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/sappenin/index.html">@sappenin</a> <a class="mention" href="/u/kincaid/index.html">@kincaid</a><br>
+Hi, I put it here:<br>
+<aside class="onebox githubissue">
+  <header class="source">
+      <a href="https://github.com/interledgerjs/settlement-xrp/issues/19" target="_blank" rel="nofollow noopener">github.com/interledgerjs/settlement-xrp</a>
+  </header>
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewbox="0 0 14 16" aria-hidden="true"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/interledgerjs/settlement-xrp/issues/19" target="_blank" rel="nofollow noopener">settlement tx not checked correctly in case of slow validating network</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2019-10-30" data-time="23:49:50" data-timezone="UTC">11:49PM - 30 Oct 19 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/treisto" target="_blank" rel="nofollow noopener">
+          <img alt="treisto" src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/15e283b50d22572dc208ac2f5a37f380f0418fe1.png" class="onebox-avatar-inline" width="20" height="20">
+          treisto
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="github-row">
+  <p class="github-content">Hi, I think there might be a small flaw in the JS XRP settlement engine
+In file: .nvm/versions/node/v10.16.3/lib/node_modules/ilp-settlement-xrp/dist/index.js
+The SE of the receiving...</p>
+</div>
+
+<div class="labels">
+</div>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_26"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_26" title="Nov 6, 2019 1:23 PM">
+            <time itemprop="datePublished" datetime="2019-11-06 13:23:59 +0200">Nov 6, 2019</time>
+          </a>
+          <span class="post-number">#26</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>What if two connectors want to peer over e.g. three currencies/ledgers, i.e. there would be three settlement engines between the two connectors?</p>
+<p>How would settlement proceed?</p>
+<p>If, at some moment the two connectors become part of a payment chain between 2 parties, how would payment routing proceed?<br>
+Alice -&gt; Connector 0 -&gt; <em>Connector 1 (3 SE with Conn 2) -&gt; Connector 2 (3 SE with Conn1)</em> -&gt; Connector 3 -&gt; Bob</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_27"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_27" title="Nov 20, 2019 6:30 PM">
+            <time itemprop="datePublished" datetime="2019-11-20 18:30:31 +0200">Nov 20, 2019</time>
+          </a>
+          <span class="post-number">#27</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>What if two connectors want to peer over e.g. three currencies/ledgers, i.e. there would be three settlement engines between the two connectors?</p>
+</blockquote>
+<p>Each connector needs a Settlement Engine for each currency/ledger that it wants to peer using. So, if two connectors are peering over two different ledgers, there would be 4 settlement engine instances (2 for each Connector).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_28"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_28" title="Nov 27, 2019 3:18 PM">
+            <time itemprop="datePublished" datetime="2019-11-27 15:18:23 +0200">Nov 27, 2019</time>
+          </a>
+          <span class="post-number">#28</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi, <a class="mention" href="/u/sappenin/index.html">@sappenin</a>  Sorry for the misunderstanding. This is what I meant:</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/6b647c5b438737c7391a9125f534d517c6c80590.jpeg" data-download-href="/uploads/short-url/fk2nvgF4nNiketDhC77ROuagOuA.jpeg?dl=1" title="Settlement%20engine%202%20(1)" rel="nofollow noopener"><img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/6b647c5b438737c7391a9125f534d517c6c80590.jpeg" alt="Settlement%20engine%202%20(1)" data-base62-sha1="fk2nvgF4nNiketDhC77ROuagOuA" width="690" height="388" data-small-upload="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/6b647c5b438737c7391a9125f534d517c6c80590_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Settlement%20engine%202%20(1)</span><span class="informations">960×540 39.1 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>How would settlement proceed between Conn 2 and Conn 3?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_29"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/matdehaast" class="user-link">Matthew De Haast</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_29" title="Nov 28, 2019 12:12 PM">
+            <time itemprop="datePublished" datetime="2019-11-28 12:12:58 +0200">Nov 28, 2019</time>
+          </a>
+          <span class="post-number">#29</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_28">Replying to #28</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Currently not supported on any connector implementations, but you would have Business Logic tied into Routing on the connector to make that decision on which SE it would want to use. This could be based on various factors such as liquidity, price etc.</p>
+<p>We have discussed this functionality being available in all connectors but it just hasn’t been prioritized yet.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_30"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">L</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Lucian_Trestioreanu" class="user-link">Lucian Trestioreanu</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_30" title="Nov 28, 2019 1:02 PM">
+            <time itemprop="datePublished" datetime="2019-11-28 13:02:26 +0200">Nov 28, 2019</time>
+          </a>
+          <span class="post-number">#30</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_29">Replying to #29</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thank you very much, Matt!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+    <a href="/t/settlement-architecture/545/index.html" class="pagination-prev" rel="prev">Previous</a>
+    
+
+    <span class="pagination-info">Page 2 of 2</span>
+
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

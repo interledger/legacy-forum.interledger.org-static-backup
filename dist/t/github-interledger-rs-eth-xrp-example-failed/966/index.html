@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Github interledger-rs ETH-XRP example failed - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Github interledger-rs ETH-XRP example failed</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Github interledger-rs ETH-XRP example failed</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 24, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Andrii_Spivak" class="user-link">Andrii Spivak</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 24, 2020 9:13 PM">
+            <time itemprop="datePublished" datetime="2020-03-24 21:13:47 +0200">Mar 24, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I try this tutorial, but look like that it’s not working correct:<br>
+ETH part start’s nice, but stops  in XRP part.</p>
+<aside class="onebox githubblob" data-onebox-src="https://github.com/interledger/interledger-rs/blob/master/examples/eth-xrp-three-nodes/README.md">
+  <header class="source">
+
+      <a href="https://github.com/interledger/interledger-rs/blob/master/examples/eth-xrp-three-nodes/README.md" target="_blank" rel="noopener nofollow ugc">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h4><a href="https://github.com/interledger/interledger-rs/blob/master/examples/eth-xrp-three-nodes/README.md" target="_blank" rel="noopener nofollow ugc">interledger/interledger-rs/blob/master/examples/eth-xrp-three-nodes/README.md</a></h4>
+
+
+      <pre><code class="lang-md">&lt;!--!
+# For integration tests
+function post_test_hook() {
+    if [ $TEST_MODE -eq 1 ]; then
+        test_equals_or_exit '{"asset_code":"ETH","balance":-0.0005}' test_http_response_body -H "Authorization: Bearer hi_alice" http://localhost:7770/accounts/alice/balance
+        test_equals_or_exit '{"asset_code":"ETH","balance":0.0}' test_http_response_body -H "Authorization: Bearer hi_alice" http://localhost:7770/accounts/bob/balance
+        test_equals_or_exit '{"asset_code":"ETH","balance":0.0}' test_http_response_body -H "Authorization: Bearer hi_bob" http://localhost:8770/accounts/alice/balance
+    fi
+}
+--&gt;
+
+# Interledger with Ethereum and XRP On-Ledger Settlement
+
+&gt; A demo that sends payments between 3 Interledger.rs nodes and settles using Ethereum transactions and XRP transactions.
+
+## Overview
+
+This example shows how to configure Interledger.rs nodes and use an Ethereum network (testnet or mainnet) and the XRP Ledger testnet as settlement ledgers for payments sent between the nodes. If you are new to Ethereum, you can learn about it [here](https://www.ethereum.org/beginners/). You'll find many useful resources about the XRP Ledger (XRPL) [here](https://xrpl.org). To learn about settlement in Interledger, refer to [Peering, Clearing and Settling](https://github.com/interledger/rfcs/blob/master/0032-peering-clearing-settlement/0032-peering-clearing-settlement.md).
+
+To run the full example, you can use [`run-md.sh`](../../scripts/run-md.sh) as described [here](../README.md). Otherwise, you can walk through each step below.
+</code></pre>
+
+
+
+  This file has been truncated. <a href="https://github.com/interledger/interledger-rs/blob/master/examples/eth-xrp-three-nodes/README.md" target="_blank" rel="noopener nofollow ugc">show original</a>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>I get this log in node-bob-settlement-engine-xrpl.log</p>
+<blockquote>
+<pre><code>2020-03-24T17:28:53.547Z settlement-xrp Generated new XRP testnet account: address=rNMGGCvhYbDDUhCVFvAnZ687FTyEPMgTVv secret=saBTrABr3DnYNgQaPJNkqsj75Z3ta
+2020-03-24T17:28:55.310Z settlement-core Started settlement engine server
+2020-03-24T17:29:04.170Z settlement-xrp Starting settlement: account=8579cdc0-3bf3-4952-b872-359e90a84aa0 xrp=1
+2020-03-24T17:29:04.720Z settlement-xrp Failed to settle: Error fetching payment details: account=8579cdc0-3bf3-4952-b872-359e90a84aa0 xrp=1 Error: Request failed with status code 502
+    at createError (/usr/local/share/.config/yarn/global/node_modules/axios/lib/core/createError.js:16:15)
+    at settle (/usr/local/share/.config/yarn/global/node_modules/axios/lib/core/settle.js:17:12)
+    at IncomingMessage.handleStreamEnd (/usr/local/share/.config/yarn/global/node_modules/axios/lib/adapters/http.js:236:11)
+    at IncomingMessage.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21) {
+  config: {
+    url: 'http://localhost:8771/accounts/8579cdc0-3bf3-4952-b872-359e90a84aa0/messages',
+    method: 'post',
+    data: &lt;Buffer 7b 22 74 79 70 65 22 3a 22 70 61 79 6d 65 6e 74 44 65 74 61 69 6c 73 22 7d&gt;,
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/octet-stream',
+      'User-Agent': 'axios/0.19.2',
+      'Content-Length': 25
+    },
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 10000,
+    adapter: [Function: httpAdapter],
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    validateStatus: [Function: validateStatus]
+  },
+  request: ClientRequest {
+    _events: [Object: null prototype] {
+      socket: [Array],
+      abort: [Function],
+      aborted: [Function],
+      error: [Function],
+      timeout: [Array],
+      prefinish: [Function: requestOnPrefinish]
+    },
+    _eventsCount: 6,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    _contentLength: null,
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    socket: Socket {
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'localhost',
+      _readableState: [ReadableState],
+      readable: true,
+      _events: [Object: null prototype],
+      _eventsCount: 6,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      writable: false,
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: null,
+      _server: null,
+      parser: null,
+      _httpMessage: [Circular],
+      timeout: 10000,
+      [Symbol(asyncId)]: 104,
+      [Symbol(kHandle)]: [TCP],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 10000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 20775,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(asyncId)]: 112,
+        [Symbol(triggerId)]: 110
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0
+    },
+    connection: Socket {
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'localhost',
+      _readableState: [ReadableState],
+      readable: true,
+      _events: [Object: null prototype],
+      _eventsCount: 6,
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      writable: false,
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: null,
+      _server: null,
+      parser: null,
+      _httpMessage: [Circular],
+      timeout: 10000,
+      [Symbol(asyncId)]: 104,
+      [Symbol(kHandle)]: [TCP],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 10000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 20775,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(asyncId)]: 112,
+        [Symbol(triggerId)]: 110
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0
+    },
+    _header: 'POST /accounts/8579cdc0-3bf3-4952-b872-359e90a84aa0/messages HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/octet-stream\r\n' +
+      'User-Agent: axios/0.19.2\r\n' +
+      'Content-Length: 25\r\n' +
+      'Host: localhost:8771\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _onPendingData: [Function: noopPendingOutput],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 80,
+      protocol: 'http:',
+      options: [Object],
+      requests: {},
+      sockets: [Object],
+      freeSockets: {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    insecureHTTPParser: undefined,
+    path: '/accounts/8579cdc0-3bf3-4952-b872-359e90a84aa0/messages',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      readable: false,
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      socket: [Socket],
+      connection: [Socket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      headers: [Object],
+      rawHeaders: [Array],
+      trailers: {},
+      rawTrailers: [],
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 502,
+      statusMessage: 'Bad Gateway',
+      client: [Socket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular],
+      responseUrl: 'http://localhost:8771/accounts/8579cdc0-3bf3-4952-b872-359e90a84aa0/messages',
+      redirects: [],
+      [Symbol(kCapture)]: false
+    },
+    aborted: false,
+    timeoutCb: [Function: emitRequestTimeout],
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      writable: true,
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      _options: [Object],
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 25,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function],
+      _currentRequest: [Circular],
+      _currentUrl: 'http://localhost:8771/accounts/8579cdc0-3bf3-4952-b872-359e90a84aa0/messages',
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      host: [Array]
+    }
+  },
+  response: {
+    status: 502,
+    statusText: 'Bad Gateway',
+    headers: {
+      'content-type': 'application/problem+json',
+      'content-length': '233',
+      date: 'Tue, 24 Mar 2020 17:29:04 GMT'
+    },
+    config: {
+      url: 'http://localhost:8771/accounts/8579cdc0-3bf3-4952-b872-359e90a84aa0/messages',
+      method: 'post',
+      data: &lt;Buffer 7b 22 74 79 70 65 22 3a 22 70 61 79 6d 65 6e 74 44 65 74 61 69 6c 73 22 7d&gt;,
+      headers: [Object],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 10000,
+      adapter: [Function: httpAdapter],
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      validateStatus: [Function: validateStatus]
+    },
+    request: ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 6,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      _contentLength: null,
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      socket: [Socket],
+      connection: [Socket],
+      _header: 'POST /accounts/8579cdc0-3bf3-4952-b872-359e90a84aa0/messages HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/octet-stream\r\n' +
+        'User-Agent: axios/0.19.2\r\n' +
+        'Content-Length: 25\r\n' +
+        'Host: localhost:8771\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _onPendingData: [Function: noopPendingOutput],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      insecureHTTPParser: undefined,
+      path: '/accounts/8579cdc0-3bf3-4952-b872-359e90a84aa0/messages',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: [Function: emitRequestTimeout],
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype]
+    },
+    data: {
+      type: 'about:blank',
+      title: 'Error sending message to peer engine',
+      status: 502,
+      detail: 'Error sending message to peer settlement engine. Packet rejected with code: F02, message: ',
+      datetime: '2020-03-24T20:29:04.719047197+03:00'
+    }
+  },
+  isAxiosError: true,
+  toJSON: [Function]
+}
+2020-03-24T17:29:04.737Z settlement-core Settlement completed: leftover=1 settled=0 amountToSettle=1 account=8579cdc0-3bf3-4952-b872-359e90a84aa0
+</code></pre>
+</blockquote>
+<p>And account balance after try look’s like this:</p>
+<blockquote>
+<pre><code>$ ilp-cli pay alice --auth alice_password \
+&gt;     --amount 500 \
+&gt;     --to http://localhost:9770/accounts/charlie/spsp
+{"delivered_amount":424495,"destination_asset_code":"XRP","destination_asset_scale":6,"from":"example.alice","in_flight_amount":0,"sent_amount":500,"source_amount":500,"source_asset_code":"ETH","source_asset_scale":6,"to":"example.bob.charlie.tP57c3HETEpqzRQISxYtTfvS"}
+$ sleep 2
+$ ilp-cli accounts balance alice
+{"asset_code":"ETH","balance":-0.0005}
+$ ilp-cli accounts balance bob
+{"asset_code":"ETH","balance":0.0}
+$ ilp-cli --node http://localhost:8770 accounts balance alice --auth hi_bob
+{"asset_code":"ETH","balance":0.0}
+$ ilp-cli --node http://localhost:8770 accounts balance charlie --auth hi_bob
+{"asset_code":"XRP","balance":-0.575505}
+$ ilp-cli --node http://localhost:9770 accounts balance bob --auth hi_charlie
+{"asset_code":"XRP","balance":0.0}
+$ ilp-cli --node http://localhost:9770 accounts balance charlie --auth hi_charlie
+{"asset_code":"XRP","balance":0.0}
+</code></pre>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 24, 2020 9:35 PM">
+            <time itemprop="datePublished" datetime="2020-03-24 21:35:05 +0200">Mar 24, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey <a class="mention" href="/u/andrii_spivak/index.html">@Andrii_Spivak</a>!</p>
+<p>The issue you’re experiencing is documented <a href="https://github.com/interledger-rs/interledger-rs/issues/632" rel="nofollow noopener">here</a>. I believe what’s happening is when the Bob &lt;=&gt; Charlie account is created on Bob’s node, it’s configured so Bob’s XRP settlement engine immediately attempts to settle and prefund Charlie. <em>But</em> because Charlie hasn’t yet created the account on its node, there’s no way for Bob’s XRP settlement engine to send messages to Charlie’s XRP settlement so they can e.g. exchange XRP addresses, which is why the settlement fails.</p>
+<p>Two possible solutions:</p>
+<ol>
+<li>Try the <code>"Adding Bob's account on Charlie's node (XRP Parent relation)..."</code> step at the bottom <em>before</em> the command for the <code>"Adding Charlie's account on Bob's node (XRP Child relation)..."</code> step – it’s possible that might work</li>
+<li>If not, try the <a href="/spin-up-local-network.html" rel="nofollow noopener">new and improved 3-node tutorial</a> which is designed so it doesn’t have this problem – the settlements are all triggered during the STREAM payment itself <img src="https://emoji.discourse-cdn.com/twitter/slightly_smiling_face.png?v=9" title=":slightly_smiling_face:" class="emoji" alt=":slightly_smiling_face:">
+</li>
+</ol>
+<p>Let me know if that works or if you have any other issues!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Andrii_Spivak" class="user-link">Andrii Spivak</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 25, 2020 3:46 PM">
+            <time itemprop="datePublished" datetime="2020-03-25 15:46:36 +0200">Mar 25, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><strong>Hello <a class="mention" href="/u/kincaid/index.html">@kincaid</a> again and thank you for quick answer !</strong></p>
+<p>About you suggested solutions:<br>
+(for this moment I try only local-host tests and now starting with docker)<br>
+(and the quick answer is that any combinations in your first suggestion don’t help me)</p>
+<p>I try to reproduce first suggestion in different combinations and here is result’s:</p>
+<p>I get two different result’s for balance checking after transactions:</p>
+<p><strong>result-1 :</strong><br>
+(every time all value’s after third number after dot - deffer)</p>
+<pre><code> -VirtualBox:~/interledger-rs$ ilp-cli accounts balance alice
+{"asset_code":"ETH","balance":-0.0005}
+-VirtualBox:~/interledger-rs$ ilp-cli accounts balance bob
+{"asset_code":"ETH","balance":0.0}
+-VirtualBox:~/interledger-rs$ ilp-cli --node http://localhost:8770 accounts balance alice --auth hi_bob
+{"asset_code":"ETH","balance":0.0}
+-VirtualBox:~/interledger-rs$ ilp-cli --node http://localhost:8770 accounts balance charlie --auth hi_bob
+{"asset_code":"XRP","balance":-0.577155}
+-VirtualBox:~/interledger-rs$ ilp-cli --node http://localhost:9770 accounts balance bob --auth hi_charlie
+{"asset_code":"XRP","balance":-0.422845}
+-VirtualBox:~/interledger-rs$ ilp-cli --node http://localhost:9770 accounts balance charlie --auth hi_charlie
+{"asset_code":"XRP","balance":0.422845}
+</code></pre>
+<p>`<br>
+<strong>result-2 :</strong></p>
+<pre><code>  -VirtualBox:~/interledger-rs$ ilp-cli accounts balance alice
+{"asset_code":"ETH","balance":0.0}
+-VirtualBox:~/interledger-rs$ ilp-cli accounts balance bob
+{"asset_code":"ETH","balance":0.0}
+-VirtualBox:~/interledger-rs$ ilp-cli --node http://localhost:8770 accounts balance alice --auth hi_bob
+{"asset_code":"ETH","balance":0.0}
+-VirtualBox:~/interledger-rs$ ilp-cli --node http://localhost:8770 accounts balance charlie --auth hi_bob
+{"asset_code":"XRP","balance":-1.0}
+-VirtualBox:~/interledger-rs$ ilp-cli --node http://localhost:9770 accounts balance bob --auth hi_charlie
+{"asset_code":"XRP","balance":0.0}
+-VirtualBox:~/interledger-rs$ ilp-cli --node http://localhost:9770 accounts balance charlie --auth hi_charlie
+ {"asset_code":"XRP","balance":0.0}
+</code></pre>
+<p><strong>(And in different</strong> <strong>casse</strong> <strong>'s I get difference</strong> <strong>ilp</strong> <strong>_</strong> <strong>adress</strong> <strong>value’s for charlie’s accounts)</strong></p>
+<p><em><strong>A. In case when I create accounts in this steps:</strong></em> <em><strong>alice</strong></em> <em><strong> → </strong></em> <em><strong>alice</strong></em> <em><strong>-bob(Peer) → bob-</strong></em> <em><strong>alice</strong></em> <em><strong>(Peer) → bob-</strong></em> <em><strong>charlie</strong></em> <em><strong>(Child) → </strong></em> <em><strong>charlie</strong></em> <em><strong>-bob(Parent) → </strong></em> <em><strong>charlie</strong></em></p>
+<p>I get result’s like <em><strong>result-1</strong></em></p>
+<p>and this log’s :</p>
+<p>account-charlie-charlie.log :</p>
+<blockquote>
+<p><code>{"id":"ef3909e9-a6d9-488d-9845-f3c5f5dd26b3","username":"charlie","ilp_address":"example.bob.charlie.charlie","asset_code":"XRP","asset_scale":6,"max_packet_amount":18446744073709551615,"min_balance":null,"ilp_over_http_url":null,"ilp_over_http_incoming_token":"SECRET","ilp_over_http_outgoing_token":"SECRET","ilp_over_btp_url":null,"ilp_over_btp_incoming_token":"SECRET","ilp_over_btp_outgoing_token":"SECRET","settle_threshold":null,"settle_to":0,"routing_relation":"NonRoutingAccount","round_trip_time":500,"packets_per_minute_limit":null,"amount_per_minute_limit":null,"settlement_engine_url":null}</code></p>
+</blockquote>
+<p>account-charlie-bob.log :</p>
+<p><code>&gt; {"id":"4a0a3d25-54a4-4fca-8ee5-7511c00ed504","username":"bob","ilp_address":"example.bob","asset_code":"XRP","asset_scale":6,"max_packet_amount":18446744073709551615,"min_balance":-10000000,"ilp_over_http_url":"http://localhost:8770/accounts/charlie/ilp","ilp_over_http_incoming_token":"SECRET","ilp_over_http_outgoing_token":"SECRET","ilp_over_btp_url":null,"ilp_over_btp_incoming_token":"SECRET","ilp_over_btp_outgoing_token":"SECRET","settle_threshold":200000,"settle_to":-1000000,"routing_relation":"Parent","round_trip_time":500,"packets_per_minute_limit":null,"amount_per_minute_limit":null,"settlement_engine_url":"http://localhost:3003/"}</code></p>
+<p>account-bob-charlie.log :</p>
+<p><code>{"id":"1799cde8-97cf-48fa-ad5f-95522e3f4519","username":"charlie","ilp_address":"example.bob.charlie","asset_code":"XRP","asset_scale":6,"max_packet_amount":18446744073709551615,"min_balance":-10000000,"ilp_over_http_url":"http://localhost:9770/accounts/bob/ilp","ilp_over_http_incoming_token":"SECRET","ilp_over_http_outgoing_token":"SECRET","ilp_over_btp_url":null,"ilp_over_btp_incoming_token":"SECRET","ilp_over_btp_outgoing_token":"SECRET","settle_threshold":0,"settle_to":-1000000,"routing_relation":"Child","round_trip_time":500,"packets_per_minute_limit":null,"amount_per_minute_limit":null,"settlement_engine_url":"http://localhost:3002/"}</code></p>
+<p>node-bob-settlement-engine.xrp.log:<br>
+<a href="https://paste.ubuntu.com/p/B8N7NzJKRd/" class="onebox" target="_blank" rel="noopener nofollow ugc">https://paste.ubuntu.com/p/B8N7NzJKRd/</a></p>
+<p><em><strong>B. In case when I create accounts in this steps:</strong></em> <em><strong>alice</strong></em> <em><strong> → </strong></em> <em><strong>alice</strong></em> <em><strong>-bob(Peer) → bob-</strong></em> <em><strong>alice</strong></em> <em><strong>(Peer) → </strong></em> <em><strong>charlie</strong></em> <em><strong>-bob(Parent) → bob-</strong></em> <em><strong>charlie</strong></em> <em><strong>(Child) → </strong></em> <em><strong>charlie</strong></em></p>
+<p>I get this result’s like <em><strong>result-2</strong></em></p>
+<p>and this log’s :</p>
+<p>account-charlie-charlie.log :</p>
+<blockquote>
+<p>{“id”:“ac4f7aef-d088-42c3-bca1-ff2193cf83bd”,“username”:“charlie”,“ilp_address”:“local.host.charlie”,“asset_code”:“XRP”,“asset_scale”:6,“max_packet_amount”:18446744073709551615,“min_balance”:null,“ilp_over_http_url”:null,“ilp_over_http_incoming_token”:“SECRET”,“ilp_over_http_outgoing_token”:“SECRET”,“ilp_over_btp_url”:null,“ilp_over_btp_incoming_token”:“SECRET”,“ilp_over_btp_outgoing_token”:“SECRET”,“settle_threshold”:null,“settle_to”:0,“routing_relation”:“NonRoutingAccount”,“round_trip_time”:500,“packets_per_minute_limit”:null,“amount_per_minute_limit”:null,“settlement_engine_url”:null}</p>
+</blockquote>
+<p>account-charlie-bob.log :</p>
+<blockquote>
+<p>ilp-cli error: Unexpected response from server: 500 Internal Server Error: {“type”:“about:blank”,“title”:“Internal Server Error”,“status”:500,“detail”:“Error getting ILDCP info: Reject { code: ErrorCode("F02 (Unreachable)"), message: "", triggered_by: Some(Address("local.host")), data_length: 0 }”,“datetime”:“2020-03-25T17:17:28.912901278+03:00”}</p>
+</blockquote>
+<p>account-bob-charlie.log :</p>
+<p><code>{"id":"d7b670c7-d0d7-439d-9857-523d3b08a3a6","username":"charlie","ilp_address":"example.bob.charlie","asset_code":"XRP","asset_scale":6,"max_packet_amount":18446744073709551615,"min_balance":-10000000,"ilp_over_http_url":"http://localhost:9770/accounts/bob/ilp","ilp_over_http_incoming_token":"SECRET","ilp_over_http_outgoing_token":"SECRET","ilp_over_btp_url":null,"ilp_over_btp_incoming_token":"SECRET","ilp_over_btp_outgoing_token":"SECRET","settle_threshold":0,"settle_to":-1000000,"routing_relation":"Child","round_trip_time":500,"packets_per_minute_limit":null,"amount_per_minute_limit":null,"settlement_engine_url":"http://localhost:3002/"}</code></p>
+<p>node-bob-settlement-engine.xrp.log:<br>
+<a href="https://paste.ubuntu.com/p/DDn5ckn5X4/" class="onebox" target="_blank" rel="noopener nofollow ugc">https://paste.ubuntu.com/p/DDn5ckn5X4/</a></p>
+<p><em><strong>C. In case when I create accounts in this steps:</strong></em> <em><strong>alice</strong></em> <em><strong> → </strong></em> <em><strong>alice</strong></em> <em><strong>-bob(Peer) → bob-</strong></em> <em><strong>alice</strong></em> <em><strong>(Peer) → </strong></em> <em><strong>charlie</strong></em> <em><strong> → </strong></em> <em><strong>charlie</strong></em> <em><strong>-bob(Parent) → bob-</strong></em> <em><strong>charlie</strong></em> <em><strong>(Child)</strong></em></p>
+<p>I get result’s and log’s like in a case B</p>
+<p><em><strong>D. In case when I create accounts in this steps:</strong></em> <em><strong>alice</strong></em> <em><strong> → </strong></em> <em><strong>alice</strong></em> <em><strong>-bob(Peer) → bob-</strong></em> <em><strong>alice</strong></em> <em><strong>(Peer) → </strong></em> <em><strong>charlie</strong></em> <em><strong> → bob-</strong></em> <em><strong>charlie</strong></em> <em><strong>(Child) → </strong></em> <em><strong>charlie</strong></em> <em><strong>-bob(Parent)</strong></em></p>
+<p>I get result’s and log’s like in a case A</p>
+<p><em><strong>E. In case when I create accounts in this steps:</strong></em> <em><strong>alice</strong></em> <em><strong> → </strong></em> <em><strong>alice</strong></em> <em><strong>-bob(Peer) → bob-</strong></em> <em><strong>alice</strong></em> <em><strong>(Peer) → bob-</strong></em> <em><strong>charlie</strong></em> <em><strong>(Peer) → </strong></em> <em><strong>charlie</strong></em> <em><strong>-bob(Peer) → </strong></em> <em><strong>charlie</strong></em></p>
+<p>I get result’s like <em><strong>result-2</strong></em></p>
+<p>and this log’s :</p>
+<p>account-charlie-charlie.log :</p>
+<blockquote>
+<p>{“id”:“63744e02-136f-4a7c-88aa-d124761866d1”,“username”:“charlie”,“ilp_address”:“local.host.charlie”,“asset_code”:“XRP”,“asset_scale”:6,“max_packet_amount”:18446744073709551615,“min_balance”:null,“ilp_over_http_url”:null,“ilp_over_http_incoming_token”:“SECRET”,“ilp_over_http_outgoing_token”:“SECRET”,“ilp_over_btp_url”:null,“ilp_over_btp_incoming_token”:“SECRET”,“ilp_over_btp_outgoing_token”:“SECRET”,“settle_threshold”:null,“settle_to”:0,“routing_relation”:“NonRoutingAccount”,“round_trip_time”:500,“packets_per_minute_limit”:null,“amount_per_minute_limit”:null,“settlement_engine_url”:null}</p>
+</blockquote>
+<p>account-charlie-bob.log :</p>
+<p><code>{"id":"d81da48b-7555-4e5d-baaf-ab257fc20efd","username":"bob","ilp_address":"example.bob","asset_code":"XRP","asset_scale":6,"max_packet_amount":18446744073709551615,"min_balance":-10000000,"ilp_over_http_url":"http://localhost:8770/accounts/charlie/ilp","ilp_over_http_incoming_token":"SECRET","ilp_over_http_outgoing_token":"SECRET","ilp_over_btp_url":null,"ilp_over_btp_incoming_token":"SECRET","ilp_over_btp_outgoing_token":"SECRET","settle_threshold":200000,"settle_to":-1000000,"routing_relation":"Peer","round_trip_time":500,"packets_per_minute_limit":null,"amount_per_minute_limit":null,"settlement_engine_url":"http://localhost:3003/"}</code></p>
+<p>account-bob-charlie.log :</p>
+<p><code>{"id":"f34d4bc2-64a4-4d44-8e72-fb52f6c16c9e","username":"charlie","ilp_address":"example.bob.charlie","asset_code":"XRP","asset_scale":6,"max_packet_amount":18446744073709551615,"min_balance":-10000000,"ilp_over_http_url":"http://localhost:9770/accounts/bob/ilp","ilp_over_http_incoming_token":"SECRET","ilp_over_http_outgoing_token":"SECRET","ilp_over_btp_url":null,"ilp_over_btp_incoming_token":"SECRET","ilp_over_btp_outgoing_token":"SECRET","settle_threshold":0,"settle_to":-1000000,"routing_relation":"Peer","round_trip_time":500,"packets_per_minute_limit":null,"amount_per_minute_limit":null,"settlement_engine_url":"http://localhost:3002/"}</code></p>
+<p>node-bob-settlement-engine.xrp.log:<br>
+<a href="https://paste.ubuntu.com/p/hVHSGhsYKF/" class="onebox" target="_blank" rel="noopener nofollow ugc">https://paste.ubuntu.com/p/hVHSGhsYKF/</a></p>
+<p><strong>P.S.:</strong></p>
+<p>Is any documentation for ilp-cli except help (-h flag) ?</p>
+<p>And one more question: I get different values of ilp_adress for charlie in different cases. Why it happens?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Andrii_Spivak" class="user-link">Andrii Spivak</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 26, 2020 9:33 AM">
+            <time itemprop="datePublished" datetime="2020-03-26 09:33:18 +0200">Mar 26, 2020</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>One more thing that give some progress  is changing some parameters for `</p>
+<blockquote>
+<p>ilp-cli --node <code> </code><a href="http://localhost:8770" rel="noopener nofollow ugc">http://localhost:8770</a><code> </code> accounts create charlie \</p>
+</blockquote>
+<p>`from</p>
+<blockquote>
+<p>–settle-threshold 0 \</p>
+</blockquote>
+<p>to</p>
+<blockquote>
+<p><code>    --settle-threshold 500 \</code></p>
+</blockquote>
+<p>(now I see transaction log in XRP testnet and ganache , but balance after on charlie-bob account is look like wrong)</p>
+<p>Actually, look like, that now I need to go deeper in understanding this parameters using your post on github</p><aside class="onebox githubissue" data-onebox-src="https://github.com/interledger/interledger-rs/issues/593">
+  <header class="source">
+
+      <a href="https://github.com/interledger/interledger-rs/issues/593" target="_blank" rel="noopener nofollow ugc">github.com/interledger/interledger-rs</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+  <div class="github-icon-container" title="Issue">
+	  <svg width="60" height="60" class="github-icon" viewBox="0 0 14 16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+  </div>
+
+  <div class="github-info-container">
+    <h4>
+      <a href="https://github.com/interledger/interledger-rs/issues/593" target="_blank" rel="noopener nofollow ugc">Document balances and how to configure settlement parameters</a>
+    </h4>
+
+    <div class="github-info">
+      <div class="date">
+        opened <span class="discourse-local-date" data-format="ll" data-date="2020-01-23" data-time="01:13:14" data-timezone="UTC">01:13AM - 23 Jan 20 UTC</span>
+      </div>
+
+
+      <div class="user">
+        <a href="https://github.com/kincaidoneil" target="_blank" rel="noopener nofollow ugc">
+          <img alt="kincaidoneil" src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/b5b6f1e75e71b78e82ec4847de1bb5482346a0a9.jpeg" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="776656">
+          kincaidoneil
+        </a>
+      </div>
+    </div>
+
+    <div class="labels">
+        <span style="display:inline-block;margin-top:2px;background-color: #B8B8B8;padding: 2px;border-radius: 4px;color: #fff;margin-left: 3px;">
+          docs
+        </span>
+    </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">In trying to setup an account that would prefund its peer, I couldn't find any d<span class="show-more-container"><a href="" rel="noopener" class="show-more">…</a></span><span class="excerpt hidden">ocumentation on what a positive/negative balance represents or how I should set the `settle_to`, nor what units I should use. The best I could find was this in line the ETH example:
+
+&gt; The settle_threshold and settle_to parameters control when settlements are triggered. The node will send a settlement when an account's balance reaches the settle_threshold, and it will settle for balance - settle_to.
+
+We need to document, within the HTTP API specification _and_ the `ilp-cli` help text (and maybe elsewhere, too?):
+- When `settle_to` gets triggered, and what a positive or negative balance represents
+- What units the settlement parameters need to be in, with a couple examples (I was using an account with asset scale 2 and I tried to set `settle_to` to `4.52` but the CLI gave me a confusing error until I changed it to `452`. We should clarify this or change the API to use the standard, arbitrary precision representation of the asset, since it's more intuitive).
+
+Related to #120</span></p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

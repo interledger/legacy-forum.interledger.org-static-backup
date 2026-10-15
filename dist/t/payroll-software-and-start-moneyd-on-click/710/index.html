@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payroll software and start moneyd on click? - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/applications/7/index.html">Applications and Use Cases</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Payroll software and start moneyd on click?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Payroll software and start moneyd on click?</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/applications/7" class="category-badge" style="--cat-color: #0E76BD"><span class="category-bullet" aria-hidden="true"></span>Applications and Use Cases</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/spsp" class="tag-badge">spsp</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Aug 6, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/rslater12" class="user-link">Rslater12</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Aug 6, 2019 10:36 AM">
+            <time itemprop="datePublished" datetime="2019-08-06 10:36:34 +0200">Aug 6, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi guys,</p>
+<p>So we just thought we would share what we have been working on recently.</p>
+<p>We are trying to develop a new payroll system that allows employees to be paid in a minutely basis, with a simple spsp payment, this is calculated against the hourly wage stored in the SQL DB every minute before releasing payment in xrp to the employee payment pointer, Taxman payment pointer and a pension payment pointer.</p>
+<p>We got our proof of concept up and working and are now trying to develop it to conform with HMRC standards. Currently HMRC have put there blockchain project on hold until after the Brexit scenario, so we need to revert our system back to the old fashioned way in order to facilitate RTI FPS payments. we have a solution for sending the info in the FPS payment (XML Document) for when they start there blockchain project back up, but struggling to find away to incorporate the traditional way.</p>
+<p>In order to make it simple for companies to set up, we have incorporated moneyd and a wallet generator into the application so to minimise software required by the employers.<br>
+We have had some success. But then these options were not going to work how we envisaged.</p>
+<p>We tried running concurrently in the package.json script which works but either our application and moneyd xrp:start but if the was no configuration them obviously moneyd would crash.<br>
+And if we ran configure then we couldnt start with out restarting the application.</p>
+<pre><code>"scripts": {
+"start": "concurrently \"./bin/www\" \"./bin/moneyd.js xrp:start --testnet\""
+</code></pre>
+<p>},</p>
+<p>So we tried a few other process,</p>
+<pre><code>function moneydconfig(){
+const { spawn } = require('child_process');
+const ls = spawn('moneyd', ['xrp:configure','--testnet']);
+
+ls.stdout.on('data', (data) =&gt; {
+  console.log(`stdout: ${data}`);
+});
+
+ls.stderr.on('data', (data) =&gt; {
+  console.log(`stderr: ${data}`);
+});
+
+ls.on('close', (code) =&gt; {
+  console.log(`child process exited with code ${code}`);
+});
+
+}
+</code></pre>
+<p>but we have currently settled on using a shelljs, this give us the option of running start, clean up or configure at the click of a button, only once moneyd starts it blocks access to the other processes carried out by the application. Does anybody have any suggestions or a solution as to how we could overcome this?<br>
+Also when trying to exit the clean up command this exits everything and not just moneyd.</p>
+<pre><code>const shell = require('shelljs')
+const HOME = require('os').homedir()
+const path = require('path')
+const configpathtestnet = path.join(HOME, '.moneyd.test.json')
+const configpathlivenet = path.join(HOME, '.moneyd.json')
+
+
+//show json data on canvas
+	router.get('/config', function(req, res) {
+		var action  = req.query.action;
+		console.log(action);
+		if (action == 1) {
+			shell.exec('moneyd xrp:cleanup --testnet')
+			res.redirect('/wallet');
+		} else if (action == 2) {
+			fs.unlink(configpathtestnet, function (err) {
+				if (err) {
+					console.log("erro to delete moneyd config file " + err);
+				} else {
+					// if no error, file has been deleted successfully
+				console.log('File deleted!');
+				shell.exec('moneyd xrp:configure --testnet --advanced')
+				res.redirect('/wallet');
+				}
+			})
+		} else if (action == 3) {
+			shell.exec('moneyd xrp:start --testnet')
+			res.redirect('/wallet');
+		// } else if (action == 4) {
+		// 	shell.exec('node ./ILPaw06/bin/www')
+		// 	res.redirect('/');
+		} else {
+			res.redirect('/');
+		}
+		if (action == 4) {
+			shell.exec('moneyd xrp:cleanup')
+			res.redirect('/wallet');
+	} else if (action == 5) {
+		fs.unlink(configpathlivenet, function (err) {
+			if (err) {
+				console.log("erro to delete moneyd config file " + err);
+			} else {
+				// if no error, file has been deleted successfully
+			console.log('File deleted!');
+			shell.exec('moneyd xrp:configure --advanced')
+			res.redirect('/wallet');
+			}
+		})
+	} else if (action == 6) {
+		shell.exec('moneyd xrp:start ')
+		res.redirect('/wallet');
+	// } else if (action == 4) {
+	// 	shell.exec('node ./ILPaw06/bin/www')
+	// 	res.redirect('/');
+	} else {
+		res.redirect('/');
+	}
+});
+</code></pre>
+<p>In views/templates the following for starting on click.</p>
+<pre><code>&lt;a href="/config?action=1" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Clean Up Testnet&lt;/a&gt;
+&lt;a href="/config?action=2" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Config Testnet&lt;/a&gt;
+&lt;a href="/config?action=3" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Start Testnet&lt;/a&gt;
+&lt;a href="/config?action=4" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Clean Up&lt;/a&gt;
+&lt;a href="/config?action=5" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Config&lt;/a&gt;
+&lt;a href="/config?action=6" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Start&lt;/a&gt;
+</code></pre>
+<p>Any suggestions on how to have the payroll software process run alongside moneyd would be appreciated?</p>
+<p>Would also appreciate any ideas on how we could send the fiat value to HMRC with out us using a traditional bank account is this something we could do with the ILP-IOU or over XRPL?</p>
+<p>Richard</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/rslater12" class="user-link">Rslater12</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Aug 25, 2019 6:31 PM">
+            <time itemprop="datePublished" datetime="2019-08-25 18:31:23 +0200">Aug 25, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ok, so i managed to find a solution to starting moneyd in a new terminal on the click of a button. this now allows the main application to carry out the paying of employees.</p>
+<p>this is how i overcame the issue, there are probably better methods out there someone can point me to but this works or me, even though it does through an error.</p>
+<p>runmoneydstart.sh file</p>
+<pre><code>open_new_terminals_automatically()
+{
+    osascript -e "tell application \"Terminal\" to do script \" moneyd $1;\""
+}
+
+# call the function and pass arguments
+open_new_terminals_automatically "xrp:start"
+</code></pre>
+<p>moneydstart.js</p>
+<pre><code>function moneydconfig(){
+
+const spawn = require('child_process').spawn;
+
+  let test = spawn('sh', ['./runmoneydstart.sh']);
+
+ 
+
+}
+</code></pre>
+<p>Index.js</p>
+<pre><code>router.get('/config', function(req, res) {
+	var action  = req.query.action;
+
+	console.log(action);
+	if (action == 1) {
+		var test = require('../moneydtestcleanup.js');
+		res.redirect('/wallet');
+	} 
+	else if (action == 2) {
+		var test1 = require('../moneydtestconfig.js');
+		fs.unlink(configpathtestnet, function (err) {
+			if (err) {
+				console.log("erro to delete moneyd config file " + err);
+			} else {
+				// if no error, file has been deleted successfully
+			console.log('File deleted!');
+			
+			res.redirect('/wallet');
+			}
+		})
+	} else if (action == 3) {
+		var test2 = require('../moneydteststart.js');
+		res.redirect('/wallet');
+	
+	} else {
+		res.redirect('/');
+	}
+	if (action == 4) {
+		var test3 = require('../moneydcleanup.js');
+		res.redirect('/wallet');
+} 
+	else if (action == 5) {
+	var test4 = require('../moneydconfig.js');
+	fs.unlink(configpathlivenet, function (err) {
+		if (err) {
+			console.log("erro to delete moneyd config file " + err);
+		} else {
+			// if no error, file has been deleted successfully
+		console.log('File deleted!');
+		shell.exec('moneyd xrp:configure --advanced')
+		res.redirect('/wallet');
+		}
+	})
+} 
+	else if (action == 6) {
+	var test5 = require('../moneydstart.js');
+	res.redirect('/wallet');
+
+} else {
+	res.redirect('/');
+} });
+</code></pre>
+<p>views.ejs</p>
+<pre><code>&lt;a href="/config?action=1" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Clean Up Testnet&lt;/a&gt;
+&lt;a href="/config?action=2" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Config Testnet&lt;/a&gt;
+&lt;a href="/config?action=3" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Start Testnet&lt;/a&gt;
+&lt;a href="/config?action=4" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Clean Up&lt;/a&gt;
+&lt;a href="/config?action=5" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Config&lt;/a&gt;
+&lt;a href="/config?action=6" class="w3-button w3-blue w3-medium w3-border w3-border-white w3-round-large w3-padding-small"&gt;Start&lt;/a&gt;
+</code></pre>
+<p>Here is a video of it working and also clocking in and a payment, the pay out is set to 1 minute, as mentioned above payment made to 3 pointers, Alice, Alicetax and Alicepension. the amount to send is calculated against the cost of XRP at the time of payment against the Euro.</p>
+<p><a href="https://youtu.be/AMacBRrBeII" rel="nofollow noopener">https://youtu.be/AMacBRrBeII</a></p>
+<p>Apologise for the messages i leave my self or Pablo.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Push Payments and Invoices - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Push Payments and Invoices</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Push Payments and Invoices</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/application-layer" class="tag-badge">application-layer</a>
+          
+            <a href="/tag/pre-rfc" class="tag-badge">pre-rfc</a>
+          
+            <a href="/tag/spsp" class="tag-badge">spsp</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 6, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 6, 2019 11:30 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 23:30:00 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>While working on an update to enable pull payments, I ended up making three individual specs out of the SPSP spec:</p>
+<ol>
+<li>A plain SPSP spec: It only describes what SPSP is for, namely exchanging connection details for STREAM.</li>
+<li>An SPSP pull payments spec: as discussed in <a href="https://forum.interledger.org/t/pull-payments/58" class="inline-onebox">Pull Payments</a>
+</li>
+<li>An SPSP push payments spec: focus of this discussion.</li>
+</ol>
+<p>To me, this is a very natural split because cramming everything (SPSP push + invoices and pull) into one spec makes it too overloaded and dealing with push payments and invoices in the general SPSP spec but having a different one for pull payments is inconsistent. Feel free to disagree.</p>
+<p>The current SPSP spec contains information about optional response body fields like <code>balance</code>, <code>asset_info</code>, and <code>receiver_info</code>. These fields are very much tailored towards invoices and when I started working on that, I thought this was the agreed upon standard for invoices. However, in the <a href="https://forum.interledger.org/t/anypay-protocol/40" class="inline-onebox">Anypay Protocol</a> discussion it seems like there is consensus that there should not be a standard for invoices. Maybe we should make these fields <em>exemplary</em> instead of <em>optional</em> or at least making this point more clear.</p>
+<p>If those fields stay, there is the question of whether the balance parts (<code>balance.maximum</code> and <code>balance.current</code>) should contain positive or negative values. In the case of invoices one can argue that it makes sense to have negative balances because the clients owes money. This would then mirror positive balances in the case of pull payment agreements (if we decide to store this information within the endpoint query response).<br>
+In the case of an accounting system (I want to keep track of who is sending me what), it makes more sense to have positive values. However, I wonder why one would need a <code>balance.maximum</code> there.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 7, 2019 3:37 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 15:37:44 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I think you’re right that it makes sense to split the three aspects of “SPSP” that have previously been grouped together.</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="1" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>in the <a href="https://forum.interledger.org/t/anypay-protocol/40">Anypay Protocol</a> discussion it seems like there is consensus that there should not be a standard for invoices</p>
+</blockquote>
+</aside>
+<p>When you say “standard for invoices”, do you mean a full format like <a href="https://schema.org/Invoice" class="inline-onebox">Invoice - Schema.org Type</a> or the fields we currently have in the SPSP response like the total amount to pay, the amount already paid, currency details, etc?</p>
+<p>It seems like at minimum we need a standard way to communicate the amount left to pay (denominated in the receivers units). The asset details were included for display purposes, though they’re also being sent through STREAM now.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 7, 2019 6:18 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 18:18:07 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>When you say “standard for invoices”, do you mean a full format like <a href="https://schema.org/Invoice" rel="noopener nofollow ugc">https://schema.org/Invoice </a> or the fields we currently have in the SPSP response like the total amount to pay, the amount already paid, currency details, etc?</p>
+</blockquote>
+</aside>
+<p>I meant the current fields in SPSP.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>It seems like at minimum we need a standard way to communicate the amount left to pay (denominated in the receivers units).</p>
+</blockquote>
+</aside>
+<p>I agree. That means we need something like <code>balance.current</code>, which could just be <code>balance</code> because everything else is defined in standards like <a href="https://schema.org/Invoice" class="inline-onebox" rel="noopener nofollow ugc">Invoice - Schema.org Type</a>, where <code>balance.maximum</code> = <code>totalPaymentDue</code>.<br>
+The question then is, what is <code>balance</code>? Is it the sum of all incoming chunks (as it is defined now), or is it the amount still outstanding?<br>
+Also, is it a positive or a negative number? <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> had suggested negative numbers before. At that moment, I liked it, but now I’m not so sure anymore because it will probably not work well with other invoice schemas.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 7, 2019 6:29 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 18:29:32 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>A general point I want to caution about is that making standards more minimal and having more different standards doesn’t always help. The Interledger stack already has a lot of different protocols you need to understand if you want to see how it works. Having more optionality is better in the long-term but definitely makes it harder to grok and use in the short term.</p>
+<p>To play devils advocate, why not just adopt an invoice standard like the <a href="http://schema.org">schema.org</a> one? Arguably, anyone using ILP for this use case will need some format and it might be easier for them to use Interledger if we say “use this standard” instead of “use whatever you want, we leave that choice up to you”. (Curious to hear what <a class="mention" href="/u/stevenzeiler/index.html">@stevenzeiler</a> thinks about this)</p>
+<aside class="quote no-group" data-username="sabinebertram" data-post="3" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>The question then is, what is <code>balance</code> ? Is it the sum of all incoming chunks (as it is defined now), or is it the amount still outstanding? Also, is it a positive or a negative number?</p>
+</blockquote>
+</aside>
+<p>If we were making the most minimal standard possible, I would only include the amount left to send and I’d make it a positive number for simplicity’s sake.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 7, 2019 9:37 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 21:37:55 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="4" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>To play devils advocate, why not just adopt an invoice standard like the <a href="http://schema.org" rel="noopener nofollow ugc">schema.org</a> one?</p>
+</blockquote>
+</aside>
+<p>I don’t think that is a bad idea as long as it is a specific spec for invoices and not included in the push payment spec. In this case, push payments would only describe sending money to any endpoint without any accounting (no balance increase etc.).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 7, 2019 9:46 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 21:46:53 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Seems reasonable to me.</p>
+<p>So your proposal is that there would be 3 different specs for:</p>
+<ul>
+<li>“Base” SPSP that only specifies the ILP address and STREAM secret in HTTP headers</li>
+<li>A pull payment protocol that would extend the base SPSP</li>
+<li>An invoice protocol that would extend the base SPSP</li>
+</ul>
+<p>And that simple peer-to-peer push payments would use the plain base SPSP protocol. Is that right?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 7, 2019 9:57 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 21:57:41 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, that is my proposal. The simple push payment is the simplest use case for “base SPSP” and can be part of that spec. The other two are extensions.</p>
+<p>If others agree (<a class="mention" href="/u/justmoon/index.html">@justmoon</a>, <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a>, <a class="mention" href="/u/sharafian/index.html">@sharafian</a>), we can further discuss how the invoice spec should look like.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 7, 2019 10:05 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 22:05:54 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Some other things to think about related to how data (and money) transfer should happen over STREAM (these haven’t been well-defined before):</p>
+<ul>
+<li>If you want to send a message or memo with your P2P payment, how do you send that over STREAM? Is there a specific data format or text encoding you should use? What stream number should you send it on? Is there a limit to the memo size?</li>
+<li>How should extensions to that protocol send data? Should they put it as the HTTP response body for the SPSP query or transmit it through the STREAM connection? In either case, what data format should they use or is it up to them?</li>
+<li>Does it matter what stream ID is used to send money? Should all of them be treated as interchangeable?</li>
+<li>Is there a way to know you’ve connected to the wrong STREAM server if, for example, a pull payment client connects to a server that’s only set up to receive p2p payments or invoice payments?</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Feb 7, 2019 11:11 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 23:11:02 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="8" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Some other things to think about related to how data (and money) transfer should happen over STREAM</p>
+</blockquote>
+</aside>
+<p>I agree that this should be speced out, however, does this belong here or should we have another discussion and spec for ‘data transmission over STREAM’?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Feb 7, 2019 11:59 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 23:59:02 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This belongs in SPSP because it’s up to different applications built on STREAM to define what type of data they want to send. STREAM specifies how byte streams are sent over it and it’s up to whatever is sending those bytes to determine what they mean.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Feb 8, 2019 12:17 AM">
+            <time itemprop="datePublished" datetime="2019-02-08 00:17:26 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You are right. Would you consider that to be part of ‘base SPSP’ or is that an extension and should get its own spec?</p>
+<p>I would say that depends on how well we want it to be speced out. If it is very simple, one could add it to ‘base SPSP’ but only if it is as simple as ‘you open a STREAM connection and send data, no longer than 140 characters, utf-8 encoded’. This is the equivalent to simple push payments.<br>
+If it is more complicated than that, I would suggests mentioning that transmitting data is possible but link to another spec that defines how that should look like.</p>
+<p>Nevertheless, I would like to open a new topic for these data related questions and concentrate on push payments and invoices here. Otherwise, it will become too confusing.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Feb 8, 2019 1:46 AM">
+            <time itemprop="datePublished" datetime="2019-02-08 01:46:31 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I like the idea of specifying something very simple for p2p payments and leaving the invoice details in the HTTP response so we don’t need to define a complete way of sending data over STREAM right now. For the p2p memos, I’d say something more like 1024 characters at least, since that’s how long an ILP address can be.</p>
+<p>The base spec could say that extensions of it may define more complex ways of sending data over STREAM.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Feb 8, 2019 6:35 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 18:35:42 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="12" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>I’d say something more like 1024 characters at least, since that’s how long an ILP address can be.</p>
+</blockquote>
+</aside>
+<p>My example of 140 characters was random. 1024 sounds reasonable.</p>
+<p>To summarize and to figure out whether I got it:  We want a base SPSP spec that describes how</p>
+<ul>
+<li>STREAM parameters are exchanged</li>
+<li>a simple push payment is made</li>
+<li>simple data transmission works</li>
+</ul>
+<p>Additionally, we want an additional spec for each: invoices, pull payments, and complex data transmission.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Feb 8, 2019 7:37 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 19:37:37 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="13" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>My example of 140 characters was random. 1024 sounds reasonable.</p>
+</blockquote>
+</aside>
+<p>I know, and I’m also not sure that’s the right size either.</p>
+<aside class="quote no-group quote-modified" data-username="sabinebertram" data-post="13" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>To summarize and to figure out whether I got it…we want an additional spec for each: invoices, pull payments, and complex data transmission.</p>
+</blockquote>
+</aside>
+<p>I’d agree with all of that except for the spec related to more complex data transmission. I don’t think we need a spec for that in general, but any other protocols built on STREAM may need to define how they’re going to handle it.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Feb 8, 2019 7:54 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 19:54:31 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is there a particular reason why one would want to cap the length of the data?</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="14" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>I don’t think we need a spec for that in general, but any other protocols built on STREAM may need to define how they’re going to handle it.</p>
+</blockquote>
+</aside>
+<p>Fair enough.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Feb 8, 2019 7:59 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 19:59:57 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_15">Replying to #15</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="sabinebertram" data-post="15" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sabinebertram/48/48_2.png" class="avatar"> sabinebertram:</div>
+<blockquote>
+<p>Is there a particular reason why one would want to cap the length of the data?</p>
+</blockquote>
+</aside>
+<p>If an unknown party is sending you data, you want to be able to cap it to make sure they can’t DoS you with it. Imagine you’re building a UI that shows those memos; how many characters should you display?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Feb 8, 2019 8:13 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 20:13:49 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_16">Replying to #16</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="16" data-topic="103">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>If an unknown party is sending you data, you want to be able to cap it to make sure they can’t DoS you with it.</p>
+</blockquote>
+</aside>
+<p>I agree but I think every use case should be able to define that cap itself. Some use cases may want to send and receive JSON blobs that are way longer. Every UI may want to have different lengths for their memos. There is also no definition of how big a payment can be in the simple push payment scenario. Both parties just set their <code>sendMax</code> and <code>receiveMax</code> suited for the use case.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Feb 8, 2019 9:09 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 21:09:57 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_17">Replying to #17</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s true, it can be handled on the STREAM level</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sabinebertram" class="user-link">Sabine Schaller</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Feb 8, 2019 10:32 PM">
+            <time itemprop="datePublished" datetime="2019-02-08 22:32:18 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_18">Replying to #18</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="18" data-topic="103" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>That’s true, it can be handled on the STREAM level</p>
+</blockquote>
+</aside>
+<p>Is that already possible, i.e. are there equivalents to <code>sentMax</code> and <code>receiveMax</code> for data?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Feb 9, 2019 12:58 AM">
+            <time itemprop="datePublished" datetime="2019-02-09 00:58:49 +0200">Feb 9, 2019</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_19">Replying to #19</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a href="/rfcs/0029-stream/#5312-streammaxdata-frame" class="onebox" target="_blank" rel="nofollow noopener">https://interledger.org/rfcs/0029-stream/#5312-streammaxdata-frame</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 2</span>
+
+    
+    <a href="/t/push-payments-and-invoices/103/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

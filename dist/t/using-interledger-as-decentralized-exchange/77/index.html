@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using Interledger as decentralized exchange - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/applications/7/index.html">Applications and Use Cases</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Using Interledger as decentralized exchange</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Using Interledger as decentralized exchange</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/applications/7" class="category-badge" style="--cat-color: #0E76BD"><span class="category-bullet" aria-hidden="true"></span>Applications and Use Cases</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/application-layer" class="tag-badge">application-layer</a>
+          
+            <a href="/tag/trading" class="tag-badge">trading</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 6, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 6, 2019 4:51 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 16:51:38 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Interledger has some unique properties as a value transfer protocol with exchange rates. The plan is to use it for paying with anything, but could we create a decentralized exchange (market and limit orders, orderbooks, users hold their keys, etc.) on top of Interledger, assuming ideal deployment of the protocol?</p>
+<p><strong>A couple characteristics draw attention to this and offer a competitive advantage for Interledger:</strong></p>
+<ul>
+<li>
+<p>Interledger provides front running resistance.</p>
+<ul>
+<li>
+<a href="http://frontrun.me/" rel="nofollow noopener"><em>Front</em>-<em>running</em></a>  is the practice of a broker or trader stepping in <em>front</em> of large orders to gain an economic advantage. The way this is currently done on platforms like Ethereum is by having someone submitting an order to an on-chain contract, where a miner can avoid publishing certain orders and arbitrage by publishing their own order to the same on chain contract. This doesn’t have to be a miner, it can also be someone who cheats the max-heap transaction fee selector in the individual blockchain clients by outbidding other transactions in the gas market. The main reason this is exploitable is because of the latency of on-chain settlement.</li>
+<li>With the low latency nature of transfers and settlement via Interledger, a client can avoid the cases of front-running. In the case of a counterparty settling later on purpose and trying to arbitrage off trades in the same currency with other counterparties, this could be handled by refusing to trade after an expiration.</li>
+</ul>
+</li>
+<li>
+<p>Interledger can pool liquidity from multiple areas in parallel, thereby being the most distributed in nature.</p>
+<ul>
+<li>Interledger is powerful because of how easy it is to just make money flow given any supported currency. Fulfilling a buy or sell order through multiple streams seemed like a cool idea, but getting it optimal is more complex than just using distance vector routing. This is because we’re not routing from point A to B, we are searching for an optimal set of points that sum to a limit order (bin-packing, which is NP-Complete).</li>
+<li>This is restricted by the fact we don’t have some kind of order aggregation like the orderbooks posted by Relayers in 0x. Perhaps you could recreate the Relayers on Interledger and have them collect an order matching fee or payment on API request. Would result in an interesting meta-protocol.</li>
+</ul>
+</li>
+<li>
+<p>Interledger is token agnostic.</p>
+<ul>
+<li>Interledger requires no underlying token or platform lock-in. Every other DEX is a smart contract on Ethereum that requires this or is built into the consensus rules of a blockchain (i.e. Stellar). We can support any ledger that offers payment channels.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Some other issues:</strong></p>
+<ul>
+<li>How do you receive the other currency when doing an exchange?
+<ul>
+<li>We need to keep in mind that to use a blockchain platform on Interledger requires opening a payment channel, at least for scalable decentralized exchange. Therefore if you had a two currency swap, you’d have to open a second payment channel to receive the final settlement in your desired currency. This could get crazy if you need to find a payment route that requires including two different counterparties! To find the best path is essentially a traveling salesman problem in terms of network topology and bin-packing in terms of fulfilling limit order. Pretty ugly. However, playing around with heuristics could reduce this to a distance vector routing problem, but I haven’t thought this through yet. This problem is basically the equivalent of sending payments to yourself, but in a different currency! Pretty cool if you could do HFT with it.</li>
+</ul>
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 6, 2019 9:55 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 21:55:27 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>could we create a decentralized exchange (market and limit orders, orderbooks, users hold their keys, etc.) on top of Interledger, assuming ideal deployment of the protocol?</p>
+</blockquote>
+<p>An exchange running on something like Codius would be a practical way of doing this. Users could deposit and withdraw over Interledger, and they could use the Interledger network to rebalance their liquidity. Orders would occur in the exchange system, though, rather than over the Interledger network itself (so as not to complicate the protocol).</p>
+<p>I don’t think Interledger on its own functions as a good exchange, because as you’ve laid out the routing just isn’t set up for that and the requirement of bilateral relationships makes it hard to trade directly with many other people.</p>
+<blockquote>
+<p>We need to keep in mind that to use a blockchain platform on Interledger requires opening a payment channel.</p>
+</blockquote>
+<p>Payment channels allow you to lower counterparty risk to near-zero by bringing the time of settlements to near-zero, but it isn’t required to use Interledger.</p>
+<p>The general rule is that you can use a settlement mechanism that takes N seconds if you trust your peer for the value of at least N seconds worth of traffic.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 7, 2019 1:46 AM">
+            <time itemprop="datePublished" datetime="2019-02-07 01:46:16 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>An exchange running on something like Codius would be a practical way of doing this. Users could deposit and withdraw over Interledger, and they could use the Interledger network to rebalance their liquidity. Orders would occur in the exchange system, though, rather than over the Interledger network itself (so as not to complicate the protocol).</p>
+</blockquote>
+<p>Yes, I could see that being a thing. I’m under the impression that centralized orderbook, with trustless off-chain settlement is the way to go for a DEX both in terms of security and scalability. To offer strong security guarantees, I think you’d want to leverage an SGX enclave (or state-of-the-art secure enclave) to simulate a structure similar to IDEX on Ethereum. What you’d really want is the power of verifiable execution of a program, and enclaves are the best shot at doing that quickly in the next few years. Maybe some other cryptographic techniques are feasible since the logic of this DEX isn’t necessarily NP-Hard, with the exception of order matching.</p>
+<p>A better term for this would be non-custodial exchange, rather than decentralized. Having your own custody on Interledger means liquidity is always available if you look for it. Also, the lack of orderbooks is a problem if you try to do this on interledger, and distributed orderbooks require a new overlay network. If we apply end-to-end arguments, I think it suggests that we should run the exchanges at endpoints. Mixing that with censorship resistance makes it all the more interesting, and can be done with enclaves!</p>
+<aside class="quote no-group quote-modified" data-username="sharafian" data-post="2" data-topic="77">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sharafian/48/449_2.png" class="avatar"> sharafian:</div>
+<blockquote>
+<blockquote>
+<p>We need to keep in mind that to use a blockchain platform on Interledger requires opening a payment channel.</p>
+</blockquote>
+<p>Payment channels allow you to lower counterparty risk to near-zero by bringing the time of settlements to near-zero, but it isn’t required to use Interledger.</p>
+<p>The general rule is that you can use a settlement mechanism that takes N seconds if you trust your peer for the value of at least N seconds worth of traffic.</p>
+</blockquote>
+</aside>
+<p>Right, I should have been more clear about that, I think in this case you’d want a payment channel (or something off-chain) for front-running resistance and alleviating Layer 1 of transactional burden. Also low latency is a huge plus for a real exchange.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Feb 7, 2019 2:57 AM">
+            <time itemprop="datePublished" datetime="2019-02-07 02:57:17 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Two ideas to throw into the mix:</p>
+<h2>Streaming Exchange</h2>
+<p>When I read <a href="https://www.bloomberg.com/opinion/articles/2018-04-18/investors-want-to-buy-a-lot-but-not-pay-a-lot" rel="nofollow noopener">this piece</a> last year about investors trying to buy large amounts of stocks and complaining about high-frequency traders driving up the price, I started thinking about the streaming exchange alternative.</p>
+<p>What if you had an exchange that capped the max order size (like Interledger’s max packet amount) and basically turned everyone into high frequency traders? HFTs might have a harder time differentiating between orders from other HFTs versus larger investors because all of the orders come in around the same size.</p>
+<p>While this wouldn’t have to be implemented through Interledger, this would be an “Interledger-y” approach to trading.</p>
+<h2>ILP Prepare Packets as Orders</h2>
+<p>ILP packets are not meant to express order semantics, so there’s a good chance that you would want completely separate protocols for a streaming exchange.</p>
+<p>However, what if you had a “netting-only” connector? Imagine a connector that doesn’t provide any liquidity itself and only forwards packets when there are “crossing” packets in opposite directions.</p>
+<p>The way to “place an order” is to send an ILP packet through the connector, potentially with a longer-than-normal timeout – or maybe 30 seconds is enough. If there’s a matching order in that time, the packet is forwarded to whatever address you specified, and if not it’s rejected. Is that close enough to the semantics of a limit order?</p>
+<p>One question would be how to deal with packets that you forward being rejected. It might be sufficient to take that risk and just drop the priority of that particular sender’s packets in the future so they’re disincentivized from having rejected packets. Having lower order priority would be a very bad penalty for a trader, and we’d be assuming the amounts are <em>relatively</em> small anyway.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="4 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          4
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Feb 7, 2019 1:19 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 13:19:38 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="4" data-topic="77">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>What if you had an exchange that capped the max order size (like Interledger’s max packet amount) and basically turned everyone into high frequency traders?</p>
+</blockquote>
+</aside>
+<p>That’d be the best exchange to ever exist, assuming liquidity in the network.</p>
+<p>Creating the various assets could be done through some kind of general asset standard, which would then permit streaming increments of said asset.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 7, 2019 1:35 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 13:35:49 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="akash" data-post="5" data-topic="77">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/akash/48/22_2.png" class="avatar"> akash:</div>
+<blockquote>
+<p>Creating the various assets could be done through some kind of general asset standard, which would then permit streaming increments of said asset.</p>
+</blockquote>
+</aside>
+<p>I’m not sure what you mean by this. Why would you need any different way of creating assets to have the exchange limit the max size per order?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Feb 7, 2019 2:57 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 14:57:47 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="6" data-topic="77">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>I’m not sure what you mean by this. Why would you need any different way of creating assets to have the exchange limit the max size per order?</p>
+</blockquote>
+</aside>
+<p>Maybe you wouldn’t. In an ideal world there could be some kind of infrastructure to represent an asset that could freely move around over the Interledger (or another overlay network that would support streaming). Otherwise, wouldn’t really be an exchange where you have real ownership of stock. However, if I have the keys to make a transfer on an exchange (treating the exchange like a payment channel), then you could do a streaming exchange of sorts. The problem with this is settlement though, you can’t do HFT unless you have a fast settlement method. If you treat it like credit and don’t settle immediately then there’s too much risk involved. And right now, you can’t just directly send someone 0.01 shares of Apple stock on an exchange.</p>
+<p>So maybe creating some kind of universal representation of an asset for easy transfer would not only fix this problem, but be beneficial in other ways. But let’s say we aren’t getting that any time soon. I think if an exchange supported transfer between any individual, we could decouple order matching from those exchanges and bring that functionality out to Interledger.</p>
+<p>Right now there’s no transparency of assets on centralized stock exchanges, and you have a very restricted API on most stock exchanges, as well as per transaction fees, so it’s basically a gateway mafia, which is exactly what crypto-networks want to get away from. If dark pools happen, I’d at least prefer them to happen over the Interledger.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Feb 8, 2019 1:51 AM">
+            <time itemprop="datePublished" datetime="2019-02-08 01:51:14 +0200">Feb 8, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="akash" data-post="7" data-topic="77">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/akash/48/22_2.png" class="avatar"> akash:</div>
+<blockquote>
+<p>In an ideal world there could be some kind of infrastructure to represent an asset that could freely move around over the Interledger</p>
+</blockquote>
+</aside>
+<p>Sorry, you’re right. I was thinking of trading assets already represented on a blockchain-like ledger with features such as payment channels. I think there are enough people trying to make tokenized assets happen that this exchange design could just assume it’s for that type of asset.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

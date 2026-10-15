@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What is an Interledger transaction, and how do I send money? - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">What is an Interledger transaction, and how do I send money?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">What is an Interledger transaction, and how do I send money?</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 6, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 6, 2019 7:47 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 19:47:43 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In the spirit of newcomers, I was wondering if anyone had a good explanation of the transaction flow in Interledger. How does someone go about sending money from sender to receiver via connectors in the network?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 6, 2019 9:00 PM">
+            <time itemprop="datePublished" datetime="2019-02-06 21:00:07 +0200">Feb 6, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <h2>Terminology</h2>
+<ul>
+<li>
+<strong>Interledger payment</strong> - A transfer of value from a sender to receiver. A payment may cross currencies, such that the sender sends, for example, USD and the receiver receives BTC. Payments may be split into multiple Interledger Packets and sent through one or more Connectors.</li>
+<li>
+<strong>Interledger packet</strong> - A <a href="/rfcs/0027-interledger-protocol-4/" rel="nofollow noopener">standardized data format</a> that describes the transfer of a discrete amount of value, for example $0.10. Interledger is a request/response protocol so the sender initiates a transfer with an ILP Prepare packet and the request is either successful and returns an ILP Fulfill packet or errors and returns an ILP Reject packet.</li>
+<li>
+<strong>Connector</strong> - An intermediary node forwards Interledger packets and converts currencies. The Interledger network is made up of connections between independent connectors. Note that connections between senders, connectors, and receivers are established before any individual payment is made and those connections are assumed to be longer-lived rather than ad-hoc.</li>
+</ul>
+<h2>Payment Flow</h2>
+<ol>
+<li>
+<strong>Setup</strong> - The sender initiates a payment using a setup protocol such as the <a href="/rfcs/0009-simple-payment-setup-protocol/" rel="nofollow noopener">Simple Payment Setup Protocol (SPSP)</a>. This allows the sender and receiver to communicate the information they need for the rest of the steps.</li>
+<li>
+<strong>"Quoting"</strong> - (Optional) The sender can determine the path exchange rate by sending test packets to the receiver (see <a href="https://forum.interledger.org/t/what-is-the-flow-for-price-quotes-exchange-rates-when-making-payments-over-interledger/78/2">this thread</a> for more details).</li>
+<li>
+<strong>Prepare</strong> - The sender sends an ILP Prepare packet to a connector they are connected to.</li>
+<li>
+<strong>Forwarding</strong> - The connector uses the <a href="/rfcs/0015-ilp-addresses/" rel="nofollow noopener">ILP Address</a> from the ILP Prepare packet to determine where to forward the packet to. Each of the connector’s relationships is denominated in a specific currency, so it knows the asset type of the incoming Prepare packet based on which sender it got the packet from. The connector determines the outgoing asset type based on the next connector it will forward the packet to. The connector applies its exchange rate (and optional spread) to the incoming Prepare amount to determine the outgoing Prepare amount, and the connector forwards the packet. Each successive connector repeats this step.</li>
+<li>
+<strong>Receiving</strong> - When the ILP Prepare packet arrives at the receiver, they determine whether they want to accept the incoming money based on aspects like the amount that arrived in the packet. To accept the money, the receiver returns an ILP Fulfill packet that proves to all other parties in the path that the packet got to the correct receiver. To reject the money, the receiver would instead return an ILP Reject packet.</li>
+<li>
+<strong>"Forwarding" Back</strong> - The Fulfill or Reject packet is relayed back to each connector that forwarded the initial Prepare packet</li>
+<li>
+<strong>Sending More</strong> - When the sender gets the Fulfill packet, they know that the Prepare packet was successfully delivered to the receiver. The sender continues to send Prepare packets until they have sent the amount they want to the receiver.</li>
+<li>
+<strong>Bilateral Settlement</strong> - Each time an ILP Prepare packet is sent between peers and a Fulfill packet is returned, a debt or obligation to pay is created between those <em>directly connected</em> parties. Depending on the terms of each bilateral relationship, these debts can be very small (less than cents or less than the cost of opening a payment channel) or larger. Peers can settle every second (if their settlement method supports it), every month, or whenever they hit a certain limit – this is decided on a bilateral basis. If settlement occurs very frequently, as with a payment channel, two peers may alternate sending ILP packets and payment channel updates/claims (creating micro-obligations and immediately settling them).</li>
+</ol>
+<p>Does that help? Let me know if you think I missed any important details or left open more questions than I answered.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="7 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          7
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/akash" class="user-link">Akash Khosla</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 7, 2019 3:00 PM">
+            <time itemprop="datePublished" datetime="2019-02-07 15:00:27 +0200">Feb 7, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>That’s a good and much needed explanation! I might even try explaining things from the perspective of the Lightning Network, but I think it’s worthy of its own blog post.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/fractal-synapse" class="user-link">Neil Jubinville</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 8, 2019 4:41 PM">
+            <time itemprop="datePublished" datetime="2019-07-08 16:41:40 +0200">Jul 8, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As a newcomer, I like this!    Would it be fair to say that aside from the application layers like SPSP,  <strong>only steps 3 to 5 are the distilled transfer</strong>?</p>
+<p>Sure there is more usability and need for the other steps for a useful solution but the SEND and RECEIVE of the money in its essence is really just the Prepare Packet up to the Receiver deciding to send a Fulfill Packet.</p>
+<p>Please confirm my understanding.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 8, 2019 7:46 PM">
+            <time itemprop="datePublished" datetime="2019-07-08 19:46:02 +0200">Jul 8, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I would include step 6 because the prepares will timeout if they aren’t fulfilled in time.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

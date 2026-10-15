@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ledger Adapter API - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Ledger Adapter API</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Ledger Adapter API</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/payment-channels" class="tag-badge">payment-channels</a>
+          
+            <a href="/tag/plugins" class="tag-badge">plugins</a>
+          
+            <a href="/tag/settlement" class="tag-badge">settlement</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 29, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 29, 2019 5:35 PM">
+            <time itemprop="datePublished" datetime="2019-04-29 17:35:05 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Based on the proposal for a standalone “Ledger Adapter” in the <a href="https://forum.interledger.org/t/settlement-architecture/545/3">Settlement Architecture thread</a>, I’m going to try to outline some of the options we need to decide on for that component.</p>
+<p>At a high level, the goal is to have a standalone component that abstracts away the differences between ledgers / settlement systems and that we can reuse across connector implementations.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="3" data-topic="545">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"><a href="https://forum.interledger.org/t/settlement-architecture/545/3">Settlement Architecture</a></div>
+<blockquote>
+<p>The interface that needs to be defined is between connectors and Ledger Adaptors. It likely includes:</p>
+<ul>
+<li>sendMoney (perform a settlement)</li>
+<li>receiveMoney (acknowledge an incoming settlement)</li>
+<li>sendData (send a message to the Ledger Adaptor on the peer)</li>
+<li>receiveData (accept a message from the Ledger Adaptor on the other peer)</li>
+<li>getBalance (get the current balance of the settlement account, i.e. available liquidity for settlements)</li>
+</ul>
+</blockquote>
+</aside>
+<p>For payment channel-based settlement systems (or anything that is more stateful) we may need additional APIs for opening / closing / depositing / withdrawing from settlement system accounts, although those may be hard or impossible to standardize across ledgers.</p>
+<h1><a name="p-1434-api-components-1" class="anchor" href="#p-1434-api-components-1" aria-label="Heading link"></a>API Components</h1>
+<p>Each of these are necessary pieces of the ledger adapter API that we need to agree upon:</p>
+<h2><a name="p-1434-api-transport-and-encoding-2" class="anchor" href="#p-1434-api-transport-and-encoding-2" aria-label="Heading link"></a>API Transport and Encoding</h2>
+<p>What type of API does the ledger adapter expose and expect from the connector or settlement engine?</p>
+<ol>
+<li>HTTP + JSON</li>
+<li>gRPC</li>
+<li>HTTP + OER</li>
+<li>Flexible Transport + ILP Packets</li>
+<li>Flexible Transport + OER</li>
+<li>Flexible Transport and Encoding</li>
+<li>Unix socket + OER?</li>
+<li>ZeroMQ + OER?</li>
+</ol>
+<h2><a name="p-1434-authentication-3" class="anchor" href="#p-1434-authentication-3" aria-label="Heading link"></a>Authentication</h2>
+<p>How should the connector or settlement engine authenticate with the ledger adapter and vice versa?</p>
+<ol>
+<li>Static token</li>
+<li>JWT</li>
+<li>TLS certificates</li>
+<li>No auth (private port for API)</li>
+</ol>
+<h2><a name="p-1434-idempotency-4" class="anchor" href="#p-1434-idempotency-4" aria-label="Heading link"></a>Idempotency</h2>
+<p>Should some or all of the ledger adapter’s API endpoints/methods be idempotent (meaning that if they are called twice with the same parameters they will not trigger a duplicate settlement)?</p>
+<ol>
+<li>All API calls are idempotent</li>
+<li>Idempotent send / receive money calls (caller retries failed / timed out requests)</li>
+<li>No API calls are idempotent (ledger adapter may handle retries)</li>
+</ol>
+<h2><a name="p-1434-referencing-accounts-5" class="anchor" href="#p-1434-referencing-accounts-5" aria-label="Heading link"></a>Referencing accounts</h2>
+<p>How should the API refer to the different accounts the ledger adapter can send/receive to/from?</p>
+<ol>
+<li>Settlement system addresses encoded as strings</li>
+<li>Connector / settlement engine-defined identifiers (the ledger adapter would store the mapping from that to the settlement system addresses)</li>
+<li>Flexible</li>
+</ol>
+<h1><a name="p-1434-nice-to-have-recommendations-6" class="anchor" href="#p-1434-nice-to-have-recommendations-6" aria-label="Heading link"></a>Nice-to-have recommendations</h1>
+<p>The following are things that we do not necessarily need standardization on but that may be useful to try to agree upon so that the way we set up and run different settlement engines is more consistent:</p>
+<h2><a name="p-1434-database-7" class="anchor" href="#p-1434-database-7" aria-label="Heading link"></a>Database</h2>
+<p>How should the ledger adapter store state?</p>
+<ol>
+<li>PostgreSQL</li>
+<li>SQLite</li>
+<li>LevelDB / RocksDB</li>
+<li>Redis</li>
+<li>Doesn’t matter as long as it lives in a single file or directory</li>
+<li>Anything goes</li>
+<li>The ledger adapter shouldn’t need state</li>
+</ol>
+<p>Also, should the storage be encrypted?</p>
+<h2><a name="p-1434-packaging-8" class="anchor" href="#p-1434-packaging-8" aria-label="Heading link"></a>Packaging</h2>
+<p>How do you download and run the ledger adapter?</p>
+<ol>
+<li>Docker container</li>
+<li>Run it directly, dockerize it if you want</li>
+</ol>
+<h2><a name="p-1434-configuration-9" class="anchor" href="#p-1434-configuration-9" aria-label="Heading link"></a>Configuration</h2>
+<p>How should the operator configure the settlement engine?</p>
+<ol>
+<li>Environment variables</li>
+<li>Command line arguments</li>
+<li>API calls (that are saved to the database)</li>
+</ol>
+<hr>
+<p><strong>Next Steps</strong></p>
+<p>What do you think? Are there other high level categories we need to agree upon or should we get into the pros/cons of the different options?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 29, 2019 7:38 PM">
+            <time itemprop="datePublished" datetime="2019-04-29 19:38:09 +0200">Apr 29, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>For payment channel-based settlement systems (or anything that is more stateful) we may need additional APIs for opening / closing / depositing / withdrawing from settlement system accounts, although those may be hard or impossible to standardize across ledgers.</p>
+</blockquote>
+</aside>
+<p><img src="https://emoji.discourse-cdn.com/twitter/+1.png?v=12" title=":+1:" class="emoji only-emoji" alt=":+1:" loading="lazy" width="20" height="20"></p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<h2>API Transport and Encoding</h2>
+<p>What type of API does the ledger adapter expose and expect from the connector or settlement engine?</p>
+<ol>
+<li>HTTP + JSON</li>
+<li>gRPC</li>
+<li>HTTP + OER</li>
+<li>Flexible Transport + ILP Packets</li>
+<li>Flexible Transport + OER</li>
+<li>Flexible Transport and Encoding</li>
+<li>Unix socket + OER?</li>
+<li>ZeroMQ + OER?</li>
+</ol>
+</blockquote>
+</aside>
+<p>I’d be down with HTTP + JSON initially. It’s by far the most universal (RIP gRPC).</p>
+<p>We can always add other transports in the future (in the same way that LND exposes a REST API and a gRPC server, or Ethereum nodes support HTTP, websockets and IPC).</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<h2>Referencing accounts</h2>
+<p>How should the API refer to the different accounts the ledger adapter can send/receive to/from?</p>
+<ol>
+<li>Settlement system addresses encoded as strings</li>
+<li>Connector / settlement engine-defined identifiers (the ledger adapter would store the mapping from that to the settlement system addresses)</li>
+<li>Flexible</li>
+</ol>
+</blockquote>
+</aside>
+<p>I propose <strong>connector-defined identifiers</strong> linked to the accounting relationship, since those are initialized in the connector via BTP or the open signup API.</p>
+<p>If necessary, the settlement engine should be responsible for linking that identifier to a particular on-ledger identity through a handshake with the peer’s settlement engine (that’s how it’s currently implemented, and it works well). That way, there’s no settlement system -specific logic in the connector.</p>
+<p>Also, settlement system addresses would limit the account space to 1:1 with ledger addresses, but some settlement engines but may want to support multiple accounts for a particular on-ledger address.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<h2>Database</h2>
+<p>How should the ledger adapter store state?</p>
+<ol>
+<li>PostgreSQL</li>
+<li>SQLite</li>
+<li>LevelDB / RocksDB</li>
+<li>Redis</li>
+<li>Doesn’t matter as long as it lives in a single file or directory</li>
+<li>Anything goes</li>
+<li>The ledger adapter shouldn’t need state</li>
+</ol>
+<p>Also, should the storage be encrypted?</p>
+</blockquote>
+</aside>
+<p>Far from an expert on this, but a few comments:</p>
+<ul>
+<li>A simple key-value abstraction provides the simplest migration path, both for porting the existing plugins over, and for connector operators that need to migrate their DB (while still allowing multiple DBs to be supported, since JS settlement engines can use the existing store abstraction)</li>
+<li>I would lean towards a high-performance, in-memory DB (e.g. Redis, which we’re already using)</li>
+</ul>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<h2>Packaging</h2>
+<p>How do you download and run the ledger adapter?</p>
+<ol>
+<li>Docker container</li>
+<li>Run it directly, dockerize it if you want</li>
+</ol>
+</blockquote>
+</aside>
+<p>Both?</p>
+<p>Also, for settlement engines written in JS, I think they should be able to run as a module in JS, since that allows them to be used in a web context without Node APIs.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<h2>Configuration</h2>
+<p>How should the operator configure the settlement engine?</p>
+<ol>
+<li>Environment variables</li>
+<li>Command line arguments</li>
+<li>API calls (that are saved to the database)</li>
+</ol>
+</blockquote>
+</aside>
+<p>API calls would be nice, since some configuration it might be useful to change dynamically.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/ekrenzke" class="user-link">Eli Krenzke</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 30, 2019 7:56 PM">
+            <time itemprop="datePublished" datetime="2019-04-30 19:56:31 +0200">Apr 30, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<h2>API Transport and Encoding</h2>
+<p>What type of API does the ledger adapter expose and expect from the connector or settlement engine?</p>
+<ol>
+<li>HTTP + JSON</li>
+<li>gRPC</li>
+<li>HTTP + OER</li>
+<li>Flexible Transport + ILP Packets</li>
+<li>Flexible Transport + OER</li>
+<li>Flexible Transport and Encoding</li>
+<li>Unix socket + OER?</li>
+<li>ZeroMQ + OER?</li>
+</ol>
+</blockquote>
+</aside>
+<p>I have been experimenting with ZeroMQ + OER using PUB/SUB sockets, and while it offers a lot of flexibility, I think HTTP is likely the path of least resistance. In the long-term, it might make sense to transition towards Flexible Transport + OER, but HTTP + JSON is likely the lowest common denominator.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<h2>Configuration</h2>
+<p>How should the operator configure the settlement engine?</p>
+<ol>
+<li>Environment variables</li>
+<li>Command line arguments</li>
+<li>API calls (that are saved to the database)</li>
+</ol>
+</blockquote>
+</aside>
+<p>I would prefer using environment variables, but it might make sense to use API calls for permissionless ledgers since economic security changes over time.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="1" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p><strong>Next Steps</strong></p>
+<p>What do you think? Are there other high level categories we need to agree upon or should we get into the pros/cons of the different options?</p>
+</blockquote>
+</aside>
+<p>Perhaps this isn’t much of an issue, but how will confirmation times be handled? For example, how should block confirmations be handled for a base-layer transaction?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="May 2, 2019 10:53 AM">
+            <time itemprop="datePublished" datetime="2019-05-02 10:53:44 +0200">May 2, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We spent some time debating this at Coil and we propose the following API:<br>
+(We assume that the asset code and asset scale are implicit per ledger adaptor)</p>
+<h2>Settlement Engine -&gt; Ledger Adaptor:</h2>
+<ul>
+<li>createAccount(accountId, counterpartyDetails)</li>
+<li>increaseLiquidity(accountId, amount)</li>
+<li>getLiquidity(accountId)</li>
+<li>decreaseLiquidity(accountId, amount)</li>
+<li>sendSettlement(accountId, amount)</li>
+<li>sendMessage(accountId, message)</li>
+<li>incomingMessage(accountId, message)</li>
+</ul>
+<h2>Ledger Adaptor -&gt; Settlement Engine:</h2>
+<ul>
+<li>sendMessage(accountId, message)</li>
+<li>incomingMessage(accountId, message)</li>
+<li>liquidityIncrease(accountId, amount)</li>
+<li>liquidityDecrease(accountId, amount)</li>
+</ul>
+<p>The goal here is settlement system abstraction but also flexibility to support a variety of settlement systems. Also, that the adaptor doesn’t have any business logic related to liquidity management, i.e. the Settlement Engine decides when it needs more liquidity in the settlement account because it knows when it anticipates making a settlement and for how much etc.</p>
+<h2>Examples:</h2>
+<p>Below is an illustrative example of what might happen under the hood with different adaptors:</p>
+<h3>Create Account</h3>
+<ul>
+<li>The connector provides an account id (probably the same one they use internally for tracking balances) and some settlement system specific counter-party details.</li>
+<li>The adaptor may create an actual account on the settlement system or simply start tracking a new account internally. Note that many adaptors will be using a pooled account so they’ll maintain a local ledger that tracks what portion of that pool is ring-fenced for settlement with each counter-party. This is needed by the Settlement Engine to do appropriate liquidity management.</li>
+<li>The adaptor will also likely do some validation of the counter-party details.</li>
+</ul>
+<p><strong>XRP Paychan:</strong> The adaptor creates an outgoing payment channel for a default size or simply records in its own DB the need to track an account using this ID and the counter-party details.</p>
+<p><strong>XRP on Ledger:</strong> The adaptor makes an entry in its own DB to track this new account and links to the counter-party details. It validates that the counter-party XRP ledger address exists and begins watching for incoming payments from that address.</p>
+<h3>Increase Liquidity</h3>
+<p><strong>XRP Paychan:</strong> If the adaptor hasn’t already it creates an outgoing payment channel of the specified size or it adds funding to the existing channel.</p>
+<p><strong>XRP on Ledger:</strong> The adaptor may move money from some cold wallet into a warm wallet or simply allocate a portion of some pooled funds to this account.</p>
+<p>It’s entirely acceptable for an adaptor to respond to this request indicating that it failed in the case where getting more liquidity for settlement requires manual intervention. This tells the settlement engine to log an error or do something that would notify the operator to top up the wallet.</p>
+<h3>Get Liquidity</h3>
+<p><strong>XRP Paychan:</strong> Check how much liquidity exists in the channel (less claims sent to the counter-party)</p>
+<p><strong>XRP on Ledger:</strong> Check how much liquidity has been ring-fenced for this counter-party</p>
+<h3>Decrease Liquidity</h3>
+<p>(Normally a safety measure or required to rebalance between accounts)</p>
+<p><strong>XRP Paychan:</strong> Close the channel (and possibly open a new smaller one if this is not a decrease to zero)</p>
+<p><strong>XRP on Ledger:</strong> Reduce the portion of the pool that is ring-fenced for this counterparty and possibly move money into a cold-wallet.</p>
+<h3>Send Settlement</h3>
+<p><strong>XRP Paychan:</strong> Create a claim and send it to the settlement engine using the send message API. Wait for the response and then respond to original send settlement call.</p>
+<p><strong>XRP on Ledger:</strong> Make a payment on the XRP ledger</p>
+<h3>Other</h3>
+<p>The remainder seem pretty self-explanatory</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="May 2, 2019 4:24 PM">
+            <time itemprop="datePublished" datetime="2019-05-02 16:24:41 +0200">May 2, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Clarifying questions:</p>
+<ul>
+<li>In this proposal, the ledger adapter has an API call for <code>sendMessage</code> and the settlement engine has one for <code>incomingMessage</code>. Is the intention to make the ledger adapter responsible for communication with the other party’s ledger adapter / settlement engine?</li>
+<li>Why would money be “ring-fenced” in the on-ledger settlement case?</li>
+<li>Would the settlement engine be configured with details like how long the various operations on the ledger adapter are expected to take (especially the increase/decrease liquidity) or how much each of them cost?</li>
+<li>For a payment channel based system, would you want/need a way to check the wallet balance (distinct from checking the balance of a particular channel)?</li>
+</ul>
+<p>What do you think about <a class="mention" href="/u/kincaid/index.html">@kincaid</a>’s proposal for having the ledger adapters do a handshake between themselves (the messages are proxied through other components) to exchange the settlement-related details like addresses? I initially didn’t like it but after thinking it through found it interesting because it would remove the need to have the settlement engine keep track of the different parameters that the account on each type of ledger adapter needs to be configured with.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="May 2, 2019 5:39 PM">
+            <time itemprop="datePublished" datetime="2019-05-02 17:39:35 +0200">May 2, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>In this proposal, the ledger adapter has an API call for <code>sendMessage</code> and the settlement engine has one for <code>incomingMessage</code> . Is the intention to make the ledger adapter responsible for communication with the other party’s ledger adapter / settlement engine?</p>
+</blockquote>
+</aside>
+<p>No.  <code>sendMessage</code> on the ledger adaptor is a message from the counter-party sent via the SE.<br>
+E.g. Alice and Bob using XRP PayChan.<br>
+Alice’s SE determines it’s time to send a settlement to Bob.<br>
+Alice SE → Alice LA: sendSettlement(Bob)<br>
+Alice LA: Sign claim<br>
+Alice LA → Alice SE: sendMessage(Bob, Claim)<br>
+Alice SE → Alice Connector: sendMessage(Bob, Claim)<br>
+Alice Connector → Bob Connector: ILP Prepare (peer.settle.*, Claim)<br>
+Bob Connector → Bob SE: sendMessage(Alice, Claim)<br>
+Bob SE → Bob LA: sendMessage(Alice, Claim)</p>
+<p>Maybe the SE → LA call should be called <code>receiveMessage</code>?</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Why would money be “ring-fenced” in the on-ledger settlement case?</p>
+</blockquote>
+</aside>
+<p>It doesn’t HAVE to be but it makes it hard for the SE to do a good job of managing liquidity if the liquidity is shared between multiple accounts that may be managed by different SEs.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Would the settlement engine be configured with details like how long the various operations on the ledger adapter are expected to take (especially the increase/decrease liquidity) or how much each of them cost?</p>
+</blockquote>
+</aside>
+<p>No, it should be able to figure that out over time. It could be configured with good defaults but that’s up to the SE implementation.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>For a payment channel based system, would you want/need a way to check the wallet balance (distinct from checking the balance of a particular channel)?</p>
+</blockquote>
+</aside>
+<p>I don’t think you need it but it’s a possible future enhancement. What would the equivalent be for other settlement systems?</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>What do you think about <a class="mention" href="/u/kincaid/index.html">@kincaid</a>’s proposal for having the ledger adapters do a handshake between themselves (the messages are proxied through other components) to exchange the settlement-related details like addresses?</p>
+</blockquote>
+</aside>
+<p>I like it. The flow for “create account” may be similar to the flow for “send settlement” in the paychan case (i.e. triggers some message exchanges)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="May 2, 2019 5:41 PM">
+            <time itemprop="datePublished" datetime="2019-05-02 17:41:40 +0200">May 2, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I like most of this, save for the liquidity operations <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=15" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<h3><a name="p-1487-miscellaneous-comments-1" class="anchor" href="#p-1487-miscellaneous-comments-1" aria-label="Heading link"></a>Miscellaneous Comments</h3>
+<aside class="quote no-group quote-modified" data-username="adrianhopebailie" data-post="4" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<h2>Ledger Adaptor → Settlement Engine:</h2>
+<ul>
+<li>sendMessage(accountId, message)</li>
+<li>incomingMessage(accountId, message)</li>
+<li>liquidityIncrease(accountId, amount)</li>
+<li>liquidityDecrease(accountId, amount)</li>
+</ul>
+</blockquote>
+</aside>
+<ul>
+<li>Does “ledger adapter” → “settlement engine” need a “receiveSettlement” endpoint?</li>
+</ul>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="4" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<ul>
+<li>createAccount(accountId, counterpartyDetails)</li>
+</ul>
+</blockquote>
+</aside>
+<aside class="quote no-group quote-modified" data-username="adrianhopebailie" data-post="6" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<blockquote>
+<p>What do you think about <a class="mention" href="/u/kincaid/index.html">@kincaid</a>’s proposal for having the ledger adapters do a handshake between themselves (the messages are proxied through other components) to exchange the settlement-related details like addresses?</p>
+</blockquote>
+<p>I like it. The flow for “create account” may be similar to the flow for “send settlement” in the paychan case (i.e. triggers some message exchanges)</p>
+</blockquote>
+</aside>
+<p><img src="https://emoji.discourse-cdn.com/twitter/+1.png?v=15" title=":+1:" class="emoji only-emoji" alt=":+1:" loading="lazy" width="20" height="20"></p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="4" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>(We assume that the asset code and asset scale are implicit per ledger adaptor)</p>
+</blockquote>
+</aside>
+<p>I think we need to support the balance service and “ledger adapter” using different asset scales, and I don’t think it’s implicit/can be universal between all instances. What that means is: the unit used for settlements may be smaller or larger than the unit used in ILP packets and for accounting.</p>
+<p>Even in the current plugins, there are multiple examples of this:</p>
+<ul>
+<li>Strata/Coil use nano XRP (-9) units for payments, but the plugins themselves send claims in drops, because that’s the smallest denomination on ledger</li>
+<li>In the Ethereum plugin, ILP packets / accounting use units of gwei (-9), since the smallest denomination, wei (-18) caused issues with Stream probing the exchange rate (but settlements are denominated in wei)</li>
+<li>ERC-20s have varying numbers of decimal places for their smallest on-ledger denomination, and I have no idea what scales connector operators will actually want/need to use (which makes it hard to standardize)</li>
+</ul>
+<p>While I would strongly encourage peers to set their ILP packet asset scale equal to the smallest ledger denomination, clearly there are use cases for some peers using scales both smaller and larger than the ledger’s smallest unit. Peers may have different reasons for using different scales.</p>
+<p>For this, I propose an <code>assetScale</code> configuration option for the “ledger adapter” to define the units the amounts in <code>sendSettlement</code> and <code>receiveSettlement</code> calls are denominated in. Then, the “ledger adapter” would be responsible for converting this amount to the unit the ledger actually uses. When it receives it a settlement, it’d convert that amount unit to that <code>assetScale</code> and call <code>receiveSettlement</code> with the converted amount.</p>
+<p>To be safe when converting from smaller units to larger ones, it would always round them down. If two peers are configured to use the same <code>assetScale</code> at the ILP layer, this shouldn’t become an issue.</p>
+<p>(<code>assetCode</code> as a configuration option probably doesn’t need to be standardized, but other configuration options, such as setting the ERC-20 token contract address, may trigger the “ledger adapter” to use a particular symbol, if it doesn’t already have a default such as “XRP” or “BTC”).</p>
+<h3><a name="p-1487-liquidity-operations-2" class="anchor" href="#p-1487-liquidity-operations-2" aria-label="Heading link"></a>Liquidity Operations</h3>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="4" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>Also, that the adaptor doesn’t have any business logic related to liquidity management, i.e. the Settlement Engine decides when it needs more liquidity in the settlement account because it knows when it anticipates making a settlement and for how much etc.</p>
+</blockquote>
+</aside>
+<p>I strongly do not think operations related to liquidity management can be cleanly abstracted to <code>increaseLiquidity</code> / <code>decreaseLiquidity</code>, and that the associated business logic will need to exist within the “ledger adapter” itself.</p>
+<p><strong>Unlocking Outgoing Liquidity?</strong></p>
+<p>For unidirectional channels, one important part of “unlocking” liquidity is asking the peer to claim the outgoing channel from you to them, since you can’t. (e.g., even if you claim the incoming channel, you might have a lot locked up in the outgoing side that you want back)</p>
+<p>How would that be handled in this framework?</p>
+<p>Both XRP and ETH paychans have mechanisms “dispute” or trigger an uncooperative close. In the XRP plugins, this timeout is set to an hour. In the ETH plugin, this is set to 6 days for security, since by contrast to XRP, there’s no way to cheaply checkpoint a claim on the ledger. Also on ETH, disputing the channel may cost non-negligible transaction fees. On both, disputing the channel is supposed to trigger the peer to claim/close it, but that only works if they’re online.</p>
+<p>The nicer approach is for the node to politely ask its peer to claim the channel; and, only if they don’t, uncooperatively close.</p>
+<p>Thus, the timing of the liquidity actually being unlocked is very very settlement system -specific, and the cost can vary significantly. How would <code>decreaseLiquidity</code> account for those differences?</p>
+<p><strong>Request Timeout</strong></p>
+<p>On ETH, channel opening could (at worst) take two minutes, since–in the worst case–it requires two transactions, and assuming the blocks took 1 minute each to mine. Would the request timeout? Or would <code>increaseLiquidity</code> respond immediately, and then would the “settlement engine” poll <code>getLiquidity</code> until it was updated?</p>
+<p>On Lightning, it’d be useful to have the functionality to open a direct channel with your connector. Since the time to finality is so long (60 minutes), how would that work with this API?</p>
+<p><strong>Fees</strong></p>
+<p>For example, for more expensive ledgers, I think fees will be a major factor in how often additional collateral is deposited, or when / how often collateral is unlocked. This becomes very important as a DoS protection against open servers, so you can’t continually trigger them to burn their funds in fees.</p>
+<p>And, fees cannot be generalized to a single interface, because for some ledgers (<em>cough</em> ETH), they’re really complex:</p>
+<ul>
+<li>Fees need to be estimated before the channel open/close actually happens in order to have logic on whether to do it or not</li>
+<li>ERC-20 tokens don’t pay fees in that asset, but pay fees in ETH (!!!)</li>
+<li>Some transactions require fee <em>x</em>, but only after the tx is performed, some of the fee is refunded</li>
+<li>The unit for fees is may be a different scale than the accounting (in ETH, fees may need precision of wei, rather than the gwei, if the gas price used is more precise than gwei)</li>
+</ul>
+<p>Fees may play an even bigger role in business logic surrounding on-ledger settlements. If fees are expensive, we may want to add a behavior so the sending peer deducts the fee from its peer’s balance. But, the receiving peer may want to explicitly authorize each settlement. If not, from the receiver’s perspective, it’s like, “Why did you charge me $2 so you could send a settlement to me right now? I’m extending you plenty of credit, no settlement was necessary!”</p>
+<p>By contrast, the receiver may want to authorize a faster settlement with a higher fee to execute it faster (in the same way Venmo optionally charges you 3% to instantly transfer money to your bank account, or you can wait a few days for free transfers).</p>
+<p>I think these examples of fee-related business logic will prove to be more imperative than simply generic logic watching changes in liquidity, and at the very least, I think generic liquidity management can’t be properly implemented without such fee logic.</p>
+<p><strong>TL;DR</strong></p>
+<p>I strongly think the business logic and <em>automated</em> liquidity management cannot reasonably be generalized to all integrations, and probably not even all payment channel -based integrations. This is a concern within that “ledger adapter” itself.</p>
+<p>I <em>do</em> think “ledger adapters” need additional RPCs to e.g. allow <em>manual</em> opening and closing of channels, but these probably can’t be uniformly standardized (at least without being very, very opinionated, and not very flexible).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="May 9, 2019 3:24 PM">
+            <time itemprop="datePublished" datetime="2019-05-09 15:24:51 +0200">May 9, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="kincaid" data-post="7" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/kincaid/48/39_2.png" class="avatar"> kincaid:</div>
+<blockquote>
+<p>I strongly do not think operations related to liquidity management can be cleanly abstracted to <code>increaseLiquidity</code> / <code>decreaseLiquidity</code> , and that the associated business logic will need to exist within the “ledger adapter” itself.</p>
+</blockquote>
+</aside>
+<p>Can you expand on why?</p>
+<p>This proposal simply requires the SE to understand WHEN it should request liquidity not to know HOW to make it available.</p>
+<aside class="quote no-group" data-username="kincaid" data-post="7" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/kincaid/48/39_2.png" class="avatar"> kincaid:</div>
+<blockquote>
+<p>For unidirectional channels, one important part of “unlocking” liquidity is asking the peer to claim the outgoing channel from you to them, since you can’t. (e.g., even if you claim the incoming channel, you might have a lot locked up in the outgoing side that you want back)</p>
+<p>How would that be handled in this framework?</p>
+</blockquote>
+</aside>
+<p>The goal with this proposal is for the SE to (over time through observation or through explicit config) know  with some level of accuracy how long it will take to free up liquidity and so request this if it forecasts a need to perform a settlement that may not have the necessary liquidity.</p>
+<p>It is then up to the LA to “make it happen”, even if this means sending a message to the counter-party requesting a collaborative rebalancing of unidirectional channels.</p>
+<aside class="quote no-group" data-username="kincaid" data-post="7" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/kincaid/48/39_2.png" class="avatar"> kincaid:</div>
+<blockquote>
+<p>Would the request timeout? Or would <code>increaseLiquidity</code> respond immediately, and then would the “settlement engine” poll <code>getLiquidity</code> until it was updated?</p>
+<p>On Lightning, it’d be useful to have the functionality to open a direct channel with your connector. Since the time to finality is so long (60 minutes), how would that work with this API?</p>
+</blockquote>
+</aside>
+<p>We anticipated all requests from the SE to the LA being async. I.e. You request that something is done and get an ACK. In parallel, notifications about changes of balance will let you know when they have been completed.</p>
+<p>Our thinking here was that the most complex part of this process sits at the SE so, if possible, we should abstract everything else out as far as possible and only write this part once.</p>
+<p>I recognise, especially when looking at the fees, this may be unnecessarily complex.</p>
+<p>In that case, does an SE/LA per ledger make more sense?</p>
+<p>Said differently, maybe we should standardise the <code>Connector &lt;-&gt; SE</code> interface?</p>
+<aside class="quote no-group quote-modified" data-username="adrianhopebailie" data-post="3" data-topic="545">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"><a href="https://forum.interledger.org/t/settlement-architecture/545/3">Settlement Architecture</a></div>
+<blockquote>
+<p>Settlement Engine → Connector</p>
+<ul>
+<li>getBalance (get the current balance of the clearing account, i.e. ILP balance)</li>
+<li>setBalance (update the current balance of the clearing account, apply a delta)</li>
+<li>sendData (send a message to the Settlement Engine on the peer)</li>
+<li>receiveData (accept a message from the Settlement Engine on the other peer)</li>
+</ul>
+</blockquote>
+</aside>
+<p>If so I’d strongly advocate for an interface where that component simply tracks the balances on the connector(s) per account and performs settlements as necessary and then updates that balance.</p>
+<p>i.e. <code>getBalance</code> is complemented by a debounced stream of balance changes from the connector to the SE.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="May 10, 2019 3:04 PM">
+            <time itemprop="datePublished" datetime="2019-05-10 15:04:26 +0200">May 10, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If we are happy to abandon the idea of a Ledger Adaptor interface for now then I’d advocate that we take the conversation back to <a href="https://forum.interledger.org/t/settlement-architecture/545/14">Settlement Architecture</a> so it’s not split between 2 threads.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="May 10, 2019 3:07 PM">
+            <time itemprop="datePublished" datetime="2019-05-10 15:07:21 +0200">May 10, 2019</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m not convinced that streaming balance updates to the SE/LA is better than sending specific messages to trigger settlement. Trying to figure out a way to write up the options that gets at the heart of the differences between them.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="May 10, 2019 3:54 PM">
+            <time itemprop="datePublished" datetime="2019-05-10 15:54:00 +0200">May 10, 2019</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="10" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>a way to write up the options that gets at the heart of the differences between them</p>
+</blockquote>
+</aside>
+<p>That was the whole point of the other thread. Maybe add some more detail there to surface the issues you’ve identified?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="May 10, 2019 8:40 PM">
+            <time itemprop="datePublished" datetime="2019-05-10 20:40:49 +0200">May 10, 2019</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Whether it’s called a Settlement Engine or a Ledger Adapter, we’re talking about the API from the connector to this external system. The main sticking points are:</p>
+<ul>
+<li>Whether the API is a stream of balance updates or calls to send money</li>
+<li>Whether the logic for tracking account balances and triggering settlements lives in the connector or this external component</li>
+</ul>
+<p>As far as I can see, the stream of balance updates is strictly worse than explicit send money calls on a number of dimensions and I am having trouble seeing any benefits to it:</p>
+<ol>
+<li>
+<a class="mention" href="/u/kincaid/index.html">@kincaid</a> brought up an important security consideration about the balance stream API: before the settlement engine would trigger a settlement, it would need to first make an API call to the connector to “claim” or set aside whatever portion of the balance it was going to try to settle, and wait until that API call was resolved before settling. If you don’t, the account holder could send ILP packets that would be deducted from the balance at the same time that the SE is sending an outgoing settlement, thus getting paid out twice what they owe. It seems more straightforward to have the connector check whether it needs to settle, deduct the balance, and then send a send money call to the external system.</li>
+<li>Too many and too few messages. Using a debounced stream would mean that the connector sends many completely unnecessary messages to the external system (i.e. when it does not need to settle) and too few messages if the account experiences a sudden burst of activity. If the connector instead send messages only when the account actually needs to settle, it would send no messages when the external system doesn’t need to take any action and it would send more in quick succession if the account has a lot of activity and needs to settle more than once.</li>
+<li>If the balance logic lives in the external shared component, that means that we will have a drawn out debate like this one every time we need to change it. If we keep the logic out of this shared component, we can change the logic the connector (or business logic thing that’s attached to the connector) uses to determine when it should call send money whenever and however we want.</li>
+<li>The balance stream API and logic behind it is more different from what’s already implemented in the plugins and so would take more work to convert the existing integrations.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="May 13, 2019 2:17 PM">
+            <time itemprop="datePublished" datetime="2019-05-13 14:17:53 +0200">May 13, 2019</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_12">Replying to #12</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="12" data-topic="553">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Whether it’s called a Settlement Engine or a Ledger Adapter, we’re talking about the API from the connector to this external system.</p>
+</blockquote>
+</aside>
+<p>No. As already discussed in <a href="https://forum.interledger.org/t/settlement-architecture/545/3" class="inline-onebox">Settlement Architecture - #3 by adrianhopebailie</a> the external system either includes a “Settlement Engine” (the component that decides when to settle and by how much, as defined in that same thread) or not.</p>
+<p>This changes how you design the API.</p>
+<p>The purpose of this thread was to discuss the API for an external system that DOES NOT include settlement business logic (i.e. it’s just a ledger adaptor). If you are suggesting that this is a bad design then let’s abandon this thread and go back to <a href="https://forum.interledger.org/t/settlement-architecture/545/3" class="inline-onebox">Settlement Architecture - #3 by adrianhopebailie</a> where we have all of the option properly laid out.</p>
+<p>I’ve addressed some of your points above in that thread</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="May 13, 2019 8:05 PM">
+            <time itemprop="datePublished" datetime="2019-05-13 20:05:03 +0200">May 13, 2019</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’m a little confused. I’m not suggesting having an external settlement engine, I prefer the Ledger Adapter that only abstracts the send money call. It sounded like the API we were discussing in this thread didn’t support the more complex logic you wanted to implement. To you, that seemed to suggest that we should go back to having an external settlement engine instead of a ledger adapter. To me, that suggested only that the settlement logic you wanted to implement was overly complicated but did not suggest that we should scrap the ledger adapter.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

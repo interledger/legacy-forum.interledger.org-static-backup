@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flare - A Turing-Complete Federated Byzantine Agreement Network - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/applications/7/index.html">Applications and Use Cases</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Flare - A Turing-Complete Federated Byzantine Agreement Network</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Flare - A Turing-Complete Federated Byzantine Agreement Network</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/applications/7" class="category-badge" style="--cat-color: #0E76BD"><span class="category-bullet" aria-hidden="true"></span>Applications and Use Cases</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 13, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/seanrowan" class="user-link">seanrowan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 13, 2019 1:38 PM">
+            <time itemprop="datePublished" datetime="2019-03-13 13:38:17 +0200">Mar 13, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi everyone! My name is Sean Rowan and I’m the co-founder and CTO of Flare. This first post conveys a short introduction to Flare and how we use Interledger with Flare.</p>
+<p>Flare is a new distributed network that uses the same style of consensus as Ripple and Stellar (Federated Byzantine Agreement). However, Flare is Turing-complete and can run full smart contracts - the first release of Flare runs the latest Ethereum Virtual Machine.</p>
+<p>A Flare Network is underpinned by the Flare Consensus Protocol (FCP), which is a new construction of Federated Byzantine Agreement (FBA) consensus. An FBA construction does not rely on economic mechanisms for securing consensus because it enables individual nodes to independently effect quorum slice decisions; market forces cause overlaps of quorum slice decisions on the network and this gives rise to the network-wide rule for consensus. FCP achieves fairness by being both leaderless and totally-ordered, making it excessively difficult for an attacker to influence which of two transactions will be ordered first in a transaction set. FCP is also asynchronous and achieves very fast finality. These properties make FCP a compelling model for internet-level Turing-complete consensus.</p>
+<p>FCP has a complete mathematical proof of its Byzantine fault-tolerance and it is currently under peer-review; we will publish the whitepaper upon completion of this process. FCP and the EVM Flare Network have also been implemented to production-grade standards as of December 2018 and we are currently undergoing our latest round of cybersecurity audit of our codebase (written entirely in Golang) by a cybersecurity firm that contracts for NATO and many financial institutions.</p>
+<p>There are numerous deployments that we have in mind for Flare, and we don’t want to make any particular restriction on how node operators in a Flare Network are remunerated. Concretely:</p>
+<ol>
+<li>
+<p>The Flare Network is not releasing a native token.</p>
+</li>
+<li>
+<p>We want to enable different node operators to accept remuneration in different currencies of their choice in a single Flare Network.</p>
+</li>
+<li>
+<p>We even want to enable a single node operator to be able to accept different currencies.</p>
+</li>
+</ol>
+<p>We analysed several options for handling node remuneration, and Interledger matches up perfectly with all of our requirements. We are early-on in our progress with Interledger, and we wanted to open up the conversation now in order to introduce ourselves and get feedback on our use of Interledger as we deploy ILP for Flare node remuneration.</p>
+<p>We’re excited to dive into Interledger!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="5 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          5
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 13, 2019 3:19 PM">
+            <time itemprop="datePublished" datetime="2019-03-13 15:19:56 +0200">Mar 13, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Excellent, welcome to the community <a class="mention" href="/u/seanrowan/index.html">@seanrowan</a>!</p>
+<aside class="quote no-group" data-username="seanrowan" data-post="1" data-topic="384">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/s/ac8455/48.png" class="avatar"> seanrowan:</div>
+<blockquote>
+<ul>
+<li>The Flare Network is not releasing a native token.</li>
+<li>We want to enable different node operators to accept remuneration in different currencies of their choice in a single Flare Network.</li>
+<li>We even want to enable a single node operator to be able to accept different currencies.</li>
+</ul>
+</blockquote>
+</aside>
+<p><img src="https://emoji.discourse-cdn.com/twitter/clap.png?v=12" title=":clap:" class="emoji only-emoji" alt=":clap:" loading="lazy" width="20" height="20"><img src="https://emoji.discourse-cdn.com/twitter/clap.png?v=12" title=":clap:" class="emoji only-emoji" alt=":clap:" loading="lazy" width="20" height="20"><img src="https://emoji.discourse-cdn.com/twitter/clap.png?v=12" title=":clap:" class="emoji only-emoji" alt=":clap:" loading="lazy" width="20" height="20"></p>
+<aside class="quote no-group" data-username="seanrowan" data-post="1" data-topic="384">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/s/ac8455/48.png" class="avatar"> seanrowan:</div>
+<blockquote>
+<p>Flare is Turing-complete and can run full smart contracts - the first release of Flare runs the latest Ethereum Virtual Machine.</p>
+</blockquote>
+</aside>
+<p>Does the VM need to be deterministic or could this network handle non-determinism?</p>
+<aside class="quote no-group" data-username="seanrowan" data-post="1" data-topic="384">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/s/ac8455/48.png" class="avatar"> seanrowan:</div>
+<blockquote>
+<p>feedback on our use of Interledger as we deploy ILP for Flare node remuneration</p>
+</blockquote>
+</aside>
+<p>A couple of questions on the model:</p>
+<ul>
+<li>What exactly do users pay node operators for? Is the transaction fee based “gas” or a concept like that that measures the complexity of the transaction?</li>
+<li>Do node operators set their own price or would you expect each of them to have the same price?</li>
+<li>When one operator broadcasts a transaction to the other node operators, does the broadcaster have to pay the others? (If they don’t, would users be incentivized to submit transactions to the cheapest of the operators?)</li>
+<li>Do users need proof that they paid a particular operator?</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/seanrowan" class="user-link">seanrowan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 13, 2019 10:30 PM">
+            <time itemprop="datePublished" datetime="2019-03-13 22:30:33 +0200">Mar 13, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Excellent, welcome to the community <a class="mention" href="/u/seanrowan/index.html">@seanrowan</a>!</p>
+</blockquote>
+</aside>
+<p>Thank you!</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Does the VM need to be deterministic or could this network handle non-determinism?</p>
+</blockquote>
+</aside>
+<p>The transaction fairness property of the Flare Consensus Protocol enables sources of randomness to be safely generated directly within a self-contained Flare Network. Then non-determinism can be achieved on Flare by incorporating the sources of randomness into a contract in the VM.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<ul>
+<li>What exactly do users pay node operators for? Is the transaction fee based “gas” or a concept like that that measures the complexity of the transaction?</li>
+</ul>
+</blockquote>
+</aside>
+<p>The transaction fees will be based on gas usage, and the payment model will support pre-paid or monthly subscriptions of gas ownership. We are currently working on full documentation for this accounting aspect and will revert fully soon.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<ul>
+<li>Do node operators set their own price or would you expect each of them to have the same price?</li>
+</ul>
+</blockquote>
+</aside>
+<p>The system is flexible on this and provisions for node operators setting their own prices within the same Flare Network. However, a node operator can’t change their pricing instantaneously, and only at predefined checkpoints. Similarly, changes of independent quorum slice decisions of nodes on the network take effect at predefined checkpoints instead of instantaneously.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<ul>
+<li>When one operator broadcasts a transaction to the other node operators, does the broadcaster have to pay the others? (If they don’t, would users be incentivized to submit transactions to the cheapest of the operators?)</li>
+</ul>
+</blockquote>
+</aside>
+<p>Users will only directly pay the endpoint nodes that they submit transactions to, in order to simplify the user experience. These endpoint nodes make their own quorum slice decisions on the Flare Network, and pay a portion of the money that they receive from the user to these ‘downstream’ nodes, based on gas usage by that user.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="2" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<ul>
+<li>Do users need proof that they paid a particular operator?</li>
+</ul>
+</blockquote>
+</aside>
+<p>The system would use this proof as a signal for linking gas allocation on the network to the user’s payments.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 13, 2019 10:59 PM">
+            <time itemprop="datePublished" datetime="2019-03-13 22:59:52 +0200">Mar 13, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="seanrowan" data-post="3" data-topic="384">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/s/ac8455/48.png" class="avatar"> seanrowan:</div>
+<blockquote>
+<p>The transaction fairness property of the Flare Consensus Protocol enables sources of randomness to be safely generated directly within a self-contained Flare Network. Then non-determinism can be achieved on Flare by incorporating the sources of randomness into a contract in the VM.</p>
+</blockquote>
+</aside>
+<p>I see. But Flare couldn’t accommodate non-deterministic VM functions like calls to external HTTPS services, right?</p>
+<aside class="quote no-group quote-modified" data-username="seanrowan" data-post="3" data-topic="384">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/s/ac8455/48.png" class="avatar"> seanrowan:</div>
+<blockquote>
+<blockquote>
+<ul>
+<li>Do users need proof that they paid a particular operator?</li>
+</ul>
+</blockquote>
+<p>The system would use this proof as a signal for linking gas allocation on the network to the user’s payments.</p>
+</blockquote>
+</aside>
+<p>Would you actually need proof if each node operator is going to pay the others for a particular user’s transaction? Seems like each node would just decide for themselves whether they had gotten enough to include the transaction, rather than needing proof that the user paid others. (I’m asking this because we don’t currently have a protocol that provides non-repudiable proof of payment but we could build something using <a href="https://github.com/interledger/rfcs/issues/421">streaming receipts</a>).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/seanrowan" class="user-link">seanrowan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 14, 2019 12:48 PM">
+            <time itemprop="datePublished" datetime="2019-03-14 12:48:24 +0200">Mar 14, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="4" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>I see. But Flare couldn’t accommodate non-deterministic VM functions like calls to external HTTPS services, right?</p>
+</blockquote>
+</aside>
+<p>An EVM Flare Network contract can’t directly interface with an external HTTPS service, because all of the nodes in the EVM Flare Network aren’t guaranteed to get the same result when they query the same HTTPS service. However, Ethereum has this exact same property and there are oracle systems that have been developed for Ethereum which can be directly leveraged in the Flare Network for reading external HTTPS services.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="4" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Would you actually need proof if each node operator is going to pay the others for a particular user’s transaction? Seems like each node would just decide for themselves whether they had gotten enough to include the transaction, rather than needing proof that the user paid others. (I’m asking this because we don’t currently have a protocol that provides non-repudiable proof of payment but we could build something using <a href="https://github.com/interledger/rfcs/issues/421" rel="noopener nofollow ugc">streaming receipts </a>).</p>
+</blockquote>
+</aside>
+<p>We’re exploring the idea of including an automated percentage-based fee on all gas transactions in the system that would support the ongoing development of Flare. The code that the node operators run would check that the Flare fee has been included before allowing that user’s transaction to propagate. I am highly interested in working with the streaming receipts mechanism to support the Flare fee feature, and am keen to discuss this further.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/seanrowan" class="user-link">seanrowan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 14, 2019 3:13 PM">
+            <time itemprop="datePublished" datetime="2019-03-14 15:13:30 +0200">Mar 14, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="seanrowan" data-post="5" data-topic="384" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://avatars.discourse-cdn.com/v4/letter/s/ac8455/48.png" class="avatar"> seanrowan:</div>
+<blockquote>
+<p>We’re exploring the idea of including an automated percentage-based fee on all gas transactions in the system that would support the ongoing development of Flare. The code that the node operators run would check that the Flare fee has been included before allowing that user’s transaction to propagate. I am highly interested in working with the streaming receipts mechanism to support the Flare fee feature, and am keen to discuss this further.</p>
+</blockquote>
+</aside>
+<p>I should have emphasised that we are keen to progress in stages with our Interledger integration, and we’re starting out with getting the node operator remuneration fully working first before moving on to the Flare fee mechanism which may or may not require the receipt proof. I will post more information in the coming days about a concrete design for how we’ll deploy Interledger + Flare in stage 1 for node remuneration. Your comments and questions have already been very helpful for me in thinking through our integration and I’m looking forward to getting our ILP+Flare integration off the ground soon!</p>
+<p>Thanks, Sean</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/seanrowan" class="user-link">seanrowan</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Aug 12, 2020 11:52 AM">
+            <time itemprop="datePublished" datetime="2020-08-12 11:52:00 +0200">Aug 12, 2020</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>A completed spec of the Flare Network is located here: <a href="https://flare.ghost.io/theflarenetwork/" rel="nofollow noopener">https://flare.ghost.io/theflarenetwork/</a> - the information in the above ILP forum posts was from early in the development process and can be considered deprecated now.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

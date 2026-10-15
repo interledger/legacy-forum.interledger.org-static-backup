@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What should positive / negative balances represent? - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">What should positive / negative balances represent?</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">What should positive / negative balances represent?</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 12, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 12, 2019 8:10 PM">
+            <time itemprop="datePublished" datetime="2019-04-12 20:10:23 +0200">Apr 12, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Let’s say that ILP nodes keep track of “account” records for each of their customers and peers.</p>
+<p>From the perspective of Alice’s node, if the Bob account has a balance of 100, does/should that mean that Alice owes Bob 100 or that Bob owes Alice 100 units?</p>
+<p>Also, if Bob queries the API of Alice’s node to check his balance, should Alice’s node report her view of Bob’s balance or should it be negated?</p>
+<p>cc <a class="mention" href="/u/sappenin/index.html">@sappenin</a> <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> <a class="mention" href="/u/matdehaast/index.html">@matdehaast</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="6 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          6
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 15, 2019 3:49 PM">
+            <time itemprop="datePublished" datetime="2019-04-15 15:49:14 +0200">Apr 15, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>From the perspective of Alice’s node, if the Bob account has a balance of 100, does/should that mean that Alice owes Bob 100 or that Bob owes Alice 100 units?</p>
+</blockquote>
+<p>IMO, Alice owes Bob 100 units. In other words, the Connector should always view a positive balance as a “liability” account, meaning: “the account holder has 100 units with me but those units are not mine, they are theirs.”</p>
+<p>Conversely, from the perspective of Alice’s node, if the Bob account has a balance of -100, then this should be treated as a negative liability, or I guess in accounting terms a “receivable.” In other words, “Bob owes Alice 100 units.” In this scenario, Alice has basically made a loan to Bob.</p>
+<blockquote>
+<p>…if Bob queries the API of Alice’s node to check his balance, should Alice’s node report her view of Bob’s balance or should it be negated?</p>
+</blockquote>
+<p>As a matter of good API design, Alice’s node should report whatever would be most helpful for Bob. In this case, I think that would be Bob’s view of Bob’s balance. Essentially, Bob is the primary consumer of this API (for his account at least) so good Connector API design should optimize for Bob’s experience, and when Bob queries for his balance, he’s asking, “how much value do I have on deposit at you, Alice?”</p>
+<hr>
+<p>Here’s some of my thought process to arrive at this:</p>
+<ul>
+<li>Imagine Bob were to swipe a payment-card at some terminal that allowed him to pay Alice’s connector account 100 units. In ILP, we have historically called this a <code>sendMoney</code> or a <code>settlement</code> operation, and after such an operation, when Bob queries Alice’s API, he should get a response back that shows 100 units. From Bob’s perspective, it means he has 100 units sitting at “Alice” that are his. By using ILP packets, Bob can instruct Alice to take some of those 100 units and send them to others, in order to facilitate an ILP value-transfer chain.</li>
+<li>For example, when Bob sends an <code>ILP Prepare</code> packet to Alice with an amount of <code>1</code> unit and addressed to <code>Charlie</code>, Bob is basically saying, “*Please take 1 unit out of my account and give it to Charlie.” If Bob has units in his account to give to Charlie, then Alice should happily oblige. However, if Bob has no units in his account, then Alice has a decision to make: should she allow Bob’s account to go negative, in which case Bob will owe her 1 unit. This would create a debt position between Alice and Bob, and if Bob doesn’t pay back, then Alice might be sad.</li>
+</ul>
+<p>Speaking from the perspective of a Connector, this means the following should hold:</p>
+<ol>
+<li>An incoming <code>ILP Prepare</code> decreases the balance of the account the Connector is tracking.</li>
+<li>An outgoing <code>ILP Prepare</code> increases the balance of the account the Connector is tracking.</li>
+<li>Receiving a settlement payment for a particular account increases the balance.</li>
+<li>Sending a settlement payment for a particular account decreases the balance.</li>
+<li>From an accounting perspective, a Connector should view the value tracked by the balance tracker as  a “liability.” In other words, a positive balance is actually value <em>owed</em> to the account holder.</li>
+</ol>
+<p>Note that this is exactly the inverse of the JS ILP Connector. I’d be curious to hear from others who have experience with that implementation.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Apr 15, 2019 5:26 PM">
+            <time itemprop="datePublished" datetime="2019-04-15 17:26:01 +0200">Apr 15, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Here’s my model of this, and how it’s currently implemented in ilp-sdk and the Ethereum and Lightning plugins (but not the connector balance middleware).</p>
+<h3>“Payable Balance” (Outgoing Balance)</h3>
+<ul>
+<li>Amount owed <em>by us</em> to our peer for <strong>packets we’ve sent to them and were returned fulfilled</strong>
+<ul>
+<li>Positive amount indicates we’re indebted to the peer and need to pay them for packets they’ve already forwarded and returned fulfilled</li>
+<li>Negative amount indicates we’ve prefunded the peer and have as much credit available to send packets that the peer should forward</li>
+</ul>
+</li>
+<li>
+<strong>Changes</strong>
+<ul>
+<li>Outgoing settlements to the peer <strong>decrease</strong> the amount we owe to them</li>
+<li>Outgoing PREPARE packets to the peer <strong>increase</strong> the amount we owe to them, but only <em>after</em> we receive a FULFILL packet</li>
+</ul>
+</li>
+<li>
+<strong>Effects</strong>
+<ul>
+<li>Determines when outgoing settlements to peer occur and for how much</li>
+</ul>
+</li>
+</ul>
+<h3>“Receivable Balance” (Incoming Balance)</h3>
+<ul>
+<li>Amount owed <em>to us</em> by our peer for <strong>packets from them we’ve forwarded</strong>
+<ul>
+<li>Positive amount indicates our peer is indebted to us for packets we’ve already forwarded and have not yet returned a REJECT</li>
+<li>Negative amount indicates our peer has prefunded us and has as much credit available to send packets that we should forward</li>
+</ul>
+</li>
+<li>
+<strong>Changes</strong>
+<ul>
+<li>Incoming settlements from the peer <strong>decrease</strong> the amount they owe to us</li>
+<li>Incoming PREPARE packets from the peer immediately <strong>increase</strong> the amount they owe to us, unless we respond with a REJECT (e.g. we decline to forward it, or it’s later rejected upstream, which decreases the amount they owe us by the same amount).</li>
+</ul>
+</li>
+<li>
+<strong>Effects</strong>
+<ul>
+<li>Determines if an incoming PREPARE is forwarded/cleared</li>
+</ul>
+</li>
+</ul>
+<h3>Problems with a single balance</h3>
+<p>The current balance model in ilp-connector works great for net settlement in which both peers extend credit to one another, but introduces problems when one peer prefunds, and the other extends no credit.</p>
+<ul>
+<li>Suppose Alice prefunds Bob 200 units. Later, Bob forwards a PREPARE to Alice for 100 units, and Alice returns the FULFILL (also Bob has a settleTo and settleThreshold of 0, which I think is reasonable for a open server). The ilp-connector balance middleware will then send a settlement to Alice for 300 units, which would then trigger Alice to prefund another 200 units.</li>
+<li>The problem with this is more frequent and more capital intensive settlements, which is particularly bad for plugins based on unidirectional payment channels, since liquidity will be exhausted far faster than it needs to be.</li>
+<li>The essence of it: there’s no way to <em>differentiate</em> between them owing you money for packets they send to you that you return fulfilled, and you owing them money for packets you send to them that they return fulfilled.</li>
+</ul>
+<p>In this model, if a peer prefunds money to you and later wants to get it back, they must fulfill packets to themselves. Alice may prefund as much as she wants to Bob, but <em>only</em> ILP packets create an obligation for Bob to payout any of that sum.</p>
+<p>However, if both peers extend credit, net settlement is likely preferred, since this model may exhaust liquidity faster.</p>
+<p>I’d like to think more about how to support both models (I <em>think</em> it only requires changes to the <code>settleTo</code> logic in order to work), but I think generalizing it to two separate balances is necessary to fix issues with accounting relationships where one peer doesn’t extend any credit.</p>
+<hr>
+<p>The rationale beyond branding them “payable balance” and “receivable balance” and using these particular positive/negative interpretations is to correspond to accounts payable and accounts receivable in GAAP.</p>
+<p>Accounts payable: “money owed by a business to its suppliers shown as a liability on a company’s balance sheet” or “an accounting entry that represents a company’s obligation to pay off a short-term debt to its creditors or suppliers”</p>
+<p>Accounts receivable: “the balance of money due to a firm for goods or services delivered or used but not yet paid for by customers” or “amounts of money owed by customers to another entity for goods or services delivered or used on credit but not yet paid for by clients”</p>
+<p>The thing I’m not entirely sure about is how prepayment is traditionally accounted for: does the account balance go negative, or is there an entirely different account?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Smithy_Mongstein" class="user-link">Smithy Mongstein</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Apr 16, 2019 1:11 PM">
+            <time itemprop="datePublished" datetime="2019-04-16 13:11:04 +0200">Apr 16, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>You must create a current asset account on your balance sheet to reflect the balance of the future benefit you receive as a result of your prepayment.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Apr 17, 2019 8:18 PM">
+            <time itemprop="datePublished" datetime="2019-04-17 20:18:53 +0200">Apr 17, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is really helpful. Thanks all for weighing in on this!</p>
+<p>After speaking with some folks that know a lot more about accounting than I, it seems like we should:</p>
+<ul>
+<li>have separate Payable and Receivable balances like <a class="mention" href="/u/kincaid/index.html">@kincaid</a> suggests</li>
+<li>separate out the pending Prepare packets that haven’t been resolved yet</li>
+<li>account for pre-payment as a negative Receivable balance</li>
+</ul>
+<p>Here’s a modified version of what <a class="mention" href="/u/kincaid/index.html">@kincaid</a> suggested with the pending packet amounts split out:</p>
+<p><strong>Balances to track:</strong></p>
+<ul>
+<li>Payable Balance (amount I owe to counterparty)</li>
+<li>Receivable Balance (amount counterparty owes me)</li>
+<li>Pending Outgoing Prepares (amount I would owe to counterparty if in-flight transactions are executed)</li>
+<li>Pending Incoming Prepares (amount the counterparty would owe me if in-flight transactions are executed)</li>
+</ul>
+<p><strong>Thresholds to track:</strong></p>
+<ul>
+<li>Credit Limit (Receivable Balance + Pending Incoming Prepares - Payable Balance)</li>
+<li>Settlement threshold (Payable Balance)</li>
+<li>Netting trigger (when Receivable Balance and Payable Balance are positive)</li>
+</ul>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receive Incoming Prepare</td>
+<td>+ Pending Incoming Prepares</td>
+</tr>
+<tr>
+<td>Send Outgoing Prepare</td>
+<td>+ Pending Outgoing Prepares</td>
+</tr>
+<tr>
+<td>Receive Fulfill for Outgoing Prepare</td>
+<td>- Pending Outgoing Prepares, + Payable Balance</td>
+</tr>
+<tr>
+<td>Send Fulfill for Incoming Prepare</td>
+<td>- Pending Incoming Prepares, + Receivable Balance</td>
+</tr>
+<tr>
+<td>Receive Reject for Outgoing Prepare</td>
+<td>- Pending Outgoing Prepares</td>
+</tr>
+<tr>
+<td>Send Reject for Incoming Prepare</td>
+<td>- Pending Incoming Prepares</td>
+</tr>
+<tr>
+<td>Receive Incoming Settlement</td>
+<td>- Receivable Balance</td>
+</tr>
+<tr>
+<td>Send Outgoing Settlement</td>
+<td>- Payable Balance</td>
+</tr>
+<tr>
+<td>Internal Netting</td>
+<td>- Receivable Balance, - Payable Balance</td>
+</tr>
+</tbody>
+</table>
+</div><p>(Note that an earlier version of this post used the term “Buy Order” for “Pending Outgoing Prepares” and “Sell Order” for “Pending Incoming Prepares” because those are more common accounting concepts. However, the order terminology is too easily confused with exchange / currency trading orders.)</p>
+<h2>Netting</h2>
+<p>I think we can enable the two balances to be netted out without causing the pre-payment refund problem described above in the following way (described in rusty-pseudocode):</p>
+<pre><code class="lang-auto">if payable_balance &gt; 0 &amp;&amp; receivable_balance &gt; 0 {
+  let amount_to_net = min(payable_balance, receivable_balance);
+  payable_balance = payable_balance - amount_to_net;
+  receivable_balance = receivable_balance - amount_to_net;
+}
+</code></pre>
+<p>Let me know if you think there’s something I’m overlooking but it seems like this should work.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/matdehaast" class="user-link">Matthew De Haast</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Apr 23, 2019 11:11 AM">
+            <time itemprop="datePublished" datetime="2019-04-23 11:11:08 +0200">Apr 23, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I am going to play devil’s advocate here.  I want to preface my comments by asking “What is the underlaying issue we are trying to solve by creating more than a single balance?”. This is to ensure we are actually solving a real problem we face rather than doing it for the sake of doing it.</p>
+<p><strong>Reply to <a class="mention" href="/u/kincaid/index.html">@kincaid</a></strong></p>
+<aside class="quote no-group" data-username="kincaid" data-post="3" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/kincaid/48/39_2.png" class="avatar"> kincaid:</div>
+<blockquote>
+<p>Suppose Alice prefunds Bob 200 units. Later, Bob forwards a PREPARE to Alice for 100 units, and Alice returns the FULFILL (also Bob has a settleTo and settleThreshold of 0, which I think is reasonable for a open server). The ilp-connector balance middleware will then send a settlement to Alice for 300 units, which would then trigger Alice to prefund another 200 units.</p>
+</blockquote>
+</aside>
+<p>In the current single balance architecture the correct way to handle this would be for Bob to know he only accepts pre-funded accounts and thus would set <code>settleTo=-200</code> and <code>settleThreshold=-200</code>. This would ensure the issue you describe would not occur. I don’t agree that these would be zero if you are accepting prefunded peers.</p>
+<aside class="quote no-group" data-username="kincaid" data-post="3" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/kincaid/48/39_2.png" class="avatar"> kincaid:</div>
+<blockquote>
+<p>In this model, if a peer prefunds money to you and later wants to get it back, they must fulfill packets to themselves. Alice may prefund as much as she wants to Bob, but  <em>only</em>  ILP packets create an obligation for Bob to payout any of that sum.</p>
+</blockquote>
+</aside>
+<p>How is this resolved by using a two balance approach? As far as I can see regardless of how balance is tracked, you would still need a mechanism to receiving your prefunded amount back which will be the net amount anyway.</p>
+<aside class="quote no-group" data-username="kincaid" data-post="3" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/kincaid/48/39_2.png" class="avatar"> kincaid:</div>
+<blockquote>
+<p>The essence of it: there’s no way to  <em>differentiate</em>  between them owing you money for packets they send to you that you return fulfilled, and you owing them money for packets you send to them that they return fulfilled.</p>
+</blockquote>
+</aside>
+<p>I agree entirely there is currently no way to differentiate! Having gone through the mental and excel modelling of the various cases. I am trying to work out <em>why</em> we need to differentiate. Ultimately we are managing a net liquidity line between to parties. The operative term being <strong>NET</strong>.</p>
+<p><strong>Reply to <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a></strong></p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<ul>
+<li>Payable Balance (amount I owe to counterparty)</li>
+<li>Receivable Balance (amount counterparty owes me)</li>
+<li>Pending Outgoing Prepares (amount I would owe to counterparty if in-flight transactions are executed)</li>
+<li>Pending Incoming Prepares (amount the counterparty would owe me if in-flight transactions are executed)</li>
+</ul>
+</blockquote>
+</aside>
+<p>What benefit do we get from tracking the extra pending balances? In my opinion we should be optimistic about packets being fulfilled that we are forwarding and do the corrective entries for when they are rejected (As is currently done). As ultimately we are going to have far more successful packets than not.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="5" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<h2>Netting</h2>
+<p>I think we can enable the two balances to be netted out without causing the pre-payment refund problem described above in the following way (described in rusty-pseudocode):</p>
+<pre><code class="lang-auto">if payable_balance &gt; 0 &amp;&amp; receivable_balance &gt; 0 {
+  let amount_to_net = min(payable_balance, receivable_balance);
+  payable_balance = payable_balance - amount_to_net;
+  receivable_balance = receivable_balance - amount_to_net;
+}
+</code></pre>
+<p>Let me know if you think there’s something I’m overlooking but it seems like this should work.</p>
+</blockquote>
+</aside>
+<p>I don’t think this is correct for a pre-funded model as in a pre-funded model you would never let your receivables get into a positive balance. As a positive receivable represents a credit has been extended to your counter-party. Though I could be mistaken on the intent of the code.</p>
+<p><strong>Overall Thoughts</strong><br>
+I do somehow believe that a two balance approach of receivables and payables is the correct way to do this. For the life of me I can’t find a good reason why though. That is the disjoint I am struggling with.<br>
+Ultimately we are balancing the liquidity lines between two parties based on a net. In which case we only care about the net. Then why go through all the effort of tracking multiple balances?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Apr 23, 2019 8:29 PM">
+            <time itemprop="datePublished" datetime="2019-04-23 20:29:53 +0200">Apr 23, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Two high-level points:</p>
+<ol>
+<li>We’re solving the current balance middleware spitting back the money you prefunded, which is undesirable.</li>
+<li>I think accurately domain modeling this is very beneficial. In my case, it simplified my mental model a lot, which makes things much easier to debug and implement.</li>
+</ol>
+<blockquote>
+<p>In the current single balance architecture the correct way to handle this would be for Bob to know he only accepts pre-funded accounts and thus would set  <code>settleTo=-200</code>  and  <code>settleThreshold=-200</code> . This would ensure the issue you describe would not occur. I don’t agree that these would be zero if you are accepting prefunded peers.</p>
+</blockquote>
+<p>But the point is that Alice should be able to prefund <em>any</em> amount, and Alice and Bob shouldn’t have to coordinate their balance configuration in order for this to work. If Bob’s configured that way, and suppose Alice prefunds 600 units, then Bob forwards a 100 unit PREPARE to Alice and she returns the FULFILL, Bob will send a settlement to Alice for 300 units (which is undesirable: the settlement should be for 100 units, only the amount Bob owes Alice for the packet sent to her).</p>
+<p>(Furthermore, Alice would also need to configure her max balance to correspond to Bob’s settleTo/settleThreshold, requiring some degree of coordination. For manually configured peers, this is fine, but for open servers, I’d much prefer everything to happen seamlessly by just assuming it’s 0).</p>
+<p>I would also point out that <code>ilp-plugin-xrp-asym-server</code> effectively has the same behavior as a settleTo/settleThreshold of 0, so it’s not just our implementation.</p>
+<blockquote>
+<p>How is this resolved by using a two balance approach? As far as I can see regardless of how balance is tracked, you would still need a mechanism to receiving your prefunded amount back which will be the net amount anyway.</p>
+</blockquote>
+<p>I was just clarifying how you could get the prefunded amount back in the proposed model, and not that it solves any problem. (In the current balance middleware that isn’t a problem, because as outlined, it’ll just spit it back to you!)</p>
+<blockquote>
+<p>I agree entirely there is currently no way to differentiate! Having gone through the mental and excel modelling of the various cases. I am trying to work out  <em>why</em>  we need to differentiate. Ultimately we are managing a net liquidity line between to parties. The operative term being  <strong>NET</strong> .</p>
+</blockquote>
+<blockquote>
+<p>I don’t think this is correct for a pre-funded model as in a pre-funded model you would never let your receivables get into a positive balance. As a positive receivable represents a credit has been extended to your counter-party. Though I could be mistaken on the intent of the code.</p>
+</blockquote>
+<p>For prefunded peers, there would be no netting, in order to resolve the spitting back money issue. Since the netting requires the balances to be positive, the netting would only occur for peers that extend credit to one another (which is what we want).</p>
+<p>I would caveat that <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a> and I want to think more about the netting behavior (I think we’re <em>almost</em> there, but we haven’t quite cracked it yet). One weird case with this model: suppose a connector extends me no credit. Then, it sends a packet to me for 50 units, which I fulfill (my payableBalance on the connector is now +50 units). Also suppose, the connector doesn’t settle right away. If I send a packet to the connector for up to 50 units, should the connector forward it? We’ve been trying to think about how to make that work, while still fixing the prefunding issue.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Apr 24, 2019 8:44 AM">
+            <time itemprop="datePublished" datetime="2019-04-24 08:44:15 +0200">Apr 24, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Let’s keep reminding ourselves that the purpose of discussing these designs is to ensure we standardize where necessary but we should also leave as much as possible up to implementors.</p>
+<p>Standardization is required for interoperability. In this case I was tempted to say this issue is not something we need to standardize but <a class="mention" href="/u/kincaid/index.html">@kincaid</a>’s last paragraph made me realise this is not entirely true, even if we have no API or interface for exchanging this data between peers.</p>
+<p>As a connector it is important for me to know my peer’s view of my balance. If I view this from a net perspective and the peer manages separate payable and receivable balances then I may think I can send packets via my peer but actually I can’t.</p>
+<p>So <strong>we do need to standardize this</strong>, even if there is no interface between peers for getting/setting balances it’s important that peers track them in a similar way.</p>
+<p>The next question then, as always, is whether we favour simplicity or flexibility and importantly understanding exactly what compromises we make in whatever design we choose.</p>
+<p>When we favour simplicity we will always be making compromises and we should be very clear on what those are before we make them.</p>
+<p>In this case simplicity is a single balance and flexibility is two balances. It seems that the compromise for simplicity is a lack of support for certain prepaid use cases.</p>
+<p>In contrast, it seems that the compromise when using multiple balances is that we need to provide a way for a peer to request a “transfer” from their payable balance into their receivable balance.</p>
+<p>Without giving an opinion yet on which I think is a preferable compromise, can we agree that:</p>
+<ol>
+<li>We do need to standardize this</li>
+<li>Those are our options and the relative compromises that each presents.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Apr 24, 2019 2:16 PM">
+            <time itemprop="datePublished" datetime="2019-04-24 14:16:06 +0200">Apr 24, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I’d put it slightly differently and say that we need to standardize:</p>
+<ul>
+<li>Whether nodes MUST / SHOULD / MAY net balances (this can happen whether the balance is tracked as a single number that represents the net or two that are automatically netted against one another)</li>
+<li>If there is a way to query your “balance” on the peer’s system, what the number you get back represents</li>
+<li>If there is a way to explicitly request a settlement or transfer payable balance to receivable balance</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_10"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_10" title="Apr 24, 2019 3:01 PM">
+            <time itemprop="datePublished" datetime="2019-04-24 15:01:53 +0200">Apr 24, 2019</time>
+          </a>
+          <span class="post-number">#10</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_9">Replying to #9</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="9" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Whether nodes MUST / SHOULD / MAY net balances (this can happen whether the balance is tracked as a single number that represents the net or two that are automatically netted against one another)</p>
+</blockquote>
+</aside>
+<p>I disagree. Saying anything but a “MUST” is pointless because (as I explained above) any variance will mean nodes are not interoperable.</p>
+<p>The behaviour of a connector depends on it knowing how its peer is tracking its balances. (See the example <a class="mention" href="/u/kincaid/index.html">@kincaid</a> cites above)</p>
+<p>We need to standardize how nodes track balances, not just for the sake of being able to answer queries but for the sake of behaving predictably.</p>
+<p>As an illustration, imagine a test case where you send a pre-funding settlement to a connector, then send it some packets, then receive some packets, then send it some more packets.</p>
+<p>Unless you know how that connector tracks balances you can’t predict if the tests will pass. The packets you send at the end may be fulfilled or rejected depending on if the connector tracks net or split balances.</p>
+<p>If you can’t write predictable tests then you know that it’s possible to produce implementations that are not interoperable and the spec is not tight enough.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="9" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>If there is a way to query your “balance” on the peer’s system, what the number you get back represents</p>
+</blockquote>
+</aside>
+<p>If we answer the above first then deciding on this is easy right?</p>
+<p>Not sure how we could return payable and receivable balances from nodes that only track a net…</p>
+<p>Also not sure why you’d only return a net if you have payable and receivable available and the caller can trivially do the netting themselves.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="9" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>If there is a way to explicitly request a settlement or transfer payable balance to receivable balance</p>
+</blockquote>
+</aside>
+<p>Again, if we make a decision on how balances are tracked it will follow whether we need this or not.</p>
+<p>As I explained, I think it’s dangerous to simply look at the list of things we need to standardise without considering the compromises we’ll make in selecting different solutions.</p>
+<p>So, I’ll assert again, I think a connector MUST track balances in a particular way and this must be a normative requirement for all connectors. What remains to decide is, should this be net or split between payable and receivable.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_11"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_11" title="Apr 24, 2019 10:06 PM">
+            <time itemprop="datePublished" datetime="2019-04-24 22:06:16 +0200">Apr 24, 2019</time>
+          </a>
+          <span class="post-number">#11</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_10">Replying to #10</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Whether or not everyone is required to implement the conclusion of this discussion, I am certainly planning to implement it.</p>
+<p>After talking with <a class="mention" href="/u/sappenin/index.html">@sappenin</a> and <a class="mention" href="/u/kincaid/index.html">@kincaid</a> briefly I’m back to thinking we can make this work with Receivable and Payable balances. If we don’t keep track of the pending amounts separately, we just need to be very careful about when we apply changes to the balances.</p>
+<p>The specific features we want to enable are:</p>
+<ul>
+<li>
+<strong>Automatic settlement</strong> (triggering settlement when one party owes the other party more than a configured threshold amount)</li>
+<li>
+<strong>Automatic netting</strong> (I should be able to spend from money you owe me, whether you owe it to me because I fulfilled packets you sent to me or because I sent a settlement to you)</li>
+<li>
+<strong>Pre-funding</strong> (I may want to send you a settlement before I send packets through you to cover packets I will send)</li>
+<li>
+<strong>Minimal bilateral communication</strong> about limits and thresholds (we would like to avoid having to discuss the specific limits and thresholds we’re configuring our systems with)</li>
+</ul>
+<p>This is the table of actions and effects:</p>
+<div class="md-table">
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Effect</th>
+<th>Check Limit / Threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receive Incoming Prepare</td>
+<td>if Receivable + Prepare Amount &lt;= Max Receivable { + Receivable } else if Payable &gt;= Prepare Amount { - Payable Balance }</td>
+<td>Limit: Receivable + Prepare Amount - Payable &lt;= Max Receivable</td>
+</tr>
+<tr>
+<td>Send Outgoing Prepare</td>
+<td>No effect</td>
+<td></td>
+</tr>
+<tr>
+<td>Receive Fulfill for Outgoing Prepare</td>
+<td>+ Payable Balance</td>
+<td>Net if Payable &gt; 0 and Receivable &gt; 0; Settle if Payable &gt;= Settle Threshold</td>
+</tr>
+<tr>
+<td>Send Fulfill for Incoming Prepare</td>
+<td>No effect</td>
+<td></td>
+</tr>
+<tr>
+<td>Receive Reject for Outgoing Prepare</td>
+<td>No effect</td>
+<td></td>
+</tr>
+<tr>
+<td>Send Reject for Incoming Prepare</td>
+<td>+ Payable Balance</td>
+<td>Net if Payable &gt; 0 and Receivable &gt; 0, Settle if Payable &gt;= Settle Threshold</td>
+</tr>
+<tr>
+<td>Receive Incoming Settlement</td>
+<td>- Receivable Balance</td>
+<td></td>
+</tr>
+<tr>
+<td>(Before) Send Outgoing Settlement</td>
+<td>- Payable Balance</td>
+<td></td>
+</tr>
+<tr>
+<td>Internal Netting</td>
+<td>- Receivable Balance, - Payable Balance</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div><p><a class="mention" href="/u/matdehaast/index.html">@matdehaast</a> I think that two balances enables pre-funding while keeping the communication about the thresholds to a minimum and avoiding the settling back and forth forever problem <a class="mention" href="/u/kincaid/index.html">@kincaid</a> described.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_12"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_12" title="Apr 25, 2019 6:49 AM">
+            <time itemprop="datePublished" datetime="2019-04-25 06:49:50 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#12</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I also quite like the split balance tracking, even if it’s just simpler to reason about. But, if we standardize on that, we do need to solve for a few additional complexities so that connectors behave in a predictable way.</p>
+<p>I like the breakdown you’ve put together but have a few questions:</p>
+<p><strong>Automatic settlement</strong>: Does this get triggered based on a net amount or just the Payable amount?</p>
+<p>Simplicity suggests just the Payable amount but…</p>
+<p>One of the goals of a good settlement architecture is to do settlement as little as possible because, in general, a settlement transaction costs more than a payment transaction so the more payments you can make per settlement the better.</p>
+<p>On that basis we probably want to explicitly rebalance the accounts by making a transfer from the Receivables account into the Payables account in preference to actually settling with the peer.</p>
+<ol>
+<li>What triggers this to happen? Can it be invoked by the peer?</li>
+<li>Should the node only do this internal rebalancing if the Receivables balance is high enough to settle Payables back to the “SettleTo” balance?</li>
+<li>Should there be a standard for notifying the peer that the accounts have been rebalanced?</li>
+</ol>
+<p><strong>Automatic netting</strong>:  The “Effect” you have defined for <code>Receive Incoming Prepare</code> suggests that netting is applied ad-hoc as part of processing a packet. Is that the intent?</p>
+<p>If so then I’m back in the same boat as <a class="mention" href="/u/matdehaast/index.html">@matdehaast</a> and wondering what value tracking the two balances adds if the observed effect for a peer is a net balance and they have no control over when netting happens or even visibility into when it happens?</p>
+<p><strong>Send Reject for Incoming Prepare</strong>: You’ve listed the effect of this as <code>+ Payable Balance</code> instead of <code>- Receivable Balance</code>. Why?</p>
+<p>It has the interesting side-effect that a peer can force a transfer from its Receivable balance to its Payable balance by simply sending an unfulfillable packet. Possibly a nice feature of the design but I’d want to call it out explicitly.</p>
+<p><strong>Minimal bilateral communication</strong>: Why is this as a feature you explicitly want to enable? It seems like an unnecessary constraint.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_13"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/matdehaast" class="user-link">Matthew De Haast</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_13" title="Apr 25, 2019 9:38 AM">
+            <time itemprop="datePublished" datetime="2019-04-25 09:38:08 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#13</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_11">Replying to #11</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for this Evan.  I am going to present some case studies to show where there are still open questions to the model described above. In all the cases below Alice is prefunding an account with Bob<br>
+and the balances of receivable and payable will be from Bob’s perspective.</p>
+<p><strong>Case 1</strong></p>
+<ol>
+<li>Alice prefunds 200 units with Bob.
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: 0</li>
+</ul>
+</li>
+<li>Bob fulfils a packet towards Alice for 100 units
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: 100</li>
+</ul>
+</li>
+</ol>
+<p>I would assume that settlement would need to occur now but using the Limit and Threshold of:</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="11" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Net if Payable &gt; 0 and Receivable &gt; 0; Settle if Payable &gt;= Settle Threshold</p>
+</blockquote>
+</aside>
+<p>No settlement would occur. I think it should be</p>
+<aside class="quote no-group quote-modified" data-username="emschwartz" data-post="11" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Net if Payable &gt; 0 and Receivable <strong>&lt;</strong> 0; Settle if Payable &gt;= Settle Threshold</p>
+</blockquote>
+</aside>
+<p>Also what is the settlement amount? I would assume it would be only what is contained within the payable balance and hence be 100 units.</p>
+<p><strong>Case 2</strong></p>
+<ol>
+<li>Alice prefunds 200 units with Bob.
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: 0</li>
+</ul>
+</li>
+<li>Bob fulfils a packet towards Alice for 100 units
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: 100</li>
+</ul>
+</li>
+<li>Alice sends a ILP prepare through Bob for 300 units
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: -200</li>
+</ul>
+</li>
+</ol>
+<p>Now the payable balance has ended up in a credit.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="11" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>Limit: Receivable + Prepare Amount - Payable &lt;= Max Receivable</p>
+</blockquote>
+</aside>
+<p>This above limit would ensure Alice could not send any more packets. The better way is to consume all the receivable balance first, till it is exhausted ,and then consume the payable balance. Which would result in the balance after the transaction looking like</p>
+<ul>
+<li>Receivable: 0</li>
+<li>Payable: 0</li>
+</ul>
+<p><strong>Case 3</strong></p>
+<ol>
+<li>Alice prefunds 200 units with Bob.
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: 0</li>
+</ul>
+</li>
+<li>Alice increases prefund to 400 units to help deal with a large transaction
+<ul>
+<li>Receivable: -400</li>
+<li>Payable: 0</li>
+</ul>
+</li>
+<li>Alice does transaction and ends with her prefund still at 400 units. Now she wants to decrease her prefunded amount back to a minimum of 200 units. What does Alice do to allow this?</li>
+</ol>
+<p><strong>Case 4</strong></p>
+<ol>
+<li>Alice prefunds 200 units with Bob.
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: 0</li>
+</ul>
+</li>
+<li>Alice receives a fulfilled packet for 200 units
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: 200</li>
+</ul>
+</li>
+<li>Alice receives another fulfilled packet for 200 units
+<ul>
+<li>Receivable: -200</li>
+<li>Payable: 400</li>
+</ul>
+</li>
+</ol>
+<p>But Alice does not want to extend so much credit to Bob. She could reject the packets but I feel there needs to be a mechanism for Bob to understand what amount of credit Alice is willing to allow. this could potentially be dynamic based on the need to receive larger payments at a higher throughput.</p>
+<p>Further if it is a large payment coming through. Bob is going to be attempting to settle with every packet in the model described by <a class="mention" href="/u/kincaid/index.html">@kincaid</a>, where you set the settlementThreshold to 0. Seems inefficient.</p>
+<p>Open Questions Generally:</p>
+<ul>
+<li>How do we deal with cashing out/reducing the prefunded amount?</li>
+<li>How to deal with counterparty agreement on credit lines. ie How does Alice notify Bob of her tolerable credit limits.</li>
+</ul>
+<p>From my assessment the open questions and issues are resolved by having the ability to dynamically configure (or at least notify) your counterparty of your acceptable risk to be able to configure these on the fly.</p>
+<p>Interestingly the ability for Bob to specify his credit allowance to Alice is a negative (ie needs prefunding) and Alice being able to specify her tolerable credit she wants to extend Bob are the same issue. What brings me back to the point above that setting or at least informing your counterparty of what you will tolerate seems reasonable. The question is how do you encapsulate that nicely.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_14"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_14" title="Apr 25, 2019 1:25 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 13:25:12 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#14</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_13">Replying to #13</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>For what it’s worth, I think the model I described in the last post may be functionally equivalent to tracking a net balance and keeping a separate count of prepaid funds. It’s possible that tracking the net balance and prepaid funds would more clearly model the behavior we want (assuming we don’t want prepaid funds to be sent back as a settlement).</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="12" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>On that basis we probably want to explicitly rebalance the accounts by making a transfer from the Receivables account into the Payables account in preference to actually settling with the peer.</p>
+</blockquote>
+</aside>
+<p>That sounds like what I described as netting, no? If both the Receivables and Payables are greater than zero, you can net instead of settle the Payables.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="12" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>The “Effect” you have defined for <code>Receive Incoming Prepare</code> suggests that netting is applied ad-hoc as part of processing a packet. Is that the intent?</p>
+</blockquote>
+</aside>
+<p>Yes. I didn’t originally implement it that way but then found it strange that if you forward Prepares to me that are then fulfilled, I can’t send an equal value of Prepares back to you even though you owe me that money.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="12" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>If so then I’m back in the same boat as <a class="mention" href="/u/matdehaast/index.html">@matdehaast</a> and wondering what value tracking the two balances adds if the observed effect for a peer is a net balance and they have no control over when netting happens or even visibility into when it happens?</p>
+</blockquote>
+</aside>
+<p>Fair point. This may be an argument for thinking of it as a net balance with a separate tracker for prepaid funds.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="12" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>You’ve listed the effect of this as <code>+ Payable Balance</code> instead of <code>- Receivable Balance</code> . Why?</p>
+</blockquote>
+</aside>
+<p>Good question. I originally had it as <code>+ Payable Balance OR - Receivable Balance</code>, because the original Prepare might have come from either one (and you don’t want to have to remember which one). If you put it back into the Receivable Balance, it <em>could</em> have come from Payable, and the Receivable won’t be “settled back” so there’s no way to get that money aside from sending ILP packets.</p>
+<aside class="quote no-group" data-username="adrianhopebailie" data-post="12" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/adrianhopebailie/48/31_2.png" class="avatar"> adrianhopebailie:</div>
+<blockquote>
+<p>Why is this as a feature you explicitly want to enable? It seems like an unnecessary constraint.</p>
+</blockquote>
+</aside>
+<p>Also good question. The settling back and forth forever problem is a non-issue if the peers communicate about what their limits and thresholds will be beforehand. For example, if my <code>settleTo</code> is -500, we won’t have a problem if you set your <code>settleThreshold</code> &gt; 500. I think it’s better to reduce the amount of communication and coordination the peers need in order to set themselves up properly, and we want to build the system such that misconfigurations still don’t cause problems like the settling back and forth forever.</p>
+<aside class="quote no-group quote-modified" data-username="matdehaast" data-post="13" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/matdehaast/48/191_2.png" class="avatar"> matdehaast:</div>
+<blockquote>
+<p>I think it should be</p>
+<p>Net if Payable &gt; 0 and Receivable <strong>&lt;</strong> 0; Settle if Payable &gt;= Settle Threshold</p>
+</blockquote>
+</aside>
+<p>Just to be clear, <code>Net if Payable &gt; 0 and Receivable &gt; 0</code> is a separate check from <code>Settle if Payable &gt;= Settle Threshold</code>. So in your first example, settlement would occur if the Settle Threshold is &lt;= 100.</p>
+<aside class="quote no-group" data-username="matdehaast" data-post="13" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/matdehaast/48/191_2.png" class="avatar"> matdehaast:</div>
+<blockquote>
+<p>Also what is the settlement amount? I would assume it would be only what is contained within the payable balance and hence be 100 units.</p>
+</blockquote>
+</aside>
+<p>The settlement amount would be Payable Balance - <code>settleTo</code></p>
+<aside class="quote no-group" data-username="matdehaast" data-post="13" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/matdehaast/48/191_2.png" class="avatar"> matdehaast:</div>
+<blockquote>
+<p>The better way is to consume all the receivable balance first, till it is exhausted ,and then consume the payable balance.</p>
+</blockquote>
+</aside>
+<p>Agreed, though I don’t think that has to do with the limit but rather how the “Effect” of the packet is applied</p>
+<aside class="quote no-group" data-username="matdehaast" data-post="13" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/matdehaast/48/191_2.png" class="avatar"> matdehaast:</div>
+<blockquote>
+<p>Alice does transaction and ends with her prefund still at 400 units. Now she wants to decrease her prefunded amount back to a minimum of 200 units. What does Alice do to allow this?</p>
+</blockquote>
+</aside>
+<p>Not currently supported. If the prefund amounts stay small, I’m not sure we need to support refunds. You can always send an ILP packet to another account (or maybe even to the same account, if the connector lets you do that).</p>
+<aside class="quote no-group" data-username="matdehaast" data-post="13" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/matdehaast/48/191_2.png" class="avatar"> matdehaast:</div>
+<blockquote>
+<p>But Alice does not want to extend so much credit to Bob</p>
+</blockquote>
+</aside>
+<p>If that’s the case, then she wouldn’t have fulfilled the packet. From Alice’s perspective, let’s say the Max Receivable is 300. When Bob sends the first packets through for 200, that brings the Receivable up to 200. When he tries to Prepare another 200 it should fail. (The way the limit is described above, you could argue that it would succeed if the Prefunding caused Alice’s Prepared Balance to go negative. Maybe that check is wrong or Prefunding shouldn’t be tracked on Alice’s side?)</p>
+<aside class="quote no-group" data-username="matdehaast" data-post="13" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/matdehaast/48/191_2.png" class="avatar"> matdehaast:</div>
+<blockquote>
+<p>Bob is going to be attempting to settle with every packet in the model described by <a class="mention" href="/u/kincaid/index.html">@kincaid</a>, where you set the settlementThreshold to 0. Seems inefficient.</p>
+</blockquote>
+</aside>
+<p>If you don’t want to settle for every fulfilled packet, don’t set the <code>settlementThreshold</code> to 0. If you do, you should know that that’ll be the effect.</p>
+<aside class="quote no-group" data-username="matdehaast" data-post="13" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/matdehaast/48/191_2.png" class="avatar"> matdehaast:</div>
+<blockquote>
+<p>How to deal with counterparty agreement on credit lines. ie How does Alice notify Bob of her tolerable credit limits.</p>
+</blockquote>
+</aside>
+<p>I think we should try to make it work such that they don’t need to agree. I admit that it may be difficult or impossible (for example, if your Settle Threshold is higher than the peer’s Max Receivable they’ll start rejecting packets before you initiate settlement).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_15"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_15" title="Apr 25, 2019 1:58 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 13:58:51 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#15</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_14">Replying to #14</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="emschwartz" data-post="14" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>I think it’s better to reduce the amount of communication and coordination the peers need in order to set themselves up properly</p>
+</blockquote>
+</aside>
+<p>I get that. I’m trying to understand why you think that <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=12" title=":slight_smile:" class="emoji" alt=":slight_smile:" loading="lazy" width="20" height="20"></p>
+<p>It seems to me that a lot of what we’re trying to solve would go away if we allow a peer to request that the settleTo and settlementThreshold be set to a specific value.</p>
+<p>It would lie with the peer to decide if they accept and the conservative approach would simply be to not accept any of these requests. Nodes that do this will simply be less desirable as peers because it will be hard to have a tightly managed credit relationship with them.</p>
+<aside class="quote no-group" data-username="emschwartz" data-post="14" data-topic="501">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/emschwartz/48/12_2.png" class="avatar"> emschwartz:</div>
+<blockquote>
+<p>This may be an argument for thinking of it as a net balance with a separate tracker for prepaid funds.</p>
+</blockquote>
+</aside>
+<p>So, from the perspective of a peer lets just express a single net balance and let implementations track this how ever they wish?</p>
+<p>With the caveat that we should let a peer request a change to the <code>settlementThreshold</code> and <code>settleTo</code> to allow for efficient pre-paid scenarios.</p>
+<p>So, the use case we are trying to solve might work like this:</p>
+<ol>
+<li>Alice peers with Bob</li>
+<li>Alice does a query and gets back: balance=0, settleThreshold=0, settleTo=0, minBalance=0, maxBalance=Infinity. (i.e. Bob offers no credit to Alice)</li>
+<li>Alice wants to prepay her clearing account so she sends a 200 settlement to Bob.</li>
+<li>Bob adjusts her balance, settleTo and settleThreshold to 200.</li>
+<li>If Bob decides that he doesn’t want to settle every incoming payment to Alice he adjusts her settleThreshold up to a delta above settleTo that makes sense given his cost of settlement.</li>
+<li>Alice does a query and gets back: balance=200, settleThreshold=300, settleTo=200, minBalance=0, maxBalance=Infinity.</li>
+<li>Alice sends some packets and her balance goes down. But she also receives some payments and her balance goes up to 270.</li>
+<li>Alice doesn’t want her credit to Bob to exceed 250 so she requests that he adjust her settleThreshold to 250. Bob agrees and performs a settlement of 70 to Alice to take her balance back to 200.</li>
+<li>Alice decides she wants to close her account so she requests that her <code>settleTo</code> and <code>settleThreshold</code> are set to 0. Bob makes these changes (as they are both still above 0) and settles Alice 200.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_16"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_16" title="Apr 25, 2019 2:07 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 14:07:54 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#16</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_15">Replying to #15</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Slightly improved version of the above:</p>
+<ol>
+<li>Alice peers with Bob</li>
+<li>Alice does a query and gets back: <code>balance=0, settleThreshold=100, settleTo=0, minBalance=0, maxBalance=Infinity</code>.<br>
+(i.e. Bob offers no credit to Alice and only does settlement when the payable amount exceeds 100)</li>
+<li>Alice wants to prepay her clearing account in order to send payments so she sends a 200 settlement to Bob.</li>
+<li>Bob adjusts her <code>balance</code> and <code>settleTo</code> to 200. He adjusts her <code>settleThreshold</code> up to a delta above <code>settleTo</code> that makes sense given his cost of settlement (i.e. previously 100 so now 300).</li>
+<li>Alice does a query and gets back: <code>balance=200, settleThreshold=300, settleTo=200, minBalance=0, maxBalance=Infinity</code>.</li>
+<li>Alice sends some packets and her balance goes down. But she also receives some payments and her balance goes up to 270.</li>
+<li>Alice doesn’t want her credit to Bob to exceed 250 so she requests that he adjust her <code>settleThreshold</code> to 250. Bob declines because settlements in increments of less than 100 are not worth it for him. He responds with an error and says that to have a <code>settleThreshold</code> of 250 Alice would need a <code>settleTo</code> of 150. (Or he might accept and automatically adjusts her <code>settleTo</code> to 150).</li>
+<li>Alice requests a <code>settleThreshold</code> of 250 and a <code>settleTo</code> of 150.</li>
+<li>Bob agrees and performs a settlement of 120 to Alice to take her balance to 150.</li>
+<li>Alice decides she wants to close her account so she requests that her  <code>settleTo</code>  and  <code>settleThreshold</code>  are set to 0. Bob makes these changes (as they are both still above 0) and settles Alice 200.</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_17"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_17" title="Apr 25, 2019 2:14 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 14:14:04 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#17</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_16">Replying to #16</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Just to clarify what you’re proposing, how would these queries / requests be sent? Is this part of an HTTP API that all nodes MUST implement (independent of the transport they use for ILP packets)? Or would they be sent in ILP packets with a special ILP address that peers MUST support?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_18"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_18" title="Apr 25, 2019 2:21 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 14:21:16 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#18</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_17">Replying to #17</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/matdehaast/index.html">@matdehaast</a> and I were just debating that! I think we could use either. HTTP is easier for new implementations but I think ILP packets are better because we already have the channel.</p>
+<p>So let’s say:</p>
+<p>Alice does a query = Alice sends a packet to <code>peer.settlement.config</code>  with an empty payload and gets back <code>balance=200, settleThreshold=300, settleTo=200, minBalance=0, maxBalance=Infinity</code> in the fulfillment</p>
+<p>Alice requests that Bob adjust her <code>settleThreshold</code> to 250 = Alice sends a packet to <code>peer.settlement.config</code>  a payload of <code>settleThreshold=250</code></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_19"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_19" title="Apr 25, 2019 2:23 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 14:23:37 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#19</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_18">Replying to #18</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Improvement:</p>
+<p>Alice requests that Bob adjust her  <code>settleThreshold</code>  to 250 = Alice sends a packet to  <code>peer.settlement.config</code>  a payload of  <code>settleThreshold=250</code> and gets back <code>balance=200, settleThreshold=250, settleTo=150, minBalance=0, maxBalance=Infinity</code></p>
+<p>Another nice thing about this (as <a class="mention" href="/u/matdehaast/index.html">@matdehaast</a> points out) is that you could charge for config changes <img src="https://emoji.discourse-cdn.com/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+<p>To be determined is the encoding of this data. OER?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_20"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_20" title="Apr 25, 2019 2:23 PM">
+            <time itemprop="datePublished" datetime="2019-04-25 14:23:42 +0200">Apr 25, 2019</time>
+          </a>
+          <span class="post-number">#20</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_18">Replying to #18</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>How does Alice’s implementation know when to send these packets?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+  <nav class="pagination" role="navigation" aria-label="Post pages">
+    
+
+    <span class="pagination-info">Page 1 of 2</span>
+
+    
+    <a href="/t/what-should-positive-negative-balances-represent/501/2.html" class="pagination-next" rel="next">Next</a>
+    
+  </nav>
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

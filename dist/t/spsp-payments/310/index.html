@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPSP Payments - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">SPSP Payments</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">SPSP Payments</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Mar 5, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Rawad_Rifai" class="user-link">Rawad Rifai</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Mar 5, 2019 10:11 PM">
+            <time itemprop="datePublished" datetime="2019-03-05 22:11:24 +0200">Mar 5, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>When using SPSP to make a payment, for example here: <a href="https://medium.com/interledger-blog/spsp-simple-payment-setup-protocol-2028292e6925" rel="nofollow noopener">https://medium.com/interledger-blog/spsp-simple-payment-setup-protocol-2028292e6925</a>, we’re saying “SPSP.pay”.</p>
+<p>How do we know how many packets are sent/received in total between 2 parties? Do we keep track of that manually in a database? If yes, is the database bilateral between sender and receiver? or one entity trusts the other? Also if we do track packets manually (i.e. outside ILP), where/when should the database be updated?</p>
+<p>I can’t seem to find a more complete example for client/server SPSP or STREAM setup.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Mar 5, 2019 11:07 PM">
+            <time itemprop="datePublished" datetime="2019-03-05 23:07:42 +0200">Mar 5, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>In Interledger, the sender and receiver don’t have any settlement relationship nor do they have any trust relationship.</p>
+<p>The only relationship is to your direct peer. If you’re connecting to Interledger through Moneyd, we would call this peer your “upstream connector” or “uplink.” When you send packets through your upstream connector, Moneyd keeps track of the amounts and settles them.</p>
+<p>So SPSP isn’t doing any of the tracking for settlements, that all lies at the Interledger layer. This lets you save a lot of headache when implementing high level protocols: settlement is always abstracted away.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Rawad_Rifai" class="user-link">Rawad Rifai</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Mar 5, 2019 11:13 PM">
+            <time itemprop="datePublished" datetime="2019-03-05 23:13:47 +0200">Mar 5, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/sharafian/index.html">@sharafian</a> We have some knowledge gaps with ILP so thank you for these. And apologies if some of the question sound primitive.</p>
+<p>To follow up:<br>
+1- is it possible to have a remote moneyd instance?<br>
+2- when you “spsp.pay” which currency are you paying in and what denomination?</p>
+<aside class="quote no-group" data-username="sharafian" data-post="2" data-topic="310">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sharafian/48/449_2.png" class="avatar"> sharafian:</div>
+<blockquote>
+<p>Moneyd keeps track of the amounts and settles them.</p>
+</blockquote>
+</aside>
+<p>By settles, you mean update a local db? or actual ledger settlement?<br>
+How do retrieve a state between 2 peers in order to settle on the blockchain (if moneyd doesn’t settle on ledger)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 5, 2019 11:27 PM">
+            <time itemprop="datePublished" datetime="2019-03-05 23:27:08 +0200">Mar 5, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Moneyd does settle on-ledger. The configuration that moneyd uses to connect to its upstream connector determines the currency that this happens in. (for XRP, <a href="https://github.com/interledgerjs/moneyd-uplink-xrp" rel="nofollow noopener">https://github.com/interledgerjs/moneyd-uplink-xrp</a>).</p>
+<p>The currency that SPSP pays in depends on what currency is used by the moneyd it connects to. If you use a moneyd uplink in XRP, then the currency will be XRP. The ILDCP protocol (<a href="https://github.com/interledgerjs/ilp-protocol-ildcp" rel="nofollow noopener">https://github.com/interledgerjs/ilp-protocol-ildcp</a>) can be used to fetch this information using any plugin. It queries the parent and then gets its own ILP address, asset code, and asset scale as a response.</p>
+<p>It’s possible to use a moneyd instance remotely. The <code>ILP_CREDENTIALS</code>  environment variable can be used to set the configuration of the plugin that any ILP application creates. If the <code>server</code> of this is set to a remote server, the application will connect to a remote server.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Rawad_Rifai" class="user-link">Rawad Rifai</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 6, 2019 12:01 AM">
+            <time itemprop="datePublished" datetime="2019-03-06 00:01:39 +0200">Mar 6, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>So we would need at least 1 moneyd instance per currency.<br>
+Are there uplink connectors or moneyd’s for ETH/BTC or others?<br>
+Any documentation on building our own to support more currencies?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Rawad_Rifai" class="user-link">Rawad Rifai</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Mar 6, 2019 12:10 AM">
+            <time itemprop="datePublished" datetime="2019-03-06 00:10:43 +0200">Mar 6, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I understand that a user is required to deposit some money with their uplink in order to transact. They don’t need to, if trust is vested in the user.</p>
+<aside class="quote no-group" data-username="sharafian" data-post="4" data-topic="310">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/sharafian/48/449_2.png" class="avatar"> sharafian:</div>
+<blockquote>
+<p>Moneyd does settle on-ledger.</p>
+</blockquote>
+</aside>
+<p>If we’re using moneyd as an uplink connector, does that mean that the user would need to deposit money with moneyd for settlement to be made possible? Also why use the word “uplink”? What would a downlink be or do?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Mar 6, 2019 12:16 AM">
+            <time itemprop="datePublished" datetime="2019-03-06 00:16:44 +0200">Mar 6, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Moneyd has an uplinks, but is not an uplink itself. The reason we say “uplink” or “upstream connector” is taken from internet terminology. It’s like the router that you send all of your traffic up to. Moneyd sends all of its traffic to its uplink because it doesn’t know any routing logic itself.</p>
+<p>From the upstream connector’s perspective I suppose you could call moneyd a downlink, but ‘link’ implies that it’s providing connectivity which would be confusing. Really, the connector provides Interledger connectivity to moneyd and not the other way around.</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="5" data-topic="310" data-full="true">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>So we would need at least 1 moneyd instance per currency.<br>
+Are there uplink connectors or moneyd’s for ETH/BTC or others?<br>
+Any documentation on building our own to support more currencies?</p>
+</blockquote>
+</aside>
+<p>There is an ETH uplink (<a href="https://github.com/interledgerjs/moneyd-uplink-eth" class="inline-onebox">GitHub - interledgerjs/moneyd-uplink-eth: Connect to the ILP network using ETH.</a>) and a BTC plugin using lightning (<a href="https://github.com/interledgerjs/ilp-plugin-lightning" class="inline-onebox">GitHub - interledgerjs/settlement-lightning: ⚡️ Settle Interledger payments using the Lightning Network</a>) which has not yet been packaged up as a moneyd uplink. However, I don’t know of any public connectors currently offering ETH liquidity because it’s kinda unstable right now. Kava Labs is doing more of the work on the multi-currency stuff though, so they might correct me on that. I’m not super familiar with the code they’ve released recently.</p>
+<p>What’s the reason you want multiple moneyd instances in different currencies?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Rawad_Rifai" class="user-link">Rawad Rifai</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Mar 6, 2019 12:25 AM">
+            <time itemprop="datePublished" datetime="2019-03-06 00:25:28 +0200">Mar 6, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>We are working with Xpring trying to adopt ILP to power our p2p swaps for OTC desks. (<a href="https://hedgebase.io" rel="nofollow noopener">https://hedgebase.io</a>)</p>
+<p>Currently we “escrow” signed transactions from both sides and release them on the appropriate ledgers to perform a p2p swap. Another feature is regular transactions, as in paying or requesting money. We want the ability for a user to send in any currency and have that converted to whatever the receiver is requesting. Those are the 2 most prominent use cases, and we use AWS cloud + blockchain to get them implemented.</p>
+<p>It would be extremely helpful if you or Evan can jump on a 30 min call to help us with some early advice on design to shave off some time. We like the concept of ILP but we have some questions to help assess the right use cases.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

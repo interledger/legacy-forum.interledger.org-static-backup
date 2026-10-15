@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Walled Garden Connector - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Walled Garden Connector</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Walled Garden Connector</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 8, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/fractal-synapse" class="user-link">Neil Jubinville</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 8, 2019 10:25 PM">
+            <time itemprop="datePublished" datetime="2019-07-08 22:25:07 +0200">Jul 8, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, strange title lol - I am rebuilding <a href="http://AOL.com" rel="nofollow noopener">AOL.com</a>!  j/k <img src="https://emoji.discourse-cdn.com/twitter/laughing.png?v=9" title=":laughing:" class="emoji" alt=":laughing:"></p>
+<p>My question has to do with a scenario where you have only ONE CONNECTOR and multiple accounts.</p>
+<p>It is my understanding that once that connector receives a PreparePacket it will look to its routes and determine if it needs to forward.   Because it is local it will adjust the store balance.</p>
+<p>To illustrate further,  you have two accounts on that single connector backend:</p>
+<p>Account-B<br>
+Account-A</p>
+<p>Then from a client application you craft a PreparePacket to fire at the Connector.   The packet contains the auth token for Account-B and the to: as Account-A.</p>
+<p>Technically this seems to be allowed as the routing checks resolve local - no forward.</p>
+<p>Please confirm I should see a local transfer take place.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 8, 2019 10:33 PM">
+            <time itemprop="datePublished" datetime="2019-07-08 22:33:00 +0200">Jul 8, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yeah, the connector should be able to forward the packet. Although I don’t know what you mean by “local transfer” exactly. If you’re referring to settlement then it is  unlikely that  a single ILP packet will trigger settlement but it depends on configuration. Hope this answers your question</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/fractal-synapse" class="user-link">Neil Jubinville</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 8, 2019 11:14 PM">
+            <time itemprop="datePublished" datetime="2019-07-08 23:14:43 +0200">Jul 8, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>This is more a test bed hacker type thing.   <strong>There is only one connector.</strong></p>
+<p>In a command line app I simply connect raw socket to the /ilp route and send a packet crafted with the auth token of one user and the rest of the PrepareBuilder details to the other local connector account.</p>
+<p>Once that connector receives the packet, there is no where to forward since the addresses are local to that single connector.</p>
+<p>Yes I would expect the balance to change in the underlying store. I would not call this true settlement but I suppose it could be termed that even without a ledger.</p>
+<p>The part I am trying to discover is if I can make the local transfer by crafting an authorized packet.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 9, 2019 12:14 AM">
+            <time itemprop="datePublished" datetime="2019-07-09 00:14:06 +0200">Jul 9, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_3">Replying to #3</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>It sounds like you might be talking about the rust connector, which I’m not very familiar with the abstractions of.</p>
+<p>You can have multiple addresses under a single connector, for instance a connector which accepts connections on two ‘child’ accounts, but I don’t know if that’s the topology you’re running.</p>
+<p>Running <code>moneyd local</code> is an example of a single-connector topology, and you can still run SPSP sender/receivers or anything else that runs on ILP.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/fractal-synapse" class="user-link">Neil Jubinville</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 9, 2019 12:20 AM">
+            <time itemprop="datePublished" datetime="2019-07-09 00:20:52 +0200">Jul 9, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>yes you are correct - I am in the rust connector,  I recall seeing this occur in moneyd local in nodejs but I suspect now it was using SPSP.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 9, 2019 6:52 AM">
+            <time itemprop="datePublished" datetime="2019-07-09 06:52:23 +0200">Jul 9, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t know the details of the rust connector, maybe <span class="mention">@emschwartzcan</span> help here but generically, what you want to do is possible.</p>
+<p>When you connect to the connector as Account-A or Account-B the first thing you will need to do is:<br>
+a) get an address which is a sub-address of that connector’s address, or<br>
+b) make the connector aware of your address</p>
+<p>The most likely scenario is a) so imagine the connector has the address <code>test.connector</code>, you connect using the credentials of Account-A and perform an IL-DCP query to get your own address. This is returned as something like: <code>test.connector.account-a</code>.</p>
+<p>You would repeat the same process for Account-B and likely have an address like: <code>test.connector.account-b</code>.</p>
+<p>Now if you are connected as Account-A and send packets addressed to <code>test.connector.account-b</code> they will be routed to the entity connected as Account-B.</p>
+<p>Note that the internal routing table of the connector should track the lifecycle of peer connections. If a connection to a peer is down then the connector should remove routes to that peer (and possibly replace them with routes via another peer if it is aware of these).</p>
+<p>The only time a connector routes a packet to itself is if it able to fulfil that packet (not a scenario I’ve seen implemented in any connectors) or if the packet is being used for a protocol like the Echo protocol for network analysis.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jul 9, 2019 2:22 PM">
+            <time itemprop="datePublished" datetime="2019-07-09 14:22:45 +0200">Jul 9, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/fractal-synapse/index.html">@fractal-synapse</a> in order to have the receiving account fulfill the packet, you’ll probably want to use higher level protocols like STREAM and SPSP.</p>
+<p>To send a local payment on the Rust implementation, you would send an HTTP request to <code>/pay</code> with the <code>receiver</code> field set to the SPSP URL of the other account (something like <code>http://localhost:7770/spsp/2</code> where <code>2</code> is the <code>AccountId</code> of the receiving account.</p>
+<p>Note: the Rust implementation’s HTTP API is not yet stable so the exact API calls and paths may change in the future.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_8"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/fractal-synapse" class="user-link">Neil Jubinville</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_8" title="Jul 9, 2019 9:05 PM">
+            <time itemprop="datePublished" datetime="2019-07-09 21:05:03 +0200">Jul 9, 2019</time>
+          </a>
+          <span class="post-number">#8</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_7">Replying to #7</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Agreed,  I am in a research phase to grok ILP packets at the lower layers, then I will layer in the goodness of higher level abstractions after I understand the foundations of the protocol.</p>
+<p>I am however getting a bit further in this test now by firing manually crafted packets into the /ilp endpoint.   I’ll continue these experiments and posts into the rust topic area since things are getting “rusty”.</p>
+<p>To close off this thread,  it seems to be possible what I am suggesting but I see now in the code that at the very least the routing is looking for an outgoing btp address which would imply wanting at least two connectors in this idea.   I may try to formulate a local btp address for the destination and see if it routes to the btp port.</p>
+<p>Thanks for the insights.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_9"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_9" title="Jul 10, 2019 1:15 PM">
+            <time itemprop="datePublished" datetime="2019-07-10 13:15:35 +0200">Jul 10, 2019</time>
+          </a>
+          <span class="post-number">#9</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_8">Replying to #8</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Instead of having a second connector, you could also use a script that connects via BTP (as a client) to 2 accounts on the same node. If you send a packet with the <code>destination</code> set to the second account’s ILP address, the node will forward it over the open BTP/Websocket connection to the second node. To fulfill the packet, you’ll need to have the script send back a <code>Fulfill</code> packet with the preimage of the <code>execution_condition</code>.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

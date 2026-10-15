@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connector and Packet Questions - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Connector and Packet Questions</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Connector and Packet Questions</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 26, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">R</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Rawad_Rifai" class="user-link">Rawad Rifai</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 26, 2019 6:54 AM">
+            <time itemprop="datePublished" datetime="2019-02-26 06:54:53 +0200">Feb 26, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>From documentation:</p>
+<blockquote>
+<p>Payment channels are a way to use signed claims against funds held on a ledger</p>
+</blockquote>
+<ul>
+<li>
+<p>Are there any assumptions about the type of account(s) that would exist between a participant and a connector? For example: multisig?</p>
+</li>
+<li>
+<p>Are there chances for cycles between connectors and are there any mechanisms in place to avoid them?</p>
+</li>
+<li>
+<p>Is there documentation on the executionCondition? I’m trying to find what’s the actual cryptographic function that runs to fulfill the condition. Is it just a hash digest of the secret?</p>
+</li>
+<li>
+<p>For the fulfill packet, how do connectors know the previous node to send the packet to?</p>
+</li>
+<li>
+<p>At the risk of asking a naive question, is there a mechanism to ensure the connector credits a receiver when receiving a fulfillment package?</p>
+</li>
+<li>
+<p>If connectors subtract X from the expiration date of the prepare packet, how do we know what’s the real expiration date? And do we need to know? By “we”, I mean connectors. IOW, on the way back, don’t connectors check for expiration? Are they checking the altered value, and against what? Unless it’s a function of the connector to increment the expiration in the fulfill.</p>
+</li>
+</ul>
+<p>From documentation:</p>
+<blockquote>
+<p>If participants use payment channels, they may choose to sign an update to the payment channel to cover the value of each packet sent and thus minimize the amount the connector must trust the sender for</p>
+</blockquote>
+<ul>
+<li>
+<p>What is meant by “sign an update”? If this means issue a blockchain transaction, then it might not be realistic for any of the existing blockchains. If it means balancing a bilateral database account, how does it reduce trust required in the sender?</p>
+</li>
+<li>
+<p>Can you point out wrong content in the following statements?<br>
+Connectors may have multiple types of payment channels. Each payment channel type comes with an input asset type and an output asset type, for example BTC =&gt; ETH. Connectors apply exchange rates per channel type. Payment channel may input and output the same asset type. Connectors may pay each other fees depending on connectivity (for example, the less connected pays the more connected)</p>
+</li>
+<li>
+<p>When looking at the full stack, we have SPSP talking to ILP, while Pre-Shared Key V2 can be used for secret management. Is there an adopted db for bidirectional balance tracking?</p>
+</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 26, 2019 12:54 PM">
+            <time itemprop="datePublished" datetime="2019-02-26 12:54:53 +0200">Feb 26, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Great questions!</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>Are there any assumptions about the type of account(s) that would exist between a participant and a connector? For example: multisig?</p>
+</blockquote>
+</aside>
+<p>The general assumption is that both parties independently track their view of the (net) balance between them and use some kind of external accounting system to settle. See this thread for the discussion on the main settlement options: <a href="https://forum.interledger.org/t/should-the-main-interledger-ux-use-payment-channels-on-ledger-settlement-or-hosted-accounts/119">Should the main Interledger UX use payment channels, on-ledger settlement, or hosted accounts?</a></p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>Are there chances for cycles between connectors and are there any mechanisms in place to avoid them?</p>
+</blockquote>
+</aside>
+<p>Routing loops are possible if their routing tables are configured to point back to one another for a particular destination. Each time a packet is forwarded, some time is subtracted from the expiry, which at least makes it so that the packet won’t travel in a loop forever. For more details on how to avoid loops, you might want to ask in this thread: <a href="https://forum.interledger.org/t/how-does-routing-work-in-interledger/94">How does routing work in Interledger?</a></p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>Is there documentation on the executionCondition? I’m trying to find what’s the actual cryptographic function that runs to fulfill the condition. Is it just a hash digest of the secret?</p>
+</blockquote>
+</aside>
+<p>The execution condition (also sometimes referred to as just the condition) is just the SHA 256 hash digest of the fulfillment. See the <a href="/rfcs/0027-interledger-protocol-4/#packet-format">Interledger Protocol V4 spec</a> for more details.</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>For the fulfill packet, how do connectors know the previous node to send the packet to?</p>
+</blockquote>
+</aside>
+<p>Connectors keep the previous hop in memory. Thus far, most implementations use a Promise or a Future (whatever async primitive the language uses) to map the incoming request to the outgoing request and response. A connector implementation could use a different design though.</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>At the risk of asking a naive question, is there a mechanism to ensure the connector credits a receiver when receiving a fulfillment package?</p>
+</blockquote>
+</aside>
+<p>If the receiver doesn’t trust the connector, they should use a payment channel for settlement and require payment channel updates for every packet. In this way, the payment would almost immediately be guaranteed by the underlying ledger/blockchain.</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>If connectors subtract X from the expiration date of the prepare packet, how do we know what’s the real expiration date? And do we need to know? By “we”, I mean connectors. IOW, on the way back, don’t connectors check for expiration? Are they checking the altered value, and against what? Unless it’s a function of the connector to increment the expiration in the fulfill.</p>
+</blockquote>
+</aside>
+<p>There is no single expiration date. Imagine that each time the packet is forwarded, it’s a completely separate packet with a different arrangement between the parties. If I send you a packet that expires in 20 seconds, what I’m saying is “I agree to pay you if and only if you give me a fulfillment that hashes to that condition within the next 20 seconds”. How you get that, including where you might send another packet or what that packet might look like, don’t matter at all to me. (A really important part of Interledger is how it localizes these relationships to the bilateral connections)</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>What is meant by “sign an update”? If this means issue a blockchain transaction, then it might not be realistic for any of the existing blockchains. If it means balancing a bilateral database account, how does it reduce trust required in the sender?</p>
+</blockquote>
+</aside>
+<p>A payment channel is like a temporary escrow account on a blockchain. The payment channel is created by at least one of the parties submitting a transaction on the blockchain to deposit funds into the shared account. Then, the two parties can instantaneously “pay” one another by sending signed transactions or updates <em>to each other</em> (not to the blockchain) that assign a greater portion of the escrowed funds to the other party. This can be repeated any number of times without touching the blockchain. When one or both of the parties wants to close the payment channel and withdraw their funds, they will then submit a second transaction to the blockchain to do so.</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>Can you point out wrong content in the following statements?<br>
+Connectors may have multiple types of payment channels. Each payment channel type comes with an input asset type and an output asset type, for example BTC =&gt; ETH. Connectors apply exchange rates per channel type. Payment channel may input and output the same asset type. Connectors may pay each other fees depending on connectivity (for example, the less connected pays the more connected)</p>
+</blockquote>
+</aside>
+<p>Sounds correct to me.</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>When looking at the full stack, we have SPSP talking to ILP, while Pre-Shared Key V2 can be used for secret management.</p>
+</blockquote>
+</aside>
+<p>Small correction: <a href="https://medium.com/interledger-blog/streaming-money-and-data-over-ilp-fabd76fc991e">STREAM</a> is now the recommended transport protocol to use, rather than PSK2. Implementations of SPSP SHOULD automatically use STREAM now.</p>
+<aside class="quote no-group" data-username="Rawad_Rifai" data-post="1" data-topic="265">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/rawad_rifai/48/135_2.png" class="avatar"> Rawad_Rifai:</div>
+<blockquote>
+<p>Is there an adopted db for bidirectional balance tracking?</p>
+</blockquote>
+</aside>
+<p>That’s an implementation detail so not something that would necessarily be adopted across the board. Want to start a thread in the <a href="https://forum.interledger.org/c/implementations">Implementations</a> category about which database technologies to use?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

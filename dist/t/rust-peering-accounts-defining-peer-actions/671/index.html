@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rust Peering Accounts - Defining Peer Actions - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Rust Peering Accounts - Defining Peer Actions</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Rust Peering Accounts - Defining Peer Actions</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/rust" class="tag-badge">rust</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jul 11, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/fractal-synapse" class="user-link">Neil Jubinville</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jul 11, 2019 5:09 AM">
+            <time itemprop="datePublished" datetime="2019-07-11 05:09:56 +0200">Jul 11, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>&amp;rust.clonetheworld()  <img src="https://emoji.discourse-cdn.com/twitter/star_struck.png?v=9" title=":star_struck:" class="emoji" alt=":star_struck:"></p>
+<p>Ok so I am now at the point where I have multiple ILP nodes running in the same subnet.   I can make as many as I want <img src="https://emoji.discourse-cdn.com/twitter/sunglasses.png?v=9" title=":sunglasses:" class="emoji" alt=":sunglasses:"> .</p>
+<p>My next step is to make them aware of each other.   I would take this moment to opt in my perspective that I vote to programatically hit admin api endpoints to configure such peers / add them vs auto-discovery or discovery service by default.   Still needed, but not default.</p>
+<p>To make them aware of each other I will attempt to add a peer account to the /accounts endpoint on one of the nodes.  That account information will be of class peer relationship and  point to the other node we want to ‘peer’ with.</p>
+<p>So , I did try to drop in a peer account and saw some ILP action immediately being attempted in the logs - could this be “peering”.   This led me to contemplate “What does is mean to PEER?” <img src="https://emoji.discourse-cdn.com/twitter/grinning.png?v=9" title=":grinning:" class="emoji" alt=":grinning:">.</p>
+<p>The spec really defines a peer as one that has made an ILP connection.   I need to look deeper into what is transmitted but it looks like routes.   The spec also states that the resulting connection will end up bilateral so that means a btp websocket to me and thus the direction of the peering is irrelevant to a degree because the goal is to share routes.</p>
+<p>Ok stepping back does that mean one must simply have an account with the other? and decide amongst the trusted parties who will configure what, is that correct?  Really peering is a client connecting to a server and sharing route data from what I understand.</p>
+<p>Putting it into practice.</p>
+<p>On to my setup,   I have two nodes, on the same subnet both listening on 7770 and 7768  :<br>
+ilp-node-1_1  - 192.168.176.4    hostname  ilpnode1.local<br>
+ilp-node-2_1  - 192.168.176.2    hostname  ilpnode2.local</p>
+<p>My attempt to make them peer is to first POST a <strong>peer account</strong> to   ilpnode1.local.    You can see the POST below.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/ffb5ca2334d8e29b370c6dad9d8f6c63b4cbedf1.png" data-download-href="/uploads/short-url/Au7eIvDvzXVoyNXJUrB4KeN7hxn.png?dl=1" title="Screen Shot 2019-07-10 at 10.26.27 PM.png" rel="nofollow noopener"><img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/ffb5ca2334d8e29b370c6dad9d8f6c63b4cbedf1_2_464x499.png" alt="27%20PM" data-base62-sha1="Au7eIvDvzXVoyNXJUrB4KeN7hxn" width="464" height="499" srcset="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/ffb5ca2334d8e29b370c6dad9d8f6c63b4cbedf1_2_464x499.png, https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/ffb5ca2334d8e29b370c6dad9d8f6c63b4cbedf1_2_696x748.png 1.5x, https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/ffb5ca2334d8e29b370c6dad9d8f6c63b4cbedf1.png 2x" data-small-upload="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/ffb5ca2334d8e29b370c6dad9d8f6c63b4cbedf1_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screen Shot 2019-07-10 at 10.26.27 PM.png</span><span class="informations">832×895 94.3 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>As soon as I POST that account creation on ilpnode1 you can see “Sending Route Updates” to that new peer account in the log.   It also states outgoing ILP packet over http to ilpnode2 - proof that it is trying.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/46110f2254c481b2554f12c068c1ee0cc658530f.png" data-download-href="/uploads/short-url/9ZPYg4iWXnXdV0pNMeX97v9fEB1.png?dl=1" title="Screen Shot 2019-07-10 at 10.20.42 PM.png" rel="nofollow noopener"><img src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/46110f2254c481b2554f12c068c1ee0cc658530f_2_690x295.png" alt="42%20PM" data-base62-sha1="9ZPYg4iWXnXdV0pNMeX97v9fEB1" width="690" height="295" srcset="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/46110f2254c481b2554f12c068c1ee0cc658530f_2_690x295.png, https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/46110f2254c481b2554f12c068c1ee0cc658530f_2_1035x442.png 1.5x, https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/46110f2254c481b2554f12c068c1ee0cc658530f.png 2x" data-small-upload="https://canada1.discourse-cdn.com/flex031/uploads/interledger/optimized/1X/46110f2254c481b2554f12c068c1ee0cc658530f_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">Screen Shot 2019-07-10 at 10.20.42 PM.png</span><span class="informations">1245×534 399 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+<p>I ended up with a 404 you can see, but I am not complete.   On that ilpnode2 that I am trying to peer with,  do I need to create a regular account and pass a <strong>btp_outgoing_token</strong> as the token of the new target peer node  account?   That part I left out because I am at that step and thought it would be good to ask the gurus here.</p>
+<p>Thanks!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="2 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          2 replies
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jul 11, 2019 8:03 AM">
+            <time itemprop="datePublished" datetime="2019-07-11 08:03:09 +0200">Jul 11, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="fractal-synapse" data-post="1" data-topic="671">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/fractal-synapse/48/379_2.png" class="avatar"> fractal-synapse:</div>
+<blockquote>
+<p>On that ilpnode2 that I am trying to peer with, do I need to create a regular account and pass a <strong>btp_outgoing_token</strong> as the token of the new target peer node account?</p>
+</blockquote>
+</aside>
+<p>Yes. I’m not sure on the specifics of the Rust impl but both peers need to be configured as we don’t have an auto-peering protocol yet.</p>
+<p>There is a plugin(s) for the Javascript connector which allows unsolicited connections but these are automatically configured as “child” peers (see: mini-accounts).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jul 11, 2019 3:33 PM">
+            <time itemprop="datePublished" datetime="2019-07-11 15:33:58 +0200">Jul 11, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <aside class="quote no-group" data-username="fractal-synapse" data-post="1" data-topic="671">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/fractal-synapse/48/379_2.png" class="avatar"> fractal-synapse:</div>
+<blockquote>
+<p>“What does is mean to PEER?”</p>
+</blockquote>
+</aside>
+<ol>
+<li>Establishing a bilateral communication link for sending ILP packets (right now that means either a BTP or HTTPS connection)</li>
+<li>Agreeing on a settlement asset, asset scale, and settlement method to use</li>
+<li>Potentially sending routing information to one another using the Connector to Connector Protocol (CCP – <a href="https://github.com/interledger/rfcs/pull/455">this PR</a> has the best write-up of it)</li>
+</ol>
+<aside class="quote no-group" data-username="fractal-synapse" data-post="1" data-topic="671">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/fractal-synapse/48/379_2.png" class="avatar"> fractal-synapse:</div>
+<blockquote>
+<p>Ok stepping back does that mean one must simply have an account with the other?</p>
+</blockquote>
+</aside>
+<p>Kind of. The “Account” is the Rust implementation’s approach to encapsulate all of the details the peers negotiate as mentioned above.</p>
+<aside class="quote no-group" data-username="fractal-synapse" data-post="1" data-topic="671">
+<div class="title">
+<div class="quote-controls"></div>
+<img loading="lazy" alt="" width="24" height="24" src="https://yyz1.discourse-cdn.com/flex031/user_avatar/forum.interledger.org/fractal-synapse/48/379_2.png" class="avatar"> fractal-synapse:</div>
+<blockquote>
+<p>I ended up with a 404 you can see, but I am not complete.</p>
+</blockquote>
+</aside>
+<p>You’re seeing a 404 because you’re passing the same <code>http_endpoint</code> to both nodes, instead of the <code>http_endpoint</code> of the other node, and because you also need to include the <code>/ilp</code> path in that value (that could be made clearer). Note that if you have HTTP details configured, the node will send the packet over HTTP and not BTP. You will also want to include <code>http_outgoing_token</code> and <code>http_incoming_token</code> for both accounts.</p>
+<hr>
+<p>As a side note, it might be better to discuss technical problems related to one of the implementations in the Issues for that particular repository and use the forum more for questions like “what does peering mean”.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/fractal-synapse" class="user-link">Neil Jubinville</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Jul 11, 2019 3:40 PM">
+            <time itemprop="datePublished" datetime="2019-07-11 15:40:43 +0200">Jul 11, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is the second node configuration of type account child or peer?     I am guessing ‘child’ as peer would yield an extra bilateral connection.</p>
+<p>Given that it does auto connection for peers now, the directional element could have some importance.  Creating a peer account reference pointing back to originating peer could be useful for connection resilience.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Jul 11, 2019 4:16 PM">
+            <time itemprop="datePublished" datetime="2019-07-11 16:16:44 +0200">Jul 11, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_4">Replying to #4</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>If you have two nodes connected to one another, they should either both be “peers” or one should be a “parent” and the other a “child”. That said, that property isn’t heavily used in the code right now so it doesn’t make a big difference either way. The only details that determine whether a bilateral connection is made are the <code>http_</code> fields and the <code>btp_</code> fields.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">F</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/fractal-synapse" class="user-link">Neil Jubinville</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Jul 11, 2019 4:24 PM">
+            <time itemprop="datePublished" datetime="2019-07-11 16:24:45 +0200">Jul 11, 2019</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_5">Replying to #5</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is it assumed that only ONE of the fields are to be used?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_7"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_7" title="Jul 11, 2019 4:26 PM">
+            <time itemprop="datePublished" datetime="2019-07-11 16:26:11 +0200">Jul 11, 2019</time>
+          </a>
+          <span class="post-number">#7</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_6">Replying to #6</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Yes, the assumption is that you either use HTTPS or BTP</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

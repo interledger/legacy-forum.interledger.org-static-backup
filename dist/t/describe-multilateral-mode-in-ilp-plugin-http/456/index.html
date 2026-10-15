@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Describe Multilateral Mode in ILP-plugin-http - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/implementations/6/index.html">Implementations and SDKs</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Describe Multilateral Mode in ILP-plugin-http</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Describe Multilateral Mode in ILP-plugin-http</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/implementations/6" class="category-badge" style="--cat-color: #652D90"><span class="category-bullet" aria-hidden="true"></span>Implementations and SDKs</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/plugins" class="tag-badge">plugins</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Apr 1, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Apr 1, 2019 2:18 PM">
+            <time itemprop="datePublished" datetime="2019-04-01 14:18:38 +0200">Apr 1, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/sharafian/index.html">@sharafian</a> Can you help me understand the intended functionality around “multi-mode” delimiters in <code>ilp-plugin-http</code>? This comment is a bit unclear to me:</p>
+<p>See README <a href="https://github.com/interledgerjs/ilp-plugin-http#usage" rel="noopener nofollow ugc">here</a>:</p>
+<blockquote>
+<p><code>outgoing.url</code>: …  if url contains a percent and the plugin is in <code>multi</code> mode, then segment after this plugin’s own address will be filled where the <code>%</code> when routing packets.</p>
+</blockquote>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Apr 1, 2019 4:14 PM">
+            <time itemprop="datePublished" datetime="2019-04-01 16:14:11 +0200">Apr 1, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Basically we use this to attach a stateful set to a non-stateful deployment when using kubernetes. However it could also be used in any situation where you want to add many children to a plugin http instance with no connection logic required.</p>
+<p>Imagine that the “Parent” is actually many connectors representing a single ILP connector, which therefore cannot keep state. The flow is as follows.</p>
+<ul>
+<li>A new Child comes up (let’s say it’s running an SPSP server)</li>
+<li>The Child does an ILDCP query to the Parent. It sends its ‘Name’ in a header, which is typically <a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#ordinal-index" rel="nofollow noopener">its ordinal index in a stateful set.</a>
+</li>
+<li>The Parent assigns the Child an address of Prefix + Name. So if the parent address is <code>g.http</code> the Child would be something like <code>g.http.2</code>. Note that this is a stateless operation; the Parent doesn’t save this ILP address anywhere.</li>
+<li>Now the Child begins to answer to SPSP queries, giving its address of <code>g.http.2</code>. People begin sending to that address.</li>
+<li>The Parent gets a packet for <code>g.http.2</code>. To decide where this packet goes, they take the first segment after its own address (<code>2</code>), and splices it into a URL. So lets say the stateful set for connector children is <code>http://connetor-children</code>, the URL of a child with ordinal <code>2</code> is <code>http://connector-children-2</code> (this is in the rules of how stateful sets work)</li>
+<li>The Parent splices the segment (<code>2</code> in this example) into its outgoing url. Our outgoing URL in this example is <code>http://connector-children-%</code>.</li>
+<li>The Child receives the packet correctly, and the Parent did not have to keep any state about its existence.</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

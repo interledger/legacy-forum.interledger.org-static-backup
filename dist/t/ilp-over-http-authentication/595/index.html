@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ILP-over-HTTP Authentication - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">ILP-over-HTTP Authentication</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">ILP-over-HTTP Authentication</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">May 16, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="May 16, 2019 11:37 PM">
+            <time itemprop="datePublished" datetime="2019-05-16 23:37:18 +0200">May 16, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I have submitted a <a href="https://github.com/interledger/rfcs/pull/531" rel="nofollow noopener">PR to the RFCs repo</a> that updates and clarifies the <code>Authentication</code> section of the RFC to more clearly define what authentication mechanisms ILP Nodes should support in order to be IL-RFC-35 compliant.</p>
+<p>The intention is to improve the overall security of the protocol, ensure that the various Connector implementations are interoperable, and provide some security-related best-practices for Connector operators when deploying ILP-over-HTTP.</p>
+<p>Feedback welcome, either here or in the PR: <a href="https://github.com/interledger/rfcs/pull/531" rel="nofollow noopener">https://github.com/interledger/rfcs/pull/531</a></p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="May 21, 2019 7:41 PM">
+            <time itemprop="datePublished" datetime="2019-05-21 19:41:25 +0200">May 21, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I don’t have a particularly strong opinion on this, but it is worth noting there are concerns about the security of JWTs; namely, the complexity of the protocol, and a lack of defaults that make them harder to use securely.</p>
+<p>I highly recommend reading <a href="https://news.ycombinator.com/item?id=14292223" rel="nofollow noopener">this comment</a>, which provides some indicts of JWTs from a crypto perspective.</p>
+<p>(Additionally, <a href="https://paragonie.com/blog/2017/03/jwt-json-web-tokens-is-bad-standard-that-everyone-should-avoid" rel="nofollow noopener">No Way, JOSE! Javascript Object Signing and Encryption is a Bad Standard That Everyone Should Avoid</a>).</p>
+<p>While this has since been patched, a few years ago, the complexity exposed <a href="https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/" rel="nofollow noopener">critical bugs</a> in a number of the JWT implementations.</p>
+<p>Alternatively, something like <a href="https://branca.io" rel="nofollow noopener">Branca</a> is simple, offers reasonable crypto defaults, and I believe can be used in much the same way. (There are implementations for JS and Rust, but not a Java one. That said, the spec is really straightforward).</p>
+<p>Ultimately, we may value the library support and other advantages over that (which I think is perfectly reasonable), but it’s still worth discussing the potential tradeoffs.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="May 22, 2019 2:53 PM">
+            <time itemprop="datePublished" datetime="2019-05-22 14:53:42 +0200">May 22, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for your post, <a class="mention" href="/u/kincaid/index.html">@kincaid</a>! Those are good links, and worth reading (especially the developer counter-perspectives in the YC link).</p>
+<p>Before making any particular comments, I think it’s helpful to clarify the goals (as I see it) of the <a href="https://github.com/interledger/rfcs/pull/531" rel="nofollow noopener">PR</a> I submitted that suggests using JWT for authentication tokens.</p>
+<p>Fundamentally, we need <strong><em>at least one</em></strong> Authentication scheme that all Connectors running ILP-over-HTTP implement, and that scheme should attempt to satisfy the following:</p>
+<ol>
+<li>The scheme should be as simple as possible (emphasis: “as possible”. This doesn’t mean “simplicity over security”. Instead, it means there’s a tradeoff, and we want to find the right balance).</li>
+<li>The scheme should be required for all Connectors to implement in order to encourage broad deployment.</li>
+<li>The scheme should consider high-performance (to support high packet throughput).</li>
+<li>The scheme should resist replays (emphasis: resist, not necessarily be replay-proof, in order to aid in high-performance if required).</li>
+<li>The scheme should not negate or prevent the ability of operators to layer-on more security on top of it, depending on the requirements and characteristics of any given deployment.</li>
+</ol>
+<p>That last point has been something I’ve been thinking a lot about lately. One anecdote I’ve been thinking about is that the manner in which we would secure an ATM (for cash) is not the same manner that we would secure <a href="https://www.dvidshub.net/image/4279085/cstx-fort-knox-2018" rel="nofollow noopener">Fort Knox</a> (otherwise we’d have tanks in front of the local grocery store). As part of this exercise, it’s important to keep that in mind – every deployment of ILP is likely going to be unique.</p>
+<p>OK, with all of that out of the way, the <a href="https://news.ycombinator.com/item?id=14292223" rel="nofollow noopener">YC</a> article brings up some interesting points, though I find them to be somewhat orthogonal to the RFC PR. For clarity, I’ve replicated some of the criticisms, and placed some of my thoughts next to each one.</p>
+<ol>
+<li>“<em>JWT is complicated</em>”. True, it can be – but we’re spec’ing a very narrow and simple JWT profile with known qualities.</li>
+<li>“<em>The JWT spec was designed by committee</em>”. Probably true, but that doesn’t have any bearing on our use-case (IMHO).</li>
+<li>“<em>JWT’s defaults are incoherent</em>”. I actually don’t follow this argument. It hinges around replayability, but not every use-case demands replay resistance (though I could be convinced otherwise).</li>
+<li>(Me summarizing the author): “<em>The standard has things I don’t like.</em>” I agree. But does this apply to HMAC-SHA-256 and a JWT used only for Authentication?</li>
+<li>“<em>JWT is overkill; often it’s just an gussied-up means of expressing a trivial bearer token, the kind that could be expressed securely with virtually no risk of implementation flaws simply by hexifying 20 bytes of urandom</em>”.
+<ol>
+<li>These aren’t invalid points. It’s just that the comment reduces an argument to a simple solution that is insufficient for our engineering problem.</li>
+<li>Advocating for a 20-bytes bearer token is somewhat similar to the <code>SIMPLE</code> Authentication Profile in my PR, but it has drawbacks (see <a href="https://github.com/interledger/rfcs/pull/531/files#diff-ccfda9b7df50a9cfd8618bb9c08e360aR83" rel="nofollow noopener">PR for some of them</a>).</li>
+<li>Do we generate a new token on every request? If so, what algorithm(s) do we use? What does the “on the wire” encoding look like? You’ll notice that even <a href="https://github.com/paragonie/paseto#paseto-example-1" rel="nofollow noopener">PRASETO has an encoding</a>!</li>
+<li>Alternatively, do we <em>re-use</em> the bearer token across multiple requests? If so, we definitely want to narrow the token-validity window, but how? We’re back to creating our own on-the-wire encoding.</li>
+</ol>
+</li>
+</ol>
+<p>As for <a href="https://branca.io/" rel="nofollow noopener">Braca</a>, it’s the first I’ve heard of it, but I really like the <em>idea</em> of it. In practice though, we should consider various things (as you said, <a class="mention" href="/u/kincaid/index.html">@kincaid</a>):</p>
+<ol>
+<li>
+<p>I don’t see a Java or C++ or Swift implementations. Java and Swift will be key libraries, and we’ve already seen from the OER-encoding choice that this has caused drag on developer adoption of ILP due to having to implement an OER parser where none exists (even if it’s easy). Note to the community – I’ve come to really like the OER-encoding choice, but we shouldn’t ignore that it has impeded adoption. We should consider that lesson here.</p>
+</li>
+<li>
+<p>Library implementation lifetime is a risk, as we’ve seen with the JWT implementations – it took a few years for those libraries to mature and figure out the footguns. Even though Braca “makes it hard to shoot yourself in the foot”, developers can do silly things sometimes, so how stable are the implementations? Say what you will about JWT, but the libraries have been around for awhile.</p>
+</li>
+<li>
+<p><a class="mention" href="/u/tarcieri/index.html">@tarcieri</a> I’d be curious to hear what you thinks about Braca…?</p>
+</li>
+</ol>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

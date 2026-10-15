@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fixed destination amount push payments - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Fixed destination amount push payments</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Fixed destination amount push payments</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/application-layer" class="tag-badge">application-layer</a>
+          
+            <a href="/tag/spsp" class="tag-badge">spsp</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Jan 9, 2020</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/bariabbassi" class="user-link">Bari Abbassi</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Jan 9, 2020 10:14 AM">
+            <time itemprop="datePublished" datetime="2020-01-09 10:14:09 +0200">Jan 9, 2020</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Is it possible for a person A to send money to a person B with a fixed destination amount in B’s currency with Interledger? I mean B does not want even a tiny bit more or a tiny bit less. However, the sender A is ready to pay any fees necessary. (This is probably the case for most payments.)</p>
+<p>I found this in <a href="https://github.com/interledger/rfcs/blob/master/0027-interledger-protocol-4/0027-interledger-protocol-4.md" rel="noopener nofollow ugc">ILPv4’s RFC</a>:</p>
+<blockquote>
+<p>Now, instead of fixed destination amount delivery being built into the core protocol, senders may use higher-level protocols to indicate the minimum amount the receiver should accept for a given packet and receivers can reject packets with less than that.</p>
+</blockquote>
+<p>I understand that ILPv4 does not work with fixed destination amounts but do higher-level layers (SPSP) enable this?</p>
+<p>I don’t quite understand why there should be both a sendMax and receiveMin in a high-level layer. Shouldn’t the end receiver just always stop the connection at the fixed destination amount (receiveMin) by default? The receiver is not concerned with the fee slippage. It’s the sender who pays whatever fee is needed.</p>
+<p>I consider the fee to be the difference between the exchange rate of all the connectors on the path to the receiver and the one the client can get from somewhere like CoinMarketCap’s API.</p>
+<p>Shouldn’t the higher-level layer just tell the sender: “this the total amount (amount + fee) you should pay in your currency for you to send X amount of currency Y to person B”. It’s actually “amount + feeMax”. In my opinion, feeMax that defaults to a certain value is a concept that’s much easier to understand for a developer trying to build on top of Interledger, especially if he/she is familiar with cryptocurrencies like Ethereum for example.</p>
+<blockquote>
+<p><a href="https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sendtransaction" rel="noopener nofollow ugc">eth_sendTransaction</a>:<br>
+{<br>
+“from”: “0xb60e8dd61c5d32be8058bb8eb970870f07233155”,<br>
+“to”: “0xd46e8dd67c5d32be8058bb8eb970870f07244567”,<br>
+“gas”: 30400,<br>
+“gasPrice”: 10000000000000,<br>
+“value”: 2441406250,<br>
+“data”: “0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675”<br>
+}</p>
+</blockquote>
+<p>Telling someone: “how much are you willing to pay?”, is not as straight forward as telling him “oh btw, the fee will be less than a penny”.</p>
+<p>I’m new to Interledger. I would love it if someone can help me out with these questions.</p>
+<p>Found that this has been discussed before for the rust implementation <a href="https://github.com/interledger-rs/interledger-rs/issues/256" rel="noopener nofollow ugc">#256</a>.</p>
+<p>In these ramblings, I assume that the sender knows what currencies the receiver accepts somehow and the client knows how to get an exchange rate from somewhere. I will maybe post a similar post about exchange logic.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #67B03A; width: 45px; height: 45px">K</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/kincaid" class="user-link">Kincaid O&#39;Neil</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Jan 9, 2020 6:13 PM">
+            <time itemprop="datePublished" datetime="2020-01-09 18:13:13 +0200">Jan 9, 2020</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hey <a class="mention" href="/u/bariabbassi/index.html">@bariabbassi</a>!</p>
+<p>Fixed destination amount payments are handled at the transport layer, using STREAM, and currently setup using SPSP (but <a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> and others are working on improving this with Open Payments).</p>
+<p>How this could work (AFAIK, only the Java implementation and the Open Payments demos support this, but hopefully it’ll be expanded upon soon):</p>
+<ol>
+<li>Recipient/merchant provides the user with an invoice for the destination amount and asset they want to receive (ideally, this would be automatically populated into the user’s wallet).</li>
+<li>The sender’s wallet pulls from an exchange rate API (like CoinMarketCap) to determine the rate between their source asset and the destination asset. It subtracts some slippage/fees from this to determine the maximum amount it’s willing to send in its source asset. It may also send probing packets to the recipient to get a better idea of what the actual exchange rate is before presenting it to the user.</li>
+<li>Wallet prompts the user to authorize the payment, likely displaying the maximum source amount, invoice amount in the destination asset, and expected fees. User approves or denies.</li>
+<li>The wallet begins sending the payment with STREAM. Using the exchange rate calculated previously, in every STREAM packet the sender effectively says “only fulfill this if you receive more than <em>x</em> amount” (in the destination asset). That way, the sender can enforce that money only gets their if it meets a particular minimum exchange rate, and it knows if the recipient fulfills the packet, they got at least that much money. When they fulfill the packet, the recipient also tells the sender how much they got (*although they <em>could</em> lie about this). The sender uses this to determine how much more money it needs to send. Note that if all the packets received by the recipient don’t meet the minimum exchange rate, they’ll reject them, and the payment will eventually fail. Partial completion is a possibility if the exchange rate fluctuated a lot in the meantime, but this is unlikely.</li>
+<li>It’s possible the sender might overpay the recipient <em>slightly</em>, since you can’t precisely account for the exchange rate/fees between source and destination, so if the recipient only wants to receive the exact amount in the invoice, it’s their job to enforce this. Their STREAM receiver should reject packets that would result in the sender overpaying the invoice. The sender would reduce their packet amount, and slowly get closer and closer to completing the payment, kinda like a binary search.</li>
+</ol>
+<p>The interesting thing about a lot of this (by contrast to e.g. a blockchain like Ethereum) is it’s mostly implementation-related concerns, rather than protocol concerns. That’s really powerful, since it’s much easier to just update/improve one participant’s software rather than requiring every participant to agree to a new protocol!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">B</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/bariabbassi" class="user-link">Bari Abbassi</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Jan 11, 2020 9:14 AM">
+            <time itemprop="datePublished" datetime="2020-01-11 09:14:08 +0200">Jan 11, 2020</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks for the quick reply <a class="mention" href="/u/kincaid/index.html">@kincaid</a> !! I couldn’t have asked for a clearer explanation. This was exactly what I was looking for.</p>
+<p>The only remark I have is that I think that a fixed destination amount payment is not necessarily a pull payment (a receiver/merchant sends an invoice). It could be a sender who just wants to send a fixed amount tip, donation … in a foreign currency. What I mean by push is basically the international transfer that you have on a banking app.</p>
+<p>The 2 are basically the same thing it’s just that for a push the flow of the logic doesn’t start with the recipient sending an invoice. It starts with the sender asking for an invoice. “Invoice” is not the right word but you get the point. So, basically 1 step extra before starting the 5 steps you wrote. I’m probably nitpicking here but I just wanted to give some feedback.</p>
+<p>And yes you’re right. An interoperability layer is nothing like a blockchain. The protocol should be loose and flexible enough to make interoperability between all ledgers possible. I think that ILPv4 and STREAM do a perfect job at that but I think that the documentation for SPSP could be better. It should explain to the reader all the different types of payments possible with the right naming standards ISO20022. To avoid confusion about exchange rates, send money, send money in a different currency, request money, give permission to a subscription service … I’m interested in working on this for Open Payments that’s the reason why I accually asked the questions.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Payments v2 - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/protocol-design/5/index.html">Protocol Design</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Open Payments v2</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Open Payments v2</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/protocol-design/5" class="category-badge" style="--cat-color: #12A89D"><span class="category-bullet" aria-hidden="true"></span>Protocol Design</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/open-payments" class="tag-badge">open-payments</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 13, 2022</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 13, 2022 1:49 PM">
+            <time itemprop="datePublished" datetime="2022-02-13 13:49:48 +0200">Feb 13, 2022</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>As discussed on the last community call, <a class="mention" href="/u/sabinebertram/index.html">@sabinebertram</a> and I have been working on a new version of Open Payments that leverages the GNAP protocol.</p>
+<p>We’ve pushed a lot of our work to Github so folks can start reading it here:</p><aside class="onebox githubfolder" data-onebox-src="https://github.com/interledger/open-payments/tree/ahb-opv2/notes">
+  <header class="source">
+      <img src="https://github.githubassets.com/favicons/favicon.svg" class="site-icon" width="32" height="32">
+
+      <a href="https://github.com/interledger/open-payments/tree/ahb-opv2/notes" target="_blank" rel="noopener">github.com</a>
+  </header>
+
+  <article class="onebox-body">
+    <h3><a href="https://github.com/interledger/open-payments/tree/ahb-opv2/notes" target="_blank" rel="noopener">open-payments/notes at ahb-opv2 · interledger/open-payments</a></h3>
+
+  <p><a href="https://github.com/interledger/open-payments/tree/ahb-opv2/notes" target="_blank" rel="noopener">ahb-opv2/notes</a></p>
+
+  <p><span class="label1">Protocol to setup payments between entities on the Web based on OAuth 2.0</span></p>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+<p>It’s a tough to digest right now as it is written in a manner that will become a protocol and API spec but it will provide some idea of what we’re doing.</p>
+<p>At a high level, the changes from v1 are:</p>
+<ul>
+<li>We have done away with the <strong>mandate</strong> resource as this is better served by grants issued through GNAP.</li>
+<li>We have replaced <strong>invoices</strong> with <strong>incoming payments</strong>. These fulfil a similar role but we felt that an invoice was not the correct name as this term is already used widely in accounting and commerce and has a subtly different meaning in that context.</li>
+<li>We have introduced the concept of an <strong>outgoing payment</strong> which is how a new payment from an account is created and initiated.</li>
+<li>We have simplified the payment detail discovery to be a built in part of <strong>incoming payments</strong>.</li>
+<li>We previously assumed auth would be based on OAuth 2.0 which forced us to capture a lot of logic in resources like mandates. We have switched to <a href="https://datatracker.ietf.org/doc/html/draft-ietf-gnap-core-protocol">GNAP</a> for auth.</li>
+</ul>
+<p>We’ll prepare a proper overview presentation in the next few weeks and go through it with the community at the next call. Any feedback welcome here or via Slack.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adrianhopebailie" class="user-link">Adrian Hope Bailie</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 13, 2022 1:50 PM">
+            <time itemprop="datePublished" datetime="2022-02-13 13:50:46 +0200">Feb 13, 2022</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Big thanks to <a class="mention" href="/u/laka/index.html">@laka</a> <a class="mention" href="/u/matdehaast/index.html">@matdehaast</a> <a class="mention" href="/u/wilsonianb/index.html">@wilsonianb</a> and others on their input and help getting this to where it is!</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #97BF64; width: 45px; height: 45px">W</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/wilsonianb" class="user-link">Brandon Wilson</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 16, 2022 1:38 AM">
+            <time itemprop="datePublished" datetime="2022-02-16 01:38:23 +0200">Feb 16, 2022</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Any feedback welcome here or via Slack.</p>
+</blockquote>
+<p>I’ve opened a draft pull request as another option for providing feedback:</p><aside class="onebox githubpullrequest" data-onebox-src="https://github.com/interledger/open-payments/pull/88">
+  <header class="source">
+
+      <a href="https://github.com/interledger/open-payments/pull/88" target="_blank" rel="noopener nofollow ugc">github.com/interledger/open-payments</a>
+  </header>
+
+  <article class="onebox-body">
+    <div class="github-row">
+
+
+
+    <div class="github-icon-container" title="Pull Request">
+      <svg width="60" height="60" class="github-icon" viewBox="0 0 12 16" aria-hidden="true"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></svg>
+    </div>
+
+  <div class="github-info-container">
+
+
+
+      <h4>
+        <a href="https://github.com/interledger/open-payments/pull/88" target="_blank" rel="noopener nofollow ugc">Open Payments v2</a>
+      </h4>
+
+    <div class="branches">
+      <code>interledger:master</code> ← <code>interledger:ahb-opv2</code>
+    </div>
+
+      <div class="github-info">
+        <div class="date">
+          opened <span class="discourse-local-date" data-format="ll" data-date="2022-02-16" data-time="00:47:26" data-timezone="UTC">12:47AM - 16 Feb 22 UTC</span>
+        </div>
+
+        <div class="user">
+          <a href="https://github.com/wilsonianb" target="_blank" rel="noopener nofollow ugc">
+            <img alt="wilsonianb" src="https://canada1.discourse-cdn.com/flex031/uploads/interledger/original/1X/925d0eb1b12cdeb6ee1da5b1b7789d73d3b3e2c2.png" class="onebox-avatar-inline" width="20" height="20" data-dominant-color="839F71">
+            wilsonianb
+          </a>
+        </div>
+
+        <div class="lines" title="8 commits changed 4 files with 2080 additions and 0 deletions">
+          <a href="https://github.com/interledger/open-payments/pull/88/files" target="_blank" rel="noopener nofollow ugc">
+            <span class="added">+2080</span>
+            <span class="removed">-0</span>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div class="github-row">
+    <p class="github-body-container">I'm opening a draft pull request for easier inline discussion.</p>
+  </div>
+
+  </article>
+
+  <div class="onebox-metadata">
+    
+    
+  </div>
+
+  <div style="clear: both"></div>
+</aside>
+
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

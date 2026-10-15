@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Payments on Uphold - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/general-questions/9/index.html">General Questions</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">Open Payments on Uphold</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">Open Payments on Uphold</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/general-questions/9" class="category-badge" style="--cat-color: #F1592A"><span class="category-bullet" aria-hidden="true"></span>General Questions</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/application-layer" class="tag-badge">application-layer</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Feb 23, 2021</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/pietro_piccini" class="user-link">pietro piccini</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Feb 23, 2021 4:48 PM">
+            <time itemprop="datePublished" datetime="2021-02-23 16:48:05 +0200">Feb 23, 2021</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Hi!<br>
+I am trying to build an application on top of Interledger that is able to send and receive payments between Payment Pointers. I am using Uphold and its API as a wallet and I am trying to use Open Payments to carry out the transactions. My struggle is that with Payment Pointers created by Uphold I am unable to use Open Payments. With other ilp-enebled digital wallets like ripple x, I am able to use Open Payments but not with Uphold.</p>
+<p>For example let’s say I have a Payment Pointer in Uphold which is the following:<br>
+<code>$ilp-sandbox.uphold.com/DMzUXziP3rZY </code></p>
+<p>then I would try to send a request to :<br>
+<code>https://ilp-sandbox.uphold.com/DMzUXziP3rZY</code></p>
+<p>expecting to receive a JSON with an  <code>ilpAddress</code> and a <code>sharedSecret</code><br>
+but instead I receive:<br>
+<code>   {         "code": "not_found",         "message": "Not Found"     }</code></p>
+<p>do you know how I could use Open Payments with Uphold?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sappenin" class="user-link">David Fuelling</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Feb 24, 2021 2:29 AM">
+            <time itemprop="datePublished" datetime="2021-02-24 02:29:54 +0200">Feb 24, 2021</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>To my knowledge UpHold does not support OpenPayments (<a class="mention" href="/u/adrianhopebailie/index.html">@adrianhopebailie</a> or <a class="mention" href="/u/matdehaast/index.html">@matdehaast</a> correct me if that wrong).</p>
+<p>That said, are you really meaning SPSP and not OpenPayments? The example you gave looks like vanilla SPSP to me, and that should work with UpHold’s testnet (I think).</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #47BDB5; width: 45px; height: 45px">P</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/pietro_piccini" class="user-link">pietro piccini</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Feb 28, 2021 2:46 PM">
+            <time itemprop="datePublished" datetime="2021-02-28 14:46:44 +0200">Feb 28, 2021</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p><a class="mention" href="/u/sappenin/index.html">@sappenin</a> thank you for your reply.<br>
+Indeed I meant SPSP and I am able to fetch the destination_account and the shared_secret using SPSP but I am stuck at how to use them to create a STREAM connection. I have tried to use the <a href="https://github.com/interledgerjs/ilp-protocol-stream" rel="noopener nofollow ugc">ilp-protocol-stream</a> but I am havinig trouble setting up the connection. I am trying to use <a href="https://github.com/interledgerjs/ilp-protocol-stream#client" rel="noopener nofollow ugc">this code snippet</a> and substitute the destinatin account and shared secret but I am unsure of what to put as “server” I have tried “btp+ws://ilp-sandbox.uphold.com” but the connection never gets established.</p>
+<p>I am very new to Interledger and any help would be greatly appreciated.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E8611A; width: 45px; height: 45px">S</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/sharafian" class="user-link">Ben Sharafian</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Mar 3, 2021 5:54 PM">
+            <time itemprop="datePublished" datetime="2021-03-03 17:54:39 +0200">Mar 3, 2021</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>I believe the problem with your SPSP query is a missing <code>Accept</code> header. <code>Accept: application/spsp4+json</code> must be sent for the server to recognize an SPSP request.</p>
+<pre><code class="lang-auto">&gt; curl  'https://ilp-sandbox.uphold.com/DMzUXziP3rZY'
+{"code":"not_found","message":"Not Found"}%           
+
+&gt; curl  'https://ilp-sandbox.uphold.com/DMzUXziP3rZY' -H 'accept: application/spsp4+json'
+{"destination_account":"test.uphold.internalMultiChild.172-22-122-19.stream.Ghn5ESBkSHt4gHrZf6x4v1JiILma2vXHwQpLoiqwDoI.pJcjq8CYwmIISe9yhBw7-PHic7LM7f8hRLvHzXpw5OSr5N7_PSMSI1DFtHdtzlcCZIpjD6tOYoFF_Lfja_U9z1S6w2hnHQ7jvl2uSwGqFwiIDfmNgbPFqHXPjWHFzwW2hCvL5TOhrnt1duHIN53MBPuyBefQKUAaNoRexLqbxTtxYaxsJw","receipts_enabled":false,"shared_secret":"/yiBADd6Q0OlLnRIh0yVZ4zO3pLu1wPhWCEoi71aTmU="}%                                                                                                                               &gt; 
+</code></pre>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #6571E0; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/justmoon" class="user-link">Stefan Thomas</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Mar 4, 2021 8:04 PM">
+            <time itemprop="datePublished" datetime="2021-03-04 20:04:56 +0200">Mar 4, 2021</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Thanks, Ben!</p>
+<p><a class="mention" href="/u/pietro_piccini/index.html">@pietro_piccini</a> One thing to note is that Uphold currently only supports ILP receiving. Not sure if that’s sufficient for your use case.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_6"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #E04136; width: 45px; height: 45px">J</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/Jean_Davis" class="user-link">Jean Davis</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_6" title="Feb 13, 2022 1:48 PM">
+            <time itemprop="datePublished" datetime="2022-02-13 13:48:37 +0200">Feb 13, 2022</time>
+          </a>
+          <span class="post-number">#6</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Are you sure you mean SPSP and not OpenPayments? To me, the example you provided looks like vanilla SPSP, which should work with UpHold’s testnet (I think)</p>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>

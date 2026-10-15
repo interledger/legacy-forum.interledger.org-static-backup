@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReCaptcha Alternative with Web Monetization - Interledger Forum</title>
+  
+  <meta name="description" content="The official Interledger community forum for discussing protocol development, implementations, and applications.">
+  
+  
+  <link rel="icon" href="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/ee50766933de8c7a13a67814dc9c1f53e1d1337c.png">
+  
+  <link rel="stylesheet" href="/assets/css/archive.css">
+  <link rel="stylesheet" href="/assets/css/topic-list.css">
+  <link rel="stylesheet" href="/assets/css/topic.css">
+  <link rel="stylesheet" href="/assets/css/post.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+<body class="topic-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="site-logo">
+        
+        <img src="//cdck-file-uploads-canada1.s3.dualstack.ca-central-1.amazonaws.com/flex031/uploads/interledger/original/1X/5cf07d0f5204a8179b197a8403521fe69a2bbaed.png" alt="Interledger Forum" class="logo-img">
+        
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" role="navigation">
+        <a href="/index.html" class="nav-link">Latest</a>
+        <a href="/categories/index.html" class="nav-link">Categories</a>
+        <a href="/search/index.html" class="nav-link">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <div class="breadcrumbs-inner">
+      <a href="/index.html">Home</a>
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <a href="/c/applications/7/index.html">Applications and Use Cases</a>
+        
+      
+        <span class="breadcrumb-sep" aria-hidden="true">/</span>
+        
+        <span class="breadcrumb-current" aria-current="page">ReCaptcha Alternative with Web Monetization</span>
+        
+      
+    </div>
+  </nav>
+  
+
+  
+
+  <main class="site-main">
+    <div class="main-inner" data-pagefind-body>
+      <article class="topic" itemscope itemtype="http://schema.org/DiscussionForumPosting">
+  <header class="topic-header">
+    <h1 class="topic-title" itemprop="name">ReCaptcha Alternative with Web Monetization</h1>
+
+    <div class="topic-meta">
+      
+        <a href="/c/applications/7" class="category-badge" style="--cat-color: #0E76BD"><span class="category-bullet" aria-hidden="true"></span>Applications and Use Cases</a>
+      
+
+      
+        <div class="topic-tags">
+          
+            <a href="/tag/web-monetization" class="tag-badge">web-monetization</a>
+          
+        </div>
+      
+
+      <div class="topic-stats">
+        <span class="stat" title="Created">Oct 31, 2019</span>
+        
+        
+      </div>
+    </div>
+  </header>
+
+  <div class="post-stream">
+    
+    <div class="post" id="post_1"
+         itemprop="articleBody"
+         >
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">E</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/emschwartz" class="user-link">Evan Schwartz</a>
+          </span>
+          
+            <span class="post-user-title">Leader</span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_1" title="Oct 31, 2019 3:12 AM">
+            <time itemprop="datePublished" datetime="2019-10-31 03:12:15 +0200">Oct 31, 2019</time>
+          </a>
+          <span class="post-number">#1</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>(Re)Captchas are annoying. It would be very nice if you never had to fill out another one if you were using Web Monetization. (The idea being that paying a little bit of money should be sufficient denial of service prevention that the website or CDN doesn’t actually need to know who you are to be confident that you’re not trying to DoS them.)</p>
+<p>I can think of at least two (complimentary) ways to build this:</p>
+<ol>
+<li>Create a script that automatically wraps the <a href="https://developers.google.com/recaptcha/docs/v3">reCaptcha client-side Javascript code</a> and makes it so that code is never called if Web Monetization is detected and the user is paying (note this requires a client-side verifiable receipt, like what is being discussed in the <span class="hashtag">#receipts</span> channel on the Interledger slack). Website owners could insert this script into their pages alongside their reCaptcha code and avoid annoying users who are willing to pay.</li>
+<li>Create an anti-reCaptcha browser extension that automatically pays people (via Mechanical Turk or something like that) to fill out the reCaptcha for you. This has the advantage of not requiring anything from website owners but relies on seriously underpaid human work and might be too easily detected by Google.</li>
+</ol>
+<p>Thoughts? Anyone interested in working on this?</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="2 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          2
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_2"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/nhartner" class="user-link">nhartner</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_2" title="Oct 31, 2019 5:51 AM">
+            <time itemprop="datePublished" datetime="2019-10-31 05:51:49 +0200">Oct 31, 2019</time>
+          </a>
+          <span class="post-number">#2</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Does web monetization notify the website owner’s backend that the user is paying them? This would be necessary for solution number 1 to work because the way reCaptcha works, the website owner’s backend also checks that the client sent a valid reCaptcha token (which can only be verified once to prevent replay attacks). Otherwise, you could just write a browser extension that removes the reCaptcha JS code from the DOM. If the web monetization solution also sends verification tokens, those would need to be secured against replay attacks.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+        <span class="post-replies" title="1 replies">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M6 9l-4 4V1h12v8H6z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          1 reply
+        </span>
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_3"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #F0A523; width: 45px; height: 45px">M</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/matdehaast" class="user-link">Matthew De Haast</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_3" title="Oct 31, 2019 7:41 AM">
+            <time itemprop="datePublished" datetime="2019-10-31 07:41:09 +0200">Oct 31, 2019</time>
+          </a>
+          <span class="post-number">#3</span>
+        </div>
+      </div>
+
+      
+      <div class="post-reply-indicator">
+        <a href="#post_2">Replying to #2</a>
+      </div>
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <blockquote>
+<p>Does web monetization notify the website owner’s backend that the user is paying them?</p>
+</blockquote>
+<p>Currently you would have to self-host your payment pointer and match incoming requests against it. We are currently working on a spec for receipts that would allow websites to check payment status for sessions who have a third party hosting their payment pointer/wallet (Which is pretty much all WM sites today)</p>
+<p><span class="mention">@Bradon</span> had some interesting thoughts were you could basically have the receipt act as a mini-account and that any requests to your website could use against the balance paid. Which means you wouldn’t have to worry about replay attacks etc. Again most of the stuff will occur server side and not client side.</p>
+<p><a class="mention" href="/u/emschwartz/index.html">@emschwartz</a><br>
+I really like the idea. The only trick would be to ensure that the WM amount received is sufficient to ensure the cost is sufficiently large to deter attacks occurring.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="1 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          1
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_4"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #BD78D7; width: 45px; height: 45px">N</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/nhartner" class="user-link">nhartner</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_4" title="Oct 31, 2019 6:55 PM">
+            <time itemprop="datePublished" datetime="2019-10-31 18:55:47 +0200">Oct 31, 2019</time>
+          </a>
+          <span class="post-number">#4</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Primary option should be the 3rd-party hosted solution since reCaptcha is 3rd party (Google) hosted solution.</p>
+<p>I can see a lot of parallels between the two.</p>
+<p>reCaptcha:</p>
+<ul>
+<li>Website Owner (WO) creates an account on Google, configures API key for reCaptcha</li>
+<li>WO puts javascript on site that makes API call generate a reCaptcha challenge</li>
+<li>Visitor “pays” Google by solving the reCaptcha challenge and gets a short-lived reCaptcha token</li>
+<li>Visitor submits recaptcha to WO as part of request</li>
+<li>WO makes API call to Google to verify token has not already been used nor expired</li>
+</ul>
+<p>ILPtcha:</p>
+<ul>
+<li>Website Owner (WO) creates an account with Web Monetization Provider (WMP)</li>
+<li>WO puts javascript on site that makes API call to generate ILP invoice</li>
+<li>Visitor sends ILP payment to WMP gets back a token (maybe the fulfillment condition)</li>
+<li>Visitor sends token to WO as part of request</li>
+<li>WO calls WMP to verify the token has not already been used nor expired. WMP sends ILP payment (minus fee) to the WO’s ILP address.</li>
+</ul>
+<p>This ends up being a way to gate any API with micropayment tokens. Doesn’t matter if the client is a browser or server.</p>
+      </div>
+
+      <div class="post-footer">
+        
+        <span class="post-likes" title="3 likes">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 14s-5.5-3.5-5.5-7A3.5 3.5 0 0 1 8 4a3.5 3.5 0 0 1 5.5 3c0 3.5-5.5 7-5.5 7z"/>
+          </svg>
+          3
+        </span>
+        
+        
+      </div>
+    </div>
+    
+    <div class="post" id="post_5"
+         itemprop="comment"
+         itemscope itemtype="http://schema.org/Comment">
+
+      <div class="post-header">
+        <div class="post-avatar">
+          <span class="avatar avatar--letter" style="--avatar-color: #3AB5E6; width: 45px; height: 45px">A</span>
+        </div>
+        <div class="post-author">
+          <span class="post-username" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a href="/u/adornala" class="user-link">Amarnath R Dornala</a>
+          </span>
+          
+        </div>
+        <div class="post-date">
+          <a href="#post_5" title="Nov 1, 2019 3:40 PM">
+            <time itemprop="datePublished" datetime="2019-11-01 15:40:06 +0200">Nov 1, 2019</time>
+          </a>
+          <span class="post-number">#5</span>
+        </div>
+      </div>
+
+      
+
+      <div class="post-body cooked" itemprop="text">
+        <p>Ahh it’s been a while, <a class="mention" href="/u/emschwartz/index.html">@emschwartz</a> it’s a pretty good idea… here are my thought:</p>
+<ul>
+<li>The implementation must be interactive maybe! The main reason reCaptcha came into picture is to remove robot calls, isn’t it!. May be a pop-up interaction, like confirm transfer or something would be good! It might help us in determining human interaction.</li>
+<li>I like the Idea of ILPtcha.</li>
+</ul>
+      </div>
+
+      <div class="post-footer">
+        
+        
+      </div>
+    </div>
+    
+  </div>
+
+  
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Archive of <strong>Interledger Forum</strong> &mdash; Generated as a static archive</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/archive.js"></script>
+</body>
+</html>
